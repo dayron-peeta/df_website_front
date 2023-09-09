@@ -1,0 +1,3105 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* df_website_front
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-02 10:33+0000\n"
+"PO-Revision-Date: 2021-07-02 10:33+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+msgid "Follow us"
+msgstr "Síguenos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+msgid "Us"
+msgstr "Nosotros"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+msgid "WE WANT TO KNOW YOU"
+msgstr "Queremos conocerte"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_about_us
+msgid "<span class=\"material-icons mr-2\">chevron_right</span> About us"
+msgstr "<span class=\"material-icons mr-2\">chevron_right</span> Quiénes somos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid "<span class=\"material-icons mr-2\">chevron_right</span> Contact us"
+msgstr "<span class=\"material-icons mr-2\">chevron_right</span> Contáctanos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid ""
+"<span class=\"material-icons mr-2\">chevron_right</span> Exhibitor "
+"registration"
+msgstr ""
+"<span class=\"material-icons mr-2\">chevron_right</span> Registro de "
+"expositor"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+msgid ""
+"<span class=\"material-icons mr-2\">chevron_right</span> User registration"
+msgstr ""
+"<span class=\"material-icons mr-2\">chevron_right</span> Registro de usuario"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.committee_event
+msgid ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Organizing Committee"
+msgstr ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Comité organizador"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Presentation request"
+msgstr ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Solicitud de presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+msgid ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Visitor registration"
+msgstr ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Registro de "
+"visitante"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+msgid ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Visitor registration"
+" as company"
+msgstr ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Registro de "
+"visitante como entidad"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Visitor registration"
+" as person"
+msgstr ""
+"<span class=\"material-icons mr-2\">chevron_right</span>Registro de "
+"visitante como persona"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_attendee_speaker
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_terms_condition
+msgid "<span class=\"material-icons\">close</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.committee_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_about_us
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_new_detail
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_news
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.sponsor_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_sign_in
+msgid "<span class=\"material-icons\">home</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid ""
+"<span class=\"myriadpro-regular expectativa-cargo\">General Manager @ "
+"OnRobot</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid ""
+"<span class=\"myriadpro-regular expectativa-cargo\">Innovation Center "
+"Director @ Deloitte</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid ""
+"<span class=\"myriadpro-regular expectativa-cargo\">Marketing @ "
+"Kivnon</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid ""
+"<span class=\"myriadpro-regular expectativa-cargo\">Sales Manager @ "
+"Fieldas</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        REEUP code"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Código REEUP"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Theme tag"
+msgstr "Temáticas"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "<span class=\"text-danger\">*</span> Country of location"
+msgstr "<span class=\"text-danger\">*</span> País de ubicación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "<span class=\"text-danger\">*</span> Economic activity"
+msgstr "<span class=\"text-danger\">*</span> Actividad económica"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "<span class=\"text-danger\">*</span> Economic sector"
+msgstr "<span class=\"text-danger\">*</span> Sector económico"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> Email"
+msgstr "<span class=\"text-danger\">*</span> Correo electrónico"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "<span class=\"text-danger\">*</span> Institution type"
+msgstr "<span class=\"text-danger\">*</span> Tipo de institución"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> Job Position"
+msgstr "<span class=\"text-danger\">*</span> Puesto de trabajo"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> Municipality"
+msgstr "<span class=\"text-danger\">*</span> Municipio"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> NIT code"
+msgstr "<span class=\"text-danger\">*</span> Código NIT"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid "<span class=\"text-danger\">*</span> Name"
+msgstr "<span class=\"text-danger\">*</span> Nombre"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "<span class=\"text-danger\">*</span> Name or Social reason"
+msgstr "<span class=\"text-danger\">*</span> Nombre o Razón social"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> Name(s) and last names"
+msgstr "<span class=\"text-danger\">*</span> Nombre(s) y apellidos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "<span class=\"text-danger\">*</span> Phone"
+msgstr "<span class=\"text-danger\">*</span> Teléfono"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> Province / State / Region"
+msgstr "<span class=\"text-danger\">*</span> Provincia / Estado / Región"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> REEUP code"
+msgstr "<span class=\"text-danger\">*</span> REEUP code"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid "<span class=\"text-danger\">*</span> Subject"
+msgstr "<span class=\"text-danger\">*</span> Asunto"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "<span class=\"text-danger\">*</span> Thematic"
+msgstr "<span class=\"text-danger\">*</span> Temática"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> Theme tag"
+msgstr "<span class=\"text-danger\">*</span> Temáticas"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "<span class=\"text-danger\">*</span> Presentation Title"
+msgstr "<span class=\"text-danger\">*</span> Título de la presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "About"
+msgstr "Acerca de"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "About us"
+msgstr "Quiénes somos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_navbar_template
+msgid "Acerca de"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid ""
+"Allow the organizers to disclose their presentation materials during\n"
+"                                            and after the event."
+msgstr ""
+"Permitir a los organizadores la divulgación de los materiales de su "
+"presentación durante y después del evento."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "An error occurred, if it persists, contact the administrator."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Andrea Keay"
+msgstr ""
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+#, python-format
+msgid "Announcement"
+msgstr "Convocatoria"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+msgid ""
+"I attend the event in a\n"
+"                                            personal capacity. I do not represent a company or business."
+msgstr ""
+"Asisto al evento a título personal. No represento una entidad o negocio."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+msgid ""
+"I attend the event on\n"
+"                                            behalf of my company or business."
+msgstr ""
+"Asisto al evento en representación de mi entidad o negocio."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Back"
+msgstr "Atrás"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_newsletter
+msgid ""
+"Be the first to know what's new about\n"
+"                            FELTi 2021."
+msgstr ""
+"Sé el primero en conocer las novedades de FELTi 2021."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Biographical Synthesis"
+msgstr "Síntesis biográfica"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "Buscar"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_index_topbar
+msgid "Buscar un evento..."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "Buscar..."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid "CONTACT US"
+msgstr "CONTÁCTENOS"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+msgid "Calendario"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+msgid "Catálogo"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "City"
+msgstr "Ciudad"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_attendee_speaker
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_terms_condition
+msgid "Close"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid "Comment"
+msgstr "Comentario"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid "Company"
+msgstr "Empresa"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "Company Profile"
+msgstr "Perfil de la entidad"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Conferencias"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "Contact Us"
+msgstr "Contáctenos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+msgid "Contact us"
+msgstr "Contáctenos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_navbar_template
+msgid "Contacto"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_sign_in
+msgid "Contraseña"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+msgid ""
+"Copyright © 2021 | Eventos Virtuales Desoft | Todos los derechos reservados "
+"|"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_sign_in
+msgid "Correo electrónico: direccion@dominio.cu"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_contador
+msgid "Countries"
+msgstr "Países"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid "Diego Rodríguez Roldan"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Director y Fundador"
+msgstr ""
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/user_sign_in.js:0
+#, python-format
+msgid "Do you want to continue"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+msgid "Documentos"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_planes
+msgid "Download"
+msgstr "Descargar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid ""
+"EDICIÓN VIRTUAL\n"
+"                                    <br/><span>Foro de empresarios y líderes en tecnologías de la información</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_index_topbar
+msgid "EVENTOS DEL MES"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+msgid "EVENTOS VIRTUALES"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid "EVENTOS virtuales"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "EXHIBITOR REGISTRATION"
+msgstr "REGISTRO DE EXPOSITOR"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_contador
+msgid "EXHIBITORS"
+msgstr "Expositores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+msgid "EXPECTATIVAS"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+msgid "EXPOSITOR"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid ""
+"El invierno cálido y las noches breves de Cuba en Moscú\n"
+"                                                        (+ Video y Audio)"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.desoft_front_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_newsletter
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+#: model_terms:ir.ui.view,arch_db:df_website_front.jep_newsletter
+#: model_terms:ir.ui.view,arch_db:df_website_front.metrologia_front_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.posters_gallery_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.sigestic_front_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Email"
+msgstr "Correo electrónico"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid ""
+"En Eventos Virtuales podrás generar leads, interactuar, conversar, reunirte e impartir charlas y conferencias\n"
+"                                del mismo modo que lo harías en el mundo real, sin moverte de casa y sin gastos adicionales."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_planes
+msgid ""
+"Discover here the categories of participation and select the "
+"one that best suits your business objectives."
+msgstr ""
+"Descubre aquí las categorías de participación y selecciona la"
+" que más se ajuste a tus objetivos de negocio."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid ""
+"Esta Feria es celebrada en Cuba todos los años en el recinto ferial "
+"ExpoCuba."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "Event Participants"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "Event Speakers"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_navbar_template
+msgid "Eventos"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "Expositor"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Expositores"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid ""
+"FIHAV (Feria Internacional de La Habana) evento de trascendental connotación en el ambito del comercio\n"
+"                                y las inversiones en Cuba. FIHAV se ha afianzado como la bolsa comercial más importante del país y\n"
+"                                del Caribe. Algunas de las instituciones promotoras del comercio y las inversiones e importantes\n"
+"                                hombres de negocios han encontrado el espacio propicio para promover sus productos y servicios e identificado\n"
+"                                socios para la conformación de alianzas estratégicas de carácter internacional."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_banner
+msgid "FROM SEPTEMBER 15 TO 17"
+msgstr "DEL 15 AL 17 Septiembre"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "Facebook"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid ""
+"Fevexpo es una feria que reune a las compañías líderes\n"
+"                                                de la industria y al logística. Es el lugar perfecto para dar a conocer tus productos y evaluar\n"
+"                                                cuál es el nivel de tus competidores. También es el lugar clave en lo que se refiere a innovación contínua."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Complete the form to propose your presentation."
+msgstr "Completa el formulario para proponer tu presentación."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.assets_frontend_inherit
+msgid "Go to top"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+msgid "I AM A COMPANY OR BUSINESS"
+msgstr "SOY UNA ENTIDAD O NEGOCIO"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+msgid "I AM A PERSON"
+msgstr "SOY UNA PERSONA"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "I accept the"
+msgstr "Acepto los"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Institutional Data"
+msgstr "Datos Institucionales"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid "José María Toro Moreno"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "LIST OF CONTESTANTS"
+msgstr "Listado de Participantes"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "LIST OF SPEAKERS"
+msgstr "Listado de ponentes"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "Legal Representative Data"
+msgstr "Datos del Representante Legal"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "Linkedin"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_event
+msgid ""
+"Lorem ipsum dolor sit amet consectetur adipiscing elit varius\n"
+"                                        suspendisse natoque dapibus dis convallis, purus donec ut rutrum lectus facilisi\n"
+"                                        phasellus sociosqu laoreet magnis suscipit. Nam erat tristique cubilia\n"
+"                                        nec et pulvinar posuere sapien sagittis\n"
+"                                        <span>...</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+msgid ""
+"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy\n"
+"                                                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat,\n"
+"                                                            sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.\n"
+"                                                            Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit\n"
+"                                                            amet."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid ""
+"MOSCÚ.- Si se mide la temperatura de esta ciudad\n"
+"                                                    por el modo en que le ha dado la bienvenida a Miguel Diaz Canel Bermúdez en su primera visita oficial\n"
+"                                                        como Pre..."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid ""
+"Mantente al dia de las ultimas novedades con nuestro "
+"<strong>Newsletter</strong>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid "Marcos Gómez"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_sign_in
+msgid "Mensaje"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_news
+msgid ""
+"<span class=\"material-icons mr-2\">chevron_right</span> News"
+msgstr ""
+"<span class=\"material-icons mr-2\">chevron_right</span> Noticias"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_new_detail
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_noticias
+msgid "News"
+msgstr "Noticias"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_news
+msgid "NEWS"
+msgstr "NOTICIAS"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Next"
+msgstr "Siguiente"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_event
+msgid ""
+"No hay resultados que mostrar para:\n"
+"                            <span style=\"color:red\">término de búsqueda</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.committee_event
+msgid "ORGANIZING COMMITTEE"
+msgstr "COMITÉ ORGANIZADOR"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_navbar_template
+msgid "Ofertas Adicionales"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_intro
+msgid "Official announcement"
+msgstr "Convocatoria oficial"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "Organizing committee"
+msgstr "Comité organizador"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+msgid ""
+"PLATAFORMA VIRTUAL\n"
+"                                            <span style=\"color: #dc5829;\">FEVEXPO</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid "PLATAFORMA VIRTUAL <span style=\"color: #dc5829;\">FEVEXPO</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Países"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "Personal Information"
+msgstr "Información Personal"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Phone"
+msgstr "Teléfono"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_navbar_template
+msgid "Planes"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_planes
+msgid "Participation categories"
+msgstr "Categorías de participación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "Categories"
+msgstr "Categorías"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "Please provide an email address."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_news
+msgid "Por:"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid "Por: <span style=\"color:#007b91\">Arleen Rodríguez Derivet</span>"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+msgid "Precio: $5"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_navbar_template
+msgid "Preguntas Frecuentes"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_attendee_speaker
+msgid "Presentation Agenda"
+msgstr "Agenda de presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Presentation Request"
+msgstr "Solicitud de Presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_contador
+msgid "Presentations"
+msgstr "Presentaciones"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_contador
+msgid "Presentation"
+msgstr "Presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_attendee_speaker
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "Presidente"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Proposals are closed!"
+msgstr "Las propuestas están cerradas."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_index_topbar
+msgid "Próximos eventos"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_navbar_template
+msgid "Que es FEVexpo"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+msgid "REGISTER AS A VISITOR"
+msgstr "REGISTRARME COMO VISITANTE"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+msgid "REGISTER AS AN EXHIBITOR"
+msgstr "REGISTRAME COMO EXPOSITOR"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+msgid "Referencia: referencia del prod 1"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "Register"
+msgstr "Registro"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+msgid ""
+"Registering as a visitor will allow you to access a private area where you\n"
+"                                            can configure your profile; have meetings with other participants\n"
+"                                            through the business round; have arranged meetings with exhibitors\n"
+"                                            and attend solutions and services presentations."
+msgstr ""
+"Registrarte como visitante te permitirá acceder a un área privada donde "
+"podrás configurar tu perfil; tener encuentros con otros participantes a "
+"través de la ronda de negocios; disponer de reuniones concertadas con "
+"expositores y asistir a las presentaciones de soluciones y servicios."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+msgid ""
+"Registering as an exhibitor will allow you access to a private area where\n"
+"                                            you can set up your profile, your own booth and apply to become a sponsor\n"
+"                                            of the event. In addition, you will be able to access your meeting agenda;\n"
+"                                            have meetings with booth visitors through chat; connect with other participants\n"
+"                                            through the business round; as well as make a presentation about your\n"
+"                                            solutions and services."
+msgstr ""
+"Registrarte como expositor te permitirá acceder a un área privada donde "
+"podrás configurar tu perfil, stand propio y realizar la solicitud para "
+"convertirte en patrocinador del evento. Además, ingresarás a tu agenda de "
+"reuniones; tener encuentros con visitantes del stand mediante chat; tener "
+"encuentros con otros participantes, a través de la Ronda de Negocios; "
+"realizar una presentación de 15 minutos acerca de tus soluciones y "
+"servicios."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_sign_in
+msgid "Registrar"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Regístrate ahora"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_sign_in
+msgid "Repetir contraseña"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_banner
+msgid "Present your company"
+msgstr "Presenta tu entidad"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_banner
+msgid "Register now"
+msgstr "Regístrate ahora"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_event
+msgid "Resultados de la búsqueda para:"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_patrocinadores
+msgid "SPONSORS"
+msgstr "Patrocinadores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+msgid "Salas Temáticas"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Save &amp; Exit"
+msgstr "Guardar &amp; Salir"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Save &amp; New"
+msgstr "Guardar &amp; Nuevo"
+
+#. module: df_website_front
+#: model:ir.ui.menu,name:df_website_front.action_feria_root
+msgid "Secciones"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid ""
+"See the brief review of those registered at the event. Access your contact details\n"
+"                                    and detailed profile."
+msgstr ""
+"Lee aquí una breve reseña de los inscritos en el evento. Accede a sus datos de "
+"contacto y de perfil detallados."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Select Image"
+msgstr "Selecciona una imagen"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid "Send"
+msgstr "Enviar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+msgid "Send us your questions, needs or suggestions."
+msgstr "Envíanos tus preguntas, necesidades o sugerencias."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_navbar_template
+msgid "Servicios"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Silicon Valley Robotics"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "Social media"
+msgstr "Redes sociales"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/user_sign_in.js:0
+#: code:addons/df_website_front/static/src/js/app/user_sign_in.js:0
+#, python-format
+msgid "Some fields has errors"
+msgstr "Algunos campos tienen errores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_ponentes
+msgid "Speakers"
+msgstr "Ponentes"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "Sponsors"
+msgstr "Patrocinadores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Presentation Agreement"
+msgstr "Acuerdo de presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_newsletter
+msgid "Subscribe me"
+msgstr "Suscribirme"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Presentation Summary"
+msgstr "Resumen de la presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Presentation type"
+msgstr "Tipo(s) de presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Type(s) of Presentation"
+msgstr "Tipo(s) de presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "Terms and Conditions of use"
+msgstr "Términos y Condiciones de uso"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+msgid "Terms of Use and User Conditions"
+msgstr "Terminos de Uso y Condiciones de Usuarios"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "Thank you for contacting us. We will reply to you as soon as possible"
+msgstr "Gracias por contactarnos. Le responderemos lo antes posible."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid ""
+"Thanks for subscribing to our newsletter! We hope it provides you with all "
+"the information you need. Do you have a friend, colleague or boss who could "
+"find the newsletter useful?"
+msgstr ""
+"¡Gracias por suscribirte a nuestro boletín! Esperamos te brinde toda la "
+"información que necesitas. ¿Tienes algún amigo, colega o jefe al que le "
+"pueda ser útil el boletín?"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "The chat was successfully registered."
+msgstr "La ponencia se registró correctamente."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "The field is required"
+msgstr "El campo es obligatorio"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "There are mandatory or buggy fields."
+msgstr "Hay campos obligatorios o con errores."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid "Thierry Delmas"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "This event does not accept proposals."
+msgstr "Este evento no acepta propuestas."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid ""
+"Do not disclose the materials of your presentation (slides and video)\n"
+"                                            before or during the event."
+msgstr ""
+"No divulgar los materiales de su presentación (diapositivas y video) "
+"antes o durante el evento."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+msgid ""
+"To access FELTi 2021 we offer you different registration modes. Choose the one that\n"
+"                                    fits your business goals and follow the instructions. Upon completing the registration,\n"
+"                                    you will receive in your email the confirmation of your attendance, with which you\n"
+"                                    can configure your account in FELTi 2021. If you give your consent, we will keep\n"
+"                                    you informed about activities and content that will be of interest to you."
+msgstr ""
+"Para acceder a FELTi 2021 te ofrecemos distintos modos de registro. Elige el"
+" que se ajuste a tus objetivos de negocios y sigue las instrucciones. Al "
+"completar el registro, recibirás en tu correo la confirmación de tu "
+"asistencia, con la que podrás configurar tu cuenta en FELTi 2021. Si das tu "
+"consentimiento, te mantendremos informado sobre actividades y contenidos que"
+" serán de tu interés."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid ""
+"To complete your registration, it is essential that you carefully\n"
+"                                                    read the site policy and accept it; to access you must click on\n"
+"                                                    the terms and conditions link below."
+msgstr ""
+"Para completar tu registro, es esencial que leas atentamente la política "
+"del sitio y la aceptes; para acceder debes hacer clic en el enlace de "
+"términos y condiciones que se mencionan a continuación."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid ""
+"To obtain all the necessary information about our products and services.\n"
+"                                        <br/>\n"
+"                                        To offer your opinions and suggestions."
+msgstr ""
+"Para obtener toda la información necesaria sobre nuestros productos y servicios.                                        <br/>\n"
+"                                        Para ofrecer sus opiniones y sugerencias."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_navbar_template
+msgid "Toggle navigation"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Tweets by micheltwit89"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "Twitter"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+msgid ""
+"UNA NUEVA\n"
+"                                FORMA DE HACER NEGOCIOS"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid ""
+"URL\n"
+"                                                        Facebook"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid ""
+"URL\n"
+"                                                        Instagram"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid ""
+"URL\n"
+"                                                        Linkedin"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "URL Facebook"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "URL Instagram"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "URL Linkedin"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "URL Twitter"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+msgid "USER REGISTRATION"
+msgstr "REGISTRO DE USUARIO"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+msgid ""
+"Una oportunidad única para intercambiar con tus clientes y conversar con grandes\n"
+"                                expertos y profesionales de todos los sectores. Todo ello desde un entorno completamente\n"
+"                                virtual, inmersivo y que te permitira vivir una experiencia ferial practicamente\n"
+"                                real.\n"
+"                                <br/>\n"
+"                                En Eventos Virtuales podras generar leads, interactuar conversar, reunirte e impartir\n"
+"                                charlas y conferencias del mismo modo que lo harías en el mundo real, sin moverte de\n"
+"                                casa y son gastos adicionales."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+msgid ""
+"Una oportunidad única para intercambiar con tus clientes y conversar con grandes expertos\n"
+"                                y profesionales de todos los sectores. Todo ello desde un entorno completamente virtual, inmersivo\n"
+"                                y que te permitirá vivir una experiencia ferial prácticamente real."
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+msgid "User registration"
+msgstr "Registro de usuario"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+msgid "VISITOR"
+msgstr "VISITANTE"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+msgid "VISITOR REGISTRATION"
+msgstr "REGISTRO DE VISITANTE"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+msgid "VISITOR REGISTRATION AS A COMPANY"
+msgstr "REGISTRO DE VISITANTE COMO ENTIDAD"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "VISITOR REGISTRATION AS PERSON"
+msgstr "REGISTRO DE VISITANTE COMO PERSONA"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Ver convocatoria"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+msgid "Ver todas"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Ver todos"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+msgid "Videos"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_event
+msgid "Viernes 9 de abril de 2021"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Visitantes"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "Visitor registration"
+msgstr "Registro de visitante"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_contador
+msgid "Visitors"
+msgstr "Visitantes"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "We require speakers to accept an agreement in which they commit to:"
+msgstr ""
+"Requerimos que los oradores acepten un acuerdo en el que se comprometan a:"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Website"
+msgstr "Sitio web"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "WhatsApp"
+msgstr ""
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "You have already subscribed to our event."
+msgstr ""
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "You need to accept the terms and conditions."
+msgstr "Debes aceptar los términos y condiciones."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_one
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_main_template
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+msgid "Youtube"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "actualízate"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+msgid "back"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.committee_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_about_us
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_new_detail
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_news
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.sponsor_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_sign_in
+msgid "breadcrumb"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.sponsor_event
+msgid ""
+"<span class=\"material-icons mr-2\">chevron_right</span> Sponsors"
+msgstr ""
+"<span class=\"material-icons mr-2\">chevron_right</span> Patrocinadores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_patrocinadores
+#: model_terms:ir.ui.view,arch_db:df_website_front.sponsor_event
+msgid "SPONSORS"
+msgstr "PATROCINADORES"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+#: model_terms:ir.ui.view,arch_db:df_website_front.feria_event_main
+msgid "Sponsors"
+msgstr "Patrocinadores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+msgid "dic@geic.cu"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_newsletter
+msgid "get update"
+msgstr "actualízate"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_noticias
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_patrocinadores
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_ponentes
+msgid "see all"
+msgstr "Ver todos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "terms and conditions"
+msgstr " términos y condiciones"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.type_visitor_pre_sign_in
+msgid ""
+"Thank you for your interest in joining FELTi 2021! Please tell us what type of\n"
+"                                    visitor you want to be at the event."
+msgstr ""
+"¡Gracias por tu interés en unirte a FELTi 2021! Por favor, indícanos qué tipo"
+" de visitante deseas ser en el evento."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "Please provide an email address."
+msgstr "Por favor escriba una dirección de correo electrónico."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "An error occurred, if it persists, contact the administrator."
+msgstr "Ocurrió un error, si persiste, comuníquese con el administrador."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "Check the required fields."
+msgstr "Verifique los campos obligatorios."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.footer_felti
+msgid "Organizers"
+msgstr "Organizadores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid ""
+"Learn more about the event.\n"
+"                                            <br/>\n"
+"                                            Send us your questions, needs or suggestions."
+msgstr ""
+"Obtén más información sobre el evento.\n"
+"                                            <br/>\n"
+"                                            Envíanos tus preguntas, necesidades o sugerencias."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid "Add Speaker"
+msgstr "Adicionar ponente"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#, python-format
+msgid "There is a speaker with these data for this talk."
+msgstr "Hay un ponente con estos datos para esta charla."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "The data has been registered correctly."
+msgstr "Los datos han sido registrados correctamente."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "There is an institution and legal representative with these data."
+msgstr "Existe una institución y un representante legal con estos datos."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "There is an institution with these data."
+msgstr "Existe una institución con estos datos."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "The representative registered successfully."
+msgstr "El representante legal se registró correctamente."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "There is a legal representative with these data."
+msgstr "Existe un representante legal con estos datos."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "There is a visitor with this data."
+msgstr "Existe un visitante con estos datos."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_event
+msgid "No results to display for:"
+msgstr "No hay resultados para mostrar:"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_event
+msgid "Search results for:"
+msgstr "Resultados de la búsqueda para:"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_event
+msgid "news"
+msgstr "noticias"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+msgid "Entity"
+msgstr "Entidad"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                    Presentation Title"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                    Título de la Presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                    Thematic"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                    Temática"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Email"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Correo electrónico"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Phone"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Teléfono"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_participant
+msgid "participants"
+msgstr "participantes"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_exhibitor
+msgid "exhibitors"
+msgstr "expositores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_sponsor
+msgid "sponsors"
+msgstr "patrocinadores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.search_speakers
+msgid "speakers"
+msgstr "ponentes"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid ""
+"The phone format is incorrect.Country code + phone number. Ex. + 53XXXXXXXX"
+msgstr ""
+"El formato del teléfono es incorrecto. Código de país + número de teléfono. Ej. + 53XXXXXXXX"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event.js:0
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+#, python-format
+msgid "Categories"
+msgstr "Categorías"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid ""
+"You have successfully registered. In a few minutes you will receive a "
+"confirmation email."
+msgstr "Usted se ha registrado satisfactoriamente. En unos minutos recibirá un correo de confirmación."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "Tell us about yourself"
+msgstr "Cuéntanos sobre ti"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.person_visitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> Visitor profile"
+msgstr "<span class=\"text-danger\">*</span> Perfil del visitante"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+msgid ""
+"Not to disclose their presentation materials (slides and\n"
+"                                            video) before or during the event."
+msgstr ""
+"No divulgar sus materiales de presentación (diapositivas y\n"
+"                                            video) antes o durante el evento."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "Be a sponsor of the event"
+msgstr "Sea un patrocinador del evento"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "<span class=\"text-danger\">*</span> Sponsor type"
+msgstr "<span class=\"text-danger\">*</span> Tipo de patrocinador"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "See more detailed information about"
+msgstr "Consulte información más detallada de los"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+msgid "sponsorships"
+msgstr "patrocinios"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Profile Picture"
+msgstr "Foto de perfil"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "Data has been successfully logged."
+msgstr "Los datos se han registrado correctamente."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Full Name"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Nombre completo"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Job position"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Puesto de trabajo"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Country of location"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        País de ubicación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Access information"
+msgstr "Información de acceso"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Brief Resume"
+msgstr "Breve currículum"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"Here you can edit your user profile, by editing your personal information\n"
+"                            <br/>"
+msgstr ""
+"Aquí puede editar su perfil de usuario, editando su información personal\n"
+"                            <br/>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid ""
+"Link your social network profiles to let other users get your\n"
+"                                                    information and contacts."
+msgstr ""
+"Vincula tus perfiles de redes sociales para permitir que otros usuarios obtengan tu\n"
+"                                                    información y contactos."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Municipality"
+msgstr "Municipio"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "My favorites"
+msgstr "Mis favoritos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Password"
+msgstr ""
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Personal data"
+msgstr "Información personal"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Phone Number"
+msgstr "Teléfono"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Public Profile"
+msgstr "Perfil público"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "This data will be visible for registered users only."
+msgstr "Estos datos serán visibles solo para usuarios registrados."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"We will never expose or publish your personal data to others no related with"
+" this fair."
+msgstr ""
+"Nunca expondremos ni publicaremos sus datos personales a otras personas que no estén relacionadas con"
+" este evento."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "User Data"
+msgstr "Datos del usuario"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Socials Networks"
+msgstr "Redes sociales"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"You will need this information to login as registered user in this\n"
+"                                                    fair.\n"
+"                                                    The only way to access is by your email and password. You can't\n"
+"                                                    change the email you have been\n"
+"                                                    registered but you can change your password as many times as you\n"
+"                                                    want. Remember the password\n"
+"                                                    should be 6 characters long at least."
+msgstr ""
+"Necesitará esta información para iniciar sesión como usuario registrado en esta\n"
+"                                                    feria.\n"
+"                                                    La única forma de acceder es mediante su correo electrónico y contraseña. No puedes\n"
+"                                                    cambiar el correo electrónico que ha sido\n"
+"                                                    registrado pero puede cambiar su contraseña tantas veces como desee.\n"
+"                                                    Recuerde que la contraseña\n"
+"                                                    debe tener al menos 6 caracteres."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Password"
+msgstr "Contraseña"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"Repeat your\n"
+"                                                            password"
+msgstr ""
+"Repita su\n"
+"                                                            contraseña"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Province / State / Region"
+msgstr "Provincia / Estado / Región"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "You don't have favorite stands"
+msgstr "No tienes stands favoritos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "BACK"
+msgstr "ATRÁS"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "USER PROFILE"
+msgstr "PERFIL DE USUARIO"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "STAND PROFILE"
+msgstr "PERFIL DE STAND"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid ""
+"This is the information displayed at the event about your company. Remember that you must give an\n"
+" appropriate image to attract attendance to your stand."
+msgstr ""
+"Esta es la información que se muestra en el evento sobre su empresa. Recuerda que debes dar "
+"una imagen adecuada para atraer la asistencia a tu stand."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Fair Location"
+msgstr "Ubicación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Pavillion:"
+msgstr "Pabellón:"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid "Stand Design"
+msgstr "Diseño de Stand"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Participation objectives"
+msgstr "Objetivos de participación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Stand Pendons"
+msgstr "Pendones"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Stand Documents"
+msgstr "Documentos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Stand Images"
+msgstr "Imágenes"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Stand Videos"
+msgstr "Videos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Stand Catalog"
+msgstr "Catálogos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Accredited Users"
+msgstr "Usuarios Acreditados"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_save_edit_resources
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_advanced_3_event_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Picture"
+msgstr "Imagen"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "REEUP Code"
+msgstr "Código REEUP"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid ""
+"Short Description"
+msgstr "Descripción corta"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid ""
+"Large Description"
+msgstr "Descripción larga"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Media"
+msgstr "Medios de Comunicación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid ""
+"Put a website is not mandatory, however, this will help other users\n"
+"                                                to know you better and make it easy to increase security and\n"
+"                                                confidence toward your enterprise."
+msgstr ""
+"Poner un sitio web no es obligatorio, sin embargo, esto ayudará a otros usuarios a conocerte mejor y facilitará"
+" el aumento de la seguridad y la confianza hacia tu empresa. "
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid ""
+"Uploading an icon profile will\n"
+"                                                        help to recognize your brand easier.\n"
+"                                                        Crop it to 195 x 50 pixels or in a proportional format"
+msgstr ""
+"Incluir el logotipo de la empresa ayudará a reconocer la marca más facilmente. Recórtala a 195 x 50 píxeles"
+" o un tamaño proporcional."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Select Stand Type"
+msgstr "Selecciona un tipo de stand"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Pendon Managment"
+msgstr "Gestionar Pendones"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Document Managment"
+msgstr "Gestionar Documentos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add pendon"
+msgstr "Adicionar pendón"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_save_edit_resources
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_stand_visitor_info
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_track
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Name"
+msgstr "Nombre"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Name <span class=\"text-danger\">*</span>"
+msgstr "Nombre"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Image <span class=\"text-danger\">*</span>"
+msgstr "Imagen"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Position"
+msgstr "Posición"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add document"
+msgstr "Adicionar documento"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "File"
+msgstr "Fichero"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add image"
+msgstr "Adicionar imagen"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Image"
+msgstr "Imagen"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Video Gallery"
+msgstr "Galería de Vídeo"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.lateral_menu_id
+msgid "Videos"
+msgstr "Vídeos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Image Gallery"
+msgstr "Galería de Imágenes"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add video"
+msgstr "Adicionar vídeo"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Description"
+msgstr "Descripción"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Catalogue Management"
+msgstr "Gestionar productos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Reference"
+msgstr "Referencia"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add user"
+msgstr "Adicionar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Price"
+msgstr "Precio"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Select product"
+msgstr "Seleccionar producto"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add product"
+msgstr "Adicionar producto"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "<span id=\"pavillion\" class=\"float-left\">Not assigned</span>"
+msgstr "<span id=\"pavillion\" class=\"float-left\">No asignado</span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "<span id=\"stand\" class=\"float-left\">Not assigned</span>"
+msgstr "<span id=\"stand\" class=\"float-left\">No asignado</span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "My Stand"
+msgstr "Mi Stand"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Select Stand Decoration"
+msgstr "Selecciona la decoración del stand"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add document"
+msgstr ""
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "Add element"
+msgstr "Adicionar elemento"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add image"
+msgstr "Adicionar imagen"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add pendon"
+msgstr "Adicionar pendón"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Add product"
+msgstr "Adicionar producto"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_save_edit_resources
+msgid ""
+"<i class=\"fa fa-check-square-o\"/>\n"
+"                                Accept"
+msgstr ""
+"<i class=\"fa fa-check-square-o\"/>\n"
+"                                Aceptar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_save_edit_resources
+msgid ""
+"<i class=\"fa fa-window-close-o\"/>\n"
+"                                Cancel"
+msgstr ""
+"<i class=\"fa fa-window-close-o\"/>\n"
+"                                Cancelar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid ""
+"Link your socials to get the rest of users have another way to\n"
+"                                                contact you."
+msgstr ""
+"Vincula tus redes sociales para que el resto de usuarios tengan otra forma de contactarte."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "See Stand"
+msgstr "Ver Stand"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Schedule"
+msgstr "Agenda"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.conference_event_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.networking_rom_event_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.pavilion_event_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.press_event_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.reception_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "Thematic rooms"
+msgstr "Salas temáticas"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.pavilion_event_data
+msgid "<span class=\"material-icons mr-2\">chevron_right</span>Pavilion"
+msgstr "<span class=\"material-icons mr-2\">chevron_right</span>Pabellón"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_lobby_data
+msgid "Press room"
+msgstr "Sala de prensa"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.press_event_data
+msgid "<span class=\"material-icons mr-2\">chevron_right</span>Press room"
+msgstr "<span class=\"material-icons mr-2\">chevron_right</span>Sala de prensa"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Price"
+msgstr "Precio"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "<span id=\"pavillion\" class=\"float-left\">Not assigned</span>"
+msgstr "<span id=\"pavillion\" class=\"float-left\">No asignado</span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "<span id=\"stand_assigned\" class=\"float-left\">Assigned</span>"
+msgstr "<span id=\"stand_assigned\" class=\"float-left\">Asignado</span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "<span id=\"stand_not_assigned\" class=\"float-left\">Not assigned</span>"
+msgstr "<span id=\"stand_not_assigned\" class=\"float-left\">No asignado</span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_track
+msgid "<span>Documents</span>"
+msgstr "<span>Documentos</span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Institution type"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Tipo de Institutión"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Name or Social reason"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Nombre o razón social"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid ""
+"The borrower you wish to add already exists as an exhibitor, please add a "
+"different one."
+msgstr "El acreditado que desea adicionar ya existe como expositor, por favor adicione otro diferente."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "The payment was not made correctly, please contact the administrator."
+msgstr "El pago no se realizó correctamente, comuníquese con el administrador."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "The payment was made correctly."
+msgstr "El pago se realizó correctamente."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_payment
+msgid "Please access the following URL to proceed with the payment."
+msgstr "Acceda a la siguiente URL para continuar con el pago."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_payment
+msgid "Once the payment has been made, enter the transaction ID here."
+msgstr "Una vez realizado el pago, ingrese el ID de la transacción aquí."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_payment
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Operation ID"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Operación ID"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_payment
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Payment Method"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Método de pago"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "The payment was not made correctly, please contact the administrator."
+msgstr "El pago no se realizó correctamente, comuníquese con el administrador."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Amount"
+msgstr "Monto"
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Date"
+msgstr "Fecha"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_tracks_profile
+msgid "State"
+msgstr "Estado"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Action"
+msgstr "Acción"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_track
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_tracks_profile
+msgid "Actions"
+msgstr "Acciones"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<i class=\"fa fa-eye\"/>\n"
+"                                                                        See"
+msgstr ""
+"<i class=\"fa fa-eye\"/>\n"
+"                                                                        Ver"
+
+#. module: df_event_invoice
+#: model:ir.model.fields.selection,name:df_event_invoice.selection__event_registration__payment_status__paid
+#: model_terms:ir.ui.view,arch_db:df_event_invoice.event_registration_ticket_view_form
+msgid "Paid"
+msgstr "Pagado"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"badge-warning badge badge-pill text-white\">\n"
+"                                                                            Processing payment\n"
+"                                                                        </span>"
+msgstr ""
+"<span class=\"badge-warning badge badge-pill text-white\">\n"
+"                                                                            Procesando pago\n"
+"                                                                        </span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.conference_event_data
+msgid "<span class=\"material-icons mr-2\">chevron_right</span>Conference room"
+msgstr "<span class=\"material-icons mr-2\">chevron_right</span>Sala de conferencia"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.networking_rom_event_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.reception_event_data
+msgid "<span class=\"material-icons mr-2\">chevron_right</span>Reception room"
+msgstr "<span class=\"material-icons mr-2\">chevron_right</span>Sala de información"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.forum_event_data
+msgid "<span class=\"material-icons mr-2\">chevron_right</span>Forum"
+msgstr "<span class=\"material-icons mr-2\">chevron_right</span>Foro"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.networking_rom_event_data
+msgid "<span class=\"material-icons mr-2\">chevron_right</span>Networking room"
+msgstr "<span class=\"material-icons mr-2\">chevron_right</span>Sala de Networking"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.playlist_event
+msgid "Simultaneous Conferences"
+msgstr "Conferencias simultáneas"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.chat_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.networking_rom_event_data
+msgid "Your comments"
+msgstr "Tus comentarios"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.chat_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.networking_rom_event_data
+msgid "Send"
+msgstr "Enviar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+msgid "Decorate the selected stand"
+msgstr "Decore su stand"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "Expositive rooms"
+msgstr "Salas Expositivas"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Operation"
+msgstr "Operación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Method"
+msgstr "Método"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_nav
+msgid "Program"
+msgstr "Programa"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.chat_stand_event
+msgid "<span class=\"material-icons\">Review customer conversations</span>"
+msgstr "<span class=\"material-icons\">Revise las conversaciones de los clientes</span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_confirmation_reject_date
+msgid "Are you sure you want to approve the appointment?"
+msgstr "¿Está seguro de que deseas aprobar la cita?"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "Appointment confirmation"
+msgstr "Confirmación de cita"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "Cancel appointment"
+msgstr "Cancelar cita"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_confirmation_reject_date
+msgid ""
+"Write a description explaining your decision:\n"
+"                                        (Optional)"
+msgstr ""
+"Escribe una descripción que explique tu decisión:\n"
+"                                        (Opcional)"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "The appointment was successfully approved."
+msgstr "La cita fue aprobada correctamente."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "The appointment was successfully canceled."
+msgstr "La cita fue cancelada correctamente."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "Pavilion: "
+msgstr "Pabellón: "
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_template
+msgid "LIST OF EXHIBITORS"
+msgstr "Listado de Expositores"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_template
+#: model_terms:ir.ui.view,arch_db:df_website_front.networking_rom_event_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "Search"
+msgstr "Buscar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_banner
+#: model_terms:ir.ui.view,arch_db:df_website_front.jep_banner
+msgid "FROM"
+msgstr "DEl"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.felti_banner
+#: model_terms:ir.ui.view,arch_db:df_website_front.jep_banner
+msgid "TO"
+msgstr "AL"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid "Representing an entity or business"
+msgstr "Representar a una entidad o empresa"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid "Initial Data"
+msgstr "Datos iniciales"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Registration mode"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Modo de registro"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid "REGISTRATION"
+msgstr "REGISTRO"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Type of participation"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Tipo de participación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Currency"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Moneda"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Ticket"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Entrada"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid "Personal information"
+msgstr "Información personal"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"Profile Picture\n"
+"                                                            <span class=\"text-danger\">*</span>"
+msgstr ""
+"Foto de perfil\n"
+"                                                            <span class=\"text-danger\">*</span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Theme tag"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Temáticas"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Email"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Correo electrónico"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Name(s) and last names"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Nombre(s) y apellidos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Mobile"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Móvil"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid "In a personal capacity"
+msgstr "A título personal"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            Country of location"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                            País de ubicación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.participant_event
+msgid "Conference speaker"
+msgstr "Conferencista"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#, python-format
+msgid "The appointment was successfully done."
+msgstr "La cita se realizó con éxito."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.lateral_menu_id
+msgid "Other (Specify in the description)"
+msgstr "Otra (Especificar en la descripción)"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.lateral_menu_id
+msgid "Chat room"
+msgstr "Sala de chat"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Presentation"
+msgstr "Presentaciones"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Job position"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Puesto de trabajo"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Full Name"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Nombre completo"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                    Country of location"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                    País de ubicación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Province / State / Region"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Provincia / Estado / Región"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "CI/Passport"
+msgstr "CI/Pasaporte"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.committee_event
+msgid "SCIENTIFIC COMMITTEE"
+msgstr "COMITÉ CIENTÍFICO"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Scientific category"
+msgstr "Categoría científica"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.committee_event
+#: model_terms:ir.ui.view,arch_db:df_website_front.desoft_nav_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.metrologia_nav_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.sigestic_nav_data
+msgid "Scientific comittee"
+msgstr "Comité Científico"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Teaching category"
+msgstr "Categoría educacional"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Investigative category"
+msgstr "Categoría de investigación"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#, python-format
+msgid "User profile"
+msgstr "Perfil de usuario"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"Here you can edit your user profile, by editing\n"
+"                            your personal information. This data will be visible for registered users only. We will\n"
+"                            never expose or publish your personal data to others no related with this event."
+msgstr ""
+"Aquí puedes editar tu perfil de usuario, editando\n"
+"                            su información personal. Estos datos serán visibles solo para usuarios registrados. Nosotros\n"
+"                            nunca expondremos ni publicaremos sus datos personales a otros que no estén relacionados con este evento."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Specialty"
+msgstr "Especialidad"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"Link your social network profiles to let other users get your\n"
+"                                                information and contacts."
+msgstr ""
+"Enlaza tus perfiles de redes sociales para que otros usuarios obtengan tu\n"
+"información y contactos."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_dinamic_logo
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_dinamic_pendon_1
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_dinamic_pendon_2
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_dinamic_pendon_3
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_dinamic_url_video
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Save"
+msgstr "Guardar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_payment
+msgid "SAVE"
+msgstr "GUARDAR"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_save_edit_resources
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Position"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Posición"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_save_edit_resources
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Products"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                Productos"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.lateral_menu_id
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                            Date/Time"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                            Fecha/Hora"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.lateral_menu_id
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                            Duration (minutes)"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                            Duración (minutos)"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                            Registration mode"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                            Modo registro"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid "Ticket"
+msgstr "Entrada"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_tracks_profile
+msgid "Title"
+msgstr "Título"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_resources_accredited
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_track
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Event"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Evento"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_tracks_profile
+msgid "Duration"
+msgstr "Duración"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_tracks_profile
+msgid "Event"
+msgstr "Evento"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Add presentation"
+msgstr "Añadir presentación"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "There are no payments to show"
+msgstr "No hay pagos para mostrar."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Does not present associated appointments."
+msgstr "No presenta citas asociadas."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Active"
+msgstr "Activo"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.stand_profile
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid "Add user"
+msgstr "Adicionar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"Accredited\n"
+"                                                Users"
+msgstr ""
+"Usuarios\n"
+"                                                Acreditados"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_resources_accredited
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Ticket"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Entrada"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.lateral_menu_id
+msgid "Calendar"
+msgstr "Calendario"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_add_conference_register
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_add_speaker_conference
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_confirmation_reject_date
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_resources_accredited
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_save_edit_resources
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_track
+#, python-format
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.desoft_front_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.exhibitor_pre_sign_in
+#: model_terms:ir.ui.view,arch_db:df_website_front.metrologia_front_data
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_add_speaker_conference
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_resources_accredited
+#: model_terms:ir.ui.view,arch_db:df_website_front.sigestic_front_data
+msgid "The mail format is incorrect"
+msgstr "El formato de correo es incorrecto."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_add_speaker_conference
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_resources_accredited
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Email"
+msgstr ""
+"<span class=\"text-danger\">*</span>\n"
+"                                                        Correo electrónico"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_message.js:0
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_confirmation_reject_date
+#, python-format
+msgid "Accept"
+msgstr "Aceptar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_track
+msgid ""
+"<i class=\"fa fa-check-square-o\"/>\n"
+"                                    Accept"
+msgstr ""
+"<i class=\"fa fa-check-square-o\"/>\n"
+"                                    Aceptar"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/user_sign_in.js:0
+#, python-format
+msgid "You need to accept the terms and conditions."
+msgstr "Debes aceptar los términos y condiciones."
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_add_conference_register
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_add_speaker_conference
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_resources_accredited
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_save_edit_resources
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_track
+msgid ""
+"<i class=\"fa fa-check-square-o\"/>\n"
+"                                Accept"
+msgstr ""
+"<i class=\"fa fa-check-square-o\"/>\n"
+"                                Aceptar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_add_conference_register
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_add_speaker_conference
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_resources_accredited
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_save_edit_resources
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_track
+msgid ""
+"<i class=\"fa fa-window-close-o\"/>\n"
+"                                Cancel"
+msgstr ""
+"<i class=\"fa fa-window-close-o\"/>\n"
+"                                Cancelar"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.modal_detail_payment
+msgid ""
+"<span class=\"fa fa-camera mr-2\"/>Operation image\n"
+"                                                <span class=\"text-danger\">*</span>"
+msgstr ""
+"<span class=\"fa fa-camera mr-2\"/>Imagen operación\n"
+"                                                <span class=\"text-danger\">*</span>"
+
+#. module: df_website_front
+#: model_terms:ir.ui.view,arch_db:df_website_front.user_profile
+msgid ""
+"<i class=\"fa fa-save\"/>\n"
+"                                                                            Pay"
+msgstr ""
+"<i class=\"fa fa-save\"/>\n"
+"                                                                            Pagar"
+
+#. module: df_website_front
+#: model:ir.model.fields,field_description:df_website_front.field_res_partner__theme_tag_id
+#: model:ir.model.fields,field_description:df_website_front.field_res_partner__theme_tag_ids
+#: model:ir.model.fields,field_description:df_website_front.field_res_users__theme_tag_id
+#: model:ir.model.fields,field_description:df_website_front.field_res_users__theme_tag_ids
+#: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
+msgid "Theme tag"
+msgstr "Temáticas"

@@ -1,0 +1,160 @@
+<odoo>
+    <data>
+        <template id="event_sign_in" name="Event sign in">
+            <t t-call="website.layout">
+                <t t-call="df_website_front.modal_terms_condition"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-about-us">
+                        <li class="breadcrumb-item">
+                            <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                <span class="material-icons">home</span>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item-about-us d-flex">
+                             <!--<span class="material-icons mr-2">chevron_right</span>-->
+                            <a t-att-href="'/evento/%s/user_pre_sign_in' % (event.id)"
+                               class="myriadpro-regular text-white cintillo-text">User registration</a>
+                        </li>
+                        <li class="breadcrumb-item-about-us active myriadpro-regular d-flex cintillo-text" aria-current="page">
+                             <!--<span class="material-icons mr-2">chevron_right</span>--> Exhibitor registration
+                        </li>
+                    </ol>
+                </nav>
+                <div class="position-relative">
+                    <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                    <h1 class="text-center exo2-regular encabezado-interno">
+                        REGISTRATION
+                    </h1>
+                </div>
+                <div class="oe_structure">
+                    <form id="form_register_exhibitor">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <ul class="nav nav-tabs my-nav-tabs mt-4" role="tablist">
+                            <li class="nav-item mx-auto ml-sm-auto mr-sm-0" role="presentation">
+                                <a class="nav-link active my-nav-link mb-0 exo2-regular"
+                                   id="exhibitor-inst-data-a"
+                                   data-toggle="tab" href="#exhibitor-inst-data-form" role="tab"
+                                   aria-controls="exhibitor-inst-data-form" aria-selected="true">
+                                    Initial Data
+                                </a>
+                            </li>
+                            <li class="nav-item mx-auto mr-sm-auto ml-sm-0" role="presentation">
+                                <a class="nav-link my-nav-link mb-0 exo2-regular"
+                                   id="exhibitor-repre-data-a"
+                                   data-toggle="tab" href="#exhibitor-repre-data-form" role="tab"
+                                   aria-controls="exhibitor-repre-data-form" aria-selected="false">
+                                    Institutional Data
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="exhibitor-inst-data-form" role="tabpanel"
+                                 aria-labelledby="exhibitor-inst-data-form-tab">
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <h5 class="exo2-regular font-weight-bold"><span class="text-danger">*</span> Record mode</h5>
+                                            <div class="mb-4">
+                                                <div class="form-check mt-1">
+                                                    <input class="form-check-input" type="radio" value=""
+                                                           name="record_mode"/>
+                                                    <label class="form-check-label exo2-regular font-weight-normal">
+                                                        Representing an entity or business
+                                                    </label>
+                                                </div>
+                                                <div class="form-check mt-1">
+                                                    <input class="form-check-input" type="radio" value=""
+                                                           name="record_mode"/>
+                                                    <label class="form-check-label exo2-regular font-weight-normal">
+                                                        In a personal capacity
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id=""
+                                                            name=""
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                        <option value="0">Option 1</option>
+                                                        <option value="1">Option 2</option>
+<!--                                                        <t t-foreach="theme_tags" t-as="theme_t">-->
+<!--                                                            <option t-att-value="theme_t.id">-->
+<!--                                                                <t-->
+<!--                                                                        t-esc="theme_t.name"/>-->
+<!--                                                            </option>-->
+<!--                                                        </t>-->
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Type of participation
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id=""
+                                                            name=""
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                        <option value="0">Option 1</option>
+                                                        <option value="1">Option 2</option>
+<!--                                                        <t t-foreach="theme_tags" t-as="theme_t">-->
+<!--                                                            <option t-att-value="theme_t.id">-->
+<!--                                                                <t-->
+<!--                                                                        t-esc="theme_t.name"/>-->
+<!--                                                            </option>-->
+<!--                                                        </t>-->
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Ticket
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5 mb-5 justify-content-end">
+                                        <a t-att-href="'/evento/%s/user_pre_sign_in' % (event.id)"
+                                           class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Back
+                                        </a>
+                                        <a href="#" id="exhibitor-pre-sign-in-next"
+                                           class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Next
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="exhibitor-repre-data-form" role="tabpanel"
+                                 aria-labelledby="exhibitor-repre-data-form-tab">
+                                <div class="container">
+                                    <div class="row mt-5">
+
+                                    </div>
+                                    <div class="row mb-5 mt-5 mt-sm-0 justify-content-end">
+                                        <a href="#" id="exhibitor-pre-sign-in-back"
+                                           class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Back
+                                        </a>
+                                        <button id="register_exhibitor"
+                                                class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Register
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

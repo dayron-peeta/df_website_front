@@ -1,0 +1,282 @@
+<odoo>
+    <data>
+        <template id="custom_event_track_proposal" name="Feria event track proposal">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-about-us">
+                        <li class="breadcrumb-item">
+                            <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                <span class="material-icons">home</span>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item-about-us active myriadpro-regular d-flex" aria-current="page">
+                            <!--<span class="material-icons mr-2">chevron_right</span>-->Presentation request
+                        </li>
+                    </ol>
+                </nav>
+                <div class="position-relative">
+                    <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                    <h1 class="text-center exo2-regular encabezado-interno">
+                        Presentation Request
+                    </h1>
+                </div>
+                <div class="container">
+                    <section id="forms" t-if="not event.website_track_proposal">
+                        <h1>Proposals are closed!</h1>
+                        <p>
+                            This event does not accept proposals.
+                        </p>
+                    </section>
+                    <section class="row mt-5">
+                        <div class="col-lg-9">
+                            <div class="oe_structure">
+                                <section>
+                                    <p class="myriadpro-regular">
+                                        <t t-raw="event.description_track"/>
+                                    </p>
+                                </section>
+                            </div>
+                            <div t-if="not track">
+                                <section class="mt-5">
+                                    <p class="myriadpro-regular">
+                                        Complete the form to propose your presentation.
+                                    </p>
+                                </section>
+                                <section id="forms" class="mb-5"
+                                         t-if="event.website_track_proposal">
+                                    <form class="mt32" id="track_form_id"
+                                          enctype="multipart/form-data">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" class="form-control my-form-control"
+                                                       name="track_name" is-required="true"/>
+                                                <label class="my-form-label myriadpro-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Presentation Title
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="description"
+                                                          rows="2"/>
+                                                <label class="my-form-label myriadpro-regular">
+                                                    Presentation Summary
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <select name="theme_tag_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true" is-required="true"
+                                                        multiple="">
+                                                    <t t-foreach="theme_tags" t-as="theme_t">
+                                                        <option t-att-value="theme_t.id">
+                                                            <t t-esc="theme_t.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <label class="my-form-label myriadpro-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Thematic
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <t t-if="len(event_type_tracks_ids) > 1">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select name="event_track_type_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true">
+                                                        <t t-foreach="event_type_tracks_ids"
+                                                           t-as="event_type_tracks_id">
+                                                            <t t-if="event_type_tracks_id_first">
+                                                                <option t-att-value="event_type_tracks_id.id"
+                                                                        t-att-selected="event_type_tracks_id.id">
+                                                                    <t t-esc="event_type_tracks_id.name"/>
+                                                                </option>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option t-att-value="event_type_tracks_id.id">
+                                                                    <t t-esc="event_type_tracks_id.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">Presentation Type
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </t>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" class="form-control my-form-control"
+                                                       name="partner_name" is-required="true"/>
+                                                <label class="my-form-label myriadpro-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Name
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="mb-4">
+                                                    <div class="my-form-outline">
+                                                        <input type="email" class="form-control my-form-control"
+                                                               name="email_from" multiple="multiple"
+                                                               is-required="true" is-email="true"/>
+                                                        <label class="my-form-label myriadpro-regular">
+                                                            <span class="text-danger">*</span>
+                                                            Email
+                                                        </label>
+                                                    </div>
+                                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                        The field is required
+                                                    </div>
+                                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-email-alert d-none">
+                                                        The email format is incorrect
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="mb-4">
+                                                    <div class="my-form-outline">
+                                                        <input type="text" class="form-control my-form-control"
+                                                               name="phone" is-required="true" is-phone="true"/>
+                                                        <label class="my-form-label myriadpro-regular">
+                                                            <span class="text-danger">*</span>
+                                                            Phone
+                                                        </label>
+                                                    </div>
+                                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                        The field is required
+                                                    </div>
+                                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                        The phone format is incorrect. Country code + phone number. Ex.
+                                                        + 53XXXXXXXX
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <select name="country_id" id="country_select_track"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true" is-required="true">
+                                                    <t t-foreach="countrys" t-as="country">
+                                                        <option t-att-value="country.id">
+                                                            <t t-esc="country.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <label class="my-form-label myriadpro-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Country of location
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="biography"
+                                                          rows="5"/>
+                                                <label class="my-form-label myriadpro-regular">
+                                                    Biographical Synthesis
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <label for="files" class="myriadpro-regular"
+                                                       style="color: rgba(0, 0, 0, .6); margin-bottom: 0; padding-left: .75rem;">
+                                                    Select Image
+                                                </label>
+                                                <input id="file-image-speaker" type="file" class="form-control border-0"
+                                                       name="image"
+                                                       accept="image/*"/>
+                                            </div>
+                                        </div>
+                                        <!--                                        <div class="row mb-5">-->
+                                        <div class="form-group o_form_buttons">
+                                            <div class="mb-4 buttons-track">
+                                                <button id="event_save_new_track"
+                                                        class="btn feria-see-all myriadpro-regular texto rounded-0 text-uppercase">
+                                                    Add Speaker
+                                                </button>
+                                                <button id="event_save_close_track"
+                                                        class="btn feria-see-all myriadpro-regular texto rounded-0 text-uppercase">
+                                                    Save
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                            <div t-else="">
+                                <t t-call="website_event_track.event_track_proposal_success"/>
+                            </div>
+                            <div class="oe_structure" id="oe_structure_website_event_track_proposal_2"/>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card talk-proposal-card mb-3">
+                                <h5 class="card-header myriadpro-regular">Type(s) of Presentation</h5>
+                                <div class="card-body myriadpro-regular" style="background-color: white!important;">
+                                    <ul class="list-unstyled">
+                                        <t t-foreach="event.event_track_type_ids" t-as="evtrack_type">
+                                            <li>
+                                                <strong>
+                                                    <t t-esc="evtrack_type.name"/>
+                                                </strong>
+                                                <t t-esc="evtrack_type.description"/>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card talk-proposal-card">
+                                <h5 class="card-header myriadpro-regular">Presentation Agreement</h5>
+                                <div class="card-body myriadpro-regular" style="background-color: white!important;">
+                                    <p>
+                                        We require speakers to accept an agreement in which they commit to:
+                                    </p>
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            Not to disclose their presentation materials (slides and
+                                            video) before or during the event.
+                                        </li>
+                                        <li>
+                                            Allow the organizers to disclose their presentation materials during
+                                            and after the event.
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

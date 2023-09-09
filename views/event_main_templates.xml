@@ -1,0 +1,361 @@
+<odoo>
+    <data>
+        <template id="feria_event_main" name="Feria Main">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <div class="oe_structure">
+
+                    <div class="evento-banner">
+                       <div id="carouselIndex" class="carousel slide" data-ride="carousel">
+                            <div>
+                                <img src="/df_website_front/static/src/img/pabellon.jpg" style="width:100%" class="evento-banner imagen-alto"/>
+                                <div class="title-div">
+                                    <h2 class="text-center text-uppercase titulo-main myriadpro-semibold-condensed">
+                                        EDICIÓN VIRTUAL
+                                    <br/><span>Foro de empresarios y líderes en tecnologías de la información</span></h2>
+                                    <hr class="hr-banner"/>
+                                    <h2 class="text-center titulo-debajo text-uppercase" style="width:90%">
+                                        se celebrará en formato virtual del <span id="fecha_evento">4 al 8 de octubre 2021</span>
+                                    </h2>
+                                </div>
+                                <div class="button-registrate centrar-horizontal">
+                                    <a href="#" class="btn registrate-ahora text-uppercase myriadpro-regular color-white">
+                                            Regístrate ahora
+                                    </a>
+                                     <a href="#" class="btn solicitud-charla text-uppercase myriadpro-regular color-white">
+                                            Solicitud Charla
+                                    </a>
+                                </div>
+                            </div>
+                       </div>
+                       <ul class="d-flex flex-row sn-navbar">
+                           <li class="mr-2">
+                               <a href="facebook.com" target="_blank" title="Facebook">
+                                   <img class="facebook-banner" src="/df_website_front/static/src/img/Facebook_reposo.svg" height="38" alt="..."/>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="twitter.com" target="_blank" title="Twitter">
+                                   <img class="twitter-banner" src="/df_website_front/static/src/img/Twitter_reposo.svg" height="38" alt="..."/>
+                               </a>
+                           </li>
+                           <li class="ml-2">
+                               <a href="youtube.com" target="_blank" title="Youtube">
+                                   <img class="youtube-banner" src="/df_website_front/static/src/img/Youtube_reposo.svg" height="38" alt="..."/>
+                               </a>
+                           </li>
+                       </ul>
+                   </div>
+
+                    <div class="container margin-top-seccion text-center">
+                        <div class="introduccion pt-4 mt-5">
+                            <h2 class="text-center text-uppercase encabezado_orange
+                            myriadpro-semibold-condensed position-relative pt-3">la feria comercial
+                                <span class="encabezados">más importante del país</span></h2>
+                            <h2 class="text-center text-uppercase encabezados
+                            myriadpro-semibold-condensed position-relative">y del caribe, encuentro vital en el ámbito del
+                            <br/>comercio y las inversiones</h2>
+                            <hr class="encabezado-underline"/>
+                        </div>
+                        <div class="texto mt-5 container">
+                            <p class="text-center p-evento-feria mt-text">
+                                FIHAV (Feria Internacional de La Habana) evento de trascendental connotación en el ambito del comercio
+                                y las inversiones en Cuba. FIHAV se ha afianzado como la bolsa comercial más importante del país y
+                                del Caribe. Algunas de las instituciones promotoras del comercio y las inversiones e importantes
+                                hombres de negocios han encontrado el espacio propicio para promover sus productos y servicios e identificado
+                                socios para la conformación de alianzas estratégicas de carácter internacional.
+                            </p>
+                            <p class="text-center p-evento-feria">
+                                Esta Feria es celebrada en Cuba todos los años en el recinto ferial ExpoCuba.
+                            </p>
+                        </div>
+                        <a href="#" class="btn btn-convocatoria text-uppercase rounded-pill feria-see-all mt-5 myriadpro-regular texto">
+                                    Ver convocatoria
+                        </a>
+                    </div>
+
+                    <div class="contador p-top-contador color-white parallax">
+                        <div class="inside-parallax"></div>
+
+                            <h2 class="text-center myriadpro-semibold-condensed text-uppercase letter-spacing-2
+                            position-relative pt-3">feria empresarial multisectorial virtual de cuba</h2>
+                            <h5 class="text-center
+                            position-relative pt-1">Únete a nosotros, forma parte activa</h5>
+                            <div class="noticias-row">
+                            <div class="container mb-2">
+                                <div class="row justify-content-between mt-5 text-center">
+                                    <div class="col-3 counters myriadpro-semibold-condensed">
+                                        <p class="h-numbers">154</p>
+                                        <p class="fs-small text-uppercase myriadpro-regular letter-spacing-2">
+                                            Expositores</p>
+                                    </div>
+
+                                    <div class="col-3 counters myriadpro-semibold-condensed">
+                                        <p class="h-numbers">132</p>
+                                        <p class="fs-small text-uppercase myriadpro-regular letter-spacing-2">Conferencias</p>
+                                    </div>
+
+                                    <div class="col-3 counters myriadpro-semibold-condensed">
+                                        <p class="h-numbers">11542</p>
+                                        <p class="fs-small text-uppercase myriadpro-regular letter-spacing-2">Visitantes</p>
+                                    </div>
+
+                                    <div class="col-3 counters myriadpro-semibold-condensed">
+                                        <p class="h-numbers">45</p>
+                                        <p class="fs-small text-uppercase myriadpro-regular letter-spacing-2">Países</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="parallax">
+                            <div class="inside-parallax"></div>
+                        </div>
+                    </div>
+
+                    <div class="patrocinadores mt-5 pt-5">
+                        <h2 class="text-center text-uppercase encabezados myriadpro-semibold-condensed position-relative pt-3">
+                            Sponsors
+                        </h2>
+                        <hr class="hr-patrocinadores"/>
+                        <div class="patrocinadores-row">
+                            <div id="contenedor-slider" class="contenedor-slider">
+                                <div id="slider" class="slider">
+                                    <section class="slider__section grid">
+                                        <img src="/df_website_front/static/src/img/Capa 1.png" class="slider__img"/>
+                                    </section>
+                                    <section class="slider__section grid">
+                                        <img src="/df_website_front/static/src/img/Capa 5.png" class="slider__img"/>
+                                    </section>
+                                    <section class="slider__section grid">
+                                        <img src="/df_website_front/static/src/img/Capa 4.png" class="slider__img"/>
+                                    </section>
+                                    <section class="slider__section grid">
+                                        <img src="/df_website_front/static/src/img/Capa 2.png" class="slider__img"/>
+                                    </section>
+                                    <section class="slider__section grid">
+                                        <img src="/df_website_front/static/src/img/Capa 3.png" class="slider__img"/>
+                                    </section>
+                                </div>
+                                <div id="btn-prev" class="btn-prev">&#60;</div>
+                                <div id="btn-next" class="btn-next">&#62;</div>
+                            </div>
+                            <a href="/new" class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto patrocinadores-see-all">
+                                Ver todos
+                            </a>
+                        </div>
+                   </div>
+
+                    <!--<div class="ponentes mb-5">
+
+                        <div class="expectativas-encabezado">
+                            <h2 class="text-center text-uppercase encabezados myriadpro-semibold-condensed position-relative pt-3">feria de la habana <span class="encabezado_orange">ponentes</span></h2>                            <hr class="encabezado-underline"/>
+                        </div>
+                        <div class="ponentes-row">
+                        <div id="contenedor-slider-ponentes" class="contenedor-slider">
+                                <div id="slider-ponentes" class="slider-ponentes">
+                                    <section class="slider__section-ponentes grid">
+                                        <img src="/df_website_front/static/src/img/ponentes/ponente02.png" class="slider__img-ponentes"/>
+                                    </section>
+                                    <section class="slider__section-ponentes grid">
+                                        <img src="/df_website_front/static/src/img/ponentes/ponente03.png" class="slider__img-ponentes"/>
+                                    </section>
+                                    <section class="slider__section-ponentes grid">
+                                        <img src="/df_website_front/static/src/img/ponentes/ponente04.png" class="slider__img-ponentes"/>
+                                    </section>
+                                    <section class="slider__section-ponentes grid">
+                                        <img src="/df_website_front/static/src/img/ponentes/ponente05.png" class="slider__img-ponentes"/>
+                                    </section>
+                                    <section class="slider__section-ponentes grid">
+                                        <img src="/df_website_front/static/src/img/ponentes/ponente06.png" class="slider__img-ponentes"/>
+                                    </section>
+                                </div>
+                                <div id="btn-prev-ponentes" class="btn-prev-ponentes">&#60;</div>
+                                <div id="btn-next-ponentes" class="btn-next-ponentes">&#62;</div>
+                            </div>
+                             <a href="/new" class="btn text-uppercase rounded-pill myriadpro-regular texto ponente-see-all">
+                                Ver todos
+                            </a>
+                    </div>
+                    </div>-->
+
+                    <div class="ponentes mb-5">
+
+                        <div class="expectativas-encabezado">
+                            <h2 class="text-center text-uppercase encabezados myriadpro-semibold-condensed position-relative pt-3">
+                                feria de la habana <span class="encabezado_orange">
+                                ponentes</span></h2> <hr class="encabezado-underline"/>
+                        </div>
+                        <div class="container" style="text-align: center">
+                            <div class="row text-center" id="ponente-block">
+
+                                <div class="col-sm-3 ponente-grid">
+                                    <div class="ponente-container">
+                                        <div class="image-inside"></div>
+                                        <img src="/df_website_front/static/src/img/ponentes/ponente01.png"
+                                             class="ponente-image"/>
+                                        <div class="ponente-middle">
+                                            <div class="text-middle">in</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-uppercase ponente-name">Andrea Keay</p>
+                                    <p class="ponente-cargo">Director y Fundador</p>
+                                    <p class="ponente-company">Silicon Valley Robotics</p>
+
+                                </div>
+
+                                <div class="col-sm-3 ponente-grid">
+                                    <div class="ponente-container">
+                                        <div class="image-inside"></div>
+                                        <img src="/df_website_front/static/src/img/ponentes/ponente02.png"
+                                             class="ponente-image"/>
+                                        <div class="ponente-middle">
+                                            <div class="text-middle">in</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-uppercase ponente-name">Andrea Keay</p>
+                                    <p class="ponente-cargo">Director y Fundador</p>
+                                    <p class="ponente-company">Silicon Valley Robotics</p>
+                                </div>
+
+                                <div class="col-sm-3 ponente-grid">
+                                    <div class="ponente-container">
+                                        <div class="image-inside"></div>
+                                        <img src="/df_website_front/static/src/img/ponentes/ponente03.png"
+                                             class="ponente-image"/>
+                                        <div class="ponente-middle">
+                                            <div class="text-middle">in</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-uppercase ponente-name">Andrea Keay</p>
+                                    <p class="ponente-cargo">Director y Fundador</p>
+                                    <p class="ponente-company">Silicon Valley Robotics</p>
+                                </div>
+
+                                <div class="col-sm-3 ponente-grid">
+                                    <div class="ponente-container">
+                                        <div class="image-inside"></div>
+                                        <img src="/df_website_front/static/src/img/ponentes/ponente04.png"
+                                             class="ponente-image"/>
+                                        <div class="ponente-middle">
+                                            <div class="text-middle">in</div>
+                                        </div>
+                                    </div>
+                                    <p class="text-uppercase ponente-name">Andrea Keay</p>
+                                    <p class="ponente-cargo">Director y Fundador</p>
+                                    <p class="ponente-company">Silicon Valley Robotics</p>
+                                </div>
+
+                            </div>
+                            <a href="/new" class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto ponentes-see-all">
+                                Ver todos
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="noticias-importantes mt-5 pt-5">
+                        <h2 class="text-center text-uppercase encabezados myriadpro-semibold-condensed position-relative pt-3">NOTICIAS de la feria</h2>
+                        <hr class="encabezado-underline"/>
+                        <div class="noticias-row">
+                            <div class="container mb-2">
+                                <div class="row justify-content-between mt-5">
+
+                                    <div class="col-sm-2 noticias-grid">
+                                            <div class="noticias-box">
+                                                <div class="img-new-home">
+                                                    <a href="#">
+                                                        <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png" class="noticias-img" alt="..."/>
+                                                    </a>
+                                                </div>
+                                                <div class="noticia-body">
+                                                    <a href="#" class="new-title">
+                                                        <h5 class="card-title myriadpro-semibold-condensed" >El invierno cálido y las noches breves de Cuba en Moscú
+                                                        (+ Video y Audio)</h5>
+                                                    </a>
+                                                    <p class="texto myriadpro-regular noticia-author">
+                                                        Por: <span style="color:#007b91">Arleen Rodríguez Derivet</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <div class="col-sm-2 noticias-grid">
+                                            <div class="noticias-box">
+                                                <div class="img-new-home">
+                                                    <a href="#">
+                                                        <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png" class="noticias-img" alt="..."/>
+                                                    </a>
+                                                </div>
+                                                <div class="noticia-body">
+                                                    <a href="#" class="new-title">
+                                                        <h5 class="card-title myriadpro-semibold-condensed" >El invierno cálido y las noches breves de Cuba en Moscú
+                                                        (+ Video y Audio)</h5>
+                                                    </a>
+                                                    <p class="texto myriadpro-regular noticia-author">
+                                                        Por: <span style="color:#007b91">Arleen Rodríguez Derivet</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <div class="col-sm-2 noticias-grid">
+                                            <div class="noticias-box">
+                                                <div class="img-new-home">
+                                                    <a href="#">
+                                                        <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png" class="noticias-img" alt="..."/>
+                                                    </a>
+                                                </div>
+                                                <div class="noticia-body">
+                                                    <a href="#" class="new-title">
+                                                        <h5 class="card-title myriadpro-semibold-condensed" >El invierno cálido y las noches breves de Cuba en Moscú
+                                                        (+ Video y Audio)</h5>
+                                                    </a>
+                                                    <p class="texto myriadpro-regular noticia-author">
+                                                        Por: <span style="color:#007b91">Arleen Rodríguez Derivet</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    <div class="col-sm-2 noticias-grid">
+                                            <div class="noticias-box">
+                                                <a class="twitter-timeline" href="https://twitter.com/micheltwit89?ref_src=twsrc%5Etfw">Tweets by micheltwit89</a>
+                                                <script async="true" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                            </div>
+                                    </div>
+
+                                    <a href="/new" class="btn text-uppercase rounded-pill noticia-see-all-evento myriadpro-regular texto">
+                                                Ver todas
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                   </div>
+
+                    <div class="mt-5 pt-5" id="actualizate">
+                        <h2 class="text-center text-uppercase encabezados myriadpro-semibold-condensed
+                        position-relative pt-3 actualizate-rss">actualízate</h2>
+                        <hr class="encabezado-underline"/>
+                        <div class="noticias-row">
+                            <div class="newsletter">
+                                <p class="text-center myriadpro-regular position-relative">Mantente al dia de las ultimas novedades con nuestro <strong>Newsletter</strong> </p>
+                            </div>
+                            <div class="input-newsletter">
+                                <input type="text" class="email-newsletter" placeholder="Email"/>
+                                <input type="submit" class="button-inside-input" value="Subscribe" />
+
+                            </div>
+                        </div>
+                   </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

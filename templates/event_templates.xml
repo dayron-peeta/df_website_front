@@ -1,0 +1,24 @@
+<odoo>
+    <template id="events_list_inherit" inherit_id="website_event.events_list">
+        <xpath expr="//div[@t-foreach='event_ids']/a" position="attributes">
+            <attribute name="target">blank</attribute>
+            <attribute name="t-attf-href">#{event.get_url_website_by_event()}</attribute>
+        </xpath>
+    </template>
+
+    <template id="event_cintillo_pages_internas">
+        <t t-if="event.cintillo">
+            <img t-att-src="image_data_uri(event.cintillo)" class="cintillo-about-us"/>
+        </t>
+    </template>
+
+    <template id="event_navbar_dinamic">
+        <t t-if="event">
+            <t t-set="nav_event" t-value="event.sudo().get_template_nav(no_is_home)"/>
+            <t t-if="nav_event">
+                <t t-raw="nav_event"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>

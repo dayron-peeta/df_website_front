@@ -1,0 +1,413 @@
+<odoo>
+    <data>
+        <template id="participant_event" name="Speakers">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.modal_detail_attendee_speaker"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <!--<nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active myriadpro-regular d-flex" aria-current="page">
+                                &lt;!&ndash;<span class="material-icons mr-2">chevron_right</span>&ndash;&gt;
+                                <t t-if="participant">
+                                    Event Participants
+                                </t>
+                                <t t-else="">
+                                    Event Speakers
+                                </t>
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">
+                            <t t-if="participant">
+                                LIST OF CONTESTANTS
+                            </t>
+                            <t t-else="">
+                                LIST OF SPEAKERS
+                            </t>
+                        </h1>
+                    </div>-->
+                    <div class="container mt-2 mb-5 px-sm-0">
+                        <div class="row mt-4">
+                            <div class="col-sm-8 align-self-center">
+                                <p class="mb-0 myriadpro-regular texto">
+                                    See the brief review of those registered at the event. Access your contact details
+                                    and detailed profile.
+                                </p>
+                            </div>
+
+                            <t t-if="theme_tags and not participant">
+                                <div class="col-sm-4 mt-2 mt-sm-0">
+                                    <form t-att-action="'/evento/%s/search_speaker' % (event.id)"
+                                          id="search_speaker_form">
+                                        <div class="myriadpro-regular">
+                                            <div>
+                                                <div class="my-form-outline">
+                                                    <select id="theme_select_id"
+                                                            name="theme_tag_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true">
+                                                        <t t-foreach="theme_tags" t-as="theme_t">
+                                                            <t t-if="theme_tag_id">
+                                                                <t t-if="theme_t.id == theme_tag_id">
+                                                                    <option t-att-value="theme_t.id"
+                                                                            selected="selected">
+                                                                        <t
+                                                                                t-esc="theme_t.name"/>
+                                                                    </option>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <option t-att-value="theme_t.id">
+                                                                        <t
+                                                                                t-esc="theme_t.name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option t-att-value="theme_t.id">
+                                                                    <t
+                                                                            t-esc="theme_t.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                    </select>
+                                                    <label t-attf-class="#{'label-select-automatic-top' if theme_tag_id else ''} my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Theme tag
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </t>
+                        </div>
+                        <t t-if="participant">
+                            <div class="row mt-2 mt-sm-4">
+                                <div class="col-sm-4">
+                                    <div class="myriadpro-regular">
+                                        <div>
+                                            <div class="my-form-outline">
+                                                <select id="type_participant_id"
+                                                        name="type_participant_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true">
+                                                    <t t-foreach="type_attendee_ids" t-as="type_attendee_id">
+                                                        <option t-att-value="type_attendee_id"
+                                                                t-att-selected="type_participant_id_sel == type_attendee_id">
+                                                            <t t-esc="type_attendee_id_value"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <label t-attf-class="#{'label-select-automatic-top' if type_participant_id_sel else ''} my-form-label myriadpro-regular">
+                                                    Select participant type
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="myriadpro-regular">
+                                        <div class="my-form-outline">
+                                            <select id="country_id_list" name="country_id_name"
+                                                    class="form-control my-form-control my-select selectpicker"
+                                                    title=" " data-live-search="true">
+                                                <t t-foreach="countrys" t-as="country">
+                                                    <option t-att-value="country.id"
+                                                            t-att-selected="country_id_name_sel == country.id">
+                                                        <t t-esc="country.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                            <label t-attf-class="#{'label-select-automatic-top' if country_id_name_sel else ''} my-form-label myriadpro-regular">
+                                                Select country
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="myriadpro-regular">
+                                        <div class="my-form-outline">
+                                            <input type="text" name="search" id="search_list_part"
+                                                   class="form-control my-form-control" t-att-value="search_part_sel"/>
+                                            <label t-attf-class="#{'label-select-automatic-top' if search_part_sel else ''} my-form-label myriadpro-regular">
+                                                Search
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button id="clear_filters"
+                                            class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </t>
+                        <div class="row mt-4">
+                            <t t-foreach="speakers_attendees" t-as="obj">
+                                <div class="col-sm-6 mt-3 mt-sm-0 pt-3">
+                                    <div t-attf-class="#{'speaker-card' if not participant else 'participant-card'} h-100"
+                                         t-att-data-id="obj.id">
+                                        <div class="row no-gutters h-100">
+                                            <div class="col-md-4">
+                                                <t t-if="obj.partner_id.image_1920">
+                                                    <div class="h-100 w-100 speaker-participant-card-img"
+                                                         t-attf-style="background-image: url(data:image/*;base64,{{obj.partner_id.image_1920}}); background-size: cover;"/>
+                                                </t>
+
+                                                <t t-if="participant">
+                                                    <t t-if="participant and obj.type_attendees and check_key_in_list(type_attendee_ids,obj.type_attendees)">
+                                                        <h6 class="text-uppercase myriadpro-regular text-white text-center mb-0 py-2 participant-type participant-type-1">
+                                                            <t t-esc="type_attendee_ids[obj.type_attendees]"/>
+                                                        </h6>
+                                                    </t>
+
+                                                    <t t-if="not obj.type_attendees and participant">
+                                                        <h6 class="text-uppercase myriadpro-regular text-white text-center mb-0 py-2 participant-type participant-type-1">
+                                                            Visitor
+                                                        </h6>
+                                                    </t>
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-if="not participant">
+                                                        <h6 class="text-uppercase myriadpro-regular text-white text-center mb-0 py-2 participant-type participant-type-1">
+                                                            <t t-if="obj.conference_speaker">
+                                                                Conference speaker
+                                                            </t>
+                                                            <t t-else="">
+                                                                Speaker
+                                                            </t>
+                                                        </h6>
+                                                    </t>
+                                                </t>
+
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="h-100 d-flex flex-column">
+                                                    <div class="participant-data">
+                                                        <h6 class="text-uppercase myriadpro-regular"
+                                                            style="color: #257bb5;">
+                                                            <t t-esc="obj.partner_id.name"/>
+                                                        </h6>
+                                                        <t t-if="obj.partner_id.parent_id.name">
+                                                            <p class="myriadpro-regular mb-1 text-uppercase"
+                                                               style="font-size: .9rem;">
+                                                                <t t-esc="obj.partner_id.parent_id.name"/>
+                                                            </p>
+                                                        </t>
+                                                        <t t-if="obj.partner_id.function">
+                                                            <p class="myriadpro-regular mb-1" style="font-size: .9rem;">
+                                                                <t t-esc="obj.partner_id.function"/>
+                                                            </p>
+                                                        </t>
+                                                        <t t-if="obj.partner_id.country_id.name">
+                                                            <p class="myriadpro-regular" style="font-size: .9rem;">
+                                                                <t t-esc="obj.partner_id.country_id.name"/>
+                                                            </p>
+                                                        </t>
+                                                    </div>
+                                                    <div class="participant-social row mx-0 justify-content-end">
+                                                        <t t-if="obj.partner_id.facebook_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="obj.partner_id.facebook_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Facebook" style="font-size: 25px;">
+                                                                    <span class="fa fa-facebook"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                        <t t-if="obj.partner_id.twitter_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="obj.partner_id.twitter_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Twitter" style="font-size: 25px;">
+                                                                    <span class="fa fa-twitter"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                        <t t-if="obj.partner_id.linkedin_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="obj.partner_id.linkedin_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Linkedin" style="font-size: 25px;">
+                                                                    <span class="fa fa-linkedin"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                        <t t-if="obj.partner_id.telegram_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="obj.partner_id.telegram_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Telegram" style="font-size: 25px;">
+                                                                    <span class="fa fa-telegram"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <template id="speaker_event">
+            <t t-call="df_website_front.participant_event"/>
+        </template>
+
+        <template id="new_participant_event" name="New participant event">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="container py-4">
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <nav class="nav justify-content-center alphabet-paginator">
+                                    <a class="nav-link active" href="#">A</a>
+                                    <a class="nav-link" href="#">B</a>
+                                    <a class="nav-link" href="#">C</a>
+                                    <a class="nav-link" href="#">D</a>
+                                    <a class="nav-link" href="#">E</a>
+                                    <a class="nav-link" href="#">F</a>
+                                    <a class="nav-link" href="#">G</a>
+                                    <a class="nav-link" href="#">H</a>
+                                    <a class="nav-link" href="#">I</a>
+                                    <a class="nav-link" href="#">J</a>
+                                    <a class="nav-link" href="#">K</a>
+                                    <a class="nav-link" href="#">L</a>
+                                    <a class="nav-link" href="#">M</a>
+                                    <a class="nav-link" href="#">N</a>
+                                    <a class="nav-link" href="#">O</a>
+                                    <a class="nav-link" href="#">P</a>
+                                    <a class="nav-link" href="#">Q</a>
+                                    <a class="nav-link" href="#">R</a>
+                                    <a class="nav-link" href="#">S</a>
+                                    <a class="nav-link" href="#">T</a>
+                                    <a class="nav-link" href="#">U</a>
+                                    <a class="nav-link" href="#">V</a>
+                                    <a class="nav-link" href="#">W</a>
+                                    <a class="nav-link" href="#">X</a>
+                                    <a class="nav-link" href="#">Y</a>
+                                    <a class="nav-link" href="#">Z</a>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between mt-4">
+                            <div class="col-sm-6 px-3">
+                                <div class="row no-gutters">
+                                    <div class="col-8 px-3">
+                                        <a href="#" class="h5">Participante 1</a>
+                                        <p class="mb-0">Stand 1</p>
+                                        <p class="mb-0">Pabellon 1</p>
+                                    </div>
+                                    <div class="col-4 pr-3">
+                                        <img src="/df_website_front/static/src/img/logo_full_negativo.png" class="w-100 img-fluid"/>
+                                    </div>
+                                    <hr class="w-100 mt-3"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 px-3">
+                                <div class="row no-gutters">
+                                    <div class="col-8 px-3">
+                                        <a href="#" class="h5">Participante 1</a>
+                                        <p class="mb-0">Stand 1</p>
+                                        <p class="mb-0">Pabellon 1</p>
+                                    </div>
+                                    <div class="col-4 pr-3">
+                                        <img src="/df_website_front/static/src/img/logo_full_negativo.png" class="w-100 img-fluid"/>
+                                    </div>
+                                    <hr class="w-100 mt-3"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between mt-4">
+                            <div class="col-sm-6 px-3">
+                                <div class="row no-gutters">
+                                    <div class="col-8 px-3">
+                                        <a href="#" class="h5">Participante 1</a>
+                                        <p class="mb-0">Stand 1</p>
+                                        <p class="mb-0">Pabellon 1</p>
+                                    </div>
+                                    <div class="col-4 pr-3">
+                                        <img src="/df_website_front/static/src/img/logo_full_negativo.png" class="w-100 img-fluid"/>
+                                    </div>
+                                    <hr class="w-100 mt-3"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 px-3">
+                                <div class="row no-gutters">
+                                    <div class="col-8 px-3">
+                                        <a href="#" class="h5">Participante 1</a>
+                                        <p class="mb-0">Stand 1</p>
+                                        <p class="mb-0">Pabellon 1</p>
+                                    </div>
+                                    <div class="col-4 pr-3">
+                                        <img src="/df_website_front/static/src/img/logo_full_negativo.png" class="w-100 img-fluid"/>
+                                    </div>
+                                    <hr class="w-100 mt-3"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between mt-4">
+                            <div class="col-sm-6 px-3">
+                                <div class="row no-gutters">
+                                    <div class="col-8 px-3">
+                                        <a href="#" class="h5">Participante 1</a>
+                                        <p class="mb-0">Stand 1</p>
+                                        <p class="mb-0">Pabellon 1</p>
+                                    </div>
+                                    <div class="col-4 pr-3">
+                                        <img src="/df_website_front/static/src/img/logo_full_negativo.png" class="w-100 img-fluid"/>
+                                    </div>
+                                    <hr class="w-100 mt-3"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 px-3">
+                                <div class="row no-gutters">
+                                    <div class="col-8 px-3">
+                                        <a href="#" class="h5">Participante 1</a>
+                                        <p class="mb-0">Stand 1</p>
+                                        <p class="mb-0">Pabellon 1</p>
+                                    </div>
+                                    <div class="col-4 pr-3">
+                                        <img src="/df_website_front/static/src/img/logo_full_negativo.png" class="w-100 img-fluid"/>
+                                    </div>
+                                    <hr class="w-100 mt-3"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

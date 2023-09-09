@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="search_event" name="search">
+            <t t-call="website.layout">
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div id="wrap" class="oe_structure oe_empty"/>
+                <div class="container margin-top-seccion text-center pt-5 mt-5 mb-5" id="search-results">
+                    <t t-if="result_search['isResult']">
+                        <div id="show_results">
+                            <p>
+                                Search results for:
+                                <span style="color:red">
+                                    <t t-esc="term_search"/>
+                                </span>
+                            </p>
+                            <hr/>
+                            <div id="all-results" class="text-left w-100">
+                                <t t-foreach="result_search['news']" t-as="result_new">
+                                    <div id="body-search-result">
+                                        <div class="ruta">
+                                            <h5 class="text-uppercase">
+                                                news
+                                            </h5>
+                                        </div>
+                                        <div class="titulo-res-search">
+                                            <t t-esc="result_new.name"/>
+                                        </div>
+                                        <div>
+                                            <t t-esc="result_new.resume"/>
+                                        </div>
+                                        <div class="fecha-search">
+                                            <t t-esc="result_new.post_date.strftime('%d - %m - %Y')"/>
+                                        </div>
+                                        <hr class="rule-results"/>
+                                    </div>
+                                </t>
+
+                                <t t-foreach="result_search['exhibitors']" t-as="obj_ex_par">
+                                    <div id="body-search-result">
+                                        <t t-call="df_website_front.search_exhibitor"/>
+                                        <t t-call="df_website_front.search_name_email"/>
+                                        <t t-call="df_website_front.search_participant_exhibitor_sponsor_speaker"/>
+                                    </div>
+                                </t>
+
+                                <t t-foreach="result_search['participants']" t-as="obj_ex_par">
+                                    <div id="body-search-result">
+                                        <t t-call="df_website_front.search_participant"/>
+                                        <t t-call="df_website_front.search_name_email"/>
+                                        <t t-call="df_website_front.search_participant_exhibitor_sponsor_speaker"/>
+                                    </div>
+                                </t>
+
+                                <t t-foreach="result_search['sponsors']" t-as="obj_ex_par">
+                                    <div id="body-search-result">
+                                        <t t-call="df_website_front.search_sponsor"/>
+                                        <t t-call="df_website_front.search_name_email"/>
+                                        <t t-call="df_website_front.search_participant_exhibitor_sponsor_speaker"/>
+                                    </div>
+                                </t>
+
+                                <t t-foreach="result_search['speakers']" t-as="obj_ex_par">
+                                    <div id="body-search-result">
+                                        <t t-call="df_website_front.search_speakers"/>
+                                        <t t-call="df_website_front.search_name_email_speaker"/>
+                                        <t t-call="df_website_front.search_participant_exhibitor_sponsor_speaker"/>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div id="no_results">
+                            No results to display for:
+                            <span style="color:red">
+                                <t t-esc="term_search"/>
+                            </span>
+                        </div>
+                    </t>
+                </div>
+
+            </t>
+        </template>
+
+
+        <template id="search_exhibitor">
+            <div class="ruta">
+                <h5 class="text-uppercase">
+                    exhibitors
+                </h5>
+            </div>
+        </template>
+
+        <template id="search_participant">
+            <div class="ruta">
+                <h5 class="text-uppercase">
+                    participants
+                </h5>
+            </div>
+        </template>
+
+        <template id="search_sponsor">
+            <div class="ruta">
+                <h5 class="text-uppercase">
+                    sponsors
+                </h5>
+            </div>
+        </template>
+
+        <template id="search_speakers">
+            <div class="ruta">
+                <h5 class="text-uppercase">
+                    speakers
+                </h5>
+            </div>
+        </template>
+
+        <template id="search_name_email_speaker">
+            <div class="titulo-res-search">
+                <t t-esc="obj_ex_par.partner_id.name"/>
+            </div>
+            <div>
+                <t t-esc="obj_ex_par.partner_id.email"/>
+            </div>
+        </template>
+
+        <template id="search_name_email">
+            <div class="titulo-res-search">
+                <t t-esc="obj_ex_par.name"/>
+            </div>
+            <div>
+                <t t-esc="obj_ex_par.email"/>
+            </div>
+        </template>
+
+        <template id="search_participant_exhibitor_sponsor_speaker">
+
+            <div>
+                <t t-if="obj_ex_par.partner_id.facebook_url">
+                    <a t-att-href="obj_ex_par.partner_id.facebook_url"
+                       class="participant-social-link color-social-felti"
+                       target="_blank"
+                       title="Facebook" style="font-size: 25px;">
+                        <span class="fa fa-facebook"/>
+                    </a>
+                </t>
+                <t t-if="obj_ex_par.partner_id.twitter_url">
+                    <a t-att-href="obj_ex_par.partner_id.twitter_url"
+                       class="participant-social-link color-social-felti"
+                       target="_blank"
+                       title="Twitter" style="font-size: 25px;">
+                        <span class="fa fa-twitter"/>
+                    </a>
+                </t>
+                <t t-if="obj_ex_par.partner_id.linkedin_url">
+                    <a t-att-href="obj_ex_par.partner_id.linkedin_url"
+                       class="participant-social-link color-social-felti"
+                       target="_blank"
+                       title="Linkedin" style="font-size: 25px;">
+                        <span class="fa fa-linkedin"/>
+                    </a>
+                </t>
+                <t t-if="obj_ex_par.partner_id.telegram_url">
+                    <a t-att-href="obj_ex_par.partner_id.telegram_url"
+                       class="participant-social-link color-social-felti"
+                       target="_blank"
+                       title="Telegram" style="font-size: 25px;">
+                        <span class="fa fa-telegram"/>
+                    </a>
+                </t>
+                <t t-if="obj_ex_par.partner_id.youtube_url">
+                    <a t-att-href="obj_ex_par.partner_id.youtube_url"
+                       class="participant-social-link color-social-felti"
+                       target="_blank"
+                       title="Youtube" style="font-size: 25px;">
+                        <span class="fa fa-youtube"/>
+                    </a>
+                </t>
+                <t t-if="obj_ex_par.partner_id.instagram_url">
+                    <a t-att-href="obj_ex_par.partner_id.instagram_url"
+                       class="participant-social-link color-social-felti"
+                       target="_blank"
+                       title="Instagram" style="font-size: 25px;">
+                        <span class="fa fa-instagram"/>
+                    </a>
+                </t>
+            </div>
+            <hr class="rule-results"/>
+        </template>
+
+    </data>
+</odoo>

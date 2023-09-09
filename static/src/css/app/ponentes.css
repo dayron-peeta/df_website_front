@@ -1,0 +1,418 @@
+
+.felti-logo-position {
+    position: absolute;
+    top: 5vw;
+    left: 5vw;
+    width: 35vw;
+}
+
+.jep-logo-position {
+    position: absolute;
+    top: 6vw;
+    left: 16vw;
+    width: 18vw;
+}
+
+.felti-titulo-banner {
+    position: absolute;
+    height: auto;
+    top: 18vw;
+    left: 6vw;
+    width: 70vw;
+}
+
+.jep-titulo-banner {
+    position: absolute;
+    height: auto;
+    top: 27vw;
+    left: 38vw;
+    width: 70vw;
+}
+
+.titulo-main-felti-top {
+    font-size: 4vw;
+    color: #66badf;
+}
+
+.titulo-main-felti-medium {
+    font-size: 4vw;
+    color: #66badf;
+}
+
+.titulo-main-felti-bottom {
+    font-size: 4vw;
+    color: #4aa52d;
+    margin: 0;
+    padding: 0;
+    font-family: "MyriadPro", Semibold Condensed;
+    /*padding-top: 1vw;*/
+}
+
+.titulo-main-jep-bottom {
+    font-size: 3vw;
+    color: #1c70b7;
+    margin: 0;
+    padding: 0;
+    font-family: "Bariol-Regular-Bold", Semibold Condensed;
+}
+
+.banner-top-title {
+    width: 350px;
+    position: absolute;
+    top: 15vw;
+    left: 52vw;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    font-size: 46px;
+    color: #1a71ba;
+}
+
+.titulo-debajo-felti {
+    padding-top: 2vw;
+    font-size: 2vw;
+    font-family: "MyriadPro", sans-serif;
+    color: #66badf;
+    font-stretch: ultra-condensed;
+}
+
+#nos_une {
+    color: #8CD360;
+}
+
+.titulo-debajo-felti-fecha {
+    #padding-top: 1.1vw;
+    font-size: 2.4vw;
+    font-family: "MyriadPro", Semibold Condensed;
+    color: #4aa52d;
+    font-stretch: ultra-condensed;
+    width: 56.78px
+}
+
+.titulo-debajo-jep-fecha {
+    #padding-top: 1.1vw;
+    font-size: 2.4vw;
+    font-family: "MyriadPro", Semibold Condensed;
+    color: #1c70b7;
+    font-stretch: ultra-condensed;
+    width: 56.78px
+}
+
+.buttons-banner {
+    position: absolute;
+    bottom: 8vw;
+    left: 6vw;
+    text-align: center;
+}
+
+.buttons-banner-jep {
+    bottom: 100px;
+    position: relative;
+    justify-content: center;
+    display: flex;
+}
+
+.solicitud-charla-felti {
+    /*background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    color: #0b5ec6;*/
+    color: #FFFFFF;
+    border-color: #FFFFFF;
+    background-color: transparent;
+    width: 17vw;
+    height: 3.5vw;
+    text-align: center;
+    /*padding-top: 0.7vw;*/
+    border-radius: 8rem;
+    font-size: 1.2vw;
+    margin-left: 10px;
+}
+
+.solicitud-charla-jep {
+    color: #0c3bee;
+    border-color: #114afc;
+    background-color: transparent;
+    width: 17vw;
+    height: 3.5vw;
+    text-align: center;
+    border-radius: 8rem;
+    font-size: 1.2vw;
+    margin-left: 10px;
+}
+
+.registrate-ahora-felti {
+    color: #0b5ec6;
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
+    width: 17vw;
+    height: 3.5vw;
+    text-align: center;
+    /*padding-top: 0.7vw;*/
+    border-radius: 8rem;
+    font-size: 1.2vw;
+    margin-right: 10px;
+}
+
+.registrate-ahora-jep {
+    display: table-cell;
+    color: #FFFFFF;
+    border-color: #0b5ec6;
+    background-color: #0b5ec6;
+    width: 190px;
+    text-align: center;
+    border-radius: 8rem;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+.registrate-ahora-felti:hover {
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    background-color: transparent;
+}
+
+.registrate-ahora-jep:hover {
+    color: #0b5ec6;
+    border: 1px solid #0b5ec6;
+    background-color: #FFFFFF;
+}
+
+.solicitud-charla-felti:hover {
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    color: #0b5ec6;
+}
+
+.solicitud-charla-jep:hover {
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    color: #0b5ec6;
+}
+
+.intro-grafica-position {
+    position: absolute;
+    left: 12vw;
+    float: left;
+    margin-top: -2vw;
+}
+
+<!--
+Contador Felti-- >
+.contador-felti {
+    position: relative;
+}
+
+.parallax-felti-contador {
+    background-image: url("/df_website_front/static/src/img/fondo-parallax.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.parallax-jep-contador {
+    background-image: url("/df_website_front/static/src/img/fondo_contador_jep.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.contador-top {
+    position: absolute;
+    width: 100% !important;
+    top: 7vw;
+}
+
+.text-contador-arriba {
+    font-size: 3vw;
+}
+
+.text-contador-abajo {
+    font-size: 2vw;
+}
+
+.contador-felti-imagen {
+    width: 100% !important;
+    position: relative;
+    display: block;
+}
+
+.relative {
+    position: relative;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.contador-numbers {
+    color: #FFFFFF;
+    position: absolute;
+    width: 100%;
+    top: 15vw;
+    height: 450px;
+}
+
+.counter-expo {
+    position: absolute;
+    left: 4vw;
+    top: 4vw;
+}
+
+.counter-conf {
+    position: absolute;
+    left: 26vw;
+    top: 11vw;
+}
+
+.counter-visit {
+    position: absolute;
+    left: 49vw;
+    top: 6vw;
+}
+
+.counter-pais {
+    position: absolute;
+    left: 71vw;
+    top: 6vw;
+}
+
+.contador-felti-cantidad {
+    font-size: 7vw;
+    height: 7vw;
+}
+
+.fs-small-felti {
+    font-size: 2.5vw;
+}
+
+.ponentes-container {
+    margin-top: 60px;
+}
+
+.noticias-felti {
+    position: relative;
+}
+
+.patrocinadores-felti {
+    text-align: center;
+    position: relative;
+    padding: 0;
+    height: 260px;
+}
+
+.ponentes-card {
+    height: 200px;
+    border: 1px solid black;
+    background-color: #B4B4B4;
+}
+
+#ponentes-all > div:nth-child(odd) {
+    height: 200px;
+    width: 48%;
+    font-size: 15px;
+    margin-bottom: 45px;
+    float: left;
+}
+
+#ponentes-all > div:nth-child(even) {
+    height: 200px;
+    width: 48%;
+    font-size: 15px;
+    margin-bottom: 45px;
+    float: right;
+}
+
+.ponente-img-left {
+    float: left;
+    height: -webkit-fill-available;
+    width: auto;
+}
+
+.img-height {
+    height: inherit;
+}
+
+.ponente-info {
+    height: inherit;
+
+}
+
+@media only screen and (max-width: 1200px) {
+    #ponentes-all > div {
+        /*width: 400px!important;*/
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .banner-top-title {
+        top: 15vw;
+        left: 54vw;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        font-size: 36px;
+        color: #1a71ba;
+    }
+}
+
+@media only screen and (max-width: 830px) {
+    .banner-top-title {
+        width: 160px;
+        top: 13vw;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        font-size: 26px;
+        color: #1a71ba;
+    }
+
+    .registrate-ahora-jep {
+        width: auto;
+        font-size: small;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .banner-top-title {
+        width: 160px;
+        top: 13vw;
+        left: 44vw;
+        font-size: 18px;
+    }
+
+    .titulo-main-jep-bottom {
+        font-size: 5vw;
+    }
+    .titulo-debajo-jep-fecha {
+        font-size: 2.8vw;
+    }
+
+    .registrate-ahora-jep {
+        width: auto;
+        font-size: 12px;
+    }
+
+    .jep-logo-position {
+        position: absolute;
+        top: 6vw;
+        left: 10vw;
+        width: 14vw;
+    }
+}
+
+.nosune_svg {
+    width: inherit;
+    margin: 0;
+    position: absolute;
+}

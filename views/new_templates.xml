@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+        <template id="event_news" name="News">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active myriadpro-regular d-flex" aria-current="page">
+                                <!--<span class="material-icons mr-2">chevron_right</span>--> News
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">
+                            NEWS
+                        </h1>
+                    </div>
+                    <div class="container">
+                        <div class="container mt-4 mb-2">
+                            <div class="row justify-content-between row-cols-3 seccion-noticias">
+                                <t t-foreach="news" t-as="new">
+                                    <div class="col-sm-4 mb-2">
+                                        <div class="card box-shadow-card border-secondary">
+                                            <a t-att-href="'/evento/%s/%s/new_detail' % (event.id,new.id)">
+                                                <div class="img-new-home">
+                                                    <t t-if="new.image">
+                                                        <img t-att-src="image_data_uri(new.image)"
+                                                             t-att-alt="new.name"
+                                                             class="noticias-img" alt="..."/>
+                                                    </t>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 t-esc="new.name"
+                                                        class="card-title myriadpro-semibold-condensed pl-0 mb-3"/>
+                                                    <p class="texto myriadpro-regular mb-0">
+                                                        <span style="color:#007b91">
+                                                            <t t-if="new.author_id and not new.taken_from">
+                                                                <t t-esc="new.author_id.name"/>
+                                                            </t>
+                                                            <t t-if="new.taken_from and not new.author_id">
+                                                                <t t-esc="new.taken_from"/>
+                                                            </t>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

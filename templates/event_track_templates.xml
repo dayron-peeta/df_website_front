@@ -1,0 +1,58 @@
+<odoo>
+    <template id="event_track_proposal_inherit" inherit_id="website_event_track.event_track_proposal">
+        <xpath expr="//div[hasclass('alert-info')]" position="replace">
+        </xpath>
+
+        <xpath expr="//label[@for='partner_name']" position="replace">
+            <label class="col-lg-3 col-md-4 col-form-label" for="partner_name">Name</label>
+        </xpath>
+
+        <xpath expr="//label[@for='email_from']" position="replace">
+            <label class="col-lg-3 col-md-4 col-form-label" for="email_from">Email</label>
+        </xpath>
+
+        <xpath expr="//label[.='Speaker(s) Phone']" position="replace">
+            <label class="col-lg-3 col-md-4 col-form-label" for="phone">Phone</label>
+        </xpath>
+
+        <xpath expr="//label[@for='biography']" position="replace">
+            <label class="col-lg-3 col-md-4 col-form-label" for="biography">Speaker Biography</label>
+        </xpath>
+
+        <xpath expr="//label[@for='image']" position="replace">
+            <label class="col-lg-3 col-md-4 col-form-label" for="image">Picture</label>
+        </xpath>
+
+        <xpath expr="//button[@type='submit']" position="replace">
+            <button type="submit" class="btn btn-primary">Save &amp; Exit</button>
+        </xpath>
+
+        <xpath expr="//button[@type='submit']" position="before">
+            <button id="event_save_track" class="btn btn-primary">Save &amp; New</button>
+        </xpath>
+
+        <xpath expr="//div[hasclass('o_form_buttons')]" position="attributes">
+            <attribute name="class">form-group row o_form_buttons text-right</attribute>
+        </xpath>
+
+        <xpath expr="//form[hasclass('js_website_submit_form')]" position="attributes">
+            <attribute name="id">track_form_id</attribute>
+        </xpath>
+
+        <xpath expr="//textarea[@name='description']" position="attributes">
+            <attribute name="required">True</attribute>
+        </xpath>
+
+        <xpath expr="//input[@name='phone']" position="attributes">
+            <attribute name="required">False</attribute>
+        </xpath>
+
+        <xpath expr="//textarea[@name='biography']" position="attributes">
+            <attribute name="required">True</attribute>
+        </xpath>
+
+        <xpath expr="//input[@name='image']" position="attributes">
+            <attribute name="required">True</attribute>
+        </xpath>
+    </template>
+</odoo>

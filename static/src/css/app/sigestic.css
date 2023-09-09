@@ -1,0 +1,392 @@
+@font-face {
+    font-family: 'Exo2-Bold';
+    src: url('/df_website_front/static/src/font/Exo2-Bold.otf');
+}
+
+@font-face {
+    font-family: 'Exo2-Regular';
+    src: url('/df_website_front/static/src/font/Exo2-Regular.otf');
+}
+
+@font-face {
+    font-family: 'Exo2-Light';
+    src: url('/df_website_front/static/src/font/Exo2-Light.otf');
+}
+
+@font-face {
+    font-family: 'Exo2-Black';
+    src: url('/df_website_front/static/src/font/Exo2-Black.otf');
+}
+
+.exo2-bold {
+    font-family: 'Exo2-Bold' !important;
+}
+
+.exo2-regular {
+    font-family: 'Exo2-Regular' !important;
+}
+
+.exo2-light {
+    font-family: 'Exo2-Light' !important;
+}
+
+.exo2-black {
+    font-family: 'Exo2-Black' !important;
+}
+
+.sigestic-darkblue{
+    color: #003b7a !important;
+}
+
+.sigestic-blue{
+    color: #008cd8 !important;
+}
+
+.sigestic-lightblue{
+    color: #c9efff !important;
+}
+
+#sigestic-nav{
+    transition: all .5s;
+}
+
+.sigestic-see-all {
+    border-width: 2px;
+    border-color: #003b7a;
+    border-style: solid;
+    background-color: white;
+    color: #003b7a!important;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.sigestic-see-all:hover {
+    background-color: #003b7a!important;
+    color: #ffffff!important;
+    animation: pulse;
+    animation-duration: 1s;
+}
+
+.sigestic-2-see-all {
+    border-width: 2px;
+    border-color: #008cd8;
+    border-style: solid;
+    background-color: transparent;
+    color: #008cd8!important;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.sigestic-2-see-all:hover {
+    background-color: #008cd8!important;
+    color: #ffffff!important;
+    animation: pulse;
+    animation-duration: 1s;
+}
+
+.sigestic-subscriber{
+    border-width: 2px;
+    border-color: #008cd8;
+    border-style: solid;
+    background-color: #008cd8!important;
+    color: #ffffff!important;
+    font-weight: bold;
+}
+
+.sigestic-subscriber:hover {
+    animation: pulse;
+    animation-duration: 1s;
+}
+
+.sigestic-register-button{
+    border-width: 2px;
+    border-color: #c9efff;
+    border-style: solid;
+    background-color: #c9efff!important;
+    color: #003b7a!important;
+    font-weight: bold;
+}
+
+.sigestic-absolute-register-button{
+    position: absolute;
+    top: 75%;
+    left: 15%;
+}
+
+.sigestic-register-button:hover {
+    animation: pulse;
+    animation-duration: 1s;
+}
+
+.encabezado-interno{
+    color: white;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+}
+
+.cintillo-about-us{
+    max-height: 120px;
+}
+
+.sigestic-responsive-banner{
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.sigestic-logo-banner{
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    width: 10%;
+}
+
+.sigestic-image-name-banner{
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    width: 45%;
+}
+
+.sigestic-logo-nav{
+    opacity: 0;
+    cursor: unset;
+}
+
+.sigestic-convo{
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.sigestic-convo-izq{
+    background-color: white;
+    position: relative;
+    z-index: 10;
+    border-radius: 2rem;
+}
+
+.slogan-section{
+    padding-left: 6rem;
+}
+
+.sigestic-cat-part{
+    background: -webkit-repeating-linear-gradient(rgb(0, 150, 216), rgb(0, 150, 216) 49.9%, #FFFFFF 50.1%, #FFFFFF 100%);
+    background: -o-repeating-linear-gradient(rgb(0, 150, 216), rgb(0, 150, 216) 49.9%, #FFFFFF 50.1%, #FFFFFF 100%);
+    background: -moz-repeating-linear-gradient(rgb(0, 150, 216), rgb(0, 150, 216) 49.9%, #FFFFFF 50.1%, #FFFFFF 100%);
+    background: repeating-linear-gradient(rgb(0, 150, 216), rgb(0, 150, 216) 49.9%, #FFFFFF 50.1%, #FFFFFF 100%);
+}
+
+.sigestic-timer{
+    background-image: url("/df_website_front/static/src/img/Contador fondo.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.sigestic-timer-item{
+    position: relative;
+    height: 8px;
+    width: 4rem;
+    background-color: #00e700;
+}
+
+.sigestic-timer-progress{
+    position: absolute;
+    height: 8px;
+    background-color: #008cd8;
+    top: 0;
+    right: 0;
+}
+
+.sigestic-count-title p span{
+    font-size: calc(1.375rem + 1.5vw)!important;
+    line-height: 1.2!important;
+    font-family: 'Exo2-Regular' !important;
+}
+
+.sigestic-count-subtitle p span{
+    font-size: calc(1.3rem + 0.6vw)!important;
+    line-height: 1.2!important;
+    font-family: 'Exo2-Regular' !important;
+}
+
+.sigestic-newsletter{
+    background-image: url("/df_website_front/static/src/img/Fondo actualizaate.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+.sigestic-new-headline{
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+}
+
+.sigestic-new-headline-title{
+    border-left: 2px solid #ffffff;
+}
+
+.sigestic-hr{
+    border-top: 1px solid rgb(0, 59, 122);
+}
+
+.sigestic-iframe{
+    border: 1px solid rgb(0, 231, 0);
+}
+
+.sigestic_footer_img {
+    background-image: url("/df_website_front/static/src/img/Fondo sigestic footer.png");
+    background-size: cover;
+}
+
+.sigestic-footer-separator {
+    border-right: 1px solid;
+    height: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+    .sigestic-footer-separator {
+        min-height: auto;
+    }
+
+    .sigestic-contact-us-footer {
+        width: 25vw;
+        height: 46px;
+        padding: 0.5rem;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .sigestic-footer-separator {
+        border-right: none;
+    }
+
+    .sigestic-contact-us-footer {
+        width: 150px;
+    }
+
+    .sigestic-convo{
+        background-image: none !important;
+        background-color: rgba(243, 241, 239, 1);
+    }
+
+    .slogan-section{
+        padding-left: 3rem;
+    }
+
+    .encabezado-interno{
+        left: 0;
+        right: 0;
+        transform: none;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .sigestic-contact-us-footer {
+        width: 240px;
+        height: 46px;
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+.sigestic-icons-footer {
+    font-size: 35px;
+    padding: 10px 10px;
+}
+
+.sigestic-icons-footer:hover {
+    color: #003b7a !important;
+}
+
+.sigestic-contact-us-footer {
+    background-color: transparent;
+    color: white !important;
+    border-radius: 50rem !important;
+    display: block;
+    height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem;
+    font-weight: 400;
+    border: 2px solid #FFFFFF;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.sigestic-contact-us-footer:hover {
+    background-color: #ffffff !important;
+    color: #003b7a !important;
+    text-decoration: none !important;
+}
+
+.sigestic-footer-tittle {
+    font-size: 2em !important;
+    font-family: 'Exo2-Bold';
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.my-sigestic-form-control {
+    min-height: auto;
+    padding: .33em .75em;
+    background: transparent;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+    border: 0!important;
+    margin-top: -0.2rem;
+}
+
+.my-sigestic-form-control:focus {
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    background: transparent;
+}
+
+.sigestic-speaker-img{
+    width: 159px;
+    height: 159px;
+    object-fit: cover;
+    margin-bottom: 4rem;
+}
+
+.sigestic-speaker-name{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.event-conference-chat-content{
+    background-color: #005990!important;
+}
+
+.notification-icon-button{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-icon-button__badge {
+  position: absolute;
+  font-size: 14px;
+  top: -5px;
+  right: -8px;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sigestic-sponsor-img{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: 1rem;
+}

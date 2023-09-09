@@ -1,0 +1,85 @@
+<odoo>
+    <data>
+        <template id="event_new_detail" name="News detail">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us d-flex"><span class="material-icons mr-2">chevron_right</span>
+                                <a t-att-href="'/evento/%s/news' % (event.id)" class="text-white myriadpro-regular">
+                                    News
+                                </a>
+                            </li>
+                        </ol>
+                    </nav>
+                    <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                    <div class="container">
+                        <div class="row">
+                            <t t-if="new.image">
+                                <div class="col-sm-4">
+                                    <img t-att-src="image_data_uri(new.image)"
+                                         class="img-fluid w-100 rounded" alt="..."/>
+                                </div>
+                            </t>
+                            <div class="col-sm-8 align-self-end mt-3 mt-sm-0">
+                                <t t-if="new.name">
+                                    <h1 class="myriadpro-regular">
+                                        <t t-esc="new.name"/>
+                                    </h1>
+                                </t>
+                                <t t-if="new.subtitle">
+                                    <h4 class="myriadpro-regular">
+                                        <t t-esc="new.subtitle"/>
+                                    </h4>
+                                </t>
+
+                                <t t-if="new.taken_from">
+                                    <p class="texto myriadpro-regular mb-0">
+                                        <t t-esc="new.taken_from"/>
+                                    </p>
+                                </t>
+                                <t t-else="">
+                                    <t t-if="new.author_id">
+                                        <p class="texto myriadpro-regular mb-0">
+                                            <t t-esc="new.author_id.name"/>
+                                        </p>
+                                    </t>
+                                </t>
+                                <t t-if="new.name">
+                                    <p class="texto myriadpro-regular mb-0">
+                                        <t t-esc="new.post_date.strftime('%d - %m - %Y')"/>
+                                    </p>
+                                </t>
+                                <t t-if="new.tag_ids">
+                                    <div class="mt-4">
+                                        <t t-foreach="new.tag_ids" t-as="tag">
+                                            <span class="badge my-badge-pill badge-pill">
+                                                <t t-esc="tag.name"/>
+                                            </span>
+                                        </t>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center mt-2">
+                            <p t-raw="new.news"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

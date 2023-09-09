@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Algerian Regular';
+    src: url('/df_website_front/static/src/css/presentation_certificate/Algerian Regular.ttf') format('truetype');
+}
+
+.algerian-regular {
+    font-family: 'Algerian Regular' !important;
+}
+
+.sponsor-list-certificate{
+    height: 50px;
+}

@@ -1,0 +1,880 @@
+<odoo>
+    <data>
+
+        <template id="carousel_catalog_item_active">
+            <div t-attf-class="#{'active' if catalog_index == 0 else ''} carousel-item">
+                <div class="row">
+                    <div class="col-3">
+                        <a t-attf-href="data:image/*; base64,{{catalog['area_prod1']['image']}}"
+                           data-lightbox="prod-carousel">
+                            <img t-attf-src="data:image/*; base64,{{catalog['area_prod1']['image']}}"
+                                 class="stand-prod-image-event"/>
+                        </a>
+                    </div>
+                    <div class="col-9">
+                        <h5 class="myriadpro-regular">
+                            <t t-esc="catalog['area_prod1']['name']"/>
+                        </h5>
+                        <!--                        <p class="myriadpro-regular mb-0" style="font-size: 16px;">-->
+                        <!--                            <t t-esc="catalog['area_prod1']['reference']"/>-->
+                        <!--                        </p>-->
+                        <!--                        <p class="myriadpro-regular mb-2" style="font-size: 16px;">-->
+                        <!--                            <t t-esc="catalog['area_prod1']['price']"/>-->
+                        <!--                        </p>-->
+                        <p class="myriadpro-regular" style="font-size: 16px;">
+                            <t t-esc="catalog['area_prod1']['description']"/>
+                        </p>
+                    </div>
+                </div>
+                <t t-if="catalog['area_prod2'] != false">
+                    <div class="row mt-3">
+                        <div class="col-3">
+                            <a t-attf-href="data:image/*; base64,{{catalog['area_prod2']['image']}}"
+                               data-lightbox="prod-carousel">
+                                <img t-attf-src="data:image/*; base64,{{catalog['area_prod2']['image']}}"
+                                     class="stand-prod-image-event"/>
+                            </a>
+                        </div>
+                        <div class="col-9">
+                            <h5 class="myriadpro-regular">
+                                <t t-esc="catalog['area_prod2']['name']"/>
+                            </h5>
+                            <!--                            <p class="myriadpro-regular mb-0" style="font-size: 16px;">-->
+                            <!--                                <t t-esc="catalog['area_prod2']['reference']"/>-->
+                            <!--                            </p>-->
+                            <!--                            <p class="myriadpro-regular mb-2" style="font-size: 16px;">-->
+                            <!--                                <t t-esc="catalog['area_prod2']['price']"/>-->
+                            <!--                            </p>-->
+                            <p class="myriadpro-regular" style="font-size: 16px;">
+                                <t t-esc="catalog['area_prod2']['description']"/>
+                            </p>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </template>
+
+        <template id="carousel_images_conference_item_active">
+            <div t-attf-class="#{'active' if image_index == 0 else ''} carousel-item new-conference-carousel-item h-100">
+                <div class="anteroom-carousel-sponsor-item">
+                    <t t-if="image['img1'] != false">
+                        <img t-attf-src="data:image/*; base64,{{image['img1']['image']}}"
+                             class="w-25 img-fluid"/>
+                    </t>
+                    <t t-if="image['img2'] != false">
+                        <img t-attf-src="data:image/*; base64,{{image['img2']['image']}}"
+                             class="w-25 img-fluid"/>
+                    </t>
+                    <t t-if="image['img3'] != false">
+                        <img t-attf-src="data:image/*; base64,{{image['img3']['image']}}"
+                             class="w-25 img-fluid"/>
+                    </t>
+                    <t t-if="image['img4'] != false">
+                        <img t-attf-src="data:image/*; base64,{{image['img4']['image']}}"
+                             class="w-25 img-fluid"/>
+                    </t>
+                </div>
+            </div>
+        </template>
+
+        <template id="carousel_images_item_active">
+            <div t-attf-class="#{'active' if image_index == 0 else ''} carousel-item">
+                <div class="row justify-content-center">
+                    <t t-if="image['img1'] != false">
+                        <div class="col-6">
+                            <a t-attf-href="data:image/*; base64,{{image['img1']['image']}}"
+                               data-lightbox="image-carousel">
+                                <img t-attf-src="data:image/*; base64,{{image['img1']['image']}}"
+                                     class="stand-image-event"/>
+                            </a>
+                        </div>
+                    </t>
+                    <t t-if="image['img2'] != false">
+                        <div class="col-6">
+                            <a t-attf-href="data:image/*; base64,{{image['img2']['image']}}"
+                               data-lightbox="image-carousel">
+                                <img t-attf-src="data:image/*; base64,{{image['img2']['image']}}"
+                                     class="stand-image-event"/>
+                            </a>
+                        </div>
+                    </t>
+                </div>
+                <div class="row justify-content-center mt-3">
+                    <t t-if="image['img3'] != false">
+                        <div class="col-6">
+                            <a t-attf-href="data:image/*; base64,{{image['img3']['image']}}"
+                               data-lightbox="image-carousel">
+                                <img t-attf-src="data:image/*; base64,{{image['img3']['image']}}"
+                                     class="stand-image-event"/>
+                            </a>
+                        </div>
+                    </t>
+                    <t t-if="image['img4'] != false">
+                        <div class="col-6">
+                            <a t-attf-href="data:image/*; base64,{{image['img4']['image']}}"
+                               data-lightbox="image-carousel">
+                                <img t-attf-src="data:image/*; base64,{{image['img4']['image']}}"
+                                     class="stand-image-event"/>
+                            </a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </template>
+
+        <template id="carousel_video_item_active">
+            <div class="col-6">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                            t-attf-src="https://www.youtube.com/embed/#{video_o['url']}?rel=0"
+                            allowfullscreen="True"/>
+                </div>
+            </div>
+        </template>
+
+        <template id="carousel_videos_item_active">
+
+            <div t-attf-class="#{'active' if video == 0 else ''} carousel-item">
+
+                <div class="row justify-content-center">
+                    <t t-if="check_key_in_list(videos,video)">
+                        <t t-set="video_o" t-value="check_key_in_list(videos,video)"/>
+                        <t t-call="df_website_front.carousel_video_item_active"/>
+                    </t>
+                    <t t-if="check_key_in_list(videos,video+1)">
+                        <t t-set="video_o" t-value="check_key_in_list(videos,video+1)"/>
+                        <t t-call="df_website_front.carousel_video_item_active"/>
+                    </t>
+                </div>
+
+                <div class="row justify-content-center mt-3">
+                    <t t-if="check_key_in_list(videos,video+2)">
+                        <t t-set="video_o" t-value="check_key_in_list(videos,video+2)"/>
+                        <t t-call="df_website_front.carousel_video_item_active"/>
+                    </t>
+                    <t t-if="check_key_in_list(videos,video+3)">
+                        <t t-set="video_o" t-value="check_key_in_list(videos,video+3)"/>
+                        <t t-call="df_website_front.carousel_video_item_active"/>
+                    </t>
+                </div>
+
+            </div>
+
+        </template>
+
+        <template id="carousel_pavilions_items">
+            <t t-if="check_key_in_list(pavilion_ids,pavilion)">
+                <div class="col-6">
+                    <ul class="list-group">
+                        <t t-if="check_key_in_list(pavilion_ids,pavilion)">
+                            <t t-set="item_elem" t-value="check_key_in_list(pavilion_ids,pavilion)"/>
+                            <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                                <a t-att-href="'/evento/%s/%s/pavilion_event' % (item_elem.event_id.id,item_elem.id)">
+                                    <div class="d-flex">
+                                        <div class="navigation-list-item-icon">
+                                            <img class="width-img-icon"
+                                                 src="/df_website_front/static/src/img/Pabellon.png"/>
+                                        </div>
+                                        <div class="navigation-list-item-text">
+                                            <t t-esc="item_elem.name"/>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </t>
+                    </ul>
+                </div>
+            </t>
+            <t t-if="check_key_in_list(pavilion_ids,pavilion+1)">
+                <t t-set="item_elem" t-value="check_key_in_list(pavilion_ids,pavilion+1)"/>
+                <div class="col-6">
+                    <ul class="list-group">
+
+                        <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                            <a t-att-href="'/evento/%s/%s/pavilion_event' % (event.id,item_elem.id)">
+                                <div class="d-flex">
+                                    <div class="navigation-list-item-icon">
+                                        <img class="width-img-icon"
+                                             src="/df_website_front/static/src/img/Pabellon.png"/>
+                                    </div>
+                                    <div class="navigation-list-item-text">
+                                        <t t-esc="check_key_in_list(pavilion_ids,pavilion+1).name"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </t>
+
+        </template>
+
+        <template id="lateral_menu_id" name="Lateral menu">
+            <aside class="sidebar d-sm-block">
+                <t t-if="area_id">
+                    <!-- TODO: Area actual -->
+                    <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                </t>
+                <div class="toggle">
+                    <t t-if="not conference and not press or information">
+                        <a href="#" id="forum-products"
+                           class="js-menu-toggle js-menu-toggle-first menu-toggle pl-lateral d-block text-right">
+                            <div class="forum-menu-text d-inline-block myriadpro-regular">Catalogue</div>
+                            <div class="d-inline-block padding-lateral forum-menu-icon forum-menu-icon-first">
+                                <img src="/df_website_front/static/src/img/reading.svg" class="width-img-icon"/>
+                            </div>
+                        </a>
+                    </t>
+                    <a href="#" id="forum-documents"
+                       t-attf-class="js-menu-toggle menu-toggle pl-lateral d-block text-right #{'js-menu-toggle-first' if conference or press else ''}">
+                        <div class="forum-menu-text d-inline-block myriadpro-regular">Documents</div>
+                        <div t-attf-class="d-inline-block padding-lateral forum-menu-icon #{'forum-menu-icon-first' if conference or press else ''}">
+                            <img src="/df_website_front/static/src/img/file.svg" class="width-img-icon"/>
+                        </div>
+                    </a>
+                    <t t-if="not conference and not press or information">
+                        <a href="#" id="forum-images" class="js-menu-toggle menu-toggle pl-lateral d-block text-right">
+                            <div class="forum-menu-text d-inline-block myriadpro-regular">Images</div>
+                            <div class="d-inline-block padding-lateral forum-menu-icon">
+                                <img src="/df_website_front/static/src/img/picture.svg" class="width-img-icon"/>
+                            </div>
+                        </a>
+                    </t>
+                    <t t-if="not conference and not press">
+                        <a href="#" id="forum-chat" class="js-menu-toggle menu-toggle pl-lateral d-block text-right">
+                            <div class="forum-menu-text d-inline-block myriadpro-regular">Chat</div>
+                            <div class="d-inline-block padding-lateral forum-menu-icon">
+                                <img src="/df_website_front/static/src/img/chat.svg" class="width-img-icon"/>
+                            </div>
+                        </a>
+                    </t>
+                    <!--                    <t t-if="not conference and not press">-->
+                    <a href="#" id="forum-videos"
+                       t-attf-class="js-menu-toggle menu-toggle pl-lateral d-block text-right #{'js-menu-toggle-last' if conference or press else ''}">
+                        <div class="forum-menu-text d-inline-block myriadpro-regular">Videos</div>
+                        <div t-attf-class="d-inline-block padding-lateral forum-menu-icon #{'forum-menu-icon-last' if conference or press else ''}">
+                            <img src="/df_website_front/static/src/img/video-player.svg" class="width-img-icon"/>
+                        </div>
+                    </a>
+                    <!--                    </t>-->
+                    <t t-if="not conference and not press">
+                        <a href="#" id="forum-calendar"
+                           class="js-menu-toggle js-menu-toggle-last menu-toggle pl-lateral d-block text-right">
+                            <div class="forum-menu-text d-inline-block myriadpro-regular">Calendar</div>
+                            <div class="d-inline-block padding-lateral forum-menu-icon forum-menu-icon-last">
+                                <img src="/df_website_front/static/src/img/calendar-5.svg" class="width-img-icon"/>
+                            </div>
+                        </a>
+                    </t>
+                </div>
+                <div class="side-inner p-4">
+                    <t t-if="not conference and not press or information">
+                        <div class="forum-products forum-aside-menu">
+                            <div id="forum-products-carousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <t t-if="catalogue and len(catalogue) > 0">
+                                        <t t-foreach="catalogue" t-as="catalog">
+                                            <t t-call="df_website_front.carousel_catalog_item_active"/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <h4>There are no products to show</h4>
+                                    </t>
+                                </div>
+                                <ol class="carousel-indicators my-carousel-indicators mb-0">
+                                    <t t-foreach="catalogue" t-as="catal">
+                                        <li data-target="#forum-products-carousel" t-attf-data-slide-to="#{catal_index}"
+                                            t-attf-class="#{'active' if catal_index == 0 else ''}"/>
+                                    </t>
+                                </ol>
+                            </div>
+                        </div>
+                    </t>
+
+                    <div class="forum-documents forum-aside-menu myriadpro-regular">
+                        <t t-if="documents and len(documents) > 0">
+                            <ul class="list-group">
+                                <t t-if="not conference">
+                                    <t t-foreach="documents" t-as="doc">
+                                        <li class="list-group-item my-list-group-item">
+                                            <a t-att-href="'/evento/my/download?attachment_id=%s' % (doc.id)"
+                                               target="_blank">
+                                                <span class="fa fa-file-pdf-o mr-2"/>
+                                                <t t-esc="doc.name"/>
+                                            </a>
+                                        </li>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <t t-foreach="documents" t-as="doc">
+                                        <li class="list-group-item my-list-group-item">
+                                            <a t-att-href="'/evento/my/download?attachment_id=%s' % (doc['id'])"
+                                               target="_blank">
+                                                <span class="fa fa-file-pdf-o mr-2"/>
+                                                <t t-esc="doc['name']"/>
+                                            </a>
+                                        </li>
+                                    </t>
+                                </t>
+                            </ul>
+                        </t>
+                        <t t-else="">
+                            <h4 class="no-documents">There are no documents to show</h4>
+                            <ul class="list-group list-documents-conference"/>
+                        </t>
+                    </div>
+
+                    <div class="forum-images forum-aside-menu">
+                        <div id="forum-images-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner mb-3">
+                                <t t-if="images and len(images) > 0">
+                                    <t t-foreach="images" t-as="image">
+                                        <t t-call="df_website_front.carousel_images_item_active"/>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <h4>There are no images to show</h4>
+                                </t>
+                            </div>
+                            <ol class="carousel-indicators my-carousel-indicators mb-0">
+                                <t t-foreach="images" t-as="imag">
+                                    <li data-target="#forum-images-carousel" t-attf-data-slide-to="#{imag_index}"
+                                        t-attf-class="#{'active' if imag_index == 0 else ''}"/>
+                                </t>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="forum-chat forum-aside-menu">
+                        <t t-call="df_website_front.chat_stand_event"/>
+                    </div>
+                    <div class="forum-videos forum-aside-menu">
+                        <div id="forum-videos-carousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner mb-3">
+                                <t t-if="videos and len(videos) > 0">
+                                    <t t-if="not list_video">
+                                        <t t-foreach="range(0,len(videos),4)" t-as="video">
+                                            <t t-call="df_website_front.carousel_videos_item_active"/>
+                                        </t>
+                                    </t>
+                                    <t t-else="">
+                                        <div class="videos-list-lateral-menu">
+                                            <ul class="list-group">
+                                                <t t-foreach="videos" t-as="video">
+                                                    <li class="list-group-item my-list-group-item">
+                                                        <a href="#"
+                                                           t-att-onclick="'window.location=\'/evento/%s/track_conference/%s\'' % (event.id, video['id'])">
+                                                            <span class="fa fa-video-camera mr-2"/>
+                                                            <t t-esc="video['name']"/>
+                                                        </a>
+                                                    </li>
+                                                </t>
+                                            </ul>
+                                        </div>
+                                    </t>
+
+                                </t>
+                            </div>
+                            <t t-if="not list_video">
+                                <ol class="carousel-indicators my-carousel-indicators mb-0">
+                                    <t t-foreach="range(0,len(videos),4)" t-as="vid">
+                                        <li data-target="#forum-videos-carousel" t-attf-data-slide-to="#{vid_index}"
+                                            t-attf-class="#{'active' if vid_index == 0 else ''}"/>
+                                    </t>
+                                </ol>
+                            </t>
+                        </div>
+                    </div>
+                    <t t-if="not conference and not press">
+                        <div class="forum-calendar forum-aside-menu">
+                            <form id="formDateEvent">
+                                <input type="hidden" id="date-selected-input" name="date_event_date"/>
+                                <t t-if="area_id">
+                                    <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                                </t>
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="mb-4">
+                                    <div class="my-form-outline">
+                                        <input type="datetime-local" name="datetime_date_event" id="datetimepicker"
+                                               class="form-control my-form-control my-date-form-control"
+                                               is-required="true"/>
+                                        <label class="my-form-label myriadpro-regular my-date-form-label label-select-automatic-top">
+                                            <span class="text-danger">*</span>
+                                            Date/Time
+                                        </label>
+                                    </div>
+                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                        The field is required
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="my-form-outline">
+                                        <input type="text" name="subject_date_event"
+                                               class="form-control my-form-control my-date-form-control"
+                                               is-required="true"/>
+                                        <label class="my-form-label myriadpro-regular my-date-form-label">
+                                            <span class="text-danger">*</span>
+                                            Subject
+                                        </label>
+                                    </div>
+                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                        The field is required
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="my-form-outline">
+                                        <input type="number" name="duration_date_event"
+                                               class="form-control my-form-control my-date-form-control"
+                                               is-required="true"/>
+                                        <label class="my-form-label myriadpro-regular my-date-form-label">
+                                            <span class="text-danger">*</span>
+                                            Duration (minutes)
+                                        </label>
+                                    </div>
+                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                        The field is required
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="my-form-outline">
+
+                                        <select id="location_date_id"
+                                                name="location_date"
+                                                class="form-control my-form-control my-select selectpicker"
+                                                title="">
+                                            <option value="chat_room">Chat room</option>
+                                            <option value="whatsapp">WhatsApp</option>
+                                            <option value="messenger">Messenger</option>
+                                            <option value="telegram">Telegram</option>
+                                            <option value="linkedin">Linkedin</option>
+                                            <option value="other">Other (Specify in the description)</option>
+                                        </select>
+
+                                        <label class="my-form-label myriadpro-regular my-date-form-label">
+                                            Location
+                                        </label>
+                                    </div>
+                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                        The field is required
+                                    </div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="my-form-outline">
+                                        <textarea class="form-control my-form-control my-date-form-control"
+                                                  name="comment_date_event" rows="6"/>
+                                        <label class="my-form-label myriadpro-regular my-date-form-label">
+                                            Description
+                                        </label>
+                                    </div>
+                                </div>
+                                <button id="register_date_event"
+                                        class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 date-submit-button">
+                                    Send
+                                </button>
+                            </form>
+                        </div>
+                    </t>
+                </div>
+
+            </aside>
+        </template>
+
+        <template id="menu_bottom_redes" name="Menu botttom">
+            <t t-if="area_id and event">
+                <input id="EVENT_ID" t-att-value="event.id" type="hidden"/>
+                <input id="AREA_ID" t-att-value="area_id.id" type="hidden"/>
+            </t>
+
+            <t t-if="area_id.partner_id and area_id.partner_id.parent_id">
+                <t t-set="partner_id" t-value="area_id.partner_id.parent_id"/>
+            </t>
+            <t t-else="">
+                <t t-set="partner_id" t-value="area_id.partner_id"/>
+            </t>
+
+            <div class="social-links d-flex ">
+                <t t-if="area_id and partner_id.website">
+                    <a t-att-href="partner_id.website" class="social-menu-link social-menu-link-first"
+                       target="_blank">
+                        <div class="padding-buttons-bar forum-social-icon forum-social-link-first">
+                            <img src="/df_website_front/static/src/img/worldwide.svg" class="width-img-icon"/>
+                        </div>
+                    </a>
+                </t>
+                <t t-if="area_id and partner_id.email">
+                    <a t-attf-href="mailto:#{partner_id.email}" class="social-menu-link" target="_blank">
+                        <div class="padding-buttons-bar forum-social-icon">
+                            <img src="/df_website_front/static/src/img/envelope-8.svg" class="width-img-icon"/>
+                        </div>
+                    </a>
+                </t>
+                <t t-if="area_id and partner_id.facebook_url">
+                    <a t-att-href="partner_id.facebook_url" class="social-menu-link" target="_blank">
+                        <div class="padding-buttons-bar forum-social-icon">
+                            <img src="/df_website_front/static/src/img/facebook.svg" class="width-img-icon"/>
+                        </div>
+                    </a>
+                </t>
+                <t t-if="area_id and partner_id.twitter_url">
+                    <a t-att-href="partner_id.twitter_url" class="social-menu-link" target="_blank">
+                        <div class="padding-buttons-bar forum-social-icon">
+                            <img src="/df_website_front/static/src/img/twitter.svg" class="width-img-icon"/>
+                        </div>
+                    </a>
+                </t>
+                <t t-if="area_id and partner_id.linkedin_url">
+                    <a t-att-href="partner_id.linkedin_url" class="social-menu-link" target="_blank">
+                        <div class="padding-buttons-bar forum-social-icon">
+                            <img src="/df_website_front/static/src/img/linkedin.svg" class="width-img-icon"/>
+                        </div>
+                    </a>
+                </t>
+                <t t-if="area_id and partner_id.instagram_url">
+                    <a t-att-href="partner_id.instagram_url" class="social-menu-link" target="_blank">
+                        <div class="padding-buttons-bar forum-social-icon">
+                            <img src="/df_website_front/static/src/img/instagram.svg" class="width-img-icon"/>
+                        </div>
+                    </a>
+                </t>
+                <t t-if="area_id and partner_id.telegram_url">
+                    <a t-att-href="partner_id.telegram_url" class="social-menu-link" target="_blank">
+                        <div class="padding-buttons-bar forum-social-icon">
+                            <img src="/df_website_front/static/src/img/paper-plane-1.svg" class="width-img-icon"/>
+                        </div>
+                    </a>
+                </t>
+                <a href="#" class="social-menu-link" id="information_stand_id">
+                    <div class="padding-buttons-bar forum-social-icon">
+                        <img src="/df_website_front/static/src/img/warning.svg" class="width-img-icon"/>
+                    </div>
+                </a>
+                <a href="#" class="social-menu-link social-menu-link-last favorite-icon-stand"
+                   t-att-data-area="area_id.id">
+                    <div class="padding-buttons-bar forum-social-icon forum-social-link-last">
+                        <img t-attf-src="#{'/df_website_front/static/src/img/like-1-full.svg' if favorite_user else '/df_website_front/static/src/img/like-1.svg'}"
+                             class="width-img-icon"/>
+                    </div>
+                </a>
+            </div>
+            <t t-call="df_website_front.modal_stand_info"/>
+        </template>
+
+        <template id="navigation_map" name="Navigation map">
+
+            <t t-set="pavilion_ids" t-value="data_count_nav.get('pavilion_ids',False)"/>
+            <t t-set="thematic_rooms" t-value="data_count_nav.get('thematic_rooms',False)"/>
+
+            <div t-if="len(pavilion_ids) > 0 or len(thematic_rooms) > 0" id="navigation-map">
+
+                <div id="navigation-content" class="px-2">
+                    <ul class="nav nav-tabs my-nav-tabs" role="tablist">
+
+                        <t t-if="len(thematic_rooms) > 0">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active navigation-nav-link mb-0 myriadpro-regular enable-tab"
+                                   id="navigation_map_room" data-toggle="tab"
+                                   href="#navigation_map_room_form" role="tab"
+                                   aria-controls="navigation_map_room_form" aria-selected="true">
+                                    Theme Rooms
+                                </a>
+                            </li>
+                        </t>
+
+                        <t t-if="len(pavilion_ids) > 0">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link navigation-nav-link mb-0 myriadpro-regular enable-tab"
+                                   id="navigation_map_pav"
+                                   data-toggle="tab" href="#navigation_map_pav_form" role="tab"
+                                   aria-controls="navigation_map_pav_form" aria-selected="false">
+                                    Pavilions
+                                </a>
+                            </li>
+                        </t>
+                    </ul>
+                    <div class="tab-content navigation-tab-content">
+                        <t t-if="data_count_nav">
+
+                            <t t-if="data_count_nav.get('thematic_rooms',False)">
+                                <div class="tab-pane fade show active" id="navigation_map_room_form"
+                                     role="tabpanel" aria-labelledby="navigation_map_room_form_tab">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col">
+                                                <ul class="list-group">
+
+                                                    <t t-set="area_lobby_id"
+                                                       t-value="data_count_nav['thematic_rooms']['lobby']"/>
+
+                                                    <t t-set="area_information_id"
+                                                       t-value="data_count_nav['thematic_rooms']['information']"/>
+
+                                                    <t t-set="area_forum_id"
+                                                       t-value="data_count_nav['thematic_rooms']['forum']"/>
+
+                                                    <t t-set="area_networking_id"
+                                                       t-value="data_count_nav['thematic_rooms']['networking']"/>
+
+                                                    <t t-set="area_conference_id"
+                                                       t-value="data_count_nav['thematic_rooms']['pre_conference']"/>
+
+                                                    <t t-set="area_press_id"
+                                                       t-value="data_count_nav['thematic_rooms']['press_room']"/>
+
+                                                    <t t-set="area_poster_id"
+                                                       t-value="data_count_nav['thematic_rooms']['poster_gallery']"/>
+
+                                                    <t t-set="area_poster_gallery_id"
+                                                       t-value="data_count_nav['thematic_rooms']['poster_gallery_track']"/>
+
+                                                    <!-- LOBBY -->
+                                                    <t t-if="area_lobby_id">
+                                                        <t t-foreach="area_lobby_id" t-as="area_lobby">
+                                                            <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                                                                <a t-att-href="'/evento/%s/%s/event_area' % (area_lobby.event_id.id,area_lobby.id)">
+                                                                    <div class="d-flex">
+                                                                        <t t-if="area_lobby.image_1920">
+                                                                            <div class="navigation-list-item-icon">
+                                                                                <img class="width-img-icon"
+                                                                                     t-att-alt="area_lobby.name"
+                                                                                     t-attf-src="data:image/*; base64,{{area_lobby.image_1920}}"/>
+                                                                            </div>
+                                                                        </t>
+                                                                        <div class="navigation-list-item-text">
+                                                                            <t t-esc="area_lobby.name"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </t>
+                                                    </t>
+
+                                                    <!-- Buro de información -->
+                                                    <t t-if="area_information_id">
+                                                        <t t-foreach="area_information_id" t-as="area_information">
+                                                            <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                                                                <a t-att-href="'/evento/%s/%s/event_area' % (area_information.event_id.id,area_information.id)">
+                                                                    <div class="d-flex">
+                                                                        <t t-if="area_information.image_1920">
+                                                                            <div class="navigation-list-item-icon">
+                                                                                <img class="width-img-icon"
+                                                                                     t-att-alt="area_information.name"
+                                                                                     t-attf-src="data:image/*; base64,{{area_information.image_1920}}"
+                                                                                />
+                                                                            </div>
+                                                                        </t>
+                                                                        <div class="navigation-list-item-text">
+                                                                            <t t-esc="area_information.name"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </t>
+                                                    </t>
+
+                                                    <!-- Oportunidades de negocios -->
+                                                    <t t-if="area_forum_id">
+                                                        <t t-foreach="area_forum_id" t-as="area_forum">
+                                                            <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                                                                <a t-att-href="'/evento/%s/%s/event_area' % (area_forum.event_id.id,area_forum.id)">
+                                                                    <div class="d-flex">
+                                                                        <t t-if="area_forum.image_1920">
+                                                                            <div class="navigation-list-item-icon">
+                                                                                <img class="width-img-icon"
+                                                                                     t-att-alt="area_forum.name"
+                                                                                     t-attf-src="data:image/*; base64,{{area_forum.image_1920}}"/>
+                                                                            </div>
+                                                                        </t>
+                                                                        <div class="navigation-list-item-text">
+                                                                            <t t-esc="area_forum.name"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </t>
+                                                    </t>
+
+                                                    <!-- Sala de chat (networking) -->
+                                                    <t t-if="area_networking_id">
+                                                        <t t-foreach="area_networking_id" t-as="area_networking">
+                                                            <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                                                                <a t-att-href="'/evento/%s/%s/event_area' % (area_networking.event_id.id,area_networking.id)">
+                                                                    <div class="d-flex">
+                                                                        <t t-if="area_networking.image_1920">
+                                                                            <div class="navigation-list-item-icon">
+                                                                                <img class="width-img-icon"
+                                                                                     t-att-alt="area_networking.name"
+                                                                                     t-attf-src="data:image/*; base64,{{area_networking.image_1920}}"/>
+                                                                            </div>
+                                                                        </t>
+                                                                        <div class="navigation-list-item-text">
+                                                                            <t t-esc="area_networking.name"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </t>
+                                                    </t>
+
+                                                    <!-- Sala de Poster -->
+                                                    <t t-if="area_poster_id">
+                                                        <t t-foreach="area_poster_id" t-as="area_poster">
+                                                            <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                                                                <a t-att-href="'/evento/%s/%s/event_area' % (area_poster.event_id.id,area_poster.id)">
+                                                                    <div class="d-flex">
+                                                                        <t t-if="area_poster.image_1920">
+                                                                            <div class="navigation-list-item-icon">
+                                                                                <img class="width-img-icon"
+                                                                                     t-att-alt="area_poster.name"
+                                                                                     t-attf-src="data:image/*; base64,{{area_poster.image_1920}}"/>
+                                                                            </div>
+                                                                        </t>
+                                                                        <div class="navigation-list-item-text">
+                                                                            <t t-esc="area_poster.name"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </t>
+                                                    </t>
+
+                                                    <!-- Sala de Poster Gallery -->
+                                                    <t t-if="area_poster_gallery_id">
+                                                        <t t-foreach="area_poster_gallery_id" t-as="area_poster_gallery">
+                                                            <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                                                                <a t-att-href="'/evento/%s/%s/event_area_track' % (area_poster_gallery.event_id.id,area_poster_gallery.id)">
+                                                                    <div class="d-flex">
+                                                                        <t t-if="area_poster_gallery.image_1920">
+                                                                            <div class="navigation-list-item-icon">
+                                                                                <img class="width-img-icon"
+                                                                                     t-att-alt="area_poster_gallery.name"
+                                                                                     t-attf-src="data:image/*; base64,{{area_poster_gallery.image_1920}}"/>
+                                                                            </div>
+                                                                        </t>
+                                                                        <div class="navigation-list-item-text">
+                                                                            <t t-esc="area_poster_gallery.name"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </t>
+                                                    </t>
+
+                                                    <!-- Sala de Videos -->
+                                                    <t t-if="area_press_id">
+                                                        <t t-foreach="area_press_id" t-as="area_press">
+                                                            <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                                                                <a t-att-href="'/evento/%s/%s/event_area' % (area_press.event_id.id,area_press.id)">
+                                                                    <div class="d-flex">
+                                                                        <t t-if="area_press.image_1920">
+                                                                            <div class="navigation-list-item-icon">
+                                                                                <img class="width-img-icon"
+                                                                                     t-att-alt="area_press.name"
+                                                                                     t-attf-src="data:image/*; base64,{{area_press.image_1920}}"/>
+                                                                            </div>
+                                                                        </t>
+                                                                        <div class="navigation-list-item-text">
+                                                                            <t t-esc="area_press.name"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </t>
+                                                    </t>
+
+                                                    <!-- Sala de Conferencias -->
+                                                    <t t-if="area_conference_id">
+                                                        <t t-foreach="area_conference_id" t-as="area_conference">
+                                                            <li class="list-group-item my-list-group-item navigation-list-group-item px-0">
+                                                                <a t-att-href="'/evento/%s/%s/event_area' % (area_conference.event_id.id,area_conference.id)">
+                                                                    <div class="d-flex">
+                                                                        <t t-if="area_conference.image_1920">
+                                                                            <div class="navigation-list-item-icon">
+                                                                                <img class="width-img-icon"
+                                                                                     t-att-alt="area_conference.name"
+                                                                                     t-attf-src="data:image/*; base64,{{area_conference.image_1920}}"/>
+                                                                            </div>
+                                                                        </t>
+                                                                        <div class="navigation-list-item-text">
+                                                                            <t t-esc="area_conference.name"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        </t>
+                                                    </t>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+
+                            <t t-if="len(pavilion_ids) > 0">
+                                <div class="tab-pane fade" id="navigation_map_pav_form" role="tabpanel"
+                                     aria-labelledby="navigation_map_pav_form_tab">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <t t-set="check_key_in_list" t-value="data_count_nav['check_key_in_list']"/>
+                                            <t t-foreach="range(0,len(pavilion_ids),2)" t-as="pavilion">
+                                                <t t-call="df_website_front.carousel_pavilions_items"/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+
+                        </t>
+                    </div>
+                </div>
+                <div>
+                    <a href="#" id="navigation-button" class="ml-4 d-inline-block pr-lateral navigation-button">
+                        <div class="padding-lateral d-inline-block navigation-button-icon">
+                            <img src="/df_website_front/static/src/img/Desplazar.png"
+                                 class="width-img-icon"/>
+                        </div>
+                        <div class="navigation-button-text d-inline-block myriadpro-regular">Navigation Map</div>
+                    </a>
+                </div>
+
+                <t t-if="event and area_networking_id">
+                    <div>
+                        <a t-att-href="'/evento/%s/%s/event_area' % (event.id,area_networking_id.id)"
+                           class="ml-4 mt-1 d-inline-block navigation-button">
+                            <div class="padding-lateral d-inline-block navigation-button-icon text-center">
+                                <img src="/df_website_front/static/src/img/chat.svg"
+                                     class="width-img-icon"/>
+                                <span class="text-white ml-2 notifications-networking">0</span>
+                            </div>
+                        </a>
+                    </div>
+                </t>
+
+                <t t-if="event and present_stand == true">
+                    <div>
+                        <a t-att-href="'/evento/%s/stand_profile' % (event.id)"
+                           class="ml-4 mt-1 d-inline-block pr-lateral navigation-button">
+                            <div class="padding-lateral d-inline-block navigation-button-icon">
+                                <img src="/df_website_front/static/src/img/Expositor_blanco.png"
+                                     class="width-img-icon"/>
+                            </div>
+                            <div class="navigation-button-text d-inline-block myriadpro-regular">Edit Stand</div>
+                        </a>
+                    </div>
+                </t>
+            </div>
+        </template>
+
+        <template id="visit_counter" name="Visit counter">
+            <!--            <t t-if="count_visit_area and count_visit_area &gt; 0 and visitor_view_access">-->
+            <t t-call="df_website_front.modal_stand_visitor_info"/>
+            <div t-attf-class="#{'stand-view-count-detail cursor-pointer' if visitor_view_access else ''} stand-view-count text-center">
+                <img src="/df_website_front/static/src/img/view-1.svg" class="width-img-icon"/>
+                <span class="text-white d-block mt-1" title="Number of visits">
+                    <t t-esc="count_visit_area"/>
+                </span>
+            </div>
+        </template>
+
+    </data>
+</odoo>

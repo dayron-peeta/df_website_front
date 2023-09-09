@@ -1,0 +1,113 @@
+<odoo>
+    <data>
+        <template id="chat_event" name="Chat Event">
+            <!--  Región para configuración de snippets -->
+            <div class="oe_structure internal_page"/>
+
+            <div id="chat-event" class="detailBox d-none d-sm-block bg-light myriadpro-regular">
+                <div class="titleBox">
+                    <label>
+                        <span class="title-channel-conference"/>
+                    </label>
+                </div>
+                <div class="actionBox">
+                    <ul id="commentList" class="commentList">
+                    </ul>
+                    <form class="form-inline" role="form" id="formCommentConference">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <input type="hidden" name="track_id" value=""/>
+                        <div class="form-group">
+                            <input name="my-comment-input" class="form-control" type="text"
+                                   placeholder="Your comments"/>
+                        </div>
+                        <div class="form-group ml-1">
+                            <button id="my-comment-button"
+                                    class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">Send
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!--  Región para configuración de snippets -->
+            <div class="oe_structure internal_page_footer"/>
+        </template>
+
+        <template id="chat_stand_event" name="Chat Stand Event">
+            <t t-if="not present_stand and not no_area_id">
+                <div class="standDetailBox bg-light myriadpro-regular">
+                    <div class="titleBox">
+                        <t t-if="area_id">
+                            <label>
+                                <span class="title-channel-conference">Channel
+                                    <t t-esc="area_id.partner_id.name"/>
+                                </span>
+                            </label>
+                        </t>
+                    </div>
+                    <div class="actionBox">
+
+                        <ul id="commentListStand" class="commentList">
+                        </ul>
+                        <form class="form-inline" role="form" id="formCommentStand">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="area_id">
+                                <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                            </t>
+                            <div class="form-group">
+                                <input name="my-comment-stand-input" class="form-control" type="text"
+                                       placeholder="Your comments"/>
+                            </div>
+                            <div class="form-group ml-1">
+                                <button id="add_message_stand"
+                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">Add
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </t>
+            <t t-else="">
+                <t t-if="room_networking and area_id">
+                    <div class="bg-light myriadpro-regular">
+                        <a t-att-href="'/evento/%s/%s/event_area?stand_networking=%s&amp;val_area_stand_id=%s' % (event.id,room_networking.id,True,area_id.id)"
+                           class="m-1 myriadpro-regular" target="_blank">
+                            <span class="">Review customer conversations</span>
+                        </a>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <template id="playlist_event" name="Playlist Event">
+            <!--  Región para configuración de snippets -->
+            <div class="oe_structure internal_page"/>
+
+            <div id="playlist-event" class="detailBox d-none d-sm-block bg-light myriadpro-regular">
+                <div class="titleBox">
+                    <label>Simultaneous Conferences</label>
+                </div>
+                <t t-if="tracks and len(tracks) &gt; 0">
+                    <div class="actionBox">
+                        <ul class="list-group">
+                            <t t-foreach="tracks" t-as="track">
+                                <li class="list-group-item my-list-group-item">
+                                    <a href="#" class="conference-list-group track-conference-selected"
+                                       t-att-data-id="track.id" t-att-data-name="track.name"
+                                       t-att-data-url="track.get_video_track_url()"
+                                       t-att-data-external-url="track.external_channel_url">
+                                        <span class="fa fa-video-camera mr-2"/>
+                                        <t t-esc="track.name"/>
+                                    </a>
+                                </li>
+                            </t>
+                        </ul>
+                    </div>
+                </t>
+            </div>
+
+            <!--  Región para configuración de snippets -->
+            <div class="oe_structure internal_page_footer"/>
+        </template>
+    </data>
+</odoo>

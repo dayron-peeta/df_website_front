@@ -1,0 +1,132 @@
+
+.desoft-logo-banner {
+    position: absolute;
+    top: 4%;
+    left: 4%;
+    width: 8%;
+}
+
+.desoft-responsive-banner {
+    height: 470px;
+    background-repeat: round;
+    background-size: cover;
+}
+
+.desoft-register-button {
+    border-width: 2px;
+    border-color: #ff6600;
+    border-style: solid;
+    background-color: #ff6600 !important;
+    color: #fefefe !important;
+    font-weight: bold;
+}
+
+.desoft-absolute-register-button {
+    position: absolute;
+    top: 78%;
+    left: 50%;
+    transform: translate(-50%, -61%);
+}
+
+.desoft-absolute-responsive-button {
+    position: absolute;
+    top: 69%;
+    left: 14%;
+}
+
+.bg-light {
+    opacity: .9;
+}
+
+.desoft-convo {
+    background-repeat: no-repeat;
+}
+
+.desoft-plans {
+    background-image: url("/df_website_front/static/src/img/cat_part.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.justify-content-space-evenly {
+    justify-content: space-evenly !important;
+}
+
+.desoft-timer {
+    background-image: url("/df_website_front/static/src/img/banner_contador_desoft.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.desoft-timer-item {
+    position: relative;
+    height: 100px;
+    width: 4rem;
+    background-color: #FB8235;
+}
+
+.desoft-timer-progress {
+    position: absolute;
+    /*height: 80px;*/
+    background-color: #E0F0FF;
+    left: 0;
+    right: 0;
+}
+
+.desoft-footer {
+    background-color: #087A92;
+    background-size: cover;
+}
+
+@media only screen and (max-width: 550px) {
+
+    .desoft-absolute-responsive-button {
+        position: absolute;
+        top: 31%;
+        left: 3%;
+    }
+
+    .desoft-responsive-banner {
+        height: 570px;
+        background-repeat: round;
+        background-size: cover;
+    }
+
+    .desoft-convo {
+        background-image: none !important;
+        background-color: rgba(243, 241, 239, 1);
+    }
+
+}
+
+@media only screen and (max-width: 425px) {
+
+    .desoft-absolute-responsive-button {
+        position: absolute;
+        top: 35%;
+        left: 3%;
+    }
+
+    .desoft-responsive-banner {
+        height: 450px;
+        background-repeat: round;
+        background-size: cover;
+    }
+
+}
+
+@media only screen and (max-width: 375px) {
+
+    .desoft-absolute-responsive-button {
+        position: absolute;
+        top: 35%;
+        left: 3%;
+    }
+
+    .desoft-responsive-banner {
+        height: 450px;
+        /*background-repeat: no-repeat;
+        background-size: cover;*/
+    }
+
+}

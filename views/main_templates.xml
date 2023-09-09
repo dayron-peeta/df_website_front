@@ -1,0 +1,462 @@
+<odoo>
+    <data>
+        <template id="fevexpo_footer_template" name="FEVEXPO Footer Template">
+            <section>
+                <div class="o_footer_fevexpo">
+                    <div class="container">
+
+                        <div class="row justify-content-between mt-5 pt-3">
+                            <div class="col-12 col-sm text-left">
+                                <h3 class="text-uppercase mb-2 myriadpro-semibold-condensed footer-encabezado">Queremos
+                                    conocerte
+                                </h3>
+                                <p class="mt-4 myriadpro-regular texto text-white">
+                                    Estamos a tu servicio, tu opinión nos importa.
+                                    <br/>
+                                    ¿Quieres conocernos mejor? ¿Quieres ser patrocinador o asociarte a nuestro evento?
+                                </p>
+                                <a href="#"
+                                   class="text-uppercase form-control rounded-pill feria-contact-us mt-5 text-white text-center myriadpro-regular texto text-white">
+                                    Contacta con nosotros
+                                </a>
+                            </div>
+                            <div class="col-12 col-sm text-center mt-4 mt-sm-0">
+                                <h3 class="text-uppercase mb-2 myriadpro-semibold-condensed footer-encabezado">
+                                    Síguenos
+                                </h3>
+                                <div class="mt-4">
+                                    <a href="#" class="s_share_facebook mr-2" target="_blank" title="Facebook">
+                                        <img class="facebook-footer"
+                                             src="/df_website_front/static/src/img/Facebook_footer_reposo.svg"
+                                             width="52"
+                                             alt="..."/>
+                                    </a>
+                                    <a href="#" class="s_share_twitter" target="_blank" title="Twitter">
+                                        <img class="twitter-footer"
+                                             src="/df_website_front/static/src/img/Twitter_footer_reposo.svg" width="52"
+                                             alt="..."/>
+                                    </a>
+                                    <a href="#" class="s_share_linkedin ml-2" target="_blank" title="Youtube">
+                                        <img class="youtube-footer"
+                                             src="/df_website_front/static/src/img/Youtube_footer_reposo.svg" width="52"
+                                             alt="..."/>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm text-center mt-4 mt-sm-0">
+                                <h3 class="text-uppercase mb-2 myriadpro-semibold-condensed footer-encabezado">
+                                    Nosotros
+                                </h3>
+                                <img class="img-fluid mt-4" src="/df_website_front/static/src/img/LOGO DESOFT.png"/>
+                                <div class="mt-4 ml-5 mr-5 text-left myriadpro-regular texto text-white">
+                                    <div class=""><span class="fa fa-phone fa-fw mr-2"/>(+53) 7 204 7397
+                                    </div>
+                                    <div class=""><span class="fa fa-mobile fa-fw mr-2"/>(+53) 5 805 1651
+                                    </div>
+                                    <div class=""><span class="fa fa-envelope fa-fw mr-2"/>eventovirtual@desoft.cu
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="footer-copyright-fevexpo text-center text-regular py-2">
+                                <span>
+                                    Copyright © 2021 | Eventos Virtuales
+                                    <a href="https://www.desoft.cu" target="new" class="text-white">Desoft</a>
+                                    | Todos los derechos reservados |
+                                    <img src="/df_website_front/static/src/img/marcaCuba_negativo.png"
+                                         class="imagen-cuba-footer"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </template>
+
+        <template id="feria_navbar_template" name="Feria Navbar Template">
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top menu-navbar navbar-plataforma-virtual">
+                    <a class="navbar-brand" href="/">
+                        <!--                    <img src="/df_website_front/static/src/img/plataformasVIRTUALES.png"-->
+                        <img src="/df_website_front/static/src/img/felti-logo.png"
+                             class="d-inline-block img-fluid" alt="" loading="lazy" style="height: 50px;"/>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"/>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item menu-link">
+                                <a class="nav-link text-uppercase myriadpro-regular" href="/event">Eventos</a>
+                            </li>
+                            <li class="nav-item menu-link dropdown servicios-link">
+                                <a class="nav-link dropdown-toggle text-uppercase myriadpro-regular" href="#"
+                                   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Servicios
+                                </a>
+                                <div class="dropdown-menu m-0 border-0 emergent-menu rounded-0"
+                                     aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item emergent-item text-uppercase text-white myriadpro-regular"
+                                       href="#">Planes
+                                    </a>
+                                    <a class="dropdown-item emergent-item text-uppercase text-white myriadpro-regular"
+                                       href="#">Ofertas Adicionales
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item menu-link">
+                                <a class="nav-link text-uppercase myriadpro-regular" href="/news">Noticias</a>
+                            </li>
+                            <li class="nav-item menu-link dropdown acercade-link">
+                                <a class="nav-link dropdown-toggle text-uppercase myriadpro-regular" href="#"
+                                   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Acerca de
+                                </a>
+                                <div class="dropdown-menu m-0 border-0 emergent-menu rounded-0"
+                                     aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item emergent-item text-uppercase text-white myriadpro-regular"
+                                       href="#">Que es FEVexpo
+                                    </a>
+                                    <a class="dropdown-item emergent-item text-uppercase text-white myriadpro-regular"
+                                       href="#">Preguntas Frecuentes
+                                    </a>
+                                    <a class="dropdown-item emergent-item text-uppercase text-white myriadpro-regular"
+                                       href="#">Contacto
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="navbar-nav">
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_item_class" t-value="'nav-item'"/>
+                                <t t-set="_link_class" t-value="'nav-link'"/>
+                            </t>
+                            <t t-call="portal.user_dropdown">
+                                <t t-set="_user_name" t-value="true"/>
+                                <t t-set="_item_class" t-value="'nav-item dropdown'"/>
+                                <t t-set="_link_class" t-value="'nav-link'"/>
+                                <t t-set="_dropdown_menu_class" t-value="'dropdown-menu-right'"/>
+                            </t>
+                            <li class="nav-item dropdown">
+                                <t t-set="active_lang" t-value="list(filter(lambda lg : lg[0] == lang, languages))[0]"/>
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="myriadpro-regular" t-if="not no_text"
+                                          t-esc="active_lang[2].split('/').pop()"/>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <t t-foreach="languages" t-as="lg">
+                                        <a t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"
+                                           class="dropdown-item js_change_lang"
+                                           t-att-data-url_code="lg[1]">
+                                            <span class="myriadpro-regular" t-if="not no_text"
+                                                  t-esc="lg[2].split('/').pop()"/>
+                                        </a>
+                                    </t>
+                                </div>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">
+                                    <img class="search-navbar" src="/df_website_front/static/src/img/search.svg"
+                                         height="24"
+                                         width="24" alt=""/>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/my/home">
+                                    <img class="user-navbar" src="/df_website_front/static/src/img/user-3.svg"
+                                         height="24"
+                                         width="24" alt=""/>
+                                </a>
+                            </li>
+                            <!--                        <li class="nav-item">-->
+                            <!--                            <a class="nav-link" href="/web/session/logout?redirect=/">-->
+                            <!--                                <img class="locked-navbar" src="/df_website_front/static/src/img/locked.svg" height="24"-->
+                            <!--                                     width="24" alt=""/>-->
+                            <!--                            </a>-->
+                            <!--                        </li>-->
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+        </template>
+
+        <!--        @edilio Esto se comentareo porque no se usara la pagina web de la plataforma-->
+
+        <!--        <template id="feria_main_template" name="Feria Main Template" inherit_id="website.homepage">-->
+        <!--            <data inherit_id="website.homepage">-->
+        <!--                <xpath expr="//div[@id='wrap']" position="inside">-->
+        <!--                    <div class="banner-fevexpo">-->
+        <!--                        <div id="carousel-fevexpo" class="carousel slide" data-ride="carousel" data-interval="10000">-->
+        <!--                            <ul class="carousel-indicators">-->
+        <!--                                <li data-target="#carousel-fevexpo" data-slide-to="0" class="active"/>-->
+        <!--                                <li data-target="#carousel-fevexpo" data-slide-to="1"/>-->
+        <!--                                <li data-target="#carousel-fevexpo" data-slide-to="2"/>-->
+        <!--                            </ul>-->
+        <!--                            <div class="carousel-inner">-->
+        <!--                                <div class="carousel-item active">-->
+        <!--                                    <h2 class="text-center front-carousel myriadpro-semibold-condensed text-white">-->
+        <!--                                        PLATAFORMA VIRTUAL-->
+        <!--                                        <span style="color: #dc5829;">FEVEXPO</span>-->
+        <!--                                    </h2>-->
+        <!--                                    <img src="/df_website_front/static/src/img/Carrusel-sin-textos.jpg" alt="..."-->
+        <!--                                         class="w-inherit"/>-->
+        <!--                                </div>-->
+        <!--                                <div class="carousel-item">-->
+        <!--                                    <h2 class="text-center front-carousel myriadpro-semibold-condensed text-white">-->
+        <!--                                        PLATAFORMA VIRTUAL-->
+        <!--                                        <span style="color: #dc5829;">FEVEXPO</span>-->
+        <!--                                    </h2>-->
+        <!--                                    <img src="/df_website_front/static/src/img/Carrusel-sin-textos.jpg" alt="..."-->
+        <!--                                         class="w-inherit"/>-->
+        <!--                                </div>-->
+        <!--                                <div class="carousel-item">-->
+        <!--                                    <h2 class="text-center front-carousel myriadpro-semibold-condensed text-white">-->
+        <!--                                        PLATAFORMA VIRTUAL-->
+        <!--                                        <span style="color: #dc5829;">FEVEXPO</span>-->
+        <!--                                    </h2>-->
+        <!--                                    <img src="/df_website_front/static/src/img/Carrusel-sin-textos.jpg" alt="..."-->
+        <!--                                         class="w-inherit"/>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                            <img class="carrusel-grafica-izquierda position-absolute"-->
+        <!--                                 src="/df_website_front/static/src/img/carouselIzqSide.svg"-->
+        <!--                                 alt="..."/>-->
+        <!--                            <img class="carrusel-grafica-derecha position-absolute"-->
+        <!--                                 src="/df_website_front/static/src/img/carouselDerSide.svg"-->
+        <!--                                 alt="..."/>-->
+        <!--                            <img class="carrusel-grafica-izquierda-debajo position-absolute"-->
+        <!--                                 src="/df_website_front/static/src/img/carouselIzqUnder.svg"-->
+        <!--                                 alt="..."/>-->
+        <!--                            <img class="carrusel-grafica-derecha-debajo position-absolute"-->
+        <!--                                 src="/df_website_front/static/src/img/carouselDerUnder.svg"-->
+        <!--                                 alt="..."/>-->
+        <!--                            &lt;!&ndash; Left and right controls &ndash;&gt;-->
+        <!--                            <a class="carousel-control-prev" href="#carousel-fevexpo" role="button" data-slide="prev">-->
+        <!--                                <img src="/df_website_front/static/src/img/back.svg" height="32" width="23" alt=""/>-->
+        <!--                            </a>-->
+        <!--                            <a class="carousel-control-next" href="#carousel-fevexpo" role="button" data-slide="next">-->
+        <!--                                <img src="/df_website_front/static/src/img/next.svg" height="32" width="23" alt=""/>-->
+        <!--                            </a>-->
+        <!--                        </div>-->
+        <!--                        &lt;!&ndash;<div id="carouselIndex" class="carousel slide" data-ride="carousel">-->
+        <!--                            <ol class="carousel-indicators">-->
+        <!--                                <t t-foreach="carousel_images" t-as="carousel_image">-->
+        <!--                                    <li data-target="#carouselIndex" t-attf-data-slide-to="carousel_image_index"-->
+        <!--                                        t-attf-class="ml-1 mr-1 #{'active' if carousel_image_index == 0 else ''}"/>-->
+        <!--                                </t>-->
+        <!--                            </ol>-->
+        <!--                            <div class="carousel-inner">-->
+        <!--                                <t t-foreach="carousel_images" t-as="carousel_image">-->
+        <!--                                    <div t-attf-class="carousel-item #{'active' if carousel_image_index == 0 else ''}">-->
+        <!--                                        <h2 class="text-center front-carousel myriadpro-semibold-condensed text-white">-->
+        <!--                                            PLATAFORMA VIRTUAL-->
+        <!--                                            <span style="color: #dc5829;">FEVEXPO</span>-->
+        <!--                                        </h2>-->
+        <!--                                        <img t-attf-src="data:image/*; base64,{{carousel_image.imagen}}"-->
+        <!--                                             class="d-block w-100" alt="..."/>-->
+        <!--                                    </div>-->
+        <!--                                </t>-->
+        <!--                            </div>-->
+        <!--                        </div>&ndash;&gt;-->
+        <!--                        <ul class="d-flex flex-row sn-navbar">-->
+        <!--                            <li class="mr-2">-->
+        <!--                                <a href="facebook.com" target="_blank" title="Facebook">-->
+        <!--                                    <img class="facebook-banner"-->
+        <!--                                         src="/df_website_front/static/src/img/Facebook_reposo.svg" height="38"-->
+        <!--                                         alt="..."/>-->
+        <!--                                </a>-->
+        <!--                            </li>-->
+        <!--                            <li>-->
+        <!--                                <a href="twitter.com" target="_blank" title="Twitter">-->
+        <!--                                    <img class="twitter-banner"-->
+        <!--                                         src="/df_website_front/static/src/img/Twitter_reposo.svg" height="38"-->
+        <!--                                         alt="..."/>-->
+        <!--                                </a>-->
+        <!--                            </li>-->
+        <!--                            <li class="ml-2">-->
+        <!--                                <a href="youtube.com" target="_blank" title="Youtube">-->
+        <!--                                    <img class="youtube-banner"-->
+        <!--                                         src="/df_website_front/static/src/img/Youtube_reposo.svg" height="38"-->
+        <!--                                         alt="..."/>-->
+        <!--                                </a>-->
+        <!--                            </li>-->
+        <!--                        </ul>-->
+        <!--                    </div>-->
+        <!--                    <div class="container">-->
+        <!--                        <div class="introduccion mt-5 pt-4 text-center">-->
+        <!--                            <h2 class="text-center encabezados myriadpro-semibold-condensed position-relative pt-3 mb-0"-->
+        <!--                                style="color: #dc5829;">EVENTOS VIRTUALES-->
+        <!--                            </h2>-->
+        <!--                            <h2 class="text-center encabezados myriadpro-semibold-condensed position-relative">UNA NUEVA-->
+        <!--                                FORMA DE HACER NEGOCIOS-->
+        <!--                            </h2>-->
+        <!--                            <img class="underline_titles position-relative"-->
+        <!--                                 src="/df_website_front/static/src/img/vinnetaUnder.svg" height="92" alt="..."/>-->
+        <!--                            &lt;!&ndash;<img class="introduccion-vineta position-absolute"-->
+        <!--                                 src="/df_website_front/static/src/img/Viñeta 1.svg" height="92" alt="..."/>&ndash;&gt;-->
+        <!--                            <p class="mt-4 text-center myriadpro-regular texto">-->
+        <!--                                Una oportunidad única para intercambiar con tus clientes y conversar con grandes-->
+        <!--                                expertos y profesionales de todos los sectores. Todo ello desde un entorno completamente-->
+        <!--                                virtual, inmersivo y que te permitira vivir una experiencia ferial practicamente-->
+        <!--                                real.-->
+        <!--                                <br/>-->
+        <!--                                En Eventos Virtuales podras generar leads, interactuar conversar, reunirte e impartir-->
+        <!--                                charlas y conferencias del mismo modo que lo harías en el mundo real, sin moverte de-->
+        <!--                                casa y son gastos adicionales.-->
+        <!--                            </p>-->
+        <!--                        </div>-->
+        <!--                        &lt;!&ndash;                       <div class="organizadores mt-5 pt-5">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            <h2 class="text-center encabezados myriadpro-semibold-condensed">ORGANIZADORES QUE HAN CONFIADO EN NOSOTROS</h2>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            <hr class="encabezado-underline"/>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            <div class="row justify-content-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                <div class="col-4">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                    <img src="/feria_virtual/static/src/img/Objeto inteligente vectorial1.png" class="d-block w-100" alt="..."/>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            <div class="row align-items-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                <div class="col text-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                    <img src="/feria_virtual/static/src/img/Capa 1.png" class="" alt="..."/>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                <div class="col text-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                    <img src="/feria_virtual/static/src/img/Capa 2.png" class="" alt="..."/>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                <div class="col text-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                    <img src="/feria_virtual/static/src/img/Capa 3.png" class="" alt="..."/>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            <div class="row align-items-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                <div class="col text-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                    <img src="/feria_virtual/static/src/img/Capa 4.png" class="" alt="..."/>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                <div class="col text-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                    <img src="/feria_virtual/static/src/img/Capa 5.png" class="" alt="..."/>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                <div class="col text-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                    <img src="/feria_virtual/static/src/img/Capa 6.png" class="" alt="..."/>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            <div class="text-center">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                <a href="#" class="btn text-uppercase rounded-pill feria-see-all mt-5 myriadpro-regular texto">&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                    Ver todos&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                                </a>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                            </div>&ndash;&gt;-->
+        <!--                        &lt;!&ndash;                        </div>&ndash;&gt;-->
+        <!--                    </div>-->
+        <!--                    <div class="noticias-importantes mt-5 pt-5 text-center">-->
+        <!--                        <h2 class="text-center encabezados myriadpro-semibold-condensed position-relative pt-3">NOTICIAS-->
+        <!--                            MÁS IMPORTANTES-->
+        <!--                        </h2>-->
+        <!--                        <img class="underline_titles position-relative"-->
+        <!--                             src="/df_website_front/static/src/img/vinnetaUnder.svg" height="92" alt="..."/>-->
+        <!--                        <div class="noticias-row">-->
+        <!--                            <div class="container mb-2">-->
+        <!--                                <div class="row justify-content-between mt-5">-->
+        <!--                                    <t t-foreach="important_news" t-as="new">-->
+        <!--                                        <div class="col-4">-->
+        <!--                                            <div class="card box-shadow-card border-secondary">-->
+        <!--                                                <div class="img-new-home">-->
+        <!--                                                    <a href="#">-->
+        <!--                                                        <img t-attf-src="data:image/*; base64,{{new.imagen}}"-->
+        <!--                                                             class="card-img-top" alt="..."/>-->
+        <!--                                                    </a>-->
+        <!--                                                </div>-->
+        <!--                                                <div class="card-body">-->
+        <!--                                                    <a href="#" class="new-title">-->
+        <!--                                                        <h5 t-esc="new.titulo"-->
+        <!--                                                            class="card-title myriadpro-semibold-condensed"/>-->
+        <!--                                                    </a>-->
+        <!--                                                    <p class="texto myriadpro-regular">-->
+        <!--                                                        <t t-if="new.tipo == 'autor'">Por:</t>-->
+        <!--                                                        <t t-if="new.tipo == 'referencia'">(</t>-->
+        <!--                                                        <span t-esc="new.fuente"-->
+        <!--                                                              t-attf-class="#{'new-author' if new.tipo == 'autor' else ''}"/>-->
+        <!--                                                        <t t-if="new.tipo == 'referencia'">)</t>-->
+        <!--                                                    </p>-->
+        <!--                                                    <p t-esc="new.texto" class="card-text myriadpro-regular texto"/>-->
+        <!--                                                </div>-->
+        <!--                                            </div>-->
+        <!--                                        </div>-->
+        <!--                                    </t>-->
+        <!--                                </div>-->
+        <!--                            </div>-->
+        <!--                            <img class="noticias-grafica-index"-->
+        <!--                                 src="/df_website_front/static/src/img/derechaNews.svg" height="186"-->
+        <!--                                 alt="..."/>-->
+        <!--                            <a href="/new"-->
+        <!--                               class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto noticia-see-all">-->
+        <!--                                Ver todas-->
+        <!--                            </a>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                    <div class="expectativas mb-5">-->
+        <!--                        <div class="expectativas-encabezado text-center">-->
+        <!--                            <img class="expectativas-grafica"-->
+        <!--                                 src="/df_website_front/static/src/img/izqExpectativas.svg" height="276"-->
+        <!--                                 alt="..."/>-->
+        <!--                            <h2 class="text-center encabezados myriadpro-semibold-condensed position-relative pt-3">-->
+        <!--                                EXPECTATIVAS-->
+        <!--                            </h2>-->
+        <!--                            <img class="underline_titles position-relative"-->
+        <!--                                 src="/df_website_front/static/src/img/vinnetaUnder.svg" height="92" alt="..."/>-->
+        <!--                        </div>-->
+        <!--                        <div class="container">-->
+        <!--                            <t t-set="testimonio_actual" t-value="0"/>-->
+        <!--                            <t t-foreach="testimonials" t-as="testimonio">-->
+        <!--                                <t t-if="testimonio_first or testimonio_actual &lt; testimonio_index">-->
+        <!--                                    <div t-if="testimonio_index%2==0"-->
+        <!--                                         t-attf-class="row #{'mt-4' if (testimonio_index%2==0 and testimonio_first == False) else ''}">-->
+        <!--                                        <div class="col-6 ">-->
+        <!--                                            <div class="mr-2 expectativa-div p-5">-->
+        <!--                                                <div class="media mb-3 align-items-center">-->
+        <!--                                                    <img t-attf-src="data:image/*; base64,{{testimonials[testimonio_index].imagen}}"-->
+        <!--                                                         class="mr-3" alt="..."/>-->
+        <!--                                                    <div class="media-body">-->
+        <!--                                                        <h5 t-esc="testimonials[testimonio_index].nombre"-->
+        <!--                                                            class="mt-0 mb-0 myriadpro-regular expectativa-autor text-uppercase"/>-->
+        <!--                                                        <hr class="expectativa-hr mt-0 mb-0"/>-->
+        <!--                                                        <span t-esc="testimonials[testimonio_index].agencia"-->
+        <!--                                                              class="myriadpro-regular expectativa-cargo"/>-->
+        <!--                                                    </div>-->
+        <!--                                                </div>-->
+        <!--                                                <p t-esc="testimonials[testimonio_index].texto"-->
+        <!--                                                   class="myriadpro-regular texto"/>-->
+        <!--                                            </div>-->
+        <!--                                        </div>-->
+        <!--                                        <t t-if="testimonio_index+1 &lt; testimonio_size">-->
+        <!--                                            <div class="col-6  ">-->
+        <!--                                                <div class="ml-2 expectativa-div p-5">-->
+        <!--                                                    <div class="media mb-3 align-items-center">-->
+        <!--                                                        <img t-attf-src="data:image/*; base64,{{testimonials[testimonio_index+1].imagen}}"-->
+        <!--                                                             class="mr-3" alt="..."/>-->
+        <!--                                                        <div class="media-body">-->
+        <!--                                                            <h5 t-esc="testimonials[testimonio_index+1].nombre"-->
+        <!--                                                                class="mt-0 mb-0 myriadpro-regular expectativa-autor text-uppercase"/>-->
+        <!--                                                            <hr class="expectativa-hr mt-0 mb-0"/>-->
+        <!--                                                            <span t-esc="testimonials[testimonio_index+1].agencia"-->
+        <!--                                                                  class="myriadpro-regular expectativa-cargo"/>-->
+        <!--                                                        </div>-->
+        <!--                                                    </div>-->
+        <!--                                                    <p t-esc="testimonials[testimonio_index+1].texto"-->
+        <!--                                                       class="myriadpro-regular texto"/>-->
+        <!--                                                </div>-->
+        <!--                                            </div>-->
+        <!--                                        </t>-->
+        <!--                                        <t t-set="testimonio_actual" t-value="testimonio_actual + 1"/>-->
+        <!--                                    </div>-->
+        <!--                                </t>-->
+
+        <!--                            </t>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </xpath>-->
+        <!--            </data>-->
+        <!--        </template>-->
+    </data>
+</odoo>

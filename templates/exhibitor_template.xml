@@ -1,0 +1,224 @@
+<odoo>
+    <data>
+        <template id="exhibitor_template" name="Expositores Template">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.modal_detail_exhibitor"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-about-us">
+                        <li class="breadcrumb-item">
+                            <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                <span class="material-icons">home</span>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item-about-us active myriadpro-regular d-flex"
+                            aria-current="page">
+                            <!--<span class="material-icons mr-2">chevron_right</span>-->
+                            Event Exhibitors
+                        </li>
+                    </ol>
+                </nav>
+                <div class="position-relative">
+                    <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                    <h1 class="text-center exo2-regular encabezado-interno">
+                        LIST OF EXHIBITORS
+                    </h1>
+                </div>
+                <div class="container">
+
+                    <div class="">
+                        <div class="row mt-2 mt-sm-4">
+
+                            <div class="col-sm-4">
+                                <div class="myriadpro-regular">
+                                    <div class="my-form-outline">
+                                        <select id="country_exhibitor_list" name="country_id"
+                                                class="form-control my-form-control my-select selectpicker"
+                                                title=" " data-live-search="true">
+                                            <t t-foreach="countrys" t-as="country">
+                                                <option t-att-value="country.id"
+                                                        t-att-selected="cou_id_sel == country.id">
+                                                    <t t-esc="country.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                        <label t-attf-class="#{'label-select-automatic-top' if cou_id_sel else ''} my-form-label myriadpro-regular">
+                                            Select country
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="myriadpro-regular">
+                                    <div>
+                                        <div class="my-form-outline">
+                                            <select id="pavilion_id"
+                                                    name="pavilion_id"
+                                                    class="form-control my-form-control my-select selectpicker"
+                                                    title=" " data-live-search="true">
+                                                <t t-foreach="pavillions" t-as="pavillion">
+                                                    <option t-att-value="pavillion.id"
+                                                            t-att-selected="pavilion_id_sel == pavillion.id">
+                                                        <t t-esc="pavillion.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                            <label t-attf-class="#{'label-select-automatic-top' if pavilion_id_sel else ''} my-form-label myriadpro-regular">
+                                                Select pavilion
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="myriadpro-regular">
+                                    <div class="my-form-outline">
+                                        <input type="text" name="search" id="search_exhibitor_list"
+                                               class="form-control my-form-control" t-att-value="search_part_sel"/>
+                                        <label t-attf-class="#{'label-select-automatic-top' if search_part_sel else ''} my-form-label myriadpro-regular">
+                                            Search
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <button id="clear_filters_exhibitor"
+                                        class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <t t-foreach="areas" t-as="partner_aux_id">
+
+                                <t t-set="partner_id" t-value="partner_aux_id"/>
+                                <t t-set="participant_name" t-value=""/>
+                                <t t-set="participant_id" t-value="partner_aux_id.id"/>
+
+                                <!-- Si tiene un padre -->
+                                <t t-if="partner_aux_id and partner_aux_id.parent_id">
+                                    <t t-set="partner_id" t-value="partner_aux_id.parent_id"/>
+                                    <t t-set="participant_name" t-value="partner_aux_id.name"/>
+                                </t>
+
+                                <div class="col-sm-6 mt-3 mt-sm-0 pt-3">
+                                    <div class="exhibitor-card h-100"
+                                         t-att-data-id="partner_id.id">
+                                        <div class="row no-gutters h-100">
+                                            <div class="col-md-4 text-center">
+                                                <t t-if="partner_id">
+                                                    <t t-set="area_id" t-value="get_area_by_user(participant_id)"/>
+                                                    <t t-if="area_id and area_id.image_1920">
+                                                        <img class="h-75 w-100"
+                                                             t-att-src="image_data_uri(area_id.image_1920)"
+                                                             t-att-alt="partner_id.name"
+                                                             style="area_idect-fit: contain;"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <t t-if="partner_id.image_1920">
+                                                            <img class="h-75 w-100"
+                                                                 t-attf-src="#{image_data_uri(partner_id.image_1920) if partner_id.image_1920 else '#'}"
+                                                                 t-att-alt="partner_id.name"
+                                                                 style="area_idect-fit: contain;"/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <img class="h-75 w-75 pt-2"
+                                                                 src="/df_website_front/static/src/img/user_profile_default.png"
+                                                                 t-att-alt="partner_id.name"
+                                                                 style="area_idect-fit: contain;"/>
+                                                        </t>
+                                                    </t>
+                                                </t>
+                                                <h6 class="text-uppercase myriadpro-regular text-white text-center mb-0 py-2 participant-type participant-type-1">
+                                                    Exhibitor
+                                                </h6>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="h-100 d-flex flex-column">
+                                                    <div class="participant-data">
+                                                        <h5 class="text-uppercase myriadpro-regular"
+                                                            style="color: #257bb5;">
+                                                            <t t-esc="partner_id.name"/>
+                                                        </h5>
+                                                        <t t-if="participant_name">
+                                                            <h6 class="text-uppercase myriadpro-regular"
+                                                                style="color: #257bb5;">
+                                                                <t t-esc="participant_name"/>
+                                                            </h6>
+                                                        </t>
+                                                        <t t-if="partner_id.country_id and partner_id.country_id.name">
+                                                            <p class="myriadpro-regular" style="font-size: .9rem;">
+                                                                <t t-esc="partner_id.country_id.name"/>
+                                                            </p>
+                                                        </t>
+                                                        <t t-if="partner_id.website">
+                                                            <p class="myriadpro-regular text-speakers-modal"
+                                                               style="font-size: .9rem;">
+                                                                <t t-esc="partner_id.website"/>
+                                                            </p>
+                                                        </t>
+                                                    </div>
+                                                    <div class="participant-social row mx-0 justify-content-end">
+                                                        <t t-if="partner_id.facebook_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="partner_id.facebook_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Facebook" style="font-size: 25px;">
+                                                                    <span class="fa fa-facebook"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                        <t t-if="partner_id.twitter_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="partner_id.twitter_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Twitter" style="font-size: 25px;">
+                                                                    <span class="fa fa-twitter"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                        <t t-if="partner_id.linkedin_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="partner_id.linkedin_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Linkedin" style="font-size: 25px;">
+                                                                    <span class="fa fa-linkedin"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                        <t t-if="partner_id.telegram_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="partner_id.telegram_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Telegram" style="font-size: 25px;">
+                                                                    <span class="fa fa-telegram"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

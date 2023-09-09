@@ -1,0 +1,216 @@
+<odoo>
+    <data>
+        <template id="feria_event_one" name="Feria Event One">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+
+                    <div class="mybanner">
+                       <div id="carouselIndex" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+
+                                    <div>
+                                        <h2 class="text-center front-carousel myriadpro-semibold-condensed text-white">PLATAFORMA VIRTUAL <span style="color: #dc5829;">FEVEXPO</span></h2>
+                                        <img src="/df_website_front/static/src/img/fondo.png" class="d-block w-100" alt="..."/>
+                                    </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselIndex" role="button" data-slide="prev">
+                                <img src="/df_website_front/static/src/img/back.svg" height="32" width="23" alt=""/>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselIndex" role="button" data-slide="next">
+                                <img src="/df_website_front/static/src/img/next.svg" height="32" width="23" alt=""/>
+                            </a>
+                       </div>
+                       <ul class="d-flex flex-row sn-navbar">
+                           <li class="mr-2">
+                               <a href="facebook.com" target="_blank" title="Facebook">
+                                   <img class="facebook-banner" src="/df_website_front/static/src/img/Facebook_reposo.svg" height="38" alt="..."/>
+                               </a>
+                           </li>
+                           <li>
+                               <a href="twitter.com" target="_blank" title="Twitter">
+                                   <img class="twitter-banner" src="/df_website_front/static/src/img/Twitter_reposo.svg" height="38" alt="..."/>
+                               </a>
+                           </li>
+                           <li class="ml-2">
+                               <a href="youtube.com" target="_blank" title="Youtube">
+                                   <img class="youtube-banner" src="/df_website_front/static/src/img/Youtube_reposo.svg" height="38" alt="..."/>
+                               </a>
+                           </li>
+                       </ul>
+                   </div>
+                    <div class="container margin-top-seccion">
+                        <div class="introduccion pt-4 mt-5">
+                            <img class="eventos-vineta position-absolute" src="/df_website_front/static/src/img/Viñeta 2.svg" height="92" alt="..."/>
+                            <h2 class="text-center text-uppercase encabezado_orange myriadpro-semibold-condensed position-relative pt-3">EVENTOS virtuales</h2>
+                            <h2 class="text-center text-uppercase encabezados myriadpro-semibold-condensed position-relative">una nueva forma de hacer negocios</h2>
+                            <hr class="encabezado-underline"/>
+                        </div>
+                        <div class="texto mt-5 container">
+                            <p class="text-center parrafo-eventos">
+                                Una oportunidad única para intercambiar con tus clientes y conversar con grandes expertos
+                                y profesionales de todos los sectores. Todo ello desde un entorno completamente virtual, inmersivo
+                                y que te permitirá vivir una experiencia ferial prácticamente real.
+                            </p>
+                            <p class="text-center parrafo-eventos">
+                                En Eventos Virtuales podrás generar leads, interactuar, conversar, reunirte e impartir charlas y conferencias
+                                del mismo modo que lo harías en el mundo real, sin moverte de casa y sin gastos adicionales.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="noticias-importantes mt-5 pt-5">
+                        <img class="noticias-vineta position-absolute" src="/df_website_front/static/src/img/Viñeta 2.svg" height="92" alt="..."/>
+                        <h2 class="text-center encabezados myriadpro-semibold-condensed position-relative pt-3">NOTICIAS MÁS IMPORTANTES</h2>
+                        <hr class="encabezado-underline"/>
+                        <div class="noticias-row">
+                            <div class="container mb-2">
+                                <div class="row justify-content-between mt-5 grid-col-debajo">
+
+                                    <div class="col-4 max-width noticias-mb">
+                                            <div class="card box-shadow-card border-secondary">
+                                                <div class="img-new-home">
+                                                    <a href="#">
+                                                        <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png" class="card-img-top" alt="..."/>
+                                                    </a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <a href="#" class="new-title">
+                                                        <h5 class="card-title myriadpro-semibold-condensed" >El invierno cálido y las noches breves de Cuba en Moscú
+                                                        (+ Video y Audio)</h5>
+                                                    </a>
+                                                    <p class="texto myriadpro-regular">
+                                                        Por: <span style="color:#007b91">Arleen Rodríguez Derivet</span>
+                                                    </p>
+                                                    <p class="card-text myriadpro-regular texto">MOSCÚ.- Si se mide la temperatura de esta ciudad
+                                                    por el modo en que le ha dado la bienvenida a Miguel Diaz Canel Bermúdez en su primera visita oficial
+                                                        como Pre...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="col-4 max-width noticias-mb">
+                                            <div class="card box-shadow-card border-secondary">
+                                                <div class="img-new-home">
+                                                    <a href="#">
+                                                        <img src="/df_website_front/static/src/img/IMAGEN noticia 2.png" class="card-img-top" alt="..."/>
+                                                    </a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <a href="#" class="new-title">
+                                                        <h5 class="card-title myriadpro-semibold-condensed" >El invierno cálido y las noches breves de Cuba en Moscú
+                                                        (+ Video y Audio)</h5>
+                                                    </a>
+                                                    <p class="texto myriadpro-regular">
+                                                        Por: <span style="color:#007b91">Arleen Rodríguez Derivet</span>
+                                                    </p>
+                                                    <p class="card-text myriadpro-regular texto">MOSCÚ.- Si se mide la temperatura de esta ciudad
+                                                    por el modo en que le ha dado la bienvenida a Miguel Diaz Canel Bermúdez en su primera visita oficial
+                                                        como Pre...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="col-4 max-width noticias-mb">
+                                            <div class="card box-shadow-card border-secondary">
+                                                <div class="img-new-home">
+                                                    <a href="#">
+                                                        <img src="/df_website_front/static/src/img/IMAGEN noticia 3.png" class="card-img-top" alt="..."/>
+                                                    </a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <a href="#" class="new-title">
+                                                        <h5 class="card-title myriadpro-semibold-condensed" >El invierno cálido y las noches breves de Cuba en Moscú
+                                                        (+ Video y Audio)</h5>
+                                                    </a>
+                                                    <p class="texto myriadpro-regular">
+                                                        Por: <span style="color:#007b91">Arleen Rodríguez Derivet</span>
+                                                    </p>
+                                                    <p class="card-text myriadpro-regular texto">MOSCÚ.- Si se mide la temperatura de esta ciudad
+                                                    por el modo en que le ha dado la bienvenida a Miguel Diaz Canel Bermúdez en su primera visita oficial
+                                                        como Pre...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>
+                            </div>
+                            <img class="noticias-grafica-index" src="/df_website_front/static/src/img/Gráfica derecha_Noticias_index.svg" height="186" alt="..."/>
+                            <a href="/new" class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto noticia-see-all">
+                                Ver todas
+                            </a>
+                        </div>
+                   </div>
+
+                    <div class="expectativas mb-5">
+                        <img class="expectativas-grafica" src="/df_website_front/static/src/img/Gráfica izquierda_Expectativas.svg" height="276" alt="..."/>
+                        <div class="expectativas-encabezado">
+                            <img class="expectativas-vineta position-absolute" src="/df_website_front/static/src/img/Viñeta 3.svg" height="92" alt="..."/>
+                            <h2 class="text-center encabezados myriadpro-semibold-condensed position-relative pt-3">EXPECTATIVAS</h2>
+                            <hr class="encabezado-underline"/>
+                        </div>
+                        <div class="container">
+                                    <div class="row justify-content-between mt-5 grid-col-2-1">
+                                        <div class="col-6 max-width noticias-mb">
+                                            <div class="mr-2 expectativa-div p-5">
+                                                <div class="media mb-3 align-items-center">
+                                                    <img src="/df_website_front/static/src/img/foto persona1.png" width="70px" alt="..."/>
+                                                    <div class="media-body margin-left-small">
+                                                        <h5 class="mt-0 mb-0 myriadpro-regular expectativa-autor text-uppercase">Marcos Gómez</h5>
+                                                        <hr class="expectativa-hr mt-0 mb-0"/>
+                                                        <span class="myriadpro-regular expectativa-cargo">Marketing @ Kivnon</span>
+                                                    </div>
+                                                </div>
+                                                <p class="myriadpro-regular texto">Fevexpo es una feria que reune a las compañías líderes
+                                                de la industria y al logística. Es el lugar perfecto para dar a conocer tus productos y evaluar
+                                                cuál es el nivel de tus competidores. También es el lugar clave en lo que se refiere a innovación contínua.</p>
+                                            </div>
+                                            <div style="height:30px"></div>
+                                            <div class="mr-2 expectativa-div p-5">
+                                                <div class="media mb-3 align-items-center">
+                                                    <img src="/df_website_front/static/src/img/foto persona2.png" width="70px" alt="..."/>
+                                                    <div class="media-body margin-left-small">
+                                                        <h5 class="mt-0 mb-0 myriadpro-regular expectativa-autor text-uppercase">Thierry Delmas</h5>
+                                                        <hr class="expectativa-hr mt-0 mb-0"/>
+                                                        <span class="myriadpro-regular expectativa-cargo">General Manager @ OnRobot</span>
+                                                    </div>
+                                                </div>
+                                                <p class="myriadpro-regular texto">Fevexpo es una feria que reune a las compañías líderes
+                                                de la industria y al logística. Es el lugar perfecto para dar a conocer tus productos y evaluar
+                                                cuál es el nivel de tus competidores. También es el lugar clave en lo que se refiere a innovación contínua.</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 max-width">
+                                            <div class="mr-2 expectativa-div p-5">
+                                                <div class="media mb-3 align-items-center">
+                                                    <img src="/df_website_front/static/src/img/foto persona3.png" width="70px" alt="..."/>
+                                                    <div class="media-body margin-left-small">
+                                                        <h5 class="mt-0 mb-0 myriadpro-regular expectativa-autor text-uppercase">Diego Rodríguez Roldan</h5>
+                                                        <hr class="expectativa-hr mt-0 mb-0"/>
+                                                        <span class="myriadpro-regular expectativa-cargo">Innovation Center Director @ Deloitte</span>
+                                                    </div>
+                                                </div>
+                                                <p class="myriadpro-regular texto">Fevexpo es una feria que reune a las compañías líderes
+                                                de la industria y al logística. Es el lugar perfecto para dar a conocer tus productos y evaluar
+                                                cuál es el nivel de tus competidores. También es el lugar clave en lo que se refiere a innovación contínua.</p>
+                                            </div>
+                                            <div style="height:30px"></div>
+                                            <div class="mr-2 expectativa-div p-5">
+                                                <div class="media mb-3 align-items-center">
+                                                    <img src="/df_website_front/static/src/img/foto persona4.png" width="70px" alt="..."/>
+                                                    <div class="media-body margin-left-small">
+                                                        <h5 class="mt-0 mb-0 myriadpro-regular expectativa-autor text-uppercase">José María Toro Moreno</h5>
+                                                        <hr class="expectativa-hr mt-0 mb-0"/>
+                                                        <span class="myriadpro-regular expectativa-cargo">Sales Manager @ Fieldas</span>
+                                                    </div>
+                                                </div>
+                                                <p class="myriadpro-regular texto">Fevexpo es una feria que reune a las compañías líderes
+                                                de la industria y al logística. Es el lugar perfecto para dar a conocer tus productos y evaluar
+                                                cuál es el nivel de tus competidores. También es el lugar clave en lo que se refiere a innovación contínua.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

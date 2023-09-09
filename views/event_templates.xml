@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <template id="feria_event_index_topbar" inherit_id="website_event.index_topbar">
+            <xpath expr="." position="replace">
+                <div class="position-relative">
+                    <img class="position-absolute" src="/df_website_front/static/src/img/Gráfica izquierda_noticias.svg" height="92" alt="..."/>
+                    <img class="noticias-grafica-index" src="/df_website_front/static/src/img/Gráfica derecha_eventos.svg" height="186" alt="..."/>
+                    <div class="container mt-5">
+                        <img class="eventos-vineta position-absolute" src="/df_website_front/static/src/img/Viñeta 2.svg" height="92" alt="..."/>
+                        <h2 class="text-center encabezados myriadpro-semibold-condensed position-relative pt-3">EVENTOS DEL MES</h2>
+                        <hr class="encabezado-underline"/>
+                        <div class="d-flex flex-column flex-sm-row justify-content-end w-75 mt-5">
+                            <ul class="o_wevent_index_topbar_filters nav">
+                                <li class="nav-item dropdown mr-2 my-1">
+                                    <a href="#" role="button" class="btn dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-calendar"/>
+                                        <t t-if="current_date" t-esc="current_date"/>
+                                        <t t-else="">Próximos eventos</t>
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <t t-foreach="dates" t-as="date">
+                                            <t t-if="date[3] or (date[0] in ('old','all'))">
+                                                <a t-att-href="keep('/event', date=date[0])" t-attf-class="dropdown-item d-flex align-items-center justify-content-between #{searches.get('date') == date[0] and 'active'}">
+                                                    <t t-esc="date[1]"/>
+                                                    <span t-if="date[3]" t-esc="date[3]" class="badge badge-pill badge-primary ml-3"/>
+                                                </a>
+                                            </t>
+                                        </t>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="d-flex align-items-center flex-wrap pl-sm-3 pr-0">
+                                <t t-call="website_event.events_search_box">
+                                    <t t-set="_searches" t-value="searches"/>
+                                    <t t-set="_placeholder">Buscar un evento...</t>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

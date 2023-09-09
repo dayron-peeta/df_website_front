@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+        <template id="sponsor_event" name="Feria sponsor event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active myriadpro-regular d-flex" aria-current="page">
+                                Sponsors
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">
+                            SPONSORS
+                        </h1>
+                    </div>
+                    <div class="container mt-1 mb-5">
+                        <div>
+                            <t t-foreach="sponsors_with_types" t-as="sponsor_type">
+
+                            <div class="row justify-content-center mt-5">
+                                <div class="col-sm-4 px-1">
+                                    <t t-if="sponsor_type and sponsor_type.image_128">
+                                        <img class="img-fluid w-100 px-4"
+                                             t-att-src="image_data_uri(sponsor_type.image_128)"/>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-center justify-content-center">
+                                <t t-foreach="sponsors_with_types[sponsor_type]" t-as="sponsor_a">
+                                    <div class="col-sm-3 text-center mt-4">
+                                        <a t-att-href="sponsor_a.url" target="_blank">
+                                            <img t-att-src="image_data_uri(sponsor_a.image_512)"
+                                                 t-att-alt="sponsor_a.name" class="img-fluid w-100"/>
+                                        </a>
+                                    </div>
+                                </t>
+                            </div>
+
+                        </t>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

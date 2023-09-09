@@ -1,0 +1,119 @@
+<odoo>
+    <data>
+        <template id="documents_presentations">
+
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page" />
+                <input t-if="event" id="EVENT_ID" t-att-value="event.id" type="hidden" />
+                <t t-call="df_website_front.loader_event" />
+                <t t-call="df_website_front.modal_track" />
+                <t t-call="df_website_front.modal_accredited_profile_user" />
+                <t t-call="df_website_front.modal_add_speaker_conference" />
+                <t t-call="df_website_front.modal_detail_speaker" />
+                <t t-if="event">
+                    <t t-call="df_website_front.event_navbar_dinamic" />
+                </t>
+                <t t-else="">
+                    <!--  Intro -->
+                    <div
+                        class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow ">
+                        <h2 class="my-0 mr-md-auto text-left">DOCUMENTS/PRESENTATIONS</h2>
+                        <t t-if="event">
+                            <a class="btn btn-outline-primary" t-attf-href="/evento/{{event.id}}">
+                                BACK</a>
+                        </t>
+                        <t t-else="">
+                            <a class="btn btn-outline-primary" t-attf-href="/event">BACK</a>
+                        </t>
+                    </div>
+                </t>
+
+                <div class="oe_structure">
+                    <!--  Intro/Descriptions -->
+                    <div class="container">
+                        <div class="mt-4 mb-4">
+                            <h2 class="text-center encabezados myriadpro-semibold-condensed">
+                                DOCUMENTS/PRESENTATIONS</h2>
+                            <hr class="encabezado-underline" />
+                        </div>
+                        <p class="myriadpro-regular mb-4">Here you can edit your user documents and
+                            presentations, by editing
+                            your information. This data will be visible for registered users only.
+                            We will
+                            never expose or publish your personal data to others no related with
+                            this event.
+                        </p>
+                    </div>
+
+                    <div class="container mt-3">
+                        <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                            <button id="add_profile_presentation"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                Add presentation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="oe_structure internal_page_footer" />
+
+                <!--  Tabla -->
+                    <table class="table" id="user_tracks" data-resources="3">
+                        <thead>
+                            <!--  Columnas de la tabla -->
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" >Date/time</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col" >Title</th>
+                                <th scope="col" >Event</th>
+                                <th scope="col" >State</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="tracks" t-as="track">
+                                <tr t-att-id="track.id">
+                                    <th scope='row'>
+                                        <t t-esc="track_index + 1" />
+                                    </th>
+                                    <td>
+                                        <t t-esc="track.get_date_for_tzone_user()" />
+                                    </td>
+                                    <td>
+                                        <t t-esc="track.sudo().format_number_duration()" />
+                                    </td>
+                                    <td>
+                                        <p class="track_name_id">
+                                            <t t-esc="track.name" />
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p t-if="track.event_id" class="track_name_id">
+                                            <t t-esc="track.event_id.name" />
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p class="track.stage_id">
+                                            <t t-esc="track.stage_id.name" />
+                                        </p>
+                                    </td>
+                                    <!--  Acciones de la tabla  -->
+                                    <td>
+                                        <a t-attf-href="/#{track.id}/info_documents_presentations"
+                                            class='fa fa-edit icon-fa-myfont cursor-pointer'
+                                            title="Edit track" />
+                                        <a
+                                                class='deleteTrack fa fa-close icon-fa-myfont cursor-pointer'
+                                                title="Delete track" />
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+            </t>
+        </template>
+    </data>
+</odoo> 
+        

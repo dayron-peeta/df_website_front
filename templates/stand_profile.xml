@@ -1,0 +1,1136 @@
+<odoo>
+    <data>
+
+        <!-- Muestra la opción de ir a su perfil de stand en el menú del usuario, si este es un expositor -->
+        <template id="my_account_link" inherit_id="website.user_dropdown">
+            <xpath expr="//div[@id='o_logout_divider']" position="before">
+                <t t-if="event and present_stand">
+                    <div id="o_stand_divider" class="dropdown-divider"/>
+                    <a t-att-href="'/evento/%s/stand_profile' % (event.id)" role="menuitem" class="dropdown-item">
+                        My Stand
+                    </a>
+                </t>
+            </xpath>
+        </template>
+
+        <template id="stand_profile" name="Stand Profile">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.modal_save_edit_resources"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <t t-set="user_log" t-value="request.env.user"/>
+                <t t-set="user_log_parent" t-value="user_log.partner_id.parent_id"/>
+                <div class="container mb-5 mt-fair-stand-profile">
+                    <div class="mt-4 mb-5">
+                        <h2 class="text-center encabezados myriadpro-semibold-condensed">STAND PROFILE</h2>
+                        <hr class="encabezado-underline"/>
+                    </div>
+                    <div class="col-sm-12">
+                        <div>
+                            <p>This is the information displayed at the event about your company. Remember that you
+                                must give an appropriate image to attract attendance to your stand.
+                            </p>
+                        </div>
+                        <div class="margin-pdata">
+                            <p class="text-strong float-left">Fair Location</p>
+                        </div>
+                        <hr class="underline-stand-profile"/>
+                        <div class="float-left div_span_pavillion">
+                            <p class="text-strong float-left">Pavillion:
+                            </p>
+                            <span id="pavillion" class="float-left">Not assigned</span>
+                        </div>
+                        <div class="float-left margin-left-2 div_span_stand">
+                            <p class="text-strong float-left">Stand:
+                            </p>
+                            <t t-if="not area_id">
+                                <span id="stand_not_assigned" class="float-left">Not assigned</span>
+                            </t>
+                            <t t-else="">
+                                <span id="stand_assigned" class="float-left">Assigned</span>
+                            </t>
+                        </div>
+
+                        <div t-attf-class="#{'d-none' if not area_id else 'd-block'} float-right mt-2">
+                            <t t-if="area_id">
+                                <a t-att-href="'/evento/%s/%s/event_area' % (event.id,area_id.id)"
+                                   class="float-right btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 mb-2 url_span_stand">
+                                    <botton>See Stand</botton>
+                                </a>
+                            </t>
+                            <t t-else="">
+                                <a href="#"
+                                   class="float-right btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 mb-2 url_span_stand">
+                                    <botton>See Stand</botton>
+                                </a>
+                            </t>
+                        </div>
+                    </div>
+                    <br/>
+                </div>
+
+                <ul class="nav nav-tabs my-nav-tabs" role="tablist">
+                    <li class="nav-item mx-auto ml-sm-auto mr-sm-0" role="presentation">
+                        <a class="nav-link active my-nav-link mb-0 myriadpro-regular enable-tab"
+                           id="stand_profile_ins_data" data-toggle="tab"
+                           href="#stand_profile_ins_data_form" role="tab"
+                           aria-controls="stand_profile_ins_data_form" aria-selected="true">
+                            Institutional Data
+                        </a>
+                    </li>
+                    <li class="nav-item mx-auto mx-sm-0" role="presentation">
+                        <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                           id="stand_profile_design"
+                           data-toggle="tab" href="#stand_profile_design_form" role="tab"
+                           aria-controls="stand_profile_design_form" aria-selected="false">
+                            Stand Design
+                        </a>
+                    </li>
+                    <li class="nav-item mx-auto mx-sm-0" role="presentation">
+                        <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                           id="stand_profile_doc"
+                           data-toggle="tab" href="#stand_profile_doc_form" role="tab"
+                           aria-controls="stand_profile_doc_form" aria-selected="false">
+                            Stand Documents
+                        </a>
+                    </li>
+                    <li class="nav-item mx-auto mx-sm-0" role="presentation">
+                        <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                           id="stand_profile_img"
+                           data-toggle="tab" href="#stand_profile_img_form" role="tab"
+                           aria-controls="stand_profile_img_form" aria-selected="false">
+                            Stand Images
+                        </a>
+                    </li>
+                    <li class="nav-item mx-auto mx-sm-0" role="presentation">
+                        <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                           id="stand_profile_videos"
+                           data-toggle="tab" href="#stand_profile_videos_form" role="tab"
+                           aria-controls="stand_profile_videos_form" aria-selected="false">
+                            Stand Videos
+                        </a>
+                    </li>
+                    <li class="nav-item mx-auto mx-sm-0" role="presentation">
+                        <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                           id="stand_profile_cat"
+                           data-toggle="tab" href="#stand_profile_cat_form" role="tab"
+                           aria-controls="stand_profile_cat_form" aria-selected="false">
+                            Stand Catalog
+                        </a>
+                    </li>
+                    <li class="nav-item mx-auto mr-sm-auto ml-sm-0" role="presentation">
+                        <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                           id="accredited_user"
+                           data-toggle="tab" href="#accredited_user_form" role="tab"
+                           aria-controls="accredited_user_form" aria-selected="false">
+                            Accredited Users
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+
+                    <div class="tab-pane fade show active" id="stand_profile_ins_data_form"
+                         role="tabpanel"
+                         aria-labelledby="stand_profile_ins_data_form_tab">
+                        <form id="form_stand_profile_ins_data" class="mt-5">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="area_id">
+                                <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                            </t>
+                            <div class="container">
+                                <div class="row mt-5">
+
+                                    <div class="col-sm-6">
+                                        <div class="mb-4 my-form-outline">
+                                            <select id="country_select_stand"
+                                                    name="country_id"
+                                                    class="form-control my-form-control my-select selectpicker"
+                                                    title=" " data-live-search="true">
+                                                <t t-foreach="countrys" t-as="country">
+                                                    <option t-att-value="country.id"
+                                                            t-att-selected="user_log_parent.country_id.id == country.id"
+                                                            t-att-data-code="country.code">
+                                                        <t t-esc="country.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+
+                                            <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.country_id else ''} my-form-label myriadpro-regular">
+                                                <span class="text-danger">*</span>Country of location
+                                            </label>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <select id="province_state_region_select_stand"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        name="state_id" title=" " data-live-search="true"
+                                                        t-attf-is-required="#{'true' if user_log_parent.country_id.code == 'CU' else false}">
+                                                    <t t-foreach="provinces" t-as="province">
+                                                        <option t-att-value="province.id"
+                                                                t-att-selected="user_log_parent.state_id.id == province.id">
+                                                            <t t-esc="province.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.state_id else ''} my-form-label myriadpro-regular">
+                                                    <t t-if="user_log_parent.country_id.code == 'CU'">
+                                                        <span class="text-danger">*</span>
+                                                    </t>
+                                                    Province / State / Region
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <select id="municipality_select_stand"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        name="municipality_id"
+                                                        title=" " data-live-search="true"
+                                                        t-attf-is-required="#{'true' if user_log_parent.country_id.code == 'CU' else false}">
+                                                    <t t-foreach="municipalitys" t-as="municipality">
+                                                        <option t-att-value="municipality.id"
+                                                                t-att-selected="user_log_parent.municipality_id.id == municipality.id">
+                                                            <t t-esc="municipality.name"/>
+                                                        </option>
+                                                    </t>
+
+                                                </select>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.municipality_id else ''} my-form-label myriadpro-regular">
+                                                    <t t-if="user_log_parent.country_id.code == 'CU'">
+                                                        <span class="text-danger">*</span>
+                                                    </t>
+                                                    Municipality
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="city"
+                                                       class="form-control my-form-control"
+                                                       t-att-value="user_log_parent.city"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.city else ''} my-form-label myriadpro-regular">
+                                                    City
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <select id="institution_type_select_stand"
+                                                        name="type_institution_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true">
+
+                                                    <t t-foreach="type_instis" t-as="type_insti">
+                                                        <option t-att-value="type_insti['id']"
+                                                                t-att-selected="user_log.parent_id.type_institution_id.id == type_insti['id']"
+                                                                t-att-data-nit="'true' if type_insti['use_nit'] else 'false'"
+                                                                t-att-data-code="type_insti['code']">
+                                                            <t t-esc="type_insti['name']"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log.parent_id and user_log.parent_id.type_institution_id else ''} my-form-label myriadpro-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Institution type
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input id="inp_name_social_stand" name="name"
+                                                       type="text" t-att-value="user_log_parent.name"
+                                                       class="form-control my-form-control"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.name else ''} my-form-label myriadpro-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Name or Social reason
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div id="div_code_reeup"
+                                                 t-attf-class="#{'d-none' if code_nit else 'd-block'} my-form-outline">
+                                                <select id="code_reeup_select_stand"
+                                                        name="code_reeup_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        t-attf-is-required="#{'false' if code_nit else 'true'}"
+                                                        title=" " data-live-search="true">
+                                                    <t t-foreach="partnerts_reeup" t-as="partnert_reeup">
+                                                        <option t-att-value="partnert_reeup['reeup']"
+                                                                t-att-selected="user_log_parent.code_reeup == partnert_reeup['reeup']"
+                                                                t-att-data-industry="partnert_reeup['industry_id']"
+                                                                t-att-data-state-id="partnert_reeup['state_id']"
+                                                                t-att-data-municipality-id="partnert_reeup['municipality_id']"
+                                                                t-att-data-entity-name="partnert_reeup['name']"
+                                                                t-att-data-economic-activity="partnert_reeup['economic_activity_id']">
+                                                            <t t-esc="partnert_reeup['reeup']"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent.code_reeup else ''} my-form-label myriadpro-regular">
+                                                    <t t-if="code_nit == False">
+                                                        <span class="text-danger">*</span>
+                                                    </t>
+                                                    REEUP Code
+                                                </label>
+                                            </div>
+                                            <div id="div_code_nit"
+                                                 t-attf-class="#{'d-block' if code_nit else 'd-none'} my-form-outline">
+                                                <input type="text" name="vat" id="vat_inst_stand"
+                                                       class="form-control my-form-control"
+                                                       t-attf-is-required="#{'true' if code_nit else 'false'}"
+                                                       t-att-value="user_log_parent.vat"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.vat else ''} my-form-label myriadpro-regular">
+                                                    <!--                                                    <t t-if="code_nit == True">-->
+                                                    <span class="text-danger">*</span>
+                                                    NIT code
+                                                    <!--                                                    </t>-->
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <select id="sector_select_stand"
+                                                        name="industry_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        is-required="true"
+                                                        title=" " data-live-search="true">
+                                                    <t t-foreach="economic_sectors" t-as="economic">
+                                                        <option t-att-value="economic.id"
+                                                                t-att-selected="user_log_parent.industry_id.id == economic.id">
+                                                            <t t-esc="economic.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.industry_id else ''} my-form-label myriadpro-regular">
+                                                    <span class="text-danger">*</span>Economic sector
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6 order-12 order-sm-1">
+                                        <div class="mb-4 px-4">
+                                            <div>
+                                                <div>
+                                                    <t t-if="user_log_parent and user_log_parent.image_1920">
+                                                        <img t-attf-src="data:image/*; base64,{{user_log_parent.image_1920}}"
+                                                             width="75px"
+                                                             alt="Picture" id="load-img-url-stand"/>
+                                                    </t>
+                                                    <t t-else="">
+                                                        <img src="/df_website_front/static/src/img/picture_picture.png"
+                                                             width="75px"
+                                                             alt="Picture" id="load-img-url-stand"/>
+                                                    </t>
+                                                </div>
+                                                <label class="myriadpro-regular">Uploading an icon profile will
+                                                    help to recognize your brand easier.
+                                                    Crop it to 195 x 50 pixels or in a proportional format
+                                                </label>
+                                                <input type="file" class="form-control border-0" accept="image/*"
+                                                       onChange="img_pathUrl_Stand(this);" name="logo_inst"/>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 order-1 order-sm-12">
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <select id="economic_activity_select_stand"
+                                                        name="economic_activity_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        is-required="true"
+                                                        title=" " data-live-search="true">
+                                                    <t t-foreach="economic_activitys" t-as="economica">
+                                                        <option t-att-value="economica.id"
+                                                                t-att-selected="user_log_parent.economic_activity_id.id == economica.id">
+                                                            <t t-esc="economica.code"/>
+                                                            -
+                                                            <t t-esc="economica.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.economic_activity_id else ''} my-form-label myriadpro-regular">
+                                                    <span class="text-danger">*</span>Economic activity
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="comment" rows="3">
+                                                    <t t-esc="user_log_parent.comment"/>
+                                                </textarea>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.comment else ''} my-form-label myriadpro-regular">
+                                                    Short Description
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="comment_large"
+                                                          rows="4">
+                                                    <t t-esc="user_log_parent.comment_large"/>
+                                                </textarea>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent and user_log_parent.comment_large else ''} my-form-label myriadpro-regular">
+                                                    Large Description
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h2 class="mb-4">Media</h2>
+                                        <p>Put a website is not mandatory, however, this will help other users
+                                            to know you better and make it easy to increase security and
+                                            confidence toward your enterprise.
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="email"
+                                                       t-att-value="user_log_parent.email"
+                                                       class="form-control my-form-control"
+                                                       is-email="true"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent.email else ''} my-form-label myriadpro-regular">
+                                                    Email
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-email-alert d-none">
+                                                The email format is incorrect
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="website"
+                                                       t-att-value="user_log_parent.website"
+                                                       class="form-control my-form-control" is-url="true"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent.website else ''} my-form-label myriadpro-regular">
+                                                    Website
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                The url format is incorrect
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="phone_contact"
+                                                       t-att-value="user_log_parent.phone"
+                                                       class="form-control my-form-control" is-phone="true"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent.phone else ''} my-form-label myriadpro-regular">
+                                                    Phone
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                The phone format is incorrect. Country code + phone number. Ex.
+                                                + 53XXXXXXXX
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-5">
+                                    <div class="col-12">
+                                        <h2 class="mb-4">Social Networks</h2>
+                                        <p>Link your socials to get the rest of users have another way to
+                                            contact you.
+                                        </p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="twitter_url"
+                                                       t-att-value="user_log_parent.twitter_url"
+                                                       class="form-control my-form-control" is-url="true"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent.twitter_url else ''} my-form-label myriadpro-regular">
+                                                    URL Twitter
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                The url format is incorrect
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="instagram_url"
+                                                       t-att-value="user_log_parent.instagram_url"
+                                                       class="form-control my-form-control" is-url="true"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent.instagram_url else ''} my-form-label myriadpro-regular">
+                                                    URL Instagram
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                The url format is incorrect
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="telegram_url"
+                                                       t-att-value="user_log_parent.telegram_url"
+                                                       class="form-control my-form-control" is-url="true"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent.telegram_url else ''} my-form-label myriadpro-regular">
+                                                    URL Telegram
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                The url format is incorrect
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="facebook_url"
+                                                       t-att-value="user_log_parent.facebook_url"
+                                                       class="form-control my-form-control" is-url="true"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent.facebook_url else ''} my-form-label myriadpro-regular">
+                                                    URL Facebook
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                The url format is incorrect
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="linkedin_url"
+                                                       t-att-value="user_log_parent.linkedin_url"
+                                                       class="form-control my-form-control" is-url="true"/>
+                                                <label t-attf-class="#{'label-select-automatic-top' if user_log_parent.linkedin_url else ''} my-form-label myriadpro-regular">
+                                                    URL Linkedin
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                The url format is incorrect
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4 mt-4 justify-content-end">
+                                    <button id="save_stand_inst_data"
+                                            class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="stand_profile_design_form" role="tabpanel"
+                         aria-labelledby="stand_profile_design_form_tab">
+
+                        <t t-call="df_website_front.modal_dinamic_url_video"/>
+                        <t t-call="df_website_front.modal_dinamic_logo"/>
+                        <t t-call="df_website_front.modal_dinamic_pendon_1"/>
+                        <t t-call="df_website_front.modal_dinamic_pendon_2"/>
+                        <t t-call="df_website_front.modal_dinamic_pendon_3"/>
+
+
+                        <form id="form_stand_profile_design" class="mt-5">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="area_id">
+                                <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                            </t>
+                            <div class="container">
+                                <div class="row mt-5 mb-3">
+                                    <div class="col-12">
+                                        <h1 class="mb-4 myriadpro-semibold-condensed text-center text-uppercase">
+                                            Select Stand Type
+                                        </h1>
+                                    </div>
+                                    <t t-foreach="event_templates" t-as="evt">
+                                        <div class="col-sm-4 my-3 justify-content-center">
+                                            <a href="#" name="stand_select"
+                                               t-att-data-value="evt['event_template_id'].id"
+                                               t-att-data-stand="evt['event_template_id'].template_dynamic_id"
+                                               t-att-data-plan="evt['plan_id']"
+                                               t-att-data-cant-img="evt['cant_img']"
+                                               t-att-data-cant-media="evt['cant_media']"
+                                               t-att-data-cant-doc="evt['cant_doc']"
+                                               t-att-data-cant-pendons="evt['cant_pendons']"
+                                               t-att-data-cant-products="evt['cant_products']"
+                                               t-att-data-cant-attendees="evt['cant_attendees']"
+                                               t-attf-data-plan-line-id="#{evt['event_plan_id'] if 'event_plan_id' in evt else ''}">
+
+                                                <div t-attf-class="#{'stand-active' if area_id and evt['current_template'] else '' } card box-shadow-card rounded">
+                                                    <t t-if="evt['event_template_id'].image_1920">
+                                                        <img t-att-src="image_data_uri(evt['event_template_id'].image_1920)"
+                                                             t-att-alt="evt['event_template_id'].name"
+                                                             class="img-fluid w-100"/>
+                                                    </t>
+                                                    <t t-if="evt['price']">
+                                                        <p class="myriadpro-regular text-center mt-3">Price:
+                                                            <span t-esc="evt['price']"/>
+                                                        </p>
+                                                    </t>
+                                                </div>
+
+                                            </a>
+                                        </div>
+                                    </t>
+                                </div>
+
+
+                                <div id="stand_resources_basic_id"
+                                     t-attf-class="#{'d-block' if area_id else 'd-none'}">
+                                    <div class="row pt-5 justify-content-center">
+                                        <div class="col-12">
+                                            <h1 class="mb-4 myriadpro-semibold-condensed text-center text-uppercase">
+                                                Decorate the selected stand
+                                            </h1>
+                                        </div>
+                                        <div class="col-sm-11 px-0">
+                                            <!--  Obtener el id dynamic para el template actual del Stand-->
+                                            <t t-set="template_design_id" t-value=""/>
+                                            <t t-if="current_template_id.template_dynamic_id">
+                                                <t t-set="template_design_id"
+                                                   t-value="current_template_id.template_dynamic_id"/>
+                                            </t>
+
+                                            <div t-attf-class="#{'d-block' if current_template_id else 'd-none'} video-promo-div"
+                                                 t-attf-id="#{template_design_id}-video-promo">
+                                                <div t-attf-class="#{'active-button-div' if current_template_id else ''} w-100 h-100 d-flex justify-content-center align-items-center"
+                                                     id="video-promo-button-div">
+                                                    <a href="#" class="p-2 rounded-circle dinamic-stand-button"
+                                                       title="Add promotional video" data-toggle="modal"
+                                                       data-target="#dinamic-url-video">
+                                                        <img src="/df_website_front/static/src/img/folder-16.svg"
+                                                             width="25"/>
+                                                    </a>
+                                                </div>
+                                                <div t-attf-class="#{'d-block' if current_template_id else 'd-none'} embed-responsive embed-responsive-16by9 h-100 w-100"
+                                                     id="video-promo-content">
+                                                    <iframe class="embed-responsive-item"
+                                                            t-att-src="area_id.video_stand_url"
+                                                            allowfullscreen="True"/>
+                                                </div>
+                                            </div>
+
+                                            <div t-attf-class="#{'d-block' if current_template_id else 'd-none'} logo-div"
+                                                 t-attf-id="#{template_design_id}-logo">
+                                                <div t-attf-class="#{'active-button-div' if current_template_id else ''} w-100 h-100 d-flex justify-content-center align-items-center"
+                                                     id="logo-button-div">
+                                                    <a href="#" class="p-2 rounded-circle dinamic-stand-button"
+                                                       title="Add logo" data-toggle="modal"
+                                                       data-target="#dinamic-logo">
+                                                        <img src="/df_website_front/static/src/img/folder-16.svg"
+                                                             width="25"/>
+                                                    </a>
+                                                </div>
+
+                                                <t t-if="current_template_id and current_template_id.image_1920">
+                                                    <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}"
+                                                         class="d-block h-100 w-100" id="logo-content"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <img src="#" class="d-none h-100 w-100" id="logo-content"/>
+                                                </t>
+                                            </div>
+
+                                            <div t-attf-class="#{'d-block' if current_template_id else 'd-none'} pendon-div"
+                                                 t-attf-id="#{template_design_id}-pendon">
+                                                <div t-attf-class="#{'active-button-div' if current_template_id else ''} w-100 h-100 d-flex justify-content-center align-items-center"
+                                                     id="pendon-1-button-div">
+                                                    <a href="#" class="p-2 rounded-circle dinamic-stand-button"
+                                                       title="Add pendon" data-toggle="modal"
+                                                       data-target="#dinamic-pendon-1">
+                                                        <img src="/df_website_front/static/src/img/folder-16.svg"
+                                                             width="25"/>
+                                                    </a>
+                                                </div>
+                                                <t t-if="pendons.get('pendon_1',False)">
+                                                    <img t-attf-src="data:image/*;base64,{{pendons['pendon_1']['image']}}"
+                                                         class="d-block h-100 w-100" id="pendon-1-content"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <img src="#" class="d-none h-100 w-100" id="pendon-1-content"/>
+                                                </t>
+                                            </div>
+
+                                            <div t-attf-class="#{'d-block' if template_design_id == 'stand-a1' or template_design_id == 'stand-a2' or template_design_id == 'stand-a3' or  template_design_id == 'stand-i1' or template_design_id == 'stand-i2' or template_design_id == 'stand-i3' or template_design_id == 'stand-palco-i1' or template_design_id == 'stand-palco-a1' or template_design_id == 'stand-palco-a2' or template_design_id == 'stand-palco-a3' else 'd-none'} pendon-2-div"
+                                                 t-attf-id="#{template_design_id}-pendon-2">
+                                                <div t-attf-class="#{'active-button-div' if current_template_id else ''} w-100 h-100 d-flex justify-content-center align-items-center"
+                                                     id="pendon-2-button-div">
+                                                    <a href="#" class="p-2 rounded-circle dinamic-stand-button"
+                                                       title="Add pendon" data-toggle="modal"
+                                                       data-target="#dinamic-pendon-2">
+                                                        <img src="/df_website_front/static/src/img/folder-16.svg"
+                                                             width="25"/>
+                                                    </a>
+                                                </div>
+                                                <t t-if="pendons.get('pendon_2',False)">
+                                                    <img t-attf-src="data:image/*;base64,{{pendons['pendon_2']['image']}}"
+                                                         class="d-block h-100 w-100" id="pendon-2-content"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <img src="#" class="d-none h-100 w-100" id="pendon-2-content"/>
+                                                </t>
+                                            </div>
+
+                                            <div t-attf-class="#{'d-block' if template_design_id == 'stand-a1' or template_design_id == 'stand-a2' or template_design_id == 'stand-a3' or template_design_id == 'stand-palco-a1' or template_design_id == 'stand-palco-a2' or template_design_id == 'stand-palco-a3' else 'd-none'} pendon-3-div"
+                                                 t-attf-id="#{template_design_id}-pendon-3">
+                                                <div t-attf-class="#{'active-button-div' if current_template_id else ''} w-100 h-100 d-flex justify-content-center align-items-center"
+                                                     id="pendon-3-button-div">
+                                                    <a href="#" class="p-2 rounded-circle dinamic-stand-button"
+                                                       title="Add pendon" data-toggle="modal"
+                                                       data-target="#dinamic-pendon-3">
+                                                        <img src="/df_website_front/static/src/img/folder-16.svg"
+                                                             width="25"/>
+                                                    </a>
+                                                </div>
+                                                <t t-if="pendons.get('pendon_3',False)">
+                                                    <img t-attf-src="data:image/*;base64,{{pendons['pendon_3']['image']}}"
+                                                         class="d-block h-100 w-100" id="pendon-3-content"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <img src="#" class="d-none h-100 w-100" id="pendon-3-content"/>
+                                                </t>
+                                            </div>
+
+                                            <t t-if="current_template_id.image_1920">
+                                                <img t-att-src="image_data_uri(current_template_id.image_1920)"
+                                                     alt="Picture" class="img-fluid w-100 stand-decor-img"/>
+                                            </t>
+                                            <t t-else="">
+                                                <img src="#" alt="Picture" class="img-fluid w-100 stand-decor-img"/>
+                                            </t>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="comment_stand"
+                                                          rows="2">
+                                                    <t t-esc="area_id.description"/>
+                                                </textarea>
+                                                <label t-attf-class="#{'label-select-automatic-top' if area_id.description else ''} my-form-label myriadpro-regular">
+                                                    Stand information
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-4 mt-4 justify-content-end">
+                                        <button id="save_stand_profile"
+                                                class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="stand_profile_doc_form" role="tabpanel"
+                         aria-labelledby="stand_profile_doc_form_tab">
+                        <form id="form_stand_profile_doc" class="mt-5">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="area_id">
+                                <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                            </t>
+                            <div class="container">
+                                <div class="row mt-5">
+                                    <div class="col-sm">
+                                        <h2 class="mb-3 myriadpro-regular" id="title_document">Document Managment
+                                            <t t-if="plan_select">
+                                                <span>
+                                                    (<t t-esc="plan_select.cant_doc"/>)
+                                                </span>
+                                            </t>
+                                            <t t-else="">
+                                                <span/>
+                                            </t>
+                                        </h2>
+                                    </div>
+                                    <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                                        <button id="add_document_id"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Add document
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table" id="documents_mng" data-resources="4">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">File</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="documents" t-as="doc">
+                                                    <t t-set="index_current" t-value="doc_index + 1"/>
+                                                    <tr t-att-id="doc.id">
+                                                        <th scope='row'>
+                                                            <t t-esc="doc_index + 1"/>
+                                                        </th>
+                                                        <td>
+                                                            <p>
+                                                                <t t-esc="doc.name"/>
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <a t-att-href="'/evento/my/download?attachment_id=%s' % (doc.id)"
+                                                               target="_blank">
+                                                                <div class='o_portal_chatter_attachment_name'>
+                                                                    <t t-esc='doc.name'/>
+                                                                </div>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <a class='editRow fa fa-edit icon-fa-myfont cursor-pointer'/>
+                                                            <a class='deleteRow fa fa-close icon-fa-myfont cursor-pointer'/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="stand_profile_img_form" role="tabpanel"
+                         aria-labelledby="stand_profile_img_form_tab">
+                        <form id="form_stand_profile_img" class="mt-5">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="area_id">
+                                <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                            </t>
+                            <div class="container">
+                                <div class="row mt-5">
+                                    <div class="col-sm">
+                                        <h2 class="mb-3 myriadpro-regular" id="title_image_gallery">Image Gallery
+                                            <t t-if="plan_select">
+                                                <span>
+                                                    (<t t-esc="plan_select.cant_img"/>)
+                                                </span>
+                                            </t>
+                                            <t t-else="">
+                                                <span/>
+                                            </t>
+                                        </h2>
+                                    </div>
+                                    <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                                        <button id="add_image_id"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Add image
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table" id="gallery_mng" data-resources="5">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="images" t-as="img">
+                                                    <t t-set="index_current" t-value="img_index + 1"/>
+                                                    <tr t-att-id="img.id">
+                                                        <th scope='row'>
+                                                            <t t-esc="img_index + 1"/>
+                                                        </th>
+                                                        <td>
+                                                            <p>
+                                                                <t t-esc="img.name"/>
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <img t-attf-src="data:image/*; base64,{{img.datas}}"
+                                                                 width="75px" alt="Picture"
+                                                                 class="preview_image_img_stand"/>
+                                                        </td>
+                                                        <td>
+                                                            <a class='editRow fa fa-edit icon-fa-myfont cursor-pointer'/>
+                                                            <a class='deleteRow fa fa-close icon-fa-myfont cursor-pointer'/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="stand_profile_videos_form" role="tabpanel"
+                         aria-labelledby="stand_profile_videos_form_tab">
+                        <form id="form_stand_profile_videos" class="mt-5">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="area_id">
+                                <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                            </t>
+                            <div class="container">
+                                <div class="row mt-5">
+                                    <div class="col-sm">
+                                        <h2 class="mb-3 myriadpro-regular" id="title_video_gallery">Video Gallery
+                                            <t t-if="plan_select">
+                                                <span>
+                                                    (<t t-esc="plan_select.cant_media"/>)
+                                                </span>
+                                            </t>
+                                            <t t-else="">
+                                                <span/>
+                                            </t>
+                                        </h2>
+                                    </div>
+                                    <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                                        <button id="add_media_id"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Add video
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table" id="video_mng" data-resources="6">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">URL</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="medias" t-as="media">
+                                                    <t t-set="index_current" t-value="media_index + 1"/>
+                                                    <tr t-att-id="media.id">
+                                                        <th scope='row'>
+                                                            <t t-esc="media_index + 1"/>
+                                                        </th>
+                                                        <td>
+                                                            <p>
+                                                                <t t-esc="media.name"/>
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <a t-att-href="media.url" class='cursor-pointer'
+                                                               _target="blank">
+                                                                <t t-esc="media.url"/>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                <t t-esc="media.description"/>
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <a class='editRow fa fa-edit icon-fa-myfont cursor-pointer'/>
+                                                            <a class='deleteRow fa fa-close icon-fa-myfont cursor-pointer'/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="stand_profile_cat_form" role="tabpanel"
+                         aria-labelledby="stand_profile_cat_form_tab">
+                        <form id="form_stand_profile_cat" class="mt-5">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="area_id">
+                                <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                            </t>
+                            <div class="container">
+                                <div class="row mt-5">
+                                    <div class="col-sm">
+                                        <h2 class="mb-3 myriadpro-regular" id="title_catalogue">Catalogue Management
+                                            <t t-if="plan_select">
+                                                <span>
+                                                    (<t t-esc="plan_select.cant_products"/>)
+                                                </span>
+                                            </t>
+                                            <t t-else="">
+                                                <span/>
+                                            </t>
+                                        </h2>
+                                    </div>
+                                    <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                                        <!--                                        <button id="select_catalogue_id"-->
+                                        <!--                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">-->
+                                        <!--                                            Select product-->
+                                        <!--                                        </button>-->
+                                        <button id="add_catalogue_id"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Add product
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table" id="catalogue_mng" data-resources="7">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">
+                                                        #
+                                                    </th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Reference</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="area_product_ids" t-as="area_product_id">
+                                                    <t t-set="index_current" t-value="area_product_id_index + 1"/>
+                                                    <tr t-att-id="area_product_id.id">
+                                                        <th scope='row'>
+                                                            <t t-esc="area_product_id_index + 1"/>
+                                                        </th>
+                                                        <td>
+                                                            <p>
+                                                                <t t-esc="area_product_id.product_id.name"/>
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                <t t-esc="area_product_id.product_id.default_code"/>
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                <t t-esc="area_product_id.description"/>
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                <t t-esc="area_product_id.price"/>
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <img t-attf-src="data:image/*; base64,{{area_product_id.product_id.image_1920}}"
+                                                                 width="75px" alt="Picture"
+                                                                 class="preview_image_img_stand"/>
+                                                        </td>
+                                                        <td>
+                                                            <a class='editRow fa fa-edit icon-fa-myfont cursor-pointer'/>
+                                                            <a class='deleteRow fa fa-close icon-fa-myfont cursor-pointer'/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="accredited_user_form" role="tabpanel"
+                         aria-labelledby="accredited_user_form_tab">
+                        <form id="form_accredited_user" class="mt-5">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="area_id">
+                                <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                            </t>
+                            <div class="container">
+                                <div class="row mt-5 justify-content-center">
+                                    <div class="col-sm-10">
+                                        <h2 class="mb-3 myriadpro-regular" id="title_accredited">Accredited Users
+                                            <t t-if="plan_select">
+                                                <span>
+                                                    (<t t-esc="plan_select.cant_attendees"/>)
+                                                </span>
+                                            </t>
+                                            <t t-else="">
+                                                <span/>
+                                            </t>
+                                        </h2>
+                                    </div>
+                                    <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                                        <button id="add_accredited"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Add user
+                                        </button>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table" id="accredited_mng" data-resources="8">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Active</th>
+                                                    <th scope="col">Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <t t-foreach="users_acre" t-as="user_acre">
+                                                    <t t-set="index_current" t-value="user_acre_index + 1"/>
+                                                    <tr t-att-id="user_acre.id">
+                                                        <th scope='row'>
+                                                            <t t-esc="user_acre_index + 1"/>
+                                                        </th>
+                                                        <td>
+                                                            <input type='text' disabled="disabled"
+                                                                   placeholder='Insert email'
+                                                                   class='form-control input-small input-without-border'
+                                                                   t-att-value="user_acre.partner_id.name"/>
+                                                        </td>
+                                                        <td>
+                                                            <input type='text' disabled="disabled"
+                                                                   placeholder='Insert email'
+                                                                   class='form-control input-small input-without-border'
+                                                                   t-att-value="user_acre.email"/>
+                                                        </td>
+                                                        <td>
+                                                            <t t-if="user_acre.user_id and user_acre.user_id.active == true">
+                                                                <span class="fa fa-check-circle"/>
+                                                            </t>
+                                                        </td>
+                                                        <td>
+                                                            <a class='deleteRow fa fa-close icon-fa-myfont cursor-pointer'/>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

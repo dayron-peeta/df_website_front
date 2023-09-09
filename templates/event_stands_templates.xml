@@ -1,0 +1,1897 @@
+<odoo>
+    <data>
+        <template id="stand_select">
+            <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                <t t-if="all_stands and len(all_stands) > 1">
+                    <select data-live-search="true" id="stand_select_id"
+                            class="sigestic-selectpicker form-control my-sigestic-form-control">
+                        <t t-foreach="all_stands" t-as="stand">
+                            <option t-att-value="stand.id"
+                                    t-att-selected="area_id.id == stand.id">
+                                <t t-esc="stand.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </t>
+                <t t-else="">
+                    <p class="text-uppercase">
+                        <t t-esc="area_id.name"/>
+                    </p>
+                </t>
+            </li>
+        </template>
+
+        <template id="layout_fair" inherit_id="website.layout">
+            <xpath expr="//main" position="inside">
+                <t t-if="request.env.user.name != 'Public user' and data_count_nav">
+                    <t t-call="df_website_front.navigation_map"/>
+                </t>
+            </xpath>
+        </template>
+
+
+        <!--  TODO: Stands Serie 4 -->
+
+        <template id="stand_basic_1_serie4_data" name="Stand basic 1 Serie 4">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-b1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_serie4_b1.jpg"
+                             class="w-100"/>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-b1-logo"/>
+                            </t>
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-b1-pendon"/>
+                                </a>
+                            </t>
+                        </t>
+
+                    </div>
+                </div>
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_basic_1_serie4" model="ir.ui.view">
+            <field name="name">Stand Basic Event 1 Serie 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-b1-serie4</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_basic_1_serie4_data"/>
+            </field>
+        </record>
+
+
+         <template id="stand_basic_2_serie4_data" name="Stand basic 2 Serie 4">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-b2-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_serie4_b2.jpg"
+                             class="w-100"/>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-b2-logo"/>
+                            </t>
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-b2-pendon"/>
+                                </a>
+                            </t>
+                        </t>
+
+                    </div>
+                </div>
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+         <record id="stand_basic_2_serie4" model="ir.ui.view">
+            <field name="name">Stand Basic Event 2 Serie 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-b2-serie4</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_basic_2_serie4_data"/>
+            </field>
+        </record>
+
+
+         <template id="stand_basic_3_serie4_data" name="Stand basic 3 Serie 4">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-b3-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_serie4_b3.jpg"
+                             class="w-100"/>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-b3-logo"/>
+                            </t>
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-b3-pendon"/>
+                                </a>
+                            </t>
+                        </t>
+
+                    </div>
+                </div>
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_basic_3_serie4" model="ir.ui.view">
+            <field name="name">Stand Basic Event 3 Serie 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-b3-serie4</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_basic_3_serie4_data"/>
+            </field>
+        </record>
+
+
+        <template id="stand_intermediate_1_serie4_data" name="Stand intermediate 1 Serie 4">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-i1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-i1-logo"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-i1-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-i1-pendon-2"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_serie4_m1.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_intermediate_1_serie4" model="ir.ui.view">
+            <field name="name">Stand Intermediate Event 1 Serie 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-i1-serie4</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_intermediate_1_serie4_data"/>
+            </field>
+        </record>
+
+
+        <template id="stand_intermediate_2_serie4_data" name="Stand intermediate 2 Serie 4">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-i2-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-i2-logo"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-i2-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-i2-pendon-2"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_serie4_m2.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_intermediate_2_serie4" model="ir.ui.view">
+            <field name="name">Stand Intermediate Event 2 Serie 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-i2-serie4</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_intermediate_2_serie4_data"/>
+            </field>
+        </record>
+
+
+        <template id="stand_intermediate_3_serie4_data" name="Stand intermediate 3 Serie 4">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-i3-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-i3-logo"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-i3-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-i3-pendon-2"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_serie4_m3.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_intermediate_3_serie4" model="ir.ui.view">
+            <field name="name">Stand Intermediate Event 3 Serie 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-i3-serie4</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_intermediate_3_serie4_data"/>
+            </field>
+        </record>
+
+
+        <template id="stand_intermediate_4_serie4_data" name="Stand intermediate 4 Serie 4"> 
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-i4-serie4-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-i4-serie4-logo"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-i4-serie4-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-i4-serie4-pendon-2"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_serie4_m4.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_intermediate_4_serie4" model="ir.ui.view">
+            <field name="name">Stand Intermediate Event 4 Serie 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-i1-serie4</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_intermediate_4_serie4_data"/>
+            </field>
+        </record>
+
+
+        <template id="stand_advanced_1_serie4_data" name="Stand advanced 1 Serie 4">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-a3-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a3-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a3-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-a3-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-a3-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-a3-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_serie4_a1.jpg"
+                             class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_advanced_1_serie4" model="ir.ui.view">
+            <field name="name">Stand Advanced Event 1 Serie 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-a3-serie4</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_advanced_1_serie4_data"/>
+            </field>
+        </record>
+
+
+        <template id="stand_advanced_2_serie4_data" name="Stand advanced 2 Serie 4">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-a2-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a2-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a2-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-a2-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-a2-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-a2-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_serie4_a2.jpg"
+                             class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_advanced_2_serie4" model="ir.ui.view">
+            <field name="name">Stand Advanced Event 2 Serie 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-a2-serie4</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_advanced_2_serie4_data"/>
+            </field>
+        </record>
+
+        
+        <!--        TODO: Stands FELTi -->
+        <template id="stand_basic_1_event_data" name="Stand basic 1 event">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-b1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_basico1_felti.jpg"
+                             class="w-100"/>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-b1-logo"/>
+                            </t>
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-b1-pendon"/>
+                                </a>
+                            </t>
+                        </t>
+
+                    </div>
+                </div>
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_basic_1_event" model="ir.ui.view">
+            <field name="name">Stand Basic Event 1</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-b1</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_basic_1_event_data"/>
+            </field>
+        </record>
+
+        <template id="stand_basic_2_event_data" name="Stand basic 2 event">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-b2-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-b2-logo"/>
+                            </t>
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-b2-pendon"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_basico2_felti.jpg"
+                             class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_basic_2_event" model="ir.ui.view">
+            <field name="name">Stand Basic Event 2</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-b2</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_basic_2_event_data"/>
+            </field>
+        </record>
+
+        <template id="stand_basic_3_event_data" name="Stand basic 3 event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-b3-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-b3-logo"/>
+                            </t>
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-b3-pendon"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_basico3_felti.jpg"
+                             class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_basic_3_event" model="ir.ui.view">
+            <field name="name">Stand Basic Event 3</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-b3</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_basic_3_event_data"/>
+            </field>
+        </record>
+
+        <template id="stand_intermediate_1_event_data" name="Stand intermediate 1 event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-i1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-i1-logo"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-i1-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-i1-pendon-2"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_medio1_felti.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_intermediate_1_event" model="ir.ui.view">
+            <field name="name">Stand Intermediate Event 1</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-i1</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_intermediate_1_event_data"/>
+            </field>
+        </record>
+
+        <template id="stand_intermediate_2_event_data" name="Stand intermediate 2 event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-i2-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-i2-logo"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-i2-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-i2-pendon-2"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_medio2_felti.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_intermediate_2_event" model="ir.ui.view">
+            <field name="name">Stand Intermediate Event 2</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-i2</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_intermediate_2_event_data"/>
+            </field>
+        </record>
+
+        <template id="stand_intermediate_3_event_data" name="Stand intermediate 3 event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-i3-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-i3-logo"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-i3-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-i3-pendon-2"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_medio3_felti.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_intermediate_3_event" model="ir.ui.view">
+            <field name="name">Stand Intermediate Event 3</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-i3</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_intermediate_3_event_data"/>
+            </field>
+        </record>
+
+        <template id="stand_advanced_1_event" name="Stand advanced 1 event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-a1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a1-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a1-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-a1-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-a1-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-a1-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_premiun1_felti.jpg"
+                             class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_advanced_1_event_data" model="ir.ui.view">
+            <field name="name">Stand Advanced Event 1</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-a1</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_advanced_1_event"/>
+            </field>
+        </record>
+
+        <template id="stand_advanced_2_event_data" name="Stand advanced 2 event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-a2-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a2-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a2-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-a2-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-a2-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-a2-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_premiun2_felti.jpg"
+                             class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_advanced_2_event" model="ir.ui.view">
+            <field name="name">Stand Advanced Event 2</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-a2</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_advanced_2_event_data"/>
+            </field>
+        </record>
+
+        <template id="stand_advanced_3_event_data" name="Stand advanced 3 event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-a3-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a3-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" alt="Picture"
+                                     id="stand-a3-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-a3-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-a3-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-a3-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_premiun3_felti.jpg"
+                             class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_advanced_3_event" model="ir.ui.view">
+            <field name="name">Stand Advanced Event 3</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-a3</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_advanced_3_event_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_jep_1_data" name="Stand event JEP 1">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-n1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-n1-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-n1-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-n1-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_azul_jornada.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_jep_1" model="ir.ui.view">
+            <field name="name">Stand Event JEP 1</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_jep_1_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_jep_2_data" name="Stand event JEP 2">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-n1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-n1-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-n1-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-n1-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_naranja_jornada.jpg"
+                             class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_jep_2" model="ir.ui.view">
+            <field name="name">Stand Event JEP 2</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_jep_2_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_jep_3_data" name="Stand event JEP 3">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-n1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-n1-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-n1-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-n1-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_negro_jornada.jpg"
+                             class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_jep_3" model="ir.ui.view">
+            <field name="name">Stand Event JEP 3</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_jep_3_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_jep_4_data" name="Stand event JEP 4">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-n1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+
+                        <t t-if="area_id">
+                            <t t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-n1-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-n1-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-n1-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_gris_jornada.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_jep_4" model="ir.ui.view">
+            <field name="name">Stand Event JEP 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_jep_4_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_jep_5_data" name="Stand event JEP 5">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-n1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+
+                        <t t-if="area_id">
+                            <t t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-n1-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-n1-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-n1-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_rojo_jornada.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_jep_5" model="ir.ui.view">
+            <field name="name">Stand Event JEP 5</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_jep_5_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_jep_6_data" name="Stand event JEP 6">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-n1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+
+                        <t t-if="area_id">
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo"/>
+
+                                <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-n1-logo-2"/>
+                            </t>
+
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-n1-pendon"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-n1-pendon-2"/>
+                                </a>
+                            </t>
+
+                            <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                         id="stand-n1-pendon-3"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_n6.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_jep_6" model="ir.ui.view">
+            <field name="name">Stand Event JEP 6</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_jep_6_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_palco_1_data" name="Stand event palco 1">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+                        <t t-if="area_id">
+
+                            <div class="embed-responsive embed-responsive-16by9" id="stand-palco-i1-video-promo">
+                                <t t-if="area_id and area_id.video_stand_url">
+                                    <iframe class="embed-responsive-item"
+                                            t-att-src="area_id.video_stand_url"
+                                            allowfullscreen="True"/>
+                                </t>
+                            </div>
+
+                            <t  t-if="area_id.image_1920">
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-palco-i1-logo"/>
+                            </t>
+                            <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                         id="stand-palco-i1-pendon"/>
+                                </a>
+                            </t>
+                            <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                                <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                   data-lightbox="pendon-carousel">
+                                    <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                         id="stand-palco-i1-pendon-2"/>
+                                </a>
+                            </t>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_palco_1.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_palco_1" model="ir.ui.view">
+            <field name="name">Stand Palco 1</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-palco-i1</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_palco_1_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_palco_2_data" name="Stand event palco 2">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_stand"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-palco-a1-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+                        <t t-if="area_id.image_1920">
+                            <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-palco-a1-logo"/>
+                        </t>
+                        <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                            <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                               data-lightbox="pendon-carousel">
+                                <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                     id="stand-palco-a1-pendon"/>
+                            </a>
+                        </t>
+                        <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                            <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                               data-lightbox="pendon-carousel">
+                                <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                     id="stand-palco-a1-pendon-2"/>
+                            </a>
+                        </t>
+                        <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                            <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                               data-lightbox="pendon-carousel">
+                                <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                     id="stand-palco-a1-pendon-3"/>
+                            </a>
+                        </t>
+                        <img src="/df_website_front/static/src/img/images_stands/stand_palco_2.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_palco_2" model="ir.ui.view">
+            <field name="name">Stand Palco 2</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-palco-a1</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_palco_2_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_palco_3_data" name="Stand event palco 3">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_stand"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-palco-a2-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+                        <t t-if="area_id.image_1920">
+                            <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-palco-a2-logo"/>
+                        </t>
+                        <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                            <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                               data-lightbox="pendon-carousel">
+                                <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                     id="stand-palco-a2-pendon"/>
+                            </a>
+                        </t>
+                        <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                            <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                               data-lightbox="pendon-carousel">
+                                <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                     id="stand-palco-a2-pendon-2"/>
+                            </a>
+                        </t>
+                        <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                            <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                               data-lightbox="pendon-carousel">
+                                <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                     id="stand-palco-a2-pendon-3"/>
+                            </a>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_palco_3.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_palco_3" model="ir.ui.view">
+            <field name="name">Stand Palco 3</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-palco-a2</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_palco_3_data"/>
+            </field>
+        </record>
+
+        <template id="stand_event_palco_4_data" name="Stand event palco 4">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_stand"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+                        <t t-call="df_website_front.visit_counter"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-palco-a3-video-promo">
+                            <t t-if="area_id and area_id.video_stand_url">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="area_id.video_stand_url"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+                        <t  t-if="area_id.image_1920">
+                            <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-palco-a3-logo"/>
+                        </t>
+                        <t t-if="len(pendons) > 0 and pendons['pendon_1']">
+                            <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                               data-lightbox="pendon-carousel">
+                                <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
+                                     id="stand-palco-a3-pendon"/>
+                            </a>
+                        </t>
+                        <t t-if="len(pendons) > 1 and pendons['pendon_2']">
+                            <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                               data-lightbox="pendon-carousel">
+                                <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
+                                     id="stand-palco-a3-pendon-2"/>
+                            </a>
+                        </t>
+                        <t t-if="len(pendons) > 2 and pendons['pendon_3']">
+                            <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                               data-lightbox="pendon-carousel">
+                                <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
+                                     id="stand-palco-a3-pendon-3"/>
+                            </a>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/images_stands/stand_palco_4.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="stand_event_palco_4" model="ir.ui.view">
+            <field name="name">Stand Palco 4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="template_dynamic_id">stand-palco-a3</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.stand_event_palco_4_data"/>
+            </field>
+        </record>
+    </data>
+</odoo>

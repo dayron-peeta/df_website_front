@@ -1,0 +1,266 @@
+<odoo>
+    <data>
+        <template id="committee_event" name="Feria Committee">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active myriadpro-regular d-flex" aria-current="page">
+                                <t t-if="type_c=='scientific'">
+                                    Scientific comittee
+                                </t>
+                                <t t-else="">
+                                    Organizing Committee
+                                </t>
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">
+                            <t t-if="type_c=='scientific'">
+                                SCIENTIFIC COMMITTEE
+                            </t>
+                            <t t-else="">
+                                ORGANIZING COMMITTEE
+                            </t>
+                        </h1>
+                    </div>
+                    <div class="container mb-5 px-0">
+                        <div class="container-background">
+                            <div class="row mt-5 justify-content-center">
+                                <t t-if="committe['president']">
+                                    <div class="col-sm-6">
+                                        <div class="media">
+                                            <t t-if="committe['president'].partner_id.image_1920">
+                                                <img t-att-src="image_data_uri(committe['president'].partner_id.image_1920)"
+                                                     class="align-self-center mr-4 rounded-circle image-committe"
+                                                     t-att-alt="committe['president'].partner_id.name"/>
+                                            </t>
+                                            <div class="media-body align-self-center">
+                                                <h5 class="mt-0 myriadpro-regular text-uppercase font-weight-bold"
+                                                    style="color: #005a90;">
+                                                    <t t-esc="committe['president'].job_position_id.name"/>
+                                                </h5>
+                                                <p class="mb-0 myriadpro-regular font-weight-bold">
+                                                    <t t-esc="committe['president'].partner_id.parent_id.name"/>
+                                                </p>
+                                                <p class="mb-0 myriadpro-regular">
+                                                    <t t-esc="committe['president'].partner_id.name"/>
+                                                </p>
+                                                <p class="mb-0 myriadpro-regular">
+                                                    <t t-esc="committe['president'].partner_id.function"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-if="committe['vice-president']">
+                                    <div class="col-sm-6 mt-5 mt-sm-0">
+                                        <div class="media">
+                                            <t t-if="committe['vice-president'].partner_id.image_1920">
+                                                <img t-att-src="image_data_uri(committe['vice-president'].partner_id.image_1920)"
+                                                     class="align-self-center mr-4 rounded-circle image-committe"
+                                                     t-att-alt="committe['vice-president'].partner_id.name"/>
+                                            </t>
+                                            <div class="media-body align-self-center">
+                                                <h5 class="mt-0 myriadpro-regular text-uppercase font-weight-bold"
+                                                    style="color: #005a90;">
+                                                    <t t-esc="committe['vice-president'].job_position_id.name"/>
+                                                </h5>
+                                                <p class="mb-0 myriadpro-regular font-weight-bold">
+                                                    <t t-esc="committe['vice-president'].partner_id.parent_id.name"/>
+                                                </p>
+                                                <p class="mb-0 myriadpro-regular">
+                                                    <t t-esc="committe['vice-president'].partner_id.name"/>
+                                                </p>
+                                                <p class="mb-0 myriadpro-regular">
+                                                    <t t-esc="committe['vice-president'].partner_id.function"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+
+                            <div class="row">
+                                <t t-foreach="committe['members']" t-as="comm">
+                                    <div class="col-sm-6 mt-5">
+                                        <div class="media">
+                                            <t t-if="comm.partner_id.image_1920">
+                                                <img t-att-src="image_data_uri(comm.partner_id.image_1920)"
+                                                     class="align-self-center mr-4 rounded-circle image-committe"
+                                                     t-att-alt="comm.partner_id.name"/>
+                                            </t>
+                                            <div class="media-body align-self-center">
+                                                <h5 class="mt-0 myriadpro-regular text-uppercase font-weight-bold"
+                                                    style="color: #4aa62d;">
+                                                    <t t-esc="comm.job_position_id.name"/>
+                                                </h5>
+                                                <p class="mb-0 myriadpro-regular font-weight-bold">
+                                                    <t t-esc="comm.partner_id.parent_id.name"/>
+                                                </p>
+                                                <p class="mb-0 myriadpro-regular">
+                                                    <t t-esc="comm.partner_id.name"/>
+                                                </p>
+                                                <p class="mb-0 myriadpro-regular">
+                                                    <t t-esc="comm.partner_id.function"/>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <template id="jury_event" name="Feria Jury">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <t t-call="df_website_front.modal_detail_jury"/>
+
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active myriadpro-regular d-flex" aria-current="page">
+                                Jury
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">
+                            JURY
+                        </h1>
+                    </div>
+                    <div class="container mb-5 px-0">
+                        <div class="container-background">
+                            <div class="row mt-5 justify-content-center">
+                                <t t-if="committe.get('president',False)">
+                                    <div class="col-sm-6">
+                                        <a class="btn-block committe-jury-card"
+                                           t-att-data-id="committe['president'].partner_id.id">
+                                            <div class="media">
+                                                <t t-if="committe['president'].partner_id.image_1920">
+                                                    <img t-att-src="image_data_uri(committe['president'].partner_id.image_1920)"
+                                                         class="align-self-center mr-4 rounded-circle image-committe"
+                                                         t-att-alt="committe['president'].partner_id.name"/>
+                                                </t>
+                                                <div class="media-body align-self-center">
+                                                    <h5 class="mt-0 myriadpro-regular text-uppercase font-weight-bold"
+                                                        style="color: #005a90;">
+                                                        <t t-esc="committe['president'].job_position_id.name"/>
+                                                    </h5>
+                                                    <p class="mb-0 myriadpro-regular font-weight-bold">
+                                                        <t t-esc="committe['president'].partner_id.parent_id.name"/>
+                                                    </p>
+                                                    <p class="mb-0 myriadpro-regular">
+                                                        <t t-esc="committe['president'].partner_id.name"/>
+                                                    </p>
+                                                    <p class="mb-0 myriadpro-regular">
+                                                        <t t-esc="committe['president'].partner_id.function"/>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </t>
+                                <t t-if="committe.get('vice-president',False)">
+                                    <div class="col-sm-6 mt-5 mt-sm-0">
+                                        <a class="btn-block committe-jury-card"
+                                           t-att-data-id="committe['vice-president'].partner_id.id">
+                                            <div class="media">
+                                                <t t-if="committe['vice-president'].partner_id.image_1920">
+                                                    <img t-att-src="image_data_uri(committe['vice-president'].partner_id.image_1920)"
+                                                         class="align-self-center mr-4 rounded-circle image-committe"
+                                                         t-att-alt="committe['vice-president'].partner_id.name"/>
+                                                </t>
+                                                <div class="media-body align-self-center">
+                                                    <h5 class="mt-0 myriadpro-regular text-uppercase font-weight-bold"
+                                                        style="color: #005a90;">
+                                                        <t t-esc="committe['vice-president'].job_position_id.name"/>
+                                                    </h5>
+                                                    <p class="mb-0 myriadpro-regular font-weight-bold">
+                                                        <t t-esc="committe['vice-president'].partner_id.parent_id.name"/>
+                                                    </p>
+                                                    <p class="mb-0 myriadpro-regular">
+                                                        <t t-esc="committe['vice-president'].partner_id.name"/>
+                                                    </p>
+                                                    <p class="mb-0 myriadpro-regular">
+                                                        <t t-esc="committe['vice-president'].partner_id.function"/>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </t>
+                            </div>
+
+                            <div class="row">
+                                <t t-if="committe.get('members',False)">
+                                    <t t-foreach="committe['members']" t-as="comm">
+                                        <div class="col-sm-6 mt-5">
+                                            <a class="btn-block committe-jury-card" t-att-data-id="comm.partner_id.id">
+                                                <div class="media">
+                                                    <t t-if="comm.partner_id.image_1920">
+                                                        <img t-att-src="image_data_uri(comm.partner_id.image_1920)"
+                                                             class="align-self-center mr-4 rounded-circle image-committe"
+                                                             t-att-alt="comm.partner_id.name"/>
+                                                    </t>
+                                                    <div class="media-body align-self-center">
+                                                        <h5 class="mt-0 myriadpro-regular text-uppercase font-weight-bold"
+                                                            style="color: #4aa62d;">
+                                                            <t t-esc="comm.job_position_id.name"/>
+                                                        </h5>
+                                                        <p class="mb-0 myriadpro-regular font-weight-bold">
+                                                            <t t-esc="comm.partner_id.parent_id.name"/>
+                                                        </p>
+                                                        <p class="mb-0 myriadpro-regular">
+                                                            <t t-esc="comm.partner_id.name"/>
+                                                        </p>
+                                                        <p class="mb-0 myriadpro-regular">
+                                                            <t t-esc="comm.partner_id.function"/>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

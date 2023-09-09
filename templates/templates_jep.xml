@@ -1,0 +1,741 @@
+<odoo>
+    <data>
+
+        <template id="jep_nav_data" name="Jornada económica productiva Nav">
+            <t t-call="df_website_front.loader_event"/>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top menu-navbar navbar-plataforma-virtual">
+                <a class="navbar-brand" t-att-href="'/evento/%s' % (event.id)">
+                    <t t-if="event.logo">
+                        <img t-att-src="image_data_uri(event.logo)" class="img-fluid width-logo-jep"
+                             style="height: 40px;width:50px"/>
+                    </t>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" id="navbar-button"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"/>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+
+                        <li class="nav-item menu-link dropdown">
+
+                            <a class="nav-link dropdown-toggle text-uppercase bariol-regular" href="#"
+                               id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                About
+                            </a>
+                            <div class="dropdown-menu m-0 border-0 rounded-0"
+                                 aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                   t-att-href="'/evento/%s/about_us' % (event.id)">About us
+                                </a>
+                                <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                   t-att-href="'/evento/%s/committee_event' % (event.id)">Organizing committee
+                                </a>
+                                <t t-if="request.env.user.login != 'public'">
+                                    <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                       t-att-href="'/evento/%s/exhibitor' % (event.id)">Exhibitors
+                                    </a>
+                                </t>
+                                <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                   t-att-href="'/evento/%s/participant_event' % (event.id)">Participants
+                                </a>
+                                <t t-if="data_count_nav['count_speakers'] &gt; 0">
+                                    <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav scrollto-link"
+                                       t-att-href="'/evento/%s#ponentes-section' % (event.id)" id="ponentes">Speakers
+                                    </a>
+                                </t>
+                            </div>
+                        </li>
+                        <t t-if="data_count_nav['count_plans'] &gt; 0 and request.env.user.login == 'public'">
+                            <li class="nav-item menu-link">
+                                <a class="nav-link text-uppercase bariol-regular scrollto-link"
+                                   t-att-href="'/evento/%s#planes-section' % (event.id)"
+                                   id="planes">Categories
+                                </a>
+                            </li>
+                        </t>
+                        <t t-if="data_count_nav['thematic_rooms'] and len(data_count_nav['thematic_rooms']) &gt; 0">
+                            <li class="nav-item menu-link dropdown">
+                                <a class="nav-link dropdown-toggle text-uppercase bariol-regular" href="#"
+                                   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Thematic rooms
+                                </a>
+                                <div class="dropdown-menu m-0 border-0 rounded-0"
+                                     aria-labelledby="navbarDropdown">
+                                    <t t-if="len(data_count_nav['thematic_rooms']['lobby']) &gt; 0">
+                                        <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                           t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['lobby'].id)">
+                                            <t t-esc="data_count_nav['thematic_rooms']['lobby'].name"/>
+                                        </a>
+                                    </t>
+                                    <t t-if="len(data_count_nav['thematic_rooms']['forum']) &gt; 0">
+                                        <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                           t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['forum'].id)">
+                                            <t t-esc="data_count_nav['thematic_rooms']['forum'].name"/>
+                                        </a>
+                                    </t>
+                                    <t t-if="len(data_count_nav['thematic_rooms']['information']) &gt; 0">
+                                        <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                           t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['information'].id)">
+                                            <t t-esc="data_count_nav['thematic_rooms']['information'].name"/>
+                                        </a>
+                                    </t>
+                                    <t t-if="len(data_count_nav['thematic_rooms']['press_room']) &gt; 0">
+                                        <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                           t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['press_room'].id)">
+                                            <t t-esc="data_count_nav['thematic_rooms']['press_room'].name"/>
+                                        </a>
+                                    </t>
+                                    <t t-if="len(data_count_nav['thematic_rooms']['conference']) &gt; 0">
+                                        <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                           t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['conference'].id)">
+                                            <t t-esc="data_count_nav['thematic_rooms']['conference'].name"/>
+                                        </a>
+                                    </t>
+                                    <t t-if="len(data_count_nav['thematic_rooms']['networking']) &gt; 0">
+                                        <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                           t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['networking'].id)">
+                                            <t t-esc="data_count_nav['thematic_rooms']['networking'].name"/>
+                                        </a>
+                                    </t>
+                                </div>
+                            </li>
+                        </t>
+                        <t t-if="data_count_nav['expositive_rooms'] and len(data_count_nav['expositive_rooms']) &gt; 0">
+                            <li class="nav-item menu-link dropdown">
+                                <a class="nav-link dropdown-toggle text-uppercase bariol-regular" href="#"
+                                   id="navbarDropdownExpos" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Expositive rooms
+                                </a>
+                                <div class="dropdown-menu m-0 border-0 rounded-0"
+                                     aria-labelledby="navbarDropdown">
+                                    <t t-foreach="data_count_nav['expositive_rooms']" t-as="expositive_room">
+                                        <a class="dropdown-item text-uppercase text-dark bariol-regular my-dropdown-item-nav"
+                                           t-att-href="'/evento/%s/%s/pavilion_event' % (event.id,expositive_room.id)">
+                                            <t t-esc="expositive_room.name"/>
+                                        </a>
+                                    </t>
+                                </div>
+                            </li>
+                        </t>
+                        <t t-if="data_count_nav['count_sponsors'] &gt; 0">
+                            <li class="nav-item menu-link">
+                                <a class="nav-link text-uppercase bariol-regular scrollto-link"
+                                   t-att-href="'/evento/%s#patrocinadores-section' % (event.id)"
+                                   id="patrocinadores">Sponsors
+                                </a>
+                            </li>
+                        </t>
+                        <t t-if="request.env.user.login == 'public'">
+                            <li class="nav-item menu-link">
+                                <a class="nav-link text-uppercase bariol-regular"
+                                   t-att-href="'/evento/%s/exhibitor' % (event.id)">Exhibitors
+                                </a>
+                            </li>
+                        </t>
+                        <li class="nav-item menu-link">
+                            <a class="nav-link text-uppercase bariol-regular scrollto-link"
+                               t-att-href="'/evento/%s/schedule' % (event.id)"
+                               id="schedule">Program
+                            </a>
+                        </li>
+                        <!--                        <t t-if="data_count_nav['count_speakers'] &gt; 0">-->
+                        <!--                            <li class="nav-item menu-link">-->
+                        <!--                                <a class="nav-link text-uppercase bariol-regular scrollto-link"-->
+                        <!--                                   t-att-href="'/evento/%s#ponentes-section' % (event.id)"-->
+                        <!--                                   id="ponentes">-->
+                        <!--                                    Speakers-->
+                        <!--                                </a>-->
+                        <!--                            </li>-->
+                        <!--                        </t>-->
+                        <t t-if="data_count_nav['count_news'] &gt; 0">
+                            <li class="nav-item menu-link">
+                                <a class="nav-link text-uppercase bariol-regular scrollto-link"
+                                   t-att-href="'/evento/%s#noticias-section' % (event.id)"
+                                   id="noticias">News
+                                </a>
+                            </li>
+                        </t>
+                        <t t-if="event.menu_register_schedule == true">
+                        </t>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <t t-if="request.env.user.login == 'public'">
+                            <t t-call="portal.placeholder_user_sign_in">
+                                <t t-set="_item_class" t-value="'nav-item'"/>
+                                <t t-set="_link_class" t-value="'nav-link'"/>
+                            </t>
+                        </t>
+                        <t t-call="portal.user_dropdown">
+                            <t t-set="_user_name" t-value="true"/>
+                            <t t-set="_item_class" t-value="'nav-item dropdown'"/>
+                            <t t-set="_link_class" t-value="'nav-link'"/>
+                            <t t-set="_dropdown_menu_class" t-value="'dropdown-menu-right'"/>
+                        </t>
+                        <li class="nav-item dropdown">
+                            <t t-set="active_lang"
+                               t-value="list(filter(lambda lg : lg[0] == lang, languages))[0]"/>
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                               role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="bariol-regular" t-if="not no_text"
+                                      t-esc="active_lang[2].split('/').pop()"/>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right"
+                                 aria-labelledby="navbarDropdownMenuLink">
+                                <t t-foreach="languages" t-as="lg">
+                                    <a t-att-href="url_for(request.httprequest.path + '?' + keep_query(), lang_code=lg[0])"
+                                       class="dropdown-item js_change_lang"
+                                       t-att-data-url_code="lg[1]">
+                                        <span class="bariol-regular" t-if="not no_text"
+                                              t-esc="lg[2].split('/').pop()"/>
+                                    </a>
+                                </t>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown" id="dropDown_search_btn">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarSearch" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i id="search-icon" class="fa fa-search" style="padding-top: 4px;"/>
+                            </a>
+                            <div class="dropdown-menu search-panel">
+                                <div class="input-group">
+                                    <form t-att-action="'/evento/%s/search_event_all' % (event.id)"
+                                          id="form_search_event">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <input type="text" value="" name="search" id="search_navbar"
+                                               placeholder="Buscar..." aria-label="Buscar"/>
+                                        <div class="input-group-search">
+                                            <button type="submit" class="btn" id="search_button_navbar">
+                                                <i class="fa fa-search" style="padding-top: 4px;"/>
+                                            </button>
+                                            <!-- <a class="btn" href="#" id="search_button_navbar">-->
+                                            <!-- <i class="fa fa-search" style="padding-top: 4px;"/>-->
+                                            <!-- </a>-->
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+        </template>
+
+        <record id="jep_nav" model="ir.ui.view">
+            <field name="name">Jornada económica productiva Nav</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.jep_nav_data"/>
+            </field>
+        </record>
+
+        <template id="jep_banner" name="Jornada económica productiva Banner">
+            <div class="evento-banner">
+                <div id="carouselIndex" class="carousel slide" data-ride="carousel">
+                    <div id="div-banner-felti">
+                        <t t-if="event.banner_event">
+                            <img t-att-src="image_data_uri(event.banner_event)" style="width:100%"
+                                 id="background-jep" class="evento-banner imagen-alto"/>
+                            <h2 class="banner-top-title bariol-regular-bold text-uppercase">
+                                <t t-esc="event.name"/>
+                                <br/>
+                                <span style="color: #e00613;">CUBA 2021</span>
+                            </h2>
+                        </t>
+                        <t t-if="event.logo">
+                            <img t-att-src="image_data_uri(event.logo)" class="jep-logo-position"/>
+                        </t>
+                        <div class="jep-titulo-banner">
+                            <h2 class="text-uppercase titulo-main-jep-bottom bariol-regular-bold">
+                                <t t-esc="event.edition_id.name"/>
+                            </h2>
+                            <h5 class="titulo-debajo-jep-fecha text-uppercase bariol-regular-bold"
+                                style="width:100%">
+                                <span id="fecha_felti">
+                                    FROM <t t-esc="date_range_str['date_st']" t-options="{'widget': 'date', 'format': 'dd'}"/> TO
+                                    <t t-esc="date_range_str['date_end']" t-options="{'widget': 'date', 'format': 'dd'}"/>
+                                    <t t-esc="date_range_str['date_end']" t-options="{'widget': 'date', 'format': 'MMMM'}"/>
+                                </span>
+                            </h5>
+                        </div>
+                        <!--<div class="slogan-div-jep">
+                                <h2 class="text-uppercase slogan-main-jep text-white bariol-regular-bold">
+                                    <t t-raw="event.slogan"/>
+                                </h2>
+                            </div>-->
+                        <div class="buttons-banner-jep animate__animated animate__backInLeft">
+                            <t t-if="event.menu_register_cta">
+                                <a t-att-href="'/evento/%s/user_pre_sign_in' % (event.id)"
+                                   class="btn btn-banner registrate-ahora-jep text-uppercase bariol-regular">
+                                    Register now
+                                </a>
+                            </t>
+                            <!--<t t-if="event.website_track_proposal">
+                                <a t-att-href="'/evento/%s/track_proposal' % (event.id)"
+                                   class="btn btn-banner solicitud-charla-jep text-uppercase bariol-regular color-blue">
+                                    Present your company
+                                </a>
+                            </t>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="jep_intro" name="Jornada económica productiva Introduccion">
+            <div class="margin-top-seccion text-center pt-5" id="convocatoria-section">
+                <div class="animation-felti-right">
+                    <div class="container mt-3">
+                        <div class="introduccion">
+                            <t t-raw="event.title"/>
+                            <hr class="encabezado-underline"/>
+                        </div>
+                        <div class="texto mt-5 container">
+                            <t t-raw="event.description"/>
+                        </div>
+                        <a href="#"
+                           class="btn btn-convocatoria text-uppercase rounded-pill feria-see-all mt-5 bariol-regular texto">
+                            Official announcement
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="jep_contador" name="Jornada económica productiva Contador">
+            <div class="contador p-top-contador color-white parallax-jep-contador">
+
+                <h2 class="text-center bariol-regular-bold text-uppercase letter-spacing-2
+                            position-relative pt-3" style="margin: 0 5px">
+                    <t t-raw="event.count_title"/>
+                </h2>
+                <i>
+                    <h5 class="text-center position-relative pt-1" style="margin: 0 5px">
+                        <t t-raw="event.count_subtitle"/>
+                    </h5>
+                </i>
+                <div class="noticias-row">
+                    <div class="container mb-2">
+                        <div class="row justify-content-between mt-5 text-center">
+                            <div class="col-3 counters bariol-regular-bold">
+                                <p class="h-numbers">
+                                    <t t-esc="counts['count_exhibitor']"/>
+                                </p>
+                                <p class="fs-small text-uppercase bariol-regular letter-spacing-2">
+                                    EXHIBITORS
+                                </p>
+                            </div>
+
+                            <div class="col-3 counters bariol-regular-bold">
+                                <p class="h-numbers">
+                                    <t t-esc="counts['count_conferences']"/>
+                                </p>
+                                <p class="fs-small text-uppercase bariol-regular letter-spacing-2">Presentations</p>
+                            </div>
+
+                            <div class="col-3 counters bariol-regular-bold">
+                                <p class="h-numbers">
+                                    <t t-esc="counts['count_visitors']"/>
+                                </p>
+                                <p class="fs-small text-uppercase bariol-regular letter-spacing-2">Visitors</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="parallax-jep-contador"/>
+            </div>
+
+        </template>
+
+        <template id="jep_patrocinadores" name="Jornada económica productiva Patrocinadores">
+            <t t-if="len(sponsors) &gt; 0">
+                <div class="patrocinadores mt-5 pt-5" id="patrocinadores-section">
+                    <div class="animation-felti-right">
+                        <h2 class="text-center text-uppercase encabezados bariol-regular-bold position-relative pt-3">
+                            SPONSORS
+                        </h2>
+                        <hr class="hr-patrocinadores"/>
+                        <div class="patrocinadores-felti">
+                            <div id="contenedor-slider" class="contenedor-slider">
+                                <div id="slider" class="slider">
+                                    <t t-foreach="sponsors['sponsors']" t-as="sponsor">
+                                        <section class="slider__section grid">
+                                            <a t-attf-href="#{sponsor.url if sponsor.url else '#'}" target="_blank">
+                                                <t t-if="sponsor.image_512">
+                                                    <img t-att-src="image_data_uri(sponsor.image_512)"
+                                                         t-att-alt="sponsor.name"
+                                                         class="slider__img"/>
+                                                </t>
+                                            </a>
+                                        </section>
+                                    </t>
+                                </div>
+                                <t t-if="len(sponsors) &gt; 4">
+                                    <div id="btn-prev" class="btn-prev">&#60;</div>
+                                    <div id="btn-next" class="btn-next">&#62;</div>
+                                </t>
+                            </div>
+                            <a t-att-href="'/evento/%s/sponsor_event' % (event.id)"
+                               class="btn text-uppercase rounded-pill feria-see-all bariol-regular texto mt-3">
+                                see all
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="jep_ponentes" name="Jornada económica productiva Ponentes">
+            <t t-if="len(speakers) &gt; 0">
+                <div class="mt-5 pt-5" id="ponentes-section">
+                    <div class="animation-felti-left">
+                        <h2 class="text-center text-uppercase encabezados bariol-regular-bold position-relative pt-3">
+                            Speakers
+                        </h2>
+                        <hr class="encabezado-underline"/>
+
+                        <div class="container mt-5" style="text-align: center">
+                            <div class="row text-center" id="ponente-block">
+                                <t t-foreach="speakers" t-as="speaker">
+                                    <div class="col-sm-3 ponente-grid" t-att-data-id="speaker.id">
+                                        <div class="ponente-container cursor-pointer-all">
+                                            <div class="image-inside"/>
+                                            <t t-if="speaker.partner_id.image_1920">
+                                                <img t-att-src="image_data_uri(speaker.partner_id.image_1920)"
+                                                     t-att-alt="speaker.partner_id.name"
+                                                     class="ponente-image"/>
+                                            </t>
+                                        </div>
+                                        <p class="text-uppercase ponente-name">
+                                            <t t-esc="speaker.partner_id.name"/>
+                                        </p>
+                                        <p class="ponente-cargo">
+                                            <t t-esc="speaker.partner_id.function"/>
+                                        </p>
+                                        <p class="ponente-company">
+                                            <t t-if="speaker.partner_id.parent_id">
+                                                <t t-esc="speaker.partner_id.parent_id.name"/>
+                                            </t>
+                                        </p>
+                                    </div>
+                                </t>
+
+                            </div>
+                            <a t-att-href="'/evento/%s/speaker_event' % (event.id)"
+                               class="btn text-uppercase rounded-pill feria-see-all bariol-regular texto ponentes-see-all">
+                                see all
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+
+        </template>
+
+        <template id="jep_noticias" name="Jornada económica productiva Noticias">
+            <t t-if="len(news) &gt; 0">
+                <div class="noticias-importantes mt-5 pt-5" id="noticias-section">
+                    <div>
+                        <h2 class="text-center text-uppercase encabezados bariol-regular-bold position-relative pt-3">
+                            News
+                        </h2>
+                        <hr class="encabezado-underline"/>
+                        <div class="noticias-felti">
+                            <div class="container mb-2">
+                                <div class="row justify-content-between mt-5">
+                                    <t t-foreach="news" t-as="new_a">
+                                        <div class="col-sm-3 noticias-grid">
+                                            <a t-att-href="'/evento/%s/%s/new_detail' % (event.id,new_a.id)"
+                                               class="new-title" style="color: black !important">
+                                                <div class="noticias-box">
+                                                    <div class="img-new-home">
+                                                        <t t-if="new_a.image">
+                                                            <div class="position-relative">
+                                                                <img t-att-src="image_data_uri(new_a.image)"
+                                                                     t-att-alt="new_a.name"
+                                                                     class="noticias-img" alt="..."/>
+
+                                                                <div class=" bariol-regular-bold author-news text-white px-2 pt-3 pb-1 mb-0">
+                                                                    <t t-if="new_a.taken_from">
+                                                                        <t t-esc="new_a.taken_from"/>
+                                                                    </t>
+                                                                    <t t-else="">
+                                                                        <t t-if="new_a.author_id">
+                                                                            <t t-esc="new_a.author_id.name"/>
+                                                                        </t>
+                                                                    </t>
+
+                                                                </div>
+                                                            </div>
+                                                        </t>
+                                                    </div>
+                                                    <div class="noticia-body pt-2 text-black">
+                                                        <h5 class="font-weight-bold">
+                                                            <t t-esc="new_a.name"/>
+                                                        </h5>
+                                                        <p class="bariol-regular noticia-author"
+                                                           style="font-size: 16px;">
+                                                            <t t-if="new_a.resume">
+                                                                <span class="text-new-summary">
+                                                                    <t t-esc="new_a.resume"/>
+                                                                </span>
+                                                            </t>
+                                                        </p>
+                                                        <p class="bariol-regular noticia-author"
+                                                           style="font-size: 12px;">
+                                                            <t t-if="new_a.post_date">
+                                                                <span>
+                                                                    <t t-esc="new_a.post_date.strftime('%d - %m - %Y')"/>
+                                                                </span>
+                                                            </t>
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </t>
+                                    <t t-if="event.facebook_page">
+                                        <div class="col-sm-3 noticias-grid">
+                                            <t t-raw="event.facebook_page"/>
+                                        </div>
+                                    </t>
+                                </div>
+                                <div class="text-center">
+                                    <a t-att-href="'/evento/%s/news' % (event.id)"
+                                       class="btn text-uppercase rounded-pill bariol-regular texto feria-see-all">
+                                        see all
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="jep_newsletter" name="Jornada económica productiva Newsletter">
+            <div class="mt-5" id="actualizate">
+                <h2 class="text-center text-uppercase encabezados bariol-regular-bold
+                        position-relative pt-3 actualizate-rss">get update
+                </h2>
+                <hr class="encabezado-underline"/>
+                <div class="noticias-row">
+                    <div class="newsletter">
+                        <p class="text-center bariol-regular position-relative">Be the first to know what's new about
+                            our event.
+                        </p>
+                    </div>
+                    <form id="form_newsletter_id">
+                        <div class="input-newsletter">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="text" class="email-newsletter" placeholder="Email" name="email_newsletter"
+                                   id="input_newsletter_field" maxlength="100"/>
+                            <button id="newsletter_id" type="button" class="button-inside-input">Subscribe me</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </template>
+
+        <template id="jep_planes" name="Jornada económica productiva Planes">
+            <t t-if="len(plans) &gt; 0">
+                <div id="planes-section" class="container-fluid margin-section">
+                    <div class="animation-felti-left">
+                        <div class="text-center mb-5 pt-5">
+                            <h2 class="text-uppercase encabezados bariol-regular-bold">
+                                Participation categories
+                            </h2>
+                            <hr class="hr-patrocinadores"/>
+                            <h4>Discover here the categories of participation and select the one that best suits your
+                                business objectives.
+                            </h4>
+                        </div>
+                        <div class="row show-3 slide-animation">
+                            <t t-foreach="plans" t-as="plan">
+                                <div class="col-sm-3 col-xs-10">
+                                    <t t-if="request.lang">
+                                        <t t-if="plan.image_plan_en">
+                                            <t t-if="request.lang.iso_code == 'en'">
+                                                <img t-att-src="image_data_uri(plan.image_plan_en)"
+                                                     class="w-100 img-fluid"/>
+                                            </t>
+                                            <t t-if="request.lang.iso_code == 'es'">
+                                                <img t-att-src="image_data_uri(plan.image_plan_es)"
+                                                     class="w-100 img-fluid"/>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </div>
+                            </t>
+
+                        </div>
+                        <div class="text-center">
+                            <a href="#"
+                               class="btn text-uppercase rounded-pill feria-see-all bariol-regular texto mt-3 btn-event-plan">
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="jep_footer_data" name="Jornada económica productiva Footer">
+            <div class="footer_jep_img">
+                <div class="container-fluid footer-container">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-3 text-center" style="padding: 0px;">
+                            <div class="mt-4 footer-separator">
+                                <div class="footer-tittle">
+                                    Us
+                                </div>
+                                <img class="img-fluid logo-jep-footer mb-2"
+                                     src="/df_website_front/static/src/img/jep_logo_negativo.png"/>
+                                <div class="info-geic text-center mt-4">
+                                    <div>
+                                        <i class="fa fa-phone fa-fw"/>
+                                        <a href="tel:+5378322693" class="text-white">(+53) 7832 2693</a>
+                                    </div>
+                                    <div>
+                                        <i class="fa fa-envelope-open fa-fw"/>
+                                        <a href="mailto:jornada@camara.com.cu" class="text-white">
+                                            jornada@camara.com.cu
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-4 text-center" style="padding: 0px;">
+                            <div class="mt-4 footer-separator">
+                                <div class="footer-tittle-organizer">
+                                    Organizers
+                                </div>
+                                <div class="row align-items-center" style="margin: auto">
+                                    <div class="col-sm-12 col-lg-6 mb-4">
+                                        <img class="img-fluid logo-mep-footer"
+                                             src="/df_website_front/static/src/img/MEP_negativo.png"/>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6 mb-2">
+                                        <img class="img-fluid logo-mincex-footer"
+                                             src="/df_website_front/static/src/img/mincex_logo.svg"/>
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12">
+                                        <img class="img-fluid logo-camara-footer"
+                                             src="/df_website_front/static/src/img/logo_camara_negativo.svg"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-3 text-center" style="padding: 0px;">
+                            <div class="mt-4 footer-separator">
+                                <div class="footer-tittle">
+                                    WE WANT TO KNOW YOU
+                                </div>
+                                <div style="font-size: 0.8,5em;">
+                                    Send us your questions, needs or suggestions.
+                                </div>
+                                <div class="mt-5">
+                                    <t t-if="event">
+                                        <a t-att-href="'/evento/%s/contact_us' % (event.id)"
+                                           class="contact-us-footer text-uppercase bariol-regular mx-auto">
+                                            Contact us
+                                        </a>
+                                    </t>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-2 text-center" style="padding: 0px;">
+                            <div class="mt-4 footer-separator">
+                                <div class="footer-tittle">
+                                    Follow us
+                                </div>
+                                <t t-if="event">
+                                    <t t-if="event.facebook_url">
+                                        <a t-att-href="event.facebook_url" class="s_share_linkedin" title="Facebook">
+                                            <!--<img class="img-socials-footer facebook-footer"
+                                                 src="/df_website_front/static/src/img/Facebook_footer_reposo.svg"
+                                                 width="52"
+                                                 alt="..."/>-->
+                                            <span class="fa fa-facebook text-white icons-footer"/>
+                                        </a>
+                                    </t>
+                                    <t t-if="event.twitter_url">
+                                        <a t-att-href="event.twitter_url" class="s_share_linkedin" target="_blank"
+                                           title="Twitter">
+                                            <!--<img class="img-socials-footer twitter-footer"
+                                                 src="/df_website_front/static/src/img/Twitter_footer_reposo.svg" width="52"
+                                                 alt="..."/>-->
+                                            <span class="fa fa-twitter text-white icons-footer"/>
+                                        </a>
+                                    </t>
+                                    <t t-if="event.youtube_url">
+                                        <a t-att-href="event.youtube_url" class="s_share_linkedin" target="_blank"
+                                           title="Youtube">
+                                            <!--<img class="youtube-footer img-socials-footer "
+                                                 src="/df_website_front/static/src/img/Youtube_footer_reposo.svg" width="52"
+                                                 alt="..."/>-->
+                                            <span class="fa fa-youtube text-white icons-footer"/>
+                                        </a>
+                                    </t>
+                                    <t t-if="event.linkedin_url">
+                                        <a t-att-href="event.linkedin_url" class="s_share_linkedin" target="_blank"
+                                           title="Linkedin">
+                                            <!--<img class="img-socials-footer linkedin-footer"
+                                                 src="/df_website_front/static/src/img/linkedin.svg" width="40"
+                                                 alt="..."/>-->
+                                            <span class="fa fa-linkedin text-white icons-footer"/>
+                                        </a>
+                                    </t>
+                                    <t t-if="event.telegram_url">
+                                        <a t-att-href="event.telegram_url" class="s_share_instagram ml-2"
+                                           target="_blank"
+                                           title="Telegram">
+                                            <!--<img class="img-socials-footer instagram-footer"
+                                                 src="/df_website_front/static/src/img/instagram.svg" width="40"
+                                                 alt="..."/>-->
+                                            <span class="fa fa-telegram text-white icons-footer"/>
+                                        </a>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="footer-copyright text-center text-regular py-2">
+                            <span>
+                                Copyright © 2021 | Eventos Virtuales
+                                <a href="https://www.desoft.cu" target="new" class="text-white">Desoft</a>
+                                | Todos los derechos reservados |
+                                <img src="/df_website_front/static/src/img/marcaCuba_negativo.png"
+                                     class="imagen-cuba-footer"/>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </template>
+
+        <record id="jep_footer" model="ir.ui.view">
+            <field name="name">JEP footer</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.jep_footer_data"/>
+            </field>
+        </record>
+
+    </data>
+</odoo>

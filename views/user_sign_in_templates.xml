@@ -1,0 +1,1551 @@
+<odoo>
+    <data>
+
+        <template id="user_pre_sign_in" name="Feria user pre sign in">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active myriadpro-regular d-flex" aria-current="page">
+                                 <!--<span class="material-icons mr-2">chevron_right</span>--> User registration
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">USER REGISTRATION</h1>
+                    </div>
+                    <div class="container mb-5">
+                        <div class="mt-5 row justify-content-center">
+                            <div class="col-sm-9">
+                                <p class="myriadpro-regular texto text-justify">
+                                    To access FELTi 2021 we offer you different registration modes. Choose the one that
+                                    fits your business goals and follow the instructions. Upon completing the registration,
+                                    you will receive in your email the confirmation of your attendance, with which you
+                                    can configure your account in FELTi 2021. If you give your consent, we will keep
+                                    you informed about activities and content that will be of interest to you.
+                                </p>
+                                <!--                                <p class="myriadpro-regular texto text-center">-->
+                                <!--                                    Si accede al enlace podrá <a class="check-the-rate" href="#">consultar la tarifa</a> en-->
+                                <!--                                    función de la modalidad de acceso a elegir.-->
+                                <!--                                </p>-->
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="mt-4 row justify-content-center">
+                                            <div class="col-7" style="position: relative;">
+                                                <h1 class="myriadpro-semibold-condensed text-center user_sign_vis_exp">VISITOR
+                                                </h1>
+                                                <t t-if="event.image_register_visitor">
+                                                    <img class="img-fluid" t-att-src="image_data_uri(event.image_register_visitor)"
+                                                     alt="..."/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                        <p class="mt-4 pr-sm-3 myriadpro-regular texto text-justify">
+                                            Registering as a visitor will allow you to access a private area where you
+                                            can configure your profile; have meetings with other participants,
+                                            through the Business Round; have arranged meetings with exhibitors
+                                            and attend solutions and services presentations.
+                                        </p>
+                                        <div class="mt-4 d-block d-sm-none text-center">
+                                            <a t-att-href="'/evento/%s/type_visitor_pre_sign_in' % (event.id)"
+                                               class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto py-2 px-4">
+                                                REGISTER AS A VISITOR
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mt-4 row justify-content-center">
+                                            <div class="col-7" style="position: relative">
+                                                <h1 class="myriadpro-semibold-condensed text-center user_sign_vis_exp">EXPOSITOR
+                                                </h1>
+                                                <t t-if="event.image_register_exhibitor">
+                                                    <img class="img-fluid" t-att-src="image_data_uri(event.image_register_exhibitor)"
+                                                     alt="..."/>
+                                                </t>
+                                            </div>
+                                        </div>
+                                        <p class="mt-4 pl-sm-3 myriadpro-regular texto text-justify">
+                                            Registering as an exhibitor will allow you access to a private area where
+                                            you can set up your profile, your own booth and apply to become a sponsor
+                                            of the event. In addition, you will be able to access your meeting agenda;
+                                            have meetings with booth visitors through chat; connect with other participants
+                                            through the business round; as well as make a presentation about your
+                                            solutions and services.
+                                        </p>
+                                        <div class="mt-4 d-block d-sm-none text-center">
+                                             <a t-att-href="'/evento/%s/exhibitor_pre_sign_in' % (event.id)"
+                                               class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto py-2 px-4">
+                                                REGISTER AS AN EXHIBITOR
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 d-none d-sm-flex">
+                                    <div class="col-sm-6 text-center">
+                                        <a t-att-href="'/evento/%s/type_visitor_pre_sign_in' % (event.id)"
+                                           class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto py-2 px-4">
+                                            REGISTER AS A VISITOR
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <a t-att-href="'/evento/%s/exhibitor_pre_sign_in' % (event.id)"
+                                           class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto py-2 px-4">
+                                            REGISTER AS AN EXHIBITOR
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <template id="user_sign_in" name="Feria user sign in">
+            <t t-call="website.layout">
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                 <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                User registration
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="container my-5">
+                        <h2 class="text-center encabezados myriadpro-semibold-condensed">
+                            EXHIBITOR REGISTRATION
+                        </h2>
+                        <hr class="encabezado-underline"/>
+                        <div class="row mt-5 justify-content-center">
+                            <div class="col-12 col-sm-5">
+                                <div class="mb-5">
+                                    <p class="text-center myriadpro-regular mb-0"
+                                       style="padding-bottom: 0.375rem; border-bottom: 1px solid #CED4DA;">
+                                        Correo electrónico: direccion@dominio.cu
+                                    </p>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="my-form-outline">
+                                        <input type="password" class="form-control my-form-control"/>
+                                        <label class="my-form-label myriadpro-regular">Contraseña</label>
+                                    </div>
+                                </div>
+                                <div class="mb-5">
+                                    <div class="my-form-outline">
+                                        <input type="password" class="form-control my-form-control"/>
+                                        <label class="my-form-label myriadpro-regular">Repetir contraseña</label>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-end">
+                                    <a href="#"
+                                       class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        Registrar
+                                    </a>
+                                    <a href="#" id="mensaje-sweet"
+                                       class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        Mensaje
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="exhibitor_pre_sign_in" name="Feria exhibitor pre sign in">
+            <t t-call="website.layout">
+                <t t-call="df_website_front.modal_terms_condition"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-about-us">
+                        <li class="breadcrumb-item">
+                            <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                <span class="material-icons">home</span>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item-about-us d-flex">
+                             <!--<span class="material-icons mr-2">chevron_right</span>-->
+                            <a t-att-href="'/evento/%s/user_pre_sign_in' % (event.id)"
+                               class="myriadpro-regular text-white cintillo-text">User registration</a>
+                        </li>
+                        <li class="breadcrumb-item-about-us active myriadpro-regular d-flex cintillo-text" aria-current="page">
+                             <!--<span class="material-icons mr-2">chevron_right</span>--> Exhibitor registration
+                        </li>
+                    </ol>
+                </nav>
+                <div class="position-relative">
+                    <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                    <h1 class="text-center exo2-regular encabezado-interno">
+                        EXHIBITOR REGISTRATION
+                    </h1>
+                </div>
+                <div class="oe_structure">
+                    <form id="form_register_exhibitor">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <ul class="nav nav-tabs my-nav-tabs mt-5" role="tablist">
+                            <li class="nav-item mx-auto ml-sm-auto mr-sm-0" role="presentation">
+                                <a class="nav-link active my-nav-link mb-0 myriadpro-regular"
+                                   id="exhibitor-inst-data-a"
+                                   data-toggle="tab" href="#exhibitor-inst-data-form" role="tab"
+                                   aria-controls="exhibitor-inst-data-form" aria-selected="true">
+                                    Institutional Data
+                                </a>
+                            </li>
+                            <li class="nav-item mx-auto mr-sm-auto ml-sm-0" role="presentation">
+                                <a class="nav-link my-nav-link mb-0 myriadpro-regular"
+                                   id="exhibitor-repre-data-a"
+                                   data-toggle="tab" href="#exhibitor-repre-data-form" role="tab"
+                                   aria-controls="exhibitor-repre-data-form" aria-selected="false">
+                                    Legal Representative Data
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="exhibitor-inst-data-form" role="tabpanel"
+                                 aria-labelledby="exhibitor-inst-data-form-tab">
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="country_select_exhibitor"
+                                                            name="country_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                        <t t-foreach="countrys" t-as="country">
+                                                                <option t-att-value="country.id"  t-att-data-code="country.code">
+                                                                    <t
+                                                                            t-esc="country.name"/>
+                                                                </option>
+                                                        </t>
+                                                    </select>
+
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Country of location
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="institution_type_select_exhibitor"
+                                                            name="type_institution_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Institution type
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div id="div_code_reeup" class="my-form-outline"
+                                                     style="display: None">
+                                                    <select id="code_reeup_select_exhibitor"
+                                                            name="code_reeup_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="false">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> REEUP code
+                                                    </label>
+                                                </div>
+                                                <div id="div_code_nit" class="my-form-outline">
+                                                    <input type="text" name="vat" id="vat_exhibitor"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> NIT code
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input id="inp_name_social_exhibitor" name="name"
+                                                           type="text"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Name or Social reason
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="sector_select_exhibitor"
+                                                            name="industry_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                        <t t-foreach="economic_sectors" t-as="economic">
+                                                            <option t-att-value="economic.id">
+                                                                <t
+                                                                        t-esc="economic.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Economic sector
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="economic_activity_select_exhibitor"
+                                                            name="economic_activity_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Economic activity
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="province_state_region_select_exhibitor"
+                                                            name="state_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Province / State / Region
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="municipality_select_exhibitor"
+                                                            name="municipality_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Municipality
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="city"
+                                                           class="form-control my-form-control"/>
+                                                    <label class="my-form-label myriadpro-regular">City</label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="website"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">Website
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="tematica_select_exhibitor"
+                                                            name="theme_tag_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true"  multiple="">
+                                                        <t t-foreach="theme_tags" t-as="theme_t">
+                                                            <option t-att-value="theme_t.id">
+                                                                <t
+                                                                        t-esc="theme_t.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Theme tag
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-12">
+                                            <h2 class="mb-4">Social media</h2>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="twitter_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL Twitter
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="instagram_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL
+                                                        Instagram
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="facebook_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL
+                                                        Facebook
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="linkedin_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL
+                                                        Linkedin
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="comment" rows="4"/>
+                                                <label class="my-form-label myriadpro-regular">Entity Profile
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                  <div>
+                                                    <img src="/df_website_front/static/src/img/user_profile_default.png"
+                                                         width="75px" alt="Picture" id="load-img-url-register"/>
+                                                    <label class="myriadpro-regular">Profile Picture</label>
+                                                    <div class="my-form-outline">
+                                                        <input type="file" name="profile-picture" onChange="img_pathUrl(this);"
+                                                               is-required="true" class="form-control my-form-control"/>
+                                                    </div>
+                                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                        The field is required
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="form-check mt-1">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                           id="set_sponsor_id"/>
+                                                    <label class="form-check-label myriadpro-regular">
+                                                        Be a sponsor of the event
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4" style="display: none">
+                                                <label class="form-check-label myriadpro-regular" id="sponsor_exhibitor_id">
+                                                    See more detailed information about
+                                                    <a href="#" class="btn-event-plan-sponsor">sponsorships</a>.
+                                                </label>
+                                            </div>
+                                            <div class="pt-3" style="display: none">
+                                                <div class="my-form-outline">
+                                                    <select id="type_sponsor_select_exhibitor"
+                                                            name="sponsor_type_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="false">
+                                                        <t t-foreach="sponsor_types" t-as="sponsor_type">
+                                                            <option t-att-value="sponsor_type.id">
+                                                                <t t-esc="sponsor_type.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Sponsor type
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row mt-5 mb-5 justify-content-end">
+                                        <a t-att-href="'/evento/%s/user_pre_sign_in' % (event.id)"
+                                           class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Back
+                                        </a>
+                                        <a href="#" id="exhibitor-pre-sign-in-next"
+                                           class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Next
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="exhibitor-repre-data-form" role="tabpanel"
+                                 aria-labelledby="exhibitor-repre-data-form-tab">
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="contact_name"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Name(s) and last names
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="function"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Job Position
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                  The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="email_contact"
+                                                           class="form-control my-form-control" is-required="true" is-email="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Email
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                     The field is required
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-email-alert d-none">
+                                                     The mail format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="phone_contact"
+                                                           class="form-control my-form-control" is-phone="true"/>
+                                                    <label class="my-form-label myriadpro-regular">Phone</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                     The phone format is incorrect. Country code + phone number. Ex. + 53XXXXXXXX
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="mobile_contact"
+                                                           class="form-control my-form-control" is-phone="true"/>
+                                                    <label class="my-form-label myriadpro-regular">Mobile</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                     The phone format is incorrect. Country code + phone number. Ex. + 53XXXXXXXX
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="whatsapp_contact"
+                                                           class="form-control my-form-control" is-phone="true"/>
+                                                    <label class="my-form-label myriadpro-regular">WhatsApp</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                     The phone format is incorrect. Country code + phone number. Ex. + 53XXXXXXXX
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-5">
+                                            <h4 class="myriadpro-regular">Terms and Conditions of use</h4>
+                                            <p class="myriadpro-regular">
+                                                To complete your registration, it is essential that you carefully read
+                                                the site policy and accept it; to access you must click on the terms
+                                                and conditions link below.
+                                            </p>
+                                            <div class="form-check mt-2">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       name="check_use_conditions"
+                                                       id="term_condition_id"/>
+                                                <label class="form-check-label myriadpro-regular"
+                                                       for="defaultCheck1">
+                                                    I accept the
+                                                    <a href="#" class="terms-conditions">terms and conditions</a>.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-5 mt-5 mt-sm-0 justify-content-end">
+                                        <a href="#" id="exhibitor-pre-sign-in-back"
+                                           class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Back
+                                        </a>
+                                        <button id="register_exhibitor"
+                                                class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Register
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </t>
+        </template>
+
+        <template id="type_visitor_pre_sign_in" name="Feria type of visitor pre sign in">
+            <t t-call="website.layout">
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us d-flex"> <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                <a t-att-href="'/evento/%s/user_pre_sign_in' % (event.id)" class="myriadpro-regular text-white">User registration</a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active myriadpro-regular d-flex" aria-current="page">
+                                 <!--<span class="material-icons mr-2">chevron_right</span>-->Visitor registration
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">VISITOR REGISTRATION</h1>
+                    </div>
+                    <div class="container mb-5">
+                        <div class="mt-5 row justify-content-center">
+                            <div class="col-sm-9">
+                                <p class="myriadpro-regular texto text-center">
+                                    Thank you for your interest in joining FELTi 2021! Please tell us what type of
+                                    visitor you want to be at the event.
+                                </p>
+                                <div class="row mt-5">
+                                    <div class="col-sm-6">
+                                        <h1 class="myriadpro-semibold-condensed text-center">I attend the event on
+                                            behalf of my company or business.
+                                        </h1>
+                                        <div class="mt-4 text-center d-block d-sm-none">
+                                            <a t-att-href="'/evento/%s/business_visitor_pre_sign_in' % (event.id)"
+                                               class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto py-2 px-4">
+                                                I AM A COMPANY OR BUSINESS
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 mt-4 mt-sm-0">
+                                        <h1 class="myriadpro-semibold-condensed text-center">I attend the event in a
+                                            personal capacity. I do not represent a company or business.
+                                        </h1>
+                                        <div class="mt-4 text-center d-block d-sm-none">
+                                            <a t-att-href="'/evento/%s/person_visitor_pre_sign_in' % (event.id)"
+                                               class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto py-2 px-4">
+                                                I AM A PERSON
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mt-4 d-none d-sm-flex">
+                                    <div class="col-sm-6 text-center">
+                                        <a t-att-href="'/evento/%s/business_visitor_pre_sign_in' % (event.id)"
+                                           class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto py-2 px-4">
+                                            I AM A COMPANY OR BUSINESS
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <a t-att-href="'/evento/%s/person_visitor_pre_sign_in' % (event.id)"
+                                           class="btn text-uppercase rounded-pill feria-see-all myriadpro-regular texto py-2 px-4">
+                                            I AM A PERSON
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="business_visitor_pre_sign_in" name="Feria business visitor pre sign in">
+            <t t-call="website.layout">
+                <t t-call="df_website_front.modal_terms_condition"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us d-flex"> <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                <a t-att-href="'/evento/%s/user_pre_sign_in' % (event.id)" class="myriadpro-regular text-white cintillo-text">User registration</a>
+                            </li>
+                            <li class="breadcrumb-item-about-us d-flex"> <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                <a t-att-href="'/evento/%s/type_visitor_pre_sign_in' % (event.id)" class="myriadpro-regular text-white cintillo-text">Visitor registration</a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active myriadpro-regular d-flex cintillo-text" aria-current="page">
+                                 <!--<span class="material-icons mr-2">chevron_right</span>-->Visitor registration as entity
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">VISITOR REGISTRATION AS A COMPANY</h1>
+                    </div>
+                    <form id="form_register_visitor_company">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <ul class="nav nav-tabs my-nav-tabs mt-5" role="tablist">
+                            <li class="nav-item mx-auto ml-sm-auto mr-sm-0" role="presentation">
+                                <a class="nav-link active my-nav-link mb-0 myriadpro-regular"
+                                   id="business-visitor-inst-data-a" data-toggle="tab"
+                                   href="#business-visitor-inst-data-form" role="tab"
+                                   aria-controls="business-visitor-inst-data-form" aria-selected="true">
+                                    Institutional Data
+                                </a>
+                            </li>
+                            <li class="nav-item mx-auto mr-sm-auto ml-sm-0" role="presentation">
+                                <a class="nav-link my-nav-link mb-0 myriadpro-regular"
+                                   id="business-visitor-repre-data-a"
+                                   data-toggle="tab" href="#business-visitor-repre-data-form" role="tab"
+                                   aria-controls="business-visitor-repre-data-form" aria-selected="false">
+                                    Legal Representative Data
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="business-visitor-inst-data-form" role="tabpanel"
+                                 aria-labelledby="business-visitor-inst-data-form-tab">
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="country_select_company_visitor"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            name="country_id"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                        <t t-foreach="countrys" t-as="country">
+                                                            <option t-att-value="country.id" t-att-data-code="country.code">
+                                                                <t
+                                                                        t-esc="country.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Country of location
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="institution_type_select_company_visitor"
+                                                            name="type_institution_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Institution type
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div id="div_code_reeup" class="my-form-outline" style="display: None">
+                                                    <select id="code_reeup_select_visitor"
+                                                            name="code_reeup_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="false">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span>
+                                                        REEUP code
+                                                    </label>
+                                                </div>
+                                                <div id="div_code_nit" class="my-form-outline">
+                                                    <input type="text" name="vat" id="vat_visitor"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> NIT code
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input id="inp_name_social_visitor" type="text" name="name"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Name or Social reason
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="sector_select_company_visitor"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            name="industry_id"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                        <t t-foreach="economic_sectors" t-as="economic">
+                                                            <option t-att-value="economic.id">
+                                                                <t
+                                                                        t-esc="economic.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Economic sector
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                     The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="economic_activity_select_company_visitor"
+                                                            name="economic_activity_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Economic activity
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="province_state_region_select_company_visitor"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            name="state_id"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Province / State / Region
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="municipality_select_company_visitor"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            name="municipality_id"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Municipality
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="city"
+                                                           class="form-control my-form-control"/>
+                                                    <label class="my-form-label myriadpro-regular">City</label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="website"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">Website</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="tematica_select_visitor"
+                                                            name="theme_tag_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true" multiple="">
+                                                        <t t-foreach="theme_tags" t-as="theme_t">
+                                                            <option t-att-value="theme_t.id">
+                                                                <t
+                                                                        t-esc="theme_t.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Theme tag
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-12">
+                                            <h2 class="mb-4">Social media</h2>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="twitter_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL Twitter</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="instagram_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL Instagram</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="facebook_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL Facebook</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="linkedin_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL Linkedin</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="comment" rows="4"/>
+                                                <label class="my-form-label myriadpro-regular">Company Profile</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                  <div>
+                                                    <img src="/df_website_front/static/src/img/user_profile_default.png"
+                                                         width="75px" alt="Picture" id="load-img-url-visitor"/>
+                                                    <label class="myriadpro-regular">Profile Picture</label>
+                                                    <div class="my-form-outline">
+                                                        <input type="file" name="profile-picture" onChange="img_pathUrl(this);"
+                                                               is-required="true" class="form-control my-form-control"/>
+                                                    </div>
+                                                    <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                        The field is required
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5 mb-5 justify-content-end">
+                                        <a t-att-href="'/evento/%s/type_visitor_pre_sign_in' % (event.id)"
+                                           class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Back
+                                        </a>
+                                        <a href="#" id="business-visitor-pre-sign-in-next"
+                                           class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Next
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="business-visitor-repre-data-form" role="tabpanel"
+                                 aria-labelledby="business-visitor-repre-data-form-tab">
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="contact_name"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Name(s) and last names
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="function"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Job Position
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="email_contact"
+                                                           class="form-control my-form-control" is-required="true" is-email="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Email
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-email-alert d-none">
+                                                     The email format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="phone_contact"
+                                                           class="form-control my-form-control" is-phone="true"/>
+                                                    <label class="my-form-label myriadpro-regular">Phone</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                     The phone format is incorrect. Country code + phone number. Ex. + 53XXXXXXXX
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="mobile_contact"
+                                                           class="form-control my-form-control" is-phone="true"/>
+                                                    <label class="my-form-label myriadpro-regular">Mobile</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                     The phone format is incorrect. Country code + phone number. Ex. + 53XXXXXXXX
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="whatsapp_contact"
+                                                           class="form-control my-form-control" is-phone="true"/>
+                                                    <label class="my-form-label myriadpro-regular">WhatsApp</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                     The phone format is incorrect. Country code + phone number. Ex. + 53XXXXXXXX
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-5">
+                                            <h4 class="myriadpro-regular">Terms of Use and User Conditions</h4>
+                                            <p class="myriadpro-regular">
+                                                To complete your registration, it is essential that you carefully read
+                                                the site policy and accept it; to access you must click on the terms
+                                                and conditions link below.
+                                            </p>
+                                            <div class="form-check mt-2">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       name="check_use_conditions"
+                                                       id="term_condition_id"
+                                                />
+                                                <label class="form-check-label myriadpro-regular" for="defaultCheck1">
+                                                    I accept the
+                                                    <a href="#" class="terms-conditions">terms and conditions</a>.
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-5 mt-5 mt-sm-0 justify-content-end">
+                                        <a href="#" id="business-visitor-pre-sign-in-back"
+                                           class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Back
+                                        </a>
+                                        <button id="register_visitor_company"
+                                                class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Register
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </t>
+        </template>
+
+        <template id="person_visitor_pre_sign_in" name="Feria person visitor pre sign in">
+            <t t-call="website.layout">
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <t t-call="df_website_front.modal_terms_condition"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us d-flex"> <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                <a t-att-href="'/evento/%s/user_pre_sign_in' % (event.id)" class="myriadpro-regular text-white">User registration</a>
+                            </li>
+                            <li class="breadcrumb-item-about-us d-flex"> <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                <a t-att-href="'/evento/%s/type_visitor_pre_sign_in' % (event.id)" class="myriadpro-regular text-white">Visitor registration</a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active myriadpro-regular d-flex" aria-current="page">
+                                 <!--<span class="material-icons mr-2">chevron_right</span>-->Visitor registration as person
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">VISITOR REGISTRATION AS PERSON</h1>
+                    </div>
+                    <ul class="nav nav-tabs my-nav-tabs mt-5" role="tablist">
+                        <li class="nav-item mx-auto" role="presentation">
+                            <a class="nav-link active my-nav-link mb-0 myriadpro-regular" id="person-visitor-data-a"
+                               data-toggle="tab" href="#person-visitor-data-form" role="tab"
+                               aria-controls="person-visitor-data-form" aria-selected="true">Personal Information
+                            </a>
+                        </li>
+                    </ul>
+                    <form id="form_register_visitor_person">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="person-visitor-data-form" role="tabpanel"
+                                 aria-labelledby="person-visitor-data-form-tab">
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="name"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Name(s) and last names
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                  The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="email"
+                                                           class="form-control my-form-control" is-required="true" is-email="true"/>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Email
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                   The field is required
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-email-alert d-none">
+                                                     The email format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select name="country_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                        <t t-foreach="countrys" t-as="country">
+                                                            <option t-att-value="country.id">
+                                                                <t
+                                                                        t-esc="country.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Country of location
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                               The field is required
+                                                 </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="phone_contact"
+                                                           class="form-control my-form-control" is-phone="true"/>
+                                                    <label class="my-form-label myriadpro-regular">Phone</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                     The phone format is incorrect. Country code + phone number. Ex. + 53XXXXXXXX
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="mobile_contact"
+                                                           class="form-control my-form-control" is-phone="true"/>
+                                                    <label class="my-form-label myriadpro-regular">Mobile</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                     The phone format is incorrect. Country code + phone number. Ex. + 53XXXXXXXX
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="whatsapp_contact"
+                                                           class="form-control my-form-control" is-phone="true"/>
+                                                    <label class="my-form-label myriadpro-regular">WhatsApp</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-phone-alert d-none">
+                                                     The phone format is incorrect. Country code + phone number. Ex. + 53XXXXXXXX
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-12">
+                                            <h2 class="mb-4">Social media</h2>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="twitter_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL Twitter</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="instagram_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL Instagram</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="facebook_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL Facebook</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="linkedin_url"
+                                                           class="form-control my-form-control" is-url="true"/>
+                                                    <label class="my-form-label myriadpro-regular">URL Linkedin</label>
+                                                </div>
+                                                <div class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                     The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="comment" rows="4" placeholder="Tell us about yourself" is-required="true"/>
+                                                <label class="my-form-label myriadpro-regular label-select-automatic-top">
+                                                    <span class="text-danger">*</span> Visitor profile
+                                                </label>
+                                            </div>
+                                            <div class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                  The field is required
+                                            </div>
+                                            <div class="mt-5">
+                                                <h4 class="myriadpro-regular">Terms and Conditions of use</h4>
+                                                <p class="myriadpro-regular">
+                                                    To complete your registration, it is essential that you carefully
+                                                    read the site policy and accept it; to access you must click on
+                                                    the terms and conditions link below.
+                                                </p>
+                                                <div class="form-check mt-2">
+                                                    <input class="form-check-input" type="checkbox" value=""
+                                                           name="check_use_conditions" id="term_condition_id"
+                                                    />
+                                                    <label class="form-check-label myriadpro-regular"
+                                                           for="defaultCheck1">
+                                                        I accept the
+                                                        <a href="#" class="terms-conditions">terms and conditions</a>.
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-5 mt-5 mt-sm-0 justify-content-end">
+                                        <a t-att-href="'/evento/%s/type_visitor_pre_sign_in' % (event.id)"
+                                           class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Back
+                                        </a>
+                                        <button id="register_visitor_person"
+                                                class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Register
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </t>
+        </template>
+
+        <template id="patrocinadores_event" name="Patrocinadores">
+            <t t-call="website.layout">
+                <div class="oe_structure">
+                    <div class="container-fluid navigation">
+
+                    </div>
+                    <div class="container-fluid">
+                        <div class="container my-5">
+                            <h2 class="text-center encabezados myriadpro-semibold-condensed">PATROCINADORES</h2>
+                            <hr class="encabezado-underline"/>
+                        </div>
+                        <div class="container my-5 ">
+                            <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-interval="10000">
+                                        <div class="d-flex flex-row">
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/alphalogsmall-1.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/ametic_2020_positivo_cmyk_png-mini.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/comunidad-de-madrid.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/Deloittesilversponsor.jpg"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/elmeqplatinum.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/grupomiracomlogo.jpg"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/logo-secartys-web-oficial-300x90.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-interval="2000">
+                                        <div class="d-flex flex-row">
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/hisparob.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/iberiapeque.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Diamante.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/Logo_MadridAeroSpace_Cluster.jpg"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/LOGO_ROBOTTIONS_GR_300x150.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Diamante.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/Logo-GRC-officiel-300x142-mini.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/logo-secartys-web-oficial-300x90.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Diamante.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/logo-secartys-web-oficial-300x90.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="d-flex flex-row">
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/madrid-logo.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/omron-1.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/qualcomm.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/renfepeque.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/robotunion.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/universalplatinum.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                            <div class="items-carousel">
+                                                <img src="/df_website_front/static/src/img/image_carousel/logo-secartys-web-oficial-300x90.png"
+                                                     alt="" class="img"/>
+                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"
+                                                     alt="" class="rating"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

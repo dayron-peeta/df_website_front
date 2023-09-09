@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- el ID  del template tiene que ser igual al KEY de la vista -->
+        <record id="template_event_empty_page_view" model="ir.ui.view">
+            <field name="name">event_empty_page_view</field>
+            <field name="type">qweb</field>
+            <field name="virtual_fair">True</field>
+            <field name="key">df_website_front.template_event_empty_page_view</field>
+            <field name="arch" type="xml">
+                <t t-call="website.layout">
+                    <t name="event_empty">
+                        <div id="wrap" class="oe_structure oe_empty"/>
+                    </t>
+                </t>
+            </field>
+        </record>
+
+        <!-- el ID  del template tiene que ser igual al KEY de la vista -->
+        <record id="event_empty_page_view" model="ir.ui.view">
+            <field name="name">event_empty_page_view</field>
+            <field name="type">qweb</field>
+            <field name="virtual_fair">True</field>
+            <field name="key">df_website_front.event_empty_page_view</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.template_event_empty_page_view"/>
+            </field>
+        </record>
+    </data>
+</odoo>

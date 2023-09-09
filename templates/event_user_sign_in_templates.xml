@@ -1,0 +1,779 @@
+<odoo>
+    <data>
+        <template id="event_sign_in" name="Event sign in">
+            <t t-call="website.layout">
+
+
+                <t t-call="df_website_front.modal_terms_condition"/>
+                <t t-call="df_website_front.modal_add_conference_register"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <form id="form_register_attendee">
+                    <!--                        Para el primero: mx-auto ml-sm-auto mr-sm-0-->
+                    <!--                        Para el ultimo: mx-auto mr-sm-auto ml-sm-0-->
+                    <!--                        Para los intermedios: mx-auto mx-sm-0-->
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" id="event_for_exhibitor" value=""/>
+                    <ul class="nav nav-tabs my-nav-tabs mt-4" role="tablist">
+                        <li class="nav-item mx-auto ml-sm-auto mr-sm-0" role="presentation">
+                            <a class="nav-link my-nav-link mb-0 exo2-regular active"
+                               id="initial-data-a"
+                               data-toggle="tab" href="#initial-data-form" role="tab"
+                               aria-controls="initial-data-form" aria-selected="true">
+                                Initial Data
+                            </a>
+                        </li>
+                        <li class="nav-item mx-auto mr-sm-auto ml-sm-0" role="presentation">
+                            <a class="nav-link my-nav-link mb-0 exo2-regular"
+                               id="institution-data-a"
+                               data-toggle="tab" href="#institution-data-form" role="tab"
+                               aria-controls="institution-data-form" aria-selected="false">
+                                Institutional Data
+                            </a>
+                        </li>
+                        <!--                        <li class="nav-item mx-auto mr-sm-auto ml-sm-0 d-none" role="presentation">-->
+                        <!--                            <a class="nav-link my-nav-link mb-0 exo2-regular"-->
+                        <!--                               id="add-presentation-a"-->
+                        <!--                               data-toggle="tab" href="#add-presentation-form" role="tab"-->
+                        <!--                               aria-controls="add-presentation-form" aria-selected="false">-->
+                        <!--                                Add presentation-->
+                        <!--                            </a>-->
+                        <!--                        </li>-->
+                        <li class="nav-item mx-auto mr-sm-auto ml-sm-0 d-none" role="presentation">
+                            <a class="nav-link my-nav-link mb-0 exo2-regular"
+                               id="stand_profile_design"
+                               data-toggle="tab" href="#stand_sign_in_design_form" role="tab"
+                               aria-controls="stand_sign_in_design_form" aria-selected="false">
+                                Select your stand
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <!-- Datos iniciales-->
+                        <div class="tab-pane fade active show" id="initial-data-form" role="tabpanel"
+                             aria-labelledby="initial-data-form-tab">
+                            <div class="container">
+                                <input id="input_event_free_id" type="hidden" t-att-value="event.event_free"/>
+
+                                <div class="row mt-5">
+                                    <div class="col-sm-6">
+                                        <h5 class="exo2-regular font-weight-bold">
+                                            <span class="text-danger">*</span>
+                                            Registration mode
+                                        </h5>
+                                        <div class="mb-4">
+                                            <div class="form-check mt-1">
+                                                <input class="form-check-input" type="radio"
+                                                       value="registration_mode_business" checked="checked"
+                                                       name="registration_mode"/>
+                                                <label class="form-check-label exo2-regular font-weight-normal">
+                                                    Representing an entity or busines
+                                                </label>
+                                            </div>
+                                            <div class="form-check mt-1">
+                                                <input class="form-check-input" type="radio"
+                                                       value="registration_mode_personal"
+                                                       name="registration_mode"/>
+                                                <label class="form-check-label exo2-regular font-weight-normal">
+                                                    In a personal capacity
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <div class="my-form-outline">
+                                                <select id="country_person_select_id"
+                                                        name="country_person_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true" is-required="true">
+                                                    <t t-foreach="countrys" t-as="country">
+                                                        <option t-att-value="country.id"
+                                                                t-att-data-code="country.code"
+                                                                t-att-data-phone-code="country.phone_code">
+                                                            <t t-esc="country.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Country of location
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <t t-if="event.event_free is False">
+                                            <div class="mb-3">
+                                                <div class="my-form-outline">
+                                                    <select id="select_currency_id"
+                                                            name="currency_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label exo2-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Currency
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                    <div class="col-12">
+                                        <h3 class="mb-4 exo2-regular">Personal information</h3>
+                                    </div>
+                                    <div t-attf-class="#{'col-sm-6' if event.show_ci_passport == false else 'col-sm-12'}">
+                                        <div class="mb-3">
+                                            <div class="my-form-outline">
+                                                <div>
+                                                    <img src="/df_website_front/static/src/img/user_profile_default.png"
+                                                         width="75px" alt="Picture" id="load-img-url-register"/>
+                                                    <label class="exo2-regular ml-2">Profile Picture
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="my-form-outline">
+                                                        <input type="file" name="profile-picture"
+                                                               id="profile-picture-id"
+                                                               onChange="img_pathUrl(this);"
+                                                               is-required="true"
+                                                               class="form-control my-form-control"/>
+                                                    </div>
+                                                    <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                        The field is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div t-attf-class="col-sm-6 #{'d-flex align-items-end' if event.show_ci_passport == false else 'mb-4'}">
+
+                                        <div t-attf-class="#{'w-100' if event.show_ci_passport == false else ''}">
+                                            <div class="mb-3">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="name"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label exo2-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Name(s) and last names
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <t t-if="event.show_ci_passport == true">
+                                            <div class="mb-3">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="ci_passport"
+                                                           class="form-control my-form-control" is-required="true"/>
+                                                    <label class="my-form-label exo2-regular">
+                                                        <span class="text-danger">*</span>
+                                                        CI/PASSPORT
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </t>
+
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="email"
+                                                       class="form-control my-form-control" is-required="true"
+                                                       is-email="true"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Email
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-email-alert d-none">
+                                                The mail format is incorrect
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="mobile"
+                                                       class="form-control my-form-control" is-required="true"
+                                                       is-phone="true"/>
+
+                                                <p class="text-muted mb-0 ml-3 mt-1 d-none">
+                                                    The correct format of the phone is: country code + phone number.
+                                                    Ex. +<span class="phone_code_country"/>XXXXXXXX
+                                                </p>
+
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Mobile
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-phone-alert d-none">
+                                                The phone format is incorrect. Country code + phone number. Ex. +
+                                                53XXXXXXXX
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-12 mt-4" id="select-event-multiple-id">
+                                        <h3 class="mb-2 exo2-regular">Select the event(s) to participate</h3>
+                                        <div>
+                                            <ul class="list-group list-group-flush">
+                                                <t t-foreach="event_ids" t-as="event_id">
+                                                    <li class="list-group-item">
+                                                        <div class="d-flex flex-wrap">
+                                                            <div class="w-100 w-sm-50 d-flex align-items-center">
+                                                                <div>
+                                                                    <input type="checkbox"
+                                                                           class="event-to-participate-check"
+                                                                           t-attf-id="event-to-participate-#{event_id.id}"
+                                                                           t-attf-name="event-to-participate-event-#{event_id.id}"
+                                                                           t-att-data-event-id="event_id.id"
+                                                                           t-attf-data-principal="#{'true' if event_id.principal else 'false'}"
+                                                                           t-attf-data-required-lodging="#{'true' if event_id.required_lodging else 'false'}"
+                                                                    />
+                                                                </div>
+                                                                <div class="row ml-2 ml-sm-0 w-100">
+                                                                    <div class="col-9 col-sm-4 d-flex align-items-center">
+                                                                        <div>
+                                                                            <t t-if="event_id.logo">
+                                                                                <img t-att-src="image_data_uri(event_id.logo)"
+                                                                                     alt="" class="w-100"/>
+                                                                            </t>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-8 d-flex align-items-center mt-3 mt-sm-0">
+                                                                        <div>
+                                                                            <h5 class="exo2-regular">
+                                                                                <t t-esc="event_id.name"/>
+                                                                            </h5>
+                                                                            <p class="exo2-regular mb-0 mt-2">
+                                                                                <t t-if="event_id.event_out_date and event_id.event_out_date_text">
+                                                                                    <t t-esc="event_id.event_out_date_text"/>
+                                                                                </t>
+                                                                                <t t-else="">
+                                                                                    <t t-if="event_id.date_begin">
+                                                                                        <t t-esc="event_id.date_begin.strftime('%d-%m-%Y')"/>
+                                                                                        To
+                                                                                    </t>
+                                                                                    <t t-if="event_id.date_end">
+                                                                                        <t t-esc="event_id.date_end.strftime('%d-%m-%Y')"/>
+                                                                                    </t>
+                                                                                </t>
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="w-100 w-sm-50 d-flex align-items-center">
+
+                                                                <div class="w-100 event-to-participate-input pl-sm-4 mt-3 mt-sm-0"
+                                                                     t-attf-id="event-to-participate-#{event_id.id}-input">
+
+                                                                    <div class="mb-3">
+                                                                        <div class="my-form-outline">
+                                                                            <select t-attf-id="event-to-participate-#{event_id.id}-type-participation"
+                                                                                    t-attf-name="type_participation_event_#{event_id.id}"
+                                                                                    t-att-data-event-id="event_id.id"
+                                                                                    class="form-control my-form-control my-select selectpicker event_type_select"
+                                                                                    title=" " data-live-search="true">
+                                                                            </select>
+                                                                            <label class="my-form-label exo2-regular">
+                                                                                <span t-attf-class="event-to-participate-#{event_id.id}-span-required text-danger d-none">
+                                                                                    *
+                                                                                </span>
+                                                                                Type of participation
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                                            The field is required
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="">
+                                                                        <div class="my-form-outline">
+                                                                            <select t-attf-id="event-to-participate-#{event_id.id}-select-ticket-#{event_id.id}"
+                                                                                    t-attf-name="ticket_id_event_#{event_id.id}"
+                                                                                    t-att-data-event-id="event_id.id"
+                                                                                    class="form-control my-form-control my-select selectpicker event_type_select"
+                                                                                    title=" " data-live-search="true">
+                                                                            </select>
+                                                                            <label class="my-form-label exo2-regular">
+                                                                                <span t-attf-class="event-to-participate-#{event_id.id}-span-required text-danger d-none">
+                                                                                    *
+                                                                                </span>
+                                                                                Ticket
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="exo2-regular mx-3 my-alert d-none ticket_description_event">
+                                                                            <span t-attf-id="ticket_description-#{event_id.id}"/>
+                                                                        </div>
+                                                                        <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                                            The field is required
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div t-attf-class="my-4 div-conference-name-#{event_id.id} d-none">
+                                                                        <div class="my-form-outline">
+                                                                            <input type="text"
+                                                                                   t-attf-id="event-to-participate-#{event_id.id}-conference-name"
+                                                                                   t-attf-name="conference_name_#{event_id.id}"
+                                                                                   class="form-control my-form-control event_conference_inp"/>
+                                                                            <label class="my-form-label exo2-regular">
+                                                                                <span t-attf-class="event-to-participate-#{event_id.id}-span-required text-danger d-none">
+                                                                                    *
+                                                                                </span>
+                                                                                Conference name
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                                            The field is required
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div t-attf-class="div-conference-file-#{event_id.id} mb-3 d-none">
+                                                                        <div class="my-form-outline">
+                                                                            <input type="file"
+                                                                                   t-attf-id="event-to-participate-#{event_id.id}-conference-file"
+                                                                                   t-attf-name="conference_file_#{event_id.id}"
+                                                                                   class="form-control my-form-control event_conference_inp"/>
+                                                                            <label class="my-form-label exo2-regular file-label-select-automatic-top">
+                                                                                <span t-attf-class="event-to-participate-#{event_id.id}-span-required text-danger d-none">
+                                                                                    *
+                                                                                </span>
+                                                                                Conference file
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                                            The field is required
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div t-attf-class="div-conference-type-track-#{event_id.id} mb-3 d-none">
+                                                                        <div class="my-form-outline">
+                                                                            <select t-attf-id="event-to-participate-#{event_id.id}-conference-type-track"
+                                                                                    t-attf-name="type_track_name_#{event_id.id}"
+                                                                                    class="form-control my-form-control my-select selectpicker event_type_select_session"
+                                                                                    title=" " data-live-search="true">
+                                                                            </select>
+                                                                            <label class="my-form-label exo2-regular">
+                                                                                <span t-attf-class="event-to-participate-#{event_id.id}-span-required text-danger d-none">
+                                                                                    *
+                                                                                </span>
+                                                                                Type track
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div t-attf-class="div-conference-theme-tag-#{event_id.id} d-none">
+                                                                        <div class="my-form-outline">
+                                                                            <select t-attf-id="event-to-participate-#{event_id.id}-conference-theme-tag-id"
+                                                                                    t-attf-name="theme_tag_track_id_#{event_id.id}"
+                                                                                    class="form-control my-form-control my-select selectpicker"
+                                                                                    title=" " data-live-search="true"
+                                                                                    multiple="">
+                                                                                <t t-foreach="theme_tags"
+                                                                                   t-as="theme_t">
+                                                                                    <option t-att-value="theme_t.id">
+                                                                                        <t t-esc="theme_t.name"/>
+                                                                                    </option>
+                                                                                </t>
+                                                                            </select>
+                                                                            <label class="my-form-label exo2-regular">
+                                                                                &#160;&#160;&#160;Theme tag
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                    </li>
+                                                </t>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-12 d-none">
+                                        <div class="mb-3">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="biography"
+                                                          rows="5"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    Biographical Synthesis
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-check mt-2 form-check-term-conditions d-none">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                           name="check_use_conditions"
+                                           id="check_use_conditions_personal_id"/>
+                                    <label class="form-check-label exo2-regular"
+                                           for="defaultCheck1">
+                                        I accept the
+                                        <a href="#" class="terms-conditions">terms and conditions</a>.
+                                    </label>
+                                </div>
+
+                                <div class="row mt-4 mb-5 justify-content-end">
+                                    <a href="#" id="initial-data--in-next"
+                                       class="ml-3 btn text-uppercase feria-see-all exo2-regular texto rounded-0 button-action-register">
+                                        Next
+                                    </a>
+                                    <button id="register_attendee_personal"
+                                            class="ml-3 btn text-uppercase feria-see-all exo2-regular texto rounded-0 button-action-register d-none">
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Datos institucionales -->
+                        <div class="tab-pane fade" id="institution-data-form" role="tabpanel"
+                             aria-labelledby="institution-data-form-tab">
+                            <div class="container">
+                                <div class="row mt-5">
+                                    <div class="col-sm-6 d-flex align-items-end">
+                                        <div class="w-100">
+                                            <div class="mb-3">
+                                                <div class="my-form-outline">
+                                                    <select id="country_select_id"
+                                                            name="country_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                        <t t-foreach="countrys" t-as="country">
+                                                            <option t-att-value="country.id"
+                                                                    t-att-data-code="country.code"
+                                                                    t-att-data-phone-code="country.phone_code">
+                                                                <t t-esc="country.name"/>
+                                                            </option>
+                                                        </t>
+                                                    </select>
+
+                                                    <label class="my-form-label exo2-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Country of location
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="my-form-outline">
+                                                    <select id="institution_type_select"
+                                                            name="type_institution_id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true" is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label exo2-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Institution type
+                                                    </label>
+                                                </div>
+                                                <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-3">
+                                            <div class="my-form-outline">
+                                                <div>
+                                                    <img src="/df_website_front/static/src/img/user_profile_default.png"
+                                                         width="75px" alt="Picture"
+                                                         id="load-img-url-register-entity"/>
+                                                    <label class="exo2-regular ml-2">Entity logo
+                                                        <span class="text-danger" id="entity-logo-span">*</span>
+                                                    </label>
+                                                    <div class="my-form-outline">
+                                                        <input type="file" name="profile-picture-entity"
+                                                               id="profile-picture-entity-id"
+                                                               onChange="img_pathUrl(this);"
+                                                               class="form-control my-form-control"/>
+                                                    </div>
+                                                    <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                        The field is required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <div id="div_code_reeup" class="my-form-outline"
+                                                 style="display: None">
+                                                <select id="code_reeup_select"
+                                                        name="code_reeup_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true" is-required="true">
+                                                </select>
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    REEUP code
+                                                </label>
+                                            </div>
+                                            <div id="div_code_nit" class="my-form-outline">
+                                                <input type="text" name="vat" id="vat_attendee"
+                                                       class="form-control my-form-control" is-required="true"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    NIT code
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="my-form-outline">
+                                                <input id="inp_name_social" name="inst_name"
+                                                       type="text"
+                                                       class="form-control my-form-control" is-required="true"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Name
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="mb-4">
+                                            <div id="" class="my-form-outline">
+                                                <input type="text" name="acronym" id="acronym_id"
+                                                       class="form-control my-form-control"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    Acronym
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="my-form-outline">
+                                                <input type="text" name="website" id="website_id"
+                                                       class="form-control my-form-control" is-url="true"/>
+                                                <label class="my-form-label exo2-regular">Website
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-url-alert d-none">
+                                                The url format is incorrect
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <div class="my-form-outline">
+                                                <select id="industry_select"
+                                                        name="industry_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true" is-required="true">
+                                                    <t t-foreach="economic_sectors" t-as="economic">
+                                                        <option t-att-value="economic.id">
+                                                            <t t-esc="economic.name"/>
+                                                        </option>
+                                                    </t>
+                                                </select>
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Economic sector
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="my-form-outline">
+                                            <textarea class="form-control my-form-control" name="comment" rows="4"
+                                                      is-required="true"/>
+                                            <label class="my-form-label exo2-regular">Entity Profile
+                                            </label>
+                                        </div>
+                                        <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                            The field is required
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-2 d-none form-check-term-conditions">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                           name="check_use_conditions"
+                                           id="check_use_conditions_id_inst"/>
+                                    <label class="form-check-label exo2-regular"
+                                           for="defaultCheck1">
+                                        I accept the
+                                        <a href="#" class="terms-conditions">terms and conditions</a>.
+                                    </label>
+                                </div>
+
+                                <div class="row mb-5 mt-4 justify-content-end">
+                                    <a href="#" id="initial-data-in-back"
+                                       class="btn text-uppercase feria-see-all exo2-regular texto rounded-0 button-action-register">
+                                        Back
+                                    </a>
+                                    <a href="#" id="stand-data--in-next"
+                                       class="ml-3 btn text-uppercase feria-see-all exo2-regular texto rounded-0 d-none button-action-register">
+                                        Next
+                                    </a>
+                                    <button id="register_attendee_inst"
+                                            class="ml-3 btn text-uppercase feria-see-all exo2-regular texto rounded-0 button-action-register ">
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Datos de la presentación -->
+                        <!--                        <div class="tab-pane fade" id="add-presentation-form" role="tabpanel"-->
+                        <!--                             aria-labelledby="add-presentation-form-tab">-->
+                        <!--                            <div class="container mt-3">-->
+
+                        <!--                                <div class="row mt-5 mb-5 justify-content-end">-->
+                        <!--                                    <button id="add_conference_register"-->
+                        <!--                                            class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">-->
+                        <!--                                        Add conference-->
+                        <!--                                    </button>-->
+                        <!--                                </div>-->
+
+                        <!--                                <div class="table-responsive">-->
+                        <!--                                    <table class="table" id="user_track_register">-->
+                        <!--                                        <thead>-->
+                        <!--                                            <tr>-->
+                        <!--                                                <th scope="col">#</th>-->
+                        <!--                                                <th scope="col">Title</th>-->
+                        <!--                                                <th scope="col">Type presentation</th>-->
+                        <!--                                                <th scope="col">State</th>-->
+                        <!--                                                <th scope="col">Actions</th>-->
+                        <!--                                            </tr>-->
+                        <!--                                        </thead>-->
+                        <!--                                        <tbody>-->
+                        <!--                                        </tbody>-->
+                        <!--                                    </table>-->
+                        <!--                                </div>-->
+
+                        <!--                                <div class="form-check mt-2">-->
+                        <!--                                    <input class="form-check-input" type="checkbox" value=""-->
+                        <!--                                           name="check_use_conditions"-->
+                        <!--                                           id="check_use_conditions_conference_id"/>-->
+                        <!--                                    <label class="form-check-label exo2-regular"-->
+                        <!--                                           for="defaultCheck1">-->
+                        <!--                                        I accept the-->
+                        <!--                                        <a href="#" class="terms-conditions">terms and conditions</a>.-->
+                        <!--                                    </label>-->
+                        <!--                                </div>-->
+
+                        <!--                                <div class="row mb-5 mt-4 justify-content-end">-->
+                        <!--                                    <a href="#" id="initial-data-conference-in-back"-->
+                        <!--                                       class="btn text-uppercase feria-see-all exo2-regular texto rounded-0 button-action-register">-->
+                        <!--                                        Back-->
+                        <!--                                    </a>-->
+                        <!--                                    <a href="#" id="stand-data-conference&#45;&#45;in-next"-->
+                        <!--                                       class="ml-3 btn text-uppercase feria-see-all exo2-regular texto rounded-0 d-none button-action-register">-->
+                        <!--                                        Next-->
+                        <!--                                    </a>-->
+                        <!--                                    <button id="register_conference"-->
+                        <!--                                            class="ml-3 btn text-uppercase feria-see-all exo2-regular texto rounded-0 button-action-register">-->
+                        <!--                                        Register-->
+                        <!--                                    </button>-->
+                        <!--                                </div>-->
+
+                        <!--                            </div>-->
+                        <!--                        </div>-->
+
+                        <!-- Seleccionar stand -->
+                        <div class="tab-pane fade" id="stand_sign_in_design_form" role="tabpanel"
+                             aria-labelledby="stand_sign_in_design_form">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <t t-if="area_id">
+                                <input type="hidden" name="current_area_id" t-att-value="area_id.id"/>
+                            </t>
+                            <div class="container">
+                                <div class="row mt-5 mb-3 stand-select-register">
+                                    <div class="col-12">
+                                        <h2 class="mb-4 exo2-bold text-center text-uppercase">
+                                            Select Stand Type
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div id="stand_resources_basic_id"
+                                     class="d-none">
+                                    <div class="row pt-5 justify-content-center">
+                                        <div class="col-12">
+                                            <h1 class="mb-4 myriadpro-semibold-condensed text-center text-uppercase">
+                                                Decorate the selected stand
+                                            </h1>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <img src="" alt="Picture" class="img-fluid w-100 stand-decor-img"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-check mt-2 d-none form-check-term-conditions">
+                                    <input class="form-check-input" type="checkbox" value=""
+                                           name="check_use_conditions"
+                                           id="check_use_conditions_id"/>
+                                    <label class="form-check-label exo2-regular"
+                                           for="defaultCheck1">
+                                        I accept the
+                                        <a href="#" class="terms-conditions">terms and conditions</a>.
+                                    </label>
+                                </div>
+
+                                <div class="row mb-4 mt-4 justify-content-end">
+                                    <a href="#" id="inst-data-in-back"
+                                       class="btn text-uppercase feria-see-all exo2-regular texto rounded-0 button-action-register">
+                                        Back
+                                    </a>
+                                    <button id="register_attendee"
+                                            class="ml-3 btn text-uppercase feria-see-all exo2-regular texto rounded-0 button-action-register">
+                                        Register
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

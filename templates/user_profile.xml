@@ -1,0 +1,1007 @@
+<odoo>
+    <data>
+
+        <template id="user_tracks_profile">
+            <table class="table" id="user_tracks" data-resources="3">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Date/time</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Event</th>
+                        <th scope="col">State</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="tracks" t-as="track">
+                        <tr t-att-id="track.id">
+                            <th scope='row'>
+                                <t t-esc="track_index + 1" />
+                            </th>
+                            <td>
+                                <t t-esc="track.get_date_for_tzone_user()" />
+                            </td>
+                            <td>
+                                <t t-esc="track.sudo().format_number_duration()" />
+                            </td>
+                            <td>
+                                <p class="track_name_id">
+                                    <t t-esc="track.name" />
+                                </p>
+                            </td>
+                            <td>
+                                <p t-if="track.event_id" class="track_name_id">
+                                    <t t-esc="track.event_id.name" />
+                                </p>
+                            </td>
+                            <td>
+                                <p class="track.stage_id">
+                                    <t t-esc="track.stage_id.name" />
+                                </p>
+                            </td>
+                            <td>
+                                <a class='editTrackRow fa fa-edit icon-fa-myfont cursor-pointer'
+                                    title="Edit track" />
+                                <a class='addDocuments fa fa-file icon-fa-myfont cursor-pointer'
+                                    title="Add Documents" />
+                                <a class='addImages fa fa-image icon-fa-myfont cursor-pointer'
+                                    title="Add Images" />
+                                <t t-if="request.env.user == track.user_id">
+                                    <a
+                                        class='add_speaker_profile fa fa-user icon-fa-myfont cursor-pointer'
+                                        title="Add Speaker" />
+                                    <a
+                                        class='see_speaker_profile fa fa-eye icon-fa-myfont cursor-pointer'
+                                        title="See Speaker" />
+                                </t>
+                                <t
+                                    t-if="track.stage_id.id not in track_states and request.env.user == track.user_id">
+                                    <a class='deleteTrack fa fa-close icon-fa-myfont cursor-pointer'
+                                        title="Delete track" />
+                                </t>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </template>
+
+        <template id="user_profile" name="User profile">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page" />
+                <input t-if="event" id="EVENT_ID" t-att-value="event.id" type="hidden" />
+
+                <t t-call="df_website_front.loader_event" />
+                <t t-call="df_website_front.modal_track" />
+                <t t-call="df_website_front.modal_accredited_profile_user" />
+                <t t-call="df_website_front.modal_add_speaker_conference" />
+                <t t-call="df_website_front.modal_detail_speaker" />
+                <t t-if="event">
+                    <t t-call="df_website_front.event_navbar_dinamic" />
+                </t>
+                <t t-else="">
+                    <div
+                        class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow ">
+                        <h2 class="my-0 mr-md-auto text-left">USER PROFILE</h2>
+                        <t t-if="event">
+                            <a class="btn btn-outline-primary" t-attf-href="/evento/{{event.id}}">
+                                BACK</a>
+                        </t>
+                        <t t-else="">
+                            <a class="btn btn-outline-primary" t-attf-href="/event">BACK</a>
+                        </t>
+                    </div>
+                </t>
+                <div class="oe_structure">
+                    <div class="container">
+                        <div class="mt-4 mb-4">
+                            <h2 class="text-center encabezados myriadpro-semibold-condensed">USER
+                                PROFILE</h2>
+                            <hr class="encabezado-underline" />
+                        </div>
+                        <p class="myriadpro-regular mb-4">Here you can edit your user profile, by
+                            editing
+                            your personal information. This data will be visible for registered
+                            users only. We will
+                            never expose or publish your personal data to others no related with
+                            this event.
+                        </p>
+                    </div>
+
+                    <ul class="nav nav-tabs my-nav-tabs" role="tablist">
+                        <!--                                                <li class="nav-item mx-auto " role="presentation">-->
+                        <li t-attf-class="nav-item mx-auto ml-sm-auto mr-sm-0"
+                            role="user_data">
+                            <a class="nav-link active my-nav-link mb-0 myriadpro-regular enable-tab"
+                                id="user_profile_datas" data-toggle="tab"
+                                href="#user_profile_datas_form" role="tab"
+                                aria-controls="user_profile_datas_form" aria-selected="true">
+                                User Data
+                            </a>
+                        </li>
+                        <!--                        Para el primero: mx-auto ml-sm-auto mr-sm-0-->
+                        <!--                        Para el ultimo: mx-auto mr-sm-auto ml-sm-0-->
+                        <!--                        Para los intermedios: mx-auto mx-sm-0-->
+                        <!--                        <t t-if="is_speaker == true">-->
+                        <!-- <li class="nav-item mx-auto mx-sm-0" role="presentation">
+                            <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                            id="user_profile_presentation"
+                            data-toggle="tab" href="#user_profile_presentation_form" role="tab"
+                            aria-controls="user_profile_presentation_form" aria-selected="false">
+                                Presentation
+                            </a>
+                        </li>-->
+                        <!--                        </t>-->
+                        <li t-attf-class="nav-item mx-auto mx-sm-0" role="inscriptions">
+                            <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                                id="user_profile_inscriptions"
+                                data-toggle="tab" href="#user_profile_inscriptions_form" role="tab"
+                                aria-controls="user_profile_inscriptions_form" aria-selected="false">
+                                Inscriptions
+                            </a>
+                        </li>
+                        <li t-attf-class="nav-item mx-auto mx-sm-0" role="presentation">
+                            <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                                id="user_profile_payment"
+                                data-toggle="tab" href="#user_profile_payment_form" role="tab"
+                                aria-controls="user_profile_payment_form" aria-selected="false">
+                                Payments
+                            </a>
+                        </li>
+                        <li class="nav-item mx-auto mx-sm-0" role="presentation">
+                            <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                                id="user_profile_agenda" data-toggle="tab"
+                                href="#user_profile_agenda_form" role="tab"
+                                aria-controls="user_profile_agenda_form" aria-selected="false">
+                                Schedule
+                            </a>
+                        </li>
+                        <li
+                            t-attf-class="nav-item #{'mx-auto mr-sm-auto ml-sm-0' if certifications and len(certifications) == 0 else 'mx-auto mx-sm-0'}"
+                            role="presentation"
+                            id="accredited_profile_user_li_id">
+                            <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                                id="accredited_profile_user"
+                                data-toggle="tab" href="#accredited_profile_user_form" role="tab"
+                                aria-controls="accredited_profile_user_form" aria-selected="false">
+                                Accredited Users
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+                        <!--Pestaña
+                        de sus datos de perfil-->
+                        <div class="tab-pane fade show active" id="user_profile_datas_form"
+                            role="tabpanel"
+                            aria-labelledby="user_profile_datas_form-tab">
+                            <form id="form_register_user_profile">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4 d-flex">
+                                                <div>
+                                                    <t t-if="user_id.partner_id.image_1920">
+                                                        <img
+                                                            t-attf-src="data:image/*; base64,{{user_id.partner_id.image_1920}}"
+                                                            width="75px"
+                                                            alt="Picture" id="load-img-url" />
+                                                    </t>
+                                                    <t t-else="">
+                                                        <img
+                                                            src="/df_website_front/static/src/img/user_profile_default.png"
+                                                            width="75px"
+                                                            alt="Picture" id="load-img-url" />
+                                                    </t>
+                                                </div>
+                                                <div class="my-form-outline ml-2"
+                                                    style="align-self: flex-end;">
+                                                    <input type="file" name="profile-picture"
+                                                        onChange="img_pathUrl(this);"
+                                                        class="form-control my-form-control"
+                                                        t-att-value="user_id.partner_id.image_1920" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="full_name"
+                                                        id="full_name"
+                                                        class="form-control my-form-control"
+                                                        is-required="true"
+                                                        t-att-value="user_id.name" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.name else ''} my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Full Name </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="position"
+                                                        id="job_position"
+                                                        class="form-control my-form-control"
+                                                        is-required="true"
+                                                        t-att-value="user_id.partner_id.function" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.function else ''} my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Job
+                                                        position </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="email_contact"
+                                                        readonly="1"
+                                                        t-att-value="user_id.partner_id.email"
+                                                        class="form-control my-form-control"
+                                                        is-required="true"
+                                                        is-email="true" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.email else ''} my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Email </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-email-alert d-none">
+                                                    The email format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="cell-phone"
+                                                        class="form-control my-form-control"
+                                                        t-att-value="user_id.partner_id.mobile" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.mobile else ''} my-form-label myriadpro-regular">
+                                                        Mobile
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="phone-number"
+                                                        class="form-control my-form-control"
+                                                        t-att-value="user_id.partner_id.phone" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.phone else ''} my-form-label myriadpro-regular">
+                                                        Phone Number
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="number_identification"
+                                                        t-att-value="user_id.partner_id.ci_passport"
+                                                        class="form-control my-form-control" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.ci_passport else ''} my-form-label myriadpro-regular">
+                                                        CI/Passport
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="select_scientific_category"
+                                                        name="scientific_category"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true">
+                                                        <t t-foreach="scientific_category_ids"
+                                                            t-as="scientific_category">
+                                                            <option
+                                                                t-att-value="scientific_category.id"
+                                                                t-att-selected="user_id.partner_id.category_scientific_id.id == scientific_category.id">
+                                                                <t t-esc="scientific_category.name" />
+                                                            </option>
+                                                        </t>
+
+                                                    </select>
+
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.category_scientific_id else ''} my-form-label myriadpro-regular">
+                                                        Scientific category
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="select_teaching_category"
+                                                        name="teaching_category"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true">
+                                                        <t t-foreach="teaching_category_ids"
+                                                            t-as="teaching_category">
+                                                            <option
+                                                                t-att-value="teaching_category.id"
+                                                                t-att-selected="user_id.partner_id.category_educational_id.id == teaching_category.id">
+                                                                <t t-esc="teaching_category.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.category_educational_id else ''} my-form-label myriadpro-regular">
+                                                        Teaching category
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="select_investigative_category"
+                                                        name="investigative_category"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true">
+                                                        <t t-foreach="investigative_category_ids"
+                                                            t-as="investigative_category_id">
+                                                            <option
+                                                                t-att-value="investigative_category_id.id"
+                                                                t-att-selected="user_id.partner_id.category_investigative_id.id == investigative_category_id.id">
+                                                                <t
+                                                                    t-esc="investigative_category_id.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.category_investigative_id else ''} my-form-label myriadpro-regular">
+                                                        Investigative category
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4 my-form-outline">
+                                                <select id="country_select_profile"
+                                                    name="country_id"
+                                                    class="form-control my-form-control my-select selectpicker"
+                                                    title=" " data-live-search="true"
+                                                    is-required="true">
+                                                    <t t-foreach="countrys" t-as="country">
+                                                        <option t-att-value="country.id"
+                                                            t-att-data-code="country.code"
+                                                            t-att-selected="user_id.country_id.id == country.id">
+                                                            <t t-esc="country.name" />
+                                                        </option>
+                                                    </t>
+                                                </select>
+
+                                                <label
+                                                    t-attf-class="#{'label-select-automatic-top' if user_id.country_id.id else ''} my-form-label myriadpro-regular">
+                                                    <span class="text-danger">*</span> Country of
+                                                    location </label>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select
+                                                        id="province_state_region_select_profile"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        name="state_id"
+                                                        title=" " data-live-search="true"
+                                                        t-attf-is-required="#{'true' if user_id.partner_id.country_id.code == 'CU' else false}">
+                                                        <t t-foreach="provinces" t-as="province">
+                                                            <option t-att-value="province.id"
+                                                                t-att-selected="user_id.state_id.id == province.id">
+                                                                <t t-esc="province.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.state_id.id else ''} my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Province
+                                                        / State / Region </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <!--                                                    t-attf-is-required="#{'true' if
+                                                    user_id.partner_id.country_id.code == 'CU' else
+                                                    false}"-->
+                                                    <select id="municipality_select_profile"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        name="municipality_id"
+                                                        title=" " data-live-search="true">
+                                                        <t t-foreach="municipalitys"
+                                                            t-as="municipality">
+                                                            <option t-att-value="municipality.id"
+                                                                t-att-selected="user_id.partner_id.municipality_id.id == municipality.id">
+                                                                <t t-esc="municipality.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.municipality_id.id else ''} my-form-label myriadpro-regular">
+                                                        Municipality
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="city"
+                                                        t-att-value="user_id.city"
+                                                        class="form-control my-form-control" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.city else ''} my-form-label myriadpro-regular">
+                                                        City
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="whatsapp"
+                                                        t-att-value="user_id.partner_id.whatsapp_url"
+                                                        class="form-control my-form-control" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.whatsapp_url else ''} my-form-label myriadpro-regular">
+                                                        Whatsapp
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="specialty"
+                                                        t-att-value="user_id.partner_id.specialty"
+                                                        class="form-control my-form-control" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.specialty else ''} my-form-label myriadpro-regular">
+                                                        Specialty
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <t
+                                                t-if="len(request.env.user.partner_id.participation_objective_ids.ids) > 0">
+                                                <div class="mb-4">
+                                                    <div class="my-form-outline">
+                                                        <select id="objetive-id-profile"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            name="objetive_id"
+                                                            title=" " data-live-search="true"
+                                                            multiple="">
+
+                                                            <t t-foreach="objetives" t-as="objetive">
+                                                                <t
+                                                                    t-if="len(request.env.user.partner_id.participation_objective_ids.ids) == 0">
+                                                                    <option
+                                                                        t-att-value="objetive.id">
+                                                                        <t t-esc="objetive.name" />
+                                                                    </option>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <option
+                                                                        t-att-value="objetive.id"
+                                                                        t-att-selected="objetive.id in request.env.user.partner_id.participation_objective_ids.ids">
+                                                                        <t t-esc="objetive.name" />
+                                                                    </option>
+                                                                </t>
+                                                            </t>
+
+                                                        </select>
+                                                        <label
+                                                            t-attf-class="#{'label-select-automatic-top' if len(request.env.user.partner_id.participation_objective_ids) > 0 else ''} my-form-label myriadpro-regular">
+                                                            Participation objectives
+                                                        </label>
+                                                    </div>
+                                                    <div
+                                                        class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                        The field is required
+                                                    </div>
+                                                </div>
+                                            </t>
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control"
+                                                    name="brief-resume"
+                                                    rows="3">
+                                                    <t t-esc="user_id.partner_id.biography" />
+                                                </textarea>
+                                                <label
+                                                    t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.biography else ''} my-form-label myriadpro-regular">
+                                                    User profile
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-5">
+                                        <div class="col-12">
+                                            <h2 class="mb-4">Socials Networks</h2>
+                                            <p>Link your social network profiles to let other users
+                                                get your
+                                                information and contacts.
+                                            </p>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="twitter_url"
+                                                        t-att-value="user_id.partner_id.twitter_url"
+                                                        class="form-control my-form-control"
+                                                        is-url="true" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.twitter_url else ''} my-form-label myriadpro-regular">
+                                                        URL Twitter
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                    The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="instagram_url"
+                                                        t-att-value="user_id.partner_id.instagram_url"
+                                                        class="form-control my-form-control"
+                                                        is-url="true" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.instagram_url else ''} my-form-label myriadpro-regular">
+                                                        URL Instagram
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                    The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="telegram_url"
+                                                        t-att-value="user_id.partner_id.telegram_url"
+                                                        class="form-control my-form-control"
+                                                        is-url="true" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.telegram_url else ''} my-form-label myriadpro-regular">
+                                                        URL Telegram
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                    The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="facebook_url"
+                                                        t-att-value="user_id.partner_id.facebook_url"
+                                                        class="form-control my-form-control"
+                                                        is-url="true" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.facebook_url else ''} my-form-label myriadpro-regular">
+                                                        URL Facebook
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                    The url format is incorrect
+                                                </div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="linkedin_url"
+                                                        t-att-value="user_id.partner_id.linkedin_url"
+                                                        class="form-control my-form-control"
+                                                        is-url="true" />
+                                                    <label
+                                                        t-attf-class="#{'label-select-automatic-top' if user_id.partner_id.linkedin_url else ''} my-form-label myriadpro-regular">
+                                                        URL Linkedin
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                    The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-5">
+                                            <h4 class="myriadpro-regular">My favorites</h4>
+                                            <t t-if="event and stands_favorites">
+                                                <div class="row">
+                                                    <t t-foreach="stands_favorites" t-as="stand">
+                                                        <div
+                                                            t-attf-class="col-sm-2 my-2 #{'ml-2' if stand_index > 0 else ''}">
+                                                            <a t-if="event"
+                                                                t-att-href="'/evento/%s/%s/event_area' % (event.id,stand.area_id.id)"
+                                                                t-att-title="stand.area_id.name">
+                                                                <div
+                                                                    class="card box-shadow-card rounded">
+                                                                    <img alt="Picture"
+                                                                        class="img-fluid w-100"
+                                                                        t-att-src="image_data_uri(stand.area_id.image_1920)"
+                                                                        t-att-alt="stand.area_id.name" />
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                            </t>
+                                            <t t-else="">
+                                                <div>You don't have favorite stands</div>
+                                            </t>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-5 mb-5 justify-content-end">
+                                        <button id="register_user_profile"
+                                            class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!--Pestaña
+                        de inscripciones-->
+                        <div class="tab-pane fade show active" id="user_profile_inscriptions_form"
+                            role="tabpanel"
+                            aria-labelledby="user_profile_inscriptions_form-tab">
+                            <p> hello </p>
+
+                            <!--  Tabla -->
+                            <table class="table" id="user_tracks" data-resources="3">
+                                <thead>
+                                    <!--  Columnas de la tabla -->
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Event</th>
+                                        <th scope="col">Currency</th>
+                                        <th scope="col">Type of participation</th>
+                                        <th scope="col">Entrance type</th>
+                                        <th scope="col">Hotel</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="tracks" t-as="track">
+                                        <tr t-att-id="track.id">
+                                            <th scope='row'>
+                                                <t t-esc="track_index + 1" />
+                                            </th>
+                                            <td>
+                                                <t t-esc="track.get_date_for_tzone_user()" />
+                                            </td>
+                                            <td>
+                                                <t t-esc="track.sudo().format_number_duration()" />
+                                            </td>
+                                            <td>
+                                                <p class="track_name_id">
+                                                    <t t-esc="track.name" />
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p t-if="track.event_id" class="track_name_id">
+                                                    <t t-esc="track.event_id.name" />
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="track.stage_id">
+                                                    <t t-esc="track.stage_id.name" />
+                                                </p>
+                                            </td>
+                                            <!--  Acciones de la tabla  -->
+                                            <td>
+                                                <a
+                                                    t-attf-href="/#{track.id}/info_documents_presentations"
+                                                    class='fa fa-edit icon-fa-myfont cursor-pointer'
+                                                    title="Edit track" />
+                                                <a
+                                                    class='deleteTrack fa fa-close icon-fa-myfont cursor-pointer'
+                                                    title="Delete track" />
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!--Pestaña
+                        de ponencias del usuario, en caso de que este sea un ponente en el evento
+                        actual-->
+                        <div class="tab-pane fade" id="user_profile_presentation_form"
+                            role="tabpanel"
+                            aria-labelledby="user_profile_presentation_form-tab">
+                            <div class="container mt-3">
+                                <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                                    <button id="add_profile_presentation"
+                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        Add presentation
+                                    </button>
+                                </div>
+                                <div class="table-responsive" id="table-users-profile-id">
+                                    <t t-call="df_website_front.user_tracks_profile" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--Pestaña
+                        de agenda del usuario-->
+                        <div class="tab-pane fade" id="user_profile_agenda_form" role="tabpanel"
+                            aria-labelledby="business-agenda-data-form-tab">
+                            <div class="container">
+                                <t t-if="schedules">
+                                    <t t-call="df_website_front.modal_view_schudele" />
+                                    <t t-call="df_website_front.modal_confirmation_reject_date" />
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div>
+                                                <div style="margin-left:16px" class="float-left">
+                                                    <span id="circle_event_approved" />
+                                                    <span>Approved</span>
+                                                </div>
+                                                <div style="float:left" class="float-left">
+                                                    <span id="circle_event_waiting" class="ml-3" />
+                                                    <span>Waiting Confirmation</span>
+                                                </div>
+                                                <div class="float-left">
+                                                    <span id="circle_event_denied" class="ml-3" />
+                                                    <span>Appointment Denied</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <t t-if="schedules.get('table_html',False)">
+                                        <div class="row">
+                                            <div class="col mb-5 mt-3">
+                                                <t t-raw="schedules['table_html']" />
+                                            </div>
+                                        </div>
+                                    </t>
+                                </t>
+                                <t t-else="">
+                                    <h4>Does not present associated appointments.</h4>
+                                </t>
+                            </div>
+                        </div>
+
+                        <!--Pestaña
+                        de acreditados-->
+                        <div class="tab-pane fade" id="accredited_profile_user_form" role="tabpanel"
+                            aria-labelledby="accredited_profile_user_form_tab">
+                            <form id="form_accredited_profile_user" class="mt-5">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <!--                                <t t-if="area_id">-->
+                                <!--                                    <input type="hidden" name="current_area_id"
+                                t-att-value="area_id.id"/>-->
+                                <!--                                </t>-->
+                                <div class="container">
+                                    <div class="row mt-5 justify-content-center">
+                                        <div class="col-sm-10">
+                                            <h2 class="mb-3 myriadpro-regular"
+                                                id="title_profile_accredited">Accredited
+                                                Users
+                                            </h2>
+                                        </div>
+                                        <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                                            <button id="add_profile_accredited"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                                Add user
+                                            </button>
+                                        </div>
+                                        <div class="table-responsive">
+                                            <table class="table" id="accredited_mng"
+                                                data-resources="8">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">#</th>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Email</th>
+                                                        <th scope="col">Active</th>
+                                                        <th scope="col">Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <t t-foreach="users_acre" t-as="user_acre">
+                                                        <t t-set="index_current"
+                                                            t-value="user_acre_index + 1" />
+                                                        <tr t-att-id="user_acre.id">
+                                                            <th scope='row'>
+                                                                <t t-esc="user_acre_index + 1" />
+                                                            </th>
+                                                            <td>
+                                                                <input type='text'
+                                                                    disabled="disabled"
+                                                                    placeholder='Insert email'
+                                                                    class='form-control input-small input-without-border'
+                                                                    t-att-value="user_acre.partner_id.name" />
+                                                            </td>
+                                                            <td>
+                                                                <input type='text'
+                                                                    disabled="disabled"
+                                                                    placeholder='Insert email'
+                                                                    class='form-control input-small input-without-border'
+                                                                    t-att-value="user_acre.email" />
+                                                            </td>
+                                                            <td>
+                                                                <t
+                                                                    t-if="user_acre.user_id and user_acre.user_id.active == true">
+                                                                    <span class="fa fa-check-circle" />
+                                                                </t>
+                                                            </td>
+                                                            <td>
+                                                                <a
+                                                                    class='deleteRow fa fa-close icon-fa-myfont cursor-pointer' />
+                                                            </td>
+                                                        </tr>
+                                                    </t>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!--Pestaña
+                        de pagos-->
+                        <div class="tab-pane fade" id="user_profile_payment_form" role="tabpanel"
+                            aria-labelledby="user_profile_payment_form-tab">
+                            <t t-call="df_website_front.modal_detail_payment" />
+                            <form id="form_user_profile_payment">
+                                <div class="container">
+                                    <div class="mt-5">
+                                        <t t-if="invoices and len(invoices) > 0">
+                                            <h2 class="mb-3 myriadpro-regular">Payments</h2>
+                                            <div class="table-responsive">
+                                                <table class="table" id="payment_mng"
+                                                    data-resources="10">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Invoice</th>
+                                                            <th scope="col">Event</th>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Amount</th>
+                                                            <th scope="col">Method</th>
+                                                            <th scope="col">Operation</th>
+                                                            <th scope="col">State</th>
+                                                            <th scope="col">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <t t-foreach="invoices" t-as="invoice">
+                                                            <tr t-att-id="invoice.id">
+                                                                <th scope="row">
+                                                                    <t t-esc="invoice_index + 1" />
+                                                                </th>
+                                                                <td>
+                                                                    <t t-esc="invoice.name" />
+                                                                </td>
+                                                                <td>
+                                                                    <t t-if="invoice.event_id"
+                                                                        t-esc="invoice.event_id.name" />
+                                                                </td>
+                                                                <td>
+                                                                    <t t-esc="invoice.invoice_date" />
+                                                                </td>
+                                                                <td>
+                                                                    <t t-esc="invoice.amount_total" />
+                                                                </td>
+                                                                <td>
+                                                                    <span class="journal-invoice">
+                                                                        <t
+                                                                            t-esc="invoice.account_journal_id.name" />
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="operation-invoice">
+                                                                        <t t-esc="invoice.operation" />
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <t
+                                                                        t-if="invoice.payment_state != 'paid' and invoice.state == 'posted' and invoice.operation != false">
+                                                                        <span
+                                                                            class="badge-warning badge badge-pill text-white">
+                                                                            Processing payment
+                                                                        </span>
+                                                                    </t>
+                                                                    <t
+                                                                        t-if="invoice.payment_state != 'paid' and invoice.operation == false">
+                                                                        <span
+                                                                            t-attf-class="badge-success badge badge-pill text-white span-state-invoice">
+                                                                            <t t-esc="invoice.state" />
+                                                                        </span>
+                                                                    </t>
+                                                                    <t
+                                                                        t-if="invoice.payment_state == 'paid'">
+                                                                        <span
+                                                                            t-attf-class="badge-success badge badge-pill text-white span-state-invoice">
+                                                                            <t
+                                                                                t-esc="invoice.payment_state" />
+                                                                        </span>
+                                                                    </t>
+                                                                    <t
+                                                                        t-if="invoice.state == 'cancel'">
+                                                                        <span
+                                                                            t-attf-class="badge-danger badge badge-pill text-white span-state-invoice">
+                                                                            <t t-esc="invoice.state" />
+                                                                        </span>
+                                                                    </t>
+                                                                </td>
+                                                                <td>
+                                                                    <a
+                                                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 seePaymentRow"
+                                                                        style="padding: 1px 6px;"
+                                                                        target="_blank"
+                                                                        t-att-href="invoice.get_portal_url(report_type='pdf')">
+                                                                        <i class="fa fa-eye" /> See </a>
+                                                                    <t
+                                                                        t-if="invoice.state == 'posted' and invoice.payment_state != 'paid'">
+                                                                        <button type="button"
+                                                                            id="payment_invoice"
+                                                                            t-attf-class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 payPaymentRow"
+                                                                            style="padding: 1px 6px;">
+                                                                            <i class="fa fa-save" />
+                                                                            Pay </button>
+                                                                    </t>
+                                                                </td>
+                                                            </tr>
+                                                        </t>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </t>
+                                        <t t-else="">
+                                            <h4>There are no payments to show</h4>
+                                        </t>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer" />
+            </t>
+        </template>
+    </data>
+</odoo>

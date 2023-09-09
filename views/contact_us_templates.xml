@@ -1,0 +1,158 @@
+<odoo>
+    <data>
+        <template id="event_contact_us" name="Feria event contact us">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb breadcrumb-about-us">
+                            <li class="breadcrumb-item">
+                                <a t-att-href="'/evento/%s' % (event.id)" class="m-1 exo2-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item-about-us active exo2-regular d-flex" aria-current="page">
+                                <!--<span class="material-icons mr-2">chevron_right</span>--> Contact us
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="position-relative">
+                        <t t-call="df_website_front.event_cintillo_pages_internas"/>
+                        <h1 class="text-center exo2-regular encabezado-interno">
+                            CONTACT US
+                        </h1>
+                    </div>
+                    <div class="container my-4">
+                        <div class="">
+                            <div class="row mt-4 justify-content-around">
+                                <div class="col-sm-7">
+                                    <form id="register_contactus_form">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" class="form-control my-form-control" name="name"
+                                                       is-required="true"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Name
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" class="form-control my-form-control" name="phone"
+                                                       is-phone="true"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    Phone
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-phone-alert d-none">
+                                                The phone format is incorrect. Country code + phone number. Ex. +
+                                                53XXXXXXXX
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="email" class="form-control my-form-control" name="email"
+                                                       is-required="true" is-email="true"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Email
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-email-alert d-none">
+                                                The email format is incorrect
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" class="form-control my-form-control" name="company"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    Entity
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <input type="text" class="form-control my-form-control" name="subject"
+                                                       is-required="true"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    <span class="text-danger">*</span>
+                                                    Subject
+                                                </label>
+                                            </div>
+                                            <div class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                        <div class="mb-4">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control" name="comment" rows="4"/>
+                                                <label class="my-form-label exo2-regular">
+                                                    Comment
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row contact-us-div">
+                                            <button id="register_contact_us"
+                                                    class="ml-3 btn text-uppercase feria-see-all exo2-regular texto rounded-0">
+                                                Send
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-sm-4">
+                                    <!--TODO: Ver tema de la foto del contactenos-->
+                                    <!--                                    <img src="/df_website_front/static/src/img/felti-logo.png" class="img-fluid"/>-->
+                                    <br/>
+                                    <div class="info-geic mt-4 text-center">
+                                        <p class="exo2-regular">
+                                            Learn more about the event.
+                                            <br/>
+                                            Send us your questions, needs or suggestions.
+                                        </p>
+                                        <t t-if="event and event.organizer_id and event.organizer_id.phone">
+                                            <div class="mb-1 exo2-regular">
+                                                <span class="fa fa-phone fa-fw mr-2"/>
+                                                <t t-esc="event.organizer_id.phone"/>
+                                            </div>
+                                        </t>
+                                        <t t-if="event and event.organizer_id and event.organizer_id.mobile">
+                                            <div class="mb-1 exo2-regular">
+                                                <span class="fa fa-phone fa-fw mr-2"/>
+                                                <t t-esc="event.organizer_id.mobile"/>
+                                            </div>
+                                        </t>
+                                        <t t-if="event and event.organizer_id and event.organizer_id.email">
+                                            <div class="text-regular">
+                                                <span class="fa fa-envelope-open fa-fw mr-2"/>
+                                                <a t-attf-href="mailto:#{event.organizer_id.email}"
+                                                   class="text-dark exo2-regular">
+                                                    <t t-esc="event.organizer_id.email"/>
+                                                </a>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,2365 @@
+<odoo>
+    <data>
+        <template id="forum_event_data" name="Forum event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->Business opportunities
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <h1 class="text-white myriadpro-regular" id="forum-title">Business opportunities</h1>
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+
+                        <img src="/df_website_front/static/src/img/Forum.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="forum_event" model="ir.ui.view">
+            <field name="name">Forum</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="forum_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.forum_event_data"/>
+            </field>
+        </record>
+
+        <template id="forum_event_palco_data" name="Forum Event Fair">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <t t-if="area_id">
+                                        <t t-esc="area_id.name"/>
+                                    </t>
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <h1 class="text-white myriadpro-regular" id="forum-title-fair">
+                            <t t-if="area_id">
+                                <t t-esc="area_id.name"/>
+                            </t>
+                        </h1>
+
+                        <t t-if="images and len(images) > 0 and images[0]['img1'] != false">
+                            <img t-attf-src="data:image/*; base64,{{images[0]['img1']['image']}}"
+                                 id="foro-inversiones-pendon"/>
+                        </t>
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+
+                        <img src="/df_website_front/static/src/img/foro_inversiones_fair.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="forum_event_palco" model="ir.ui.view">
+            <field name="name">Forum palco</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="forum_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.forum_event_palco_data"/>
+            </field>
+        </record>
+
+        <template id="forum_event_flibro_carpa_data" name="Feria Libro CarpaT">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <t t-if="area_id">
+                                        <t t-esc="area_id.name"/>
+                                    </t>
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <h1 class="text-white myriadpro-regular" id="flibro-title-carpa">
+                            <t t-if="area_id">
+                                <t t-esc="area_id.name"/>
+                            </t>
+                        </h1>
+                        <h1 class="text-white myriadpro-regular" id="flibro-website-carpa">
+                            <p>www.website.com</p>
+                        </h1>
+
+                        <!--<t t-if="images and len(images) > 0 and images[0]['img1'] != false">
+                            <img t-attf-src="data:image/*; base64,{{images[0]['img1']['image']}}"
+                                 id="foro-inversiones-pendon"/>
+                        </t>-->
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-pendon"/>
+
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-libro1"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-libro2"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-libro3"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-libro4"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-libro5"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-libro6"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-libro7"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-libro8"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-libro9"/>
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+
+                        <img src="/df_website_front/static/src/img/feria_del_libro_carpa.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="forum_event_flibro_carpa" model="ir.ui.view">
+            <field name="name">Feria Libro Carpa</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="forum_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.forum_event_flibro_carpa_data"/>
+            </field>
+        </record>
+
+        <template id="forum_event_flibro_boveda_data" name="Feria Libro Boveda">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <t t-if="area_id">
+                                        <t t-esc="area_id.name"/>
+                                    </t>
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <!--<t t-if="images and len(images) > 0 and images[0]['img1'] != false">
+                            <img t-attf-src="data:image/*; base64,{{images[0]['img1']['image']}}"
+                                 id="foro-inversiones-pendon"/>
+                        </t>-->
+
+                        <div class="embed-responsive embed-responsive-16by9" id="video-feria-libro">
+                            <!--<t t-if="url_id">
+                                <iframe class="embed-responsive-item"
+                                        t-attf-src="https://www.youtube.com/embed/#{url_id}?rel=0"
+                                        allowfullscreen="True"/>
+                            </t>-->
+                            <iframe class="embed-responsive-item"
+                                    t-attf-src="https://www.youtube.com/embed/fFcgggnwsbM?rel=0"
+                                    allowfullscreen="True"/>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="fLibro-bovedaPendonUp"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg"
+                             id="fLibro-carpaPendonCenter"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg"
+                             id="fLibro-carpaPendonRight"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="flibro-bobedaL1"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="flibro-bobedaL2"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="flibro-bobedaL3"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="flibro-bobedaL4"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="flibro-bobedaL5"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="flibro-bobedaL6"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="flibro-bobedaL7"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="flibro-bobedaL8"/>
+                        <img src="/df_website_front/static/src/img/Expositor_variante1.jpg" id="flibro-bobedaL9"/>
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <t t-call="df_website_front.menu_bottom_redes"/>
+
+                        <img src="/df_website_front/static/src/img/feria_libro_boveda.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="forum_event_flibro_boveda" model="ir.ui.view">
+            <field name="name">Feria Libro Boveda</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="forum_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.forum_event_flibro_boveda_data"/>
+            </field>
+        </record>
+
+        <template id="conference_event_data" name="Conference event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->Conference room
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <a t-attf-href="#" target="_blank" id="external-channel-link"
+                           class="btn text-uppercase rounded-pill myriadpro-regular texto">
+                            Go to external channel
+                        </a>
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+
+                        <t t-call="df_website_front.chat_event"/>
+                        <t t-call="df_website_front.playlist_event"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="conference-video">
+                            <iframe class="embed-responsive-item"
+                                    src="" allowfullscreen="True"/>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/salon de conferencias.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="conference_event" model="ir.ui.view">
+            <field name="name">Conference</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="conference_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.conference_event_data"/>
+            </field>
+        </record>
+
+        <template id="press_event_data" name="Press event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->Press room
+                                </li>
+                            </ol>
+                        </nav>
+
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="press-video">
+                            <t t-if="url_id">
+                                <iframe class="embed-responsive-item"
+                                        t-attf-src="https://www.youtube.com/embed/#{url_id}?rel=0"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+                        <img src="/df_website_front/static/src/img/sala_prensa_150_recortada.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="press_event" model="ir.ui.view">
+            <field name="name">Press</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="press_room_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.press_event_data"/>
+            </field>
+        </record>
+
+        <template id="pavilion_event_data" name="Pavilion event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->Pavilion
+                                    <t t-esc="pavilion.name"/>
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <!--Primer bloque-->
+                        <t t-if="len(areas) &gt; 0 and areas[0]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[0].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[0].image_1920}}" id="pavilion-1-logo"
+                                     t-att-alt="get_area_name(areas[0])"/>
+                            </a>
+                        </t>
+                        <t t-if="len(areas) &gt; 1 and areas[1]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[1].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[1].image_1920}}" id="pavilion-2-logo"
+                                     t-att-alt="get_area_name(areas[1])"/>
+                            </a>
+                        </t>
+                        <t t-if="len(areas) &gt; 2 and areas[2]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[2].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[2].image_1920}}" id="pavilion-3-logo"
+                                     t-att-alt="get_area_name(areas[2])"/>
+                            </a>
+                        </t>
+                        <t t-if="len(areas) &gt; 3 and areas[3]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[3].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[3].image_1920}}" id="pavilion-4-logo"
+                                     t-att-alt="get_area_name(areas[3])"/>
+                            </a>
+                        </t>
+
+                        <!--Segundo bloque-->
+                        <t t-if="len(areas) &gt; 4 and areas[4]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[4].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[4].image_1920}}" id="pavilion-5-logo"
+                                     t-att-alt="get_area_name(areas[4])"/>
+                            </a>
+                        </t>
+                        <t t-if="len(areas) &gt; 5 and areas[5]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[5].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[5].image_1920}}" id="pavilion-6-logo"
+                                     t-att-alt="get_area_name(areas[5])"/>
+                            </a>
+                        </t>
+                        <t t-if="len(areas) &gt; 6 and areas[6]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[6].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[6].image_1920}}" id="pavilion-7-logo"
+                                     t-att-alt="get_area_name(areas[6])"/>
+                            </a>
+                        </t>
+                        <t t-if="len(areas) &gt; 7 and areas[7]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[7].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[7].image_1920}}" id="pavilion-8-logo"
+                                     t-att-alt="get_area_name(areas[7])"/>
+                            </a>
+                        </t>
+
+                        <!--Tercer bloque-->
+
+                        <t t-if="len(areas) &gt; 8 and areas[8]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[8].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[8].image_1920}}" id="pavilion-9-logo"
+                                     t-att-alt="get_area_name(areas[8])"/>
+                            </a>
+                        </t>
+                        <t t-if="len(areas) &gt; 9 and areas[9]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[9].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[9].image_1920}}" id="pavilion-10-logo"
+                                     t-att-alt="get_area_name(areas[9])"/>
+                            </a>
+                        </t>
+
+                        <t t-if="len(areas) &gt; 10 and areas[10]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[10].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[10].image_1920}}" id="pavilion-11-logo"
+                                     t-att-alt="get_area_name(areas[10])"/>
+                            </a>
+                        </t>
+
+                        <t t-if="len(areas) &gt; 11 and areas[11]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[11].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[11].image_1920}}" id="pavilion-12-logo"
+                                     t-att-alt="get_area_name(areas[11])"/>
+                            </a>
+                        </t>
+
+                        <!--Cuarto bloque-->
+
+                        <t t-if="len(areas) &gt; 12 and areas[12]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[12].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[12].image_1920}}" id="pavilion-13-logo"
+                                     t-att-alt="get_area_name(areas[12])"/>
+                            </a>
+                        </t>
+
+                        <t t-if="len(areas) &gt; 13 and areas[13]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[13].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[13].image_1920}}" id="pavilion-14-logo"
+                                     t-att-alt="get_area_name(areas[13])"/>
+                            </a>
+                        </t>
+
+                        <t t-if="len(areas) &gt; 14 and areas[14]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[14].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[14].image_1920}}" id="pavilion-15-logo"
+                                     t-att-alt="get_area_name(areas[14])"/>
+                            </a>
+                        </t>
+
+                        <t t-if="len(areas) &gt; 15 and areas[15]">
+                            <a t-att-href="'/evento/%s/%s/event_area' % (event.id, areas[15].id)">
+                                <img t-attf-src="data:image/*; base64,{{areas[15].image_1920}}" id="pavilion-16-logo"
+                                     t-att-alt="get_area_name(areas[15])"/>
+                            </a>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/pabellon.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="pavilion_event" model="ir.ui.view">
+            <field name="name">Pavilion</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.pavilion_event_data"/>
+            </field>
+        </record>
+
+        <template id="reception_event_data" name="Reception event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->Information bureau
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <h1 class="text-white myriadpro-regular" id="reception-title">Information bureau</h1>
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="reception-video">
+                            <t t-if="videos and len(videos)> 0 and videos[0]['url'] != false">
+                                <iframe class="embed-responsive-item"
+                                        t-attf-src="https://www.youtube.com/embed/#{videos[0]['url']}?rel=0"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/Recepcion recortado.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="reception_event" model="ir.ui.view">
+            <field name="name">Information</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="information_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.reception_event_data"/>
+            </field>
+        </record>
+
+        <template id="reception_event_data_fair" name="Reception event Fair">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <t t-if="area_id">
+                                        <t t-esc="area_id.name"/>
+                                    </t>
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <h1 class="text-white myriadpro-regular" id="reception-title-fair">
+                            <t t-if="area_id">
+                                <t t-esc="area_id.name"/>
+                            </t>
+                        </h1>
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="reception-video-fair">
+                            <t t-if="videos and len(videos)> 0 and videos[0]['url'] != false">
+                                <iframe class="embed-responsive-item"
+                                        t-attf-src="https://www.youtube.com/embed/#{videos[0]['url']}?rel=0"
+                                        allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/reception-fair.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="reception_event_fair" model="ir.ui.view">
+            <field name="name">Information Fair</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="information_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.reception_event_data_fair"/>
+            </field>
+        </record>
+
+        <!-- <networking> -->
+        <template id="networking_chat_message" name="Networking Chat Message">
+            <li>
+                <img t-att-src="'/web/image/res.users/%s/image_48' % user_net.id"/>
+                <div>
+                    <p>
+                        <t t-esc="msg.name"/>
+                    </p>
+                </div>
+            </li>
+        </template>
+
+        <template id="networking_event_user" name="Networking Event User">
+            <li class="person" t-att-data-name="user.name" t-att-data-id="user.id">
+                <div class="avatar">
+                    <img t-att-src="'/web/image/res.users/%s/image_48' % user.id"/>
+                    <span class="status online"/>
+                </div>
+                <p class="name-time">
+                    <span class="name">
+                        <t t-esc="user.name"/>
+                        <t t-if="user.parent_id">
+                            (<t t-esc="user.parent_id.name"/>)
+                        </t>
+                    </span>
+                </p>
+            </li>
+        </template>
+
+        <template id="networking_event_participants" name="Networking Event Participant">
+            <div>
+                <!-- mostrar primero los usuarios que han escrito -->
+                <div>
+                    <ul style="font-style: bold;font-weight: bold;">
+                        <t t-if="users_active">
+                            <t t-foreach="users_active" t-as="active">
+                                <t t-call="df_website_front.networking_event_user">
+                                    <t t-set="user" t-value="active"/>
+                                </t>
+                            </t>
+                        </t>
+                    </ul>
+                </div>
+
+                <!-- mostrar despues los usuarios que han pasado tiempo sin escribir -->
+                <div>
+                    <ul>
+                        <t t-if="users_idle">
+                            <t t-foreach="users_idle" t-as="active">
+                                <t t-call="df_website_front.networking_event_user">
+                                    <t t-set="user" t-value="active"/>
+                                </t>
+                            </t>
+                        </t>
+                    </ul>
+                </div>
+
+                <!-- mostrar un mensaje de que no se encontraron usuarios en linea -->
+                <t t-if="not users_active and not users_idle">
+                    <ul>
+                        <li>0 participants found</li>
+                        <t t-set="user" t-value="active"/>
+                        <t t-set="user" t-value="active"/>
+                        <t t-set="user" t-value="active"/>
+                        <t t-set="user" t-value="active"/>
+                        <t t-set="user" t-value="active"/>
+                        <t t-set="user" t-value="active"/>
+                        <t t-set="user" t-value="active"/>
+                        <t t-set="user" t-value="active"/>
+                    </ul>
+                </t>
+            </div>
+        </template>
+
+        <template id="networking_rom_event_data" name="Networking Rom Event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <input id="EVENT_ID" t-att-value="event.id" type="hidden"/>
+                <input id="AREA_ID" t-att-value="area_id.id" type="hidden"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->Networking room
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <div id="group-chat-event" class="d-none d-sm-block">
+                            <!-- Content wrapper start -->
+                            <div class="content-wrapper">
+                                <!-- Row start -->
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                        <div class="card m-0">
+                                            <!-- Row start -->
+                                            <div class="row no-gutters">
+                                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-3">
+                                                    <div class="users-container">
+                                                        <div class="chat-search-box">
+                                                            <div class="input-group h-auto">
+                                                                <t t-if="not val_area_stand_id">
+                                                                    <input class="form-control"
+                                                                           placeholder="Search"
+                                                                           id="search-partner-networking"/>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                        <div id="users">
+                                                            <t t-call="df_website_front.networking_event_participants"/>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-8 col-lg-8 col-md-8 col-sm-9 col-9">
+                                                    <div class="selected-user">
+                                                        <span>To:
+                                                            <span class="name partner-name"/>
+                                                        </span>
+                                                    </div>
+                                                    <div class="chat-container">
+                                                        <ul class="chat-box chatContainerScroll">
+                                                        </ul>
+                                                        <form class="d-flex mt-3 mb-0" role="form" id="formNetworking">
+                                                            <input type="hidden" name="csrf_token"
+                                                                   t-att-value="request.csrf_token()"/>
+                                                            <input name="my-comment-networking-input"
+                                                                   class="form-control"
+                                                                   type="text" placeholder="Your comments"
+                                                                   disabled="disabled"/>
+                                                            <div class="ml-1">
+                                                                <button data-partner_id="" id="add_message_networking"
+                                                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0"
+                                                                        disabled="disabled">
+                                                                    Send
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Row end -->
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <!-- Row end -->
+
+                            </div>
+                            <!-- Content wrapper end -->
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/networking recortado.jpg" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="networking_rom_event" model="ir.ui.view">
+            <field name="name">Networking</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="networking_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.networking_rom_event_data"/>
+            </field>
+        </record>
+        <!-- </networking> -->
+
+        <!-- Conference -->
+        <template id="new_conference_data" name="New conference">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+
+                    <div class="new-conference-content position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <t t-if="event and ante_room">
+                                    <li class="breadcrumb-item d-flex">
+                                        <a t-att-href="'/evento/%s/%s/event_area' % (event.id,ante_room.id)"
+                                           class="myriadpro-regular">Anteroom
+                                        </a>
+                                    </li>
+                                </t>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    Conference room
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <div id="new-conference-carousel-pendon" class="carousel slide" data-ride="carousel"
+                             data-interval="10000">
+                            <div class="carousel-inner h-100">
+                                <t t-foreach="imgs" t-as="img">
+                                    <div t-attf-class="#{'active' if img_index == 0 else ''} carousel-item new-conference-carousel-item h-100">
+                                        <a t-att-href="'/evento/my/download?attachment _id=%s' % (img['id'])"
+                                           data-lightbox="conference-pendon-carousel">
+                                            <img t-att-src="'/evento/my/download?attachment_id=%s' % (img['id'])"
+                                                 class="w-100 h-100"/>
+                                        </a>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="new-conference-video">
+                            <t t-if="video_url != ''">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="video_url" allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <div id="new-conference-button">
+                            <t t-if="ante_room and event">
+                                <a t-att-href="'/evento/%s/%s/event_area' % (event.id,ante_room.id)"
+                                   class="d-inline-block p-2 forum-menu-icon" title="Regresar antesala">
+                                    <img src="/df_website_front/static/src/img/icons8-volver-64.png" width="25"/>
+                                </a>
+                            </t>
+                            <t t-if="track and track.mail_channel_id and track.mail_channel_id.active">
+                                <a href="#" class="d-inline-block p-2 forum-menu-icon event-conference-chat"
+                                   title="Chat">
+                                    <img src="/df_website_front/static/src/img/chat-10.svg" width="25"/>
+                                </a>
+                            </t>
+                            <t t-if="track and track.external_channel_url">
+                                <a t-att-href="track.external_channel_url" target="_blank"
+                                   class="d-inline-block p-2 forum-menu-icon"
+                                   title="External Link">
+                                    <img src="/df_website_front/static/src/img/users-1.svg" width="25"/>
+                                </a>
+                            </t>
+                            <t t-if="documents and check_key_in_list(documents,0)">
+                                <t t-set="doc_download" t-value="check_key_in_list(documents,0)"/>
+                                <a t-att-href="'/evento/my/download?attachment_id=%s' % (doc_download['id'])"
+                                   class="d-inline-block p-2 forum-menu-icon" title="Download document">
+                                    <img src="/df_website_front/static/src/img/folder-15.svg" width="25"/>
+                                </a>
+                            </t>
+
+                            <t t-if="track and event">
+                                <a t-att-href="'/evento/%s/forum_track_detail/track/%s' % (event.id,track.id)"
+                                   class="d-inline-block p-2 forum-menu-icon" title="Ir al foro" target="_blank">
+                                    <img src="/df_website_front/static/src/img/chat-54.png" width="25"/>
+                                </a>
+                            </t>
+                        </div>
+
+                        <t t-if="track">
+                            <marquee id="event-conference-marquee" class="text-white">
+                                <span>
+                                    <t t-esc="track.name"/>
+                                </span>
+                                <span class="mx-1">-</span>
+                                <t t-foreach="speakers" t-as="speaker">
+                                    <t t-if="not speaker_first">
+                                        <span class="mx-1">/</span>
+                                    </t>
+                                    <span>
+                                        <t t-esc="speaker.partner_id.name"/>
+                                    </span>
+
+                                    <t t-if="speaker.partner_id.parent_id">
+                                        <t t-if="speaker.partner_id.parent_id.abbreviation">
+                                            <span>(<t t-esc="speaker.partner_id.parent_id.abbreviation"/>)
+                                            </span>
+                                        </t>
+                                        <t t-else="">
+                                            <span>(<t t-esc="speaker.partner_id.parent_id.name"/>)
+                                            </span>
+                                        </t>
+                                    </t>
+
+                                    <t t-if="speaker.partner_id.function">
+                                        <span class="mx-1">-</span>
+                                        <span>
+                                            <t t-esc="speaker.partner_id.function"/>
+                                        </span>
+                                    </t>
+                                </t>
+
+                                <t t-if="track.description_short">
+                                    <span class="mx-1">-</span>
+                                    <span>
+                                        <t t-esc="track.description_short"/>
+                                    </span>
+                                </t>
+                            </marquee>
+                            <input id="track_conference_id" type="hidden" name="track_id" t-att-value="track.id"/>
+                            <input id="track_conference_name" type="hidden" t-att-value="track.name"/>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/salon conferencias 1.jpg" class="w-100"/>
+                    </div>
+
+                    <div class="new-conference-content-responsive d-none">
+                        <div class="position-relative">
+                            <div id="new-conference-carousel-pendon-responsive" class="carousel slide"
+                                 data-ride="carousel"
+                                 data-interval="10000">
+                                <div class="carousel-inner h-100">
+                                    <t t-foreach="imgs" t-as="img">
+                                        <div t-attf-class="#{'active' if img_index == 0 else ''} carousel-item new-conference-carousel-item h-100">
+                                            <a t-att-href="'/evento/my/download?attachment_id=%s' % (img['id'])"
+                                               data-lightbox="conference-pendon-carousel">
+                                                <img t-att-src="'/evento/my/download?attachment_id=%s' % (img['id'])"
+                                                     class="w-100 h-100"/>
+                                            </a>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <t t-if="track">
+                                <marquee id="event-conference-marquee-responsive" class="text-white">
+                                    <span>
+                                        <t t-esc="track.name"/>
+                                    </span>
+                                    <span class="mx-1">-</span>
+                                    <t t-foreach="speakers" t-as="speaker">
+                                        <t t-if="not speaker_first">
+                                            <span class="mx-1">/</span>
+                                        </t>
+                                        <span>
+                                            <t t-esc="speaker.partner_id.name"/>
+                                        </span>
+
+                                        <t t-if="speaker.partner_id.parent_id">
+                                            <t t-if="speaker.partner_id.parent_id.abbreviation">
+                                                <span>(<t t-esc="speaker.partner_id.parent_id.abbreviation"/>)
+                                                </span>
+                                            </t>
+                                            <t t-else="">
+                                                <span>(<t t-esc="speaker.partner_id.parent_id.name"/>)
+                                                </span>
+                                            </t>
+                                        </t>
+
+                                        <t t-if="speaker.partner_id.function">
+                                            <span class="mx-1">-</span>
+                                            <span>
+                                                <t t-esc="speaker.partner_id.function"/>
+                                            </span>
+                                        </t>
+                                    </t>
+                                </marquee>
+                            </t>
+
+                            <div class="embed-responsive embed-responsive-16by9" id="new-conference-video-responsive">
+                                <t t-if="video_url != ''">
+                                    <iframe class="embed-responsive-item"
+                                            t-att-src="video_url" allowfullscreen="True"/>
+                                </t>
+                            </div>
+
+                            <div id="new-conference-button-responsive">
+                                <t t-if="ante_room and event">
+                                    <a t-att-href="'/evento/%s/%s/event_area' % (event.id,ante_room.id)"
+                                       class="d-inline-block p-2 forum-menu-icon" title="Regresar antesala">
+                                        <img src="/df_website_front/static/src/img/icons8-volver-64.png" width="25"/>
+                                    </a>
+                                </t>
+                                <t t-if="track and track.mail_channel_id and track.mail_channel_id.active">
+                                    <a href="#" class="d-inline-block p-2 forum-menu-icon event-conference-chat"
+                                       title="Chat">
+                                        <img src="/df_website_front/static/src/img/chat-10.svg" width="20"/>
+                                    </a>
+                                </t>
+                                <t t-if="track and track.external_channel_url">
+                                    <a t-att-href="track.external_channel_url" target="_blank"
+                                       class="d-inline-block p-2 forum-menu-icon"
+                                       title="External Link">
+                                        <img src="/df_website_front/static/src/img/users-1.svg" width="20"/>
+                                    </a>
+                                </t>
+                                <t t-if="documents and check_key_in_list(documents,0)">
+                                    <t t-set="doc_download" t-value="check_key_in_list(documents,0)"/>
+                                    <a t-att-href="'/evento/my/download?attachment_id=%s' % (doc_download['id'])"
+                                       class="d-inline-block p-2 forum-menu-icon" title="Download document">
+                                        <img src="/df_website_front/static/src/img/folder-15.svg" width="20"/>
+                                    </a>
+                                </t>
+
+                                <t t-if="track and event">
+                                    <a t-att-href="'/evento/%s/forum_track_detail/track/%s' % (event.id,track.id)"
+                                       class="d-inline-block p-2 forum-menu-icon" title="Ir al foro" target="_blank">
+                                        <img src="/df_website_front/static/src/img/chat-54.png" width="25"/>
+                                    </a>
+                                </t>
+                            </div>
+
+                            <img src="/df_website_front/static/src/img/salon_conferencias_responsive.jpg"
+                                 class="w-100"/>
+                        </div>
+                        <div class="mt-3 mx-2">
+                            <t t-if="documents and len(documents) > 0">
+                                <h1 class="exo2-regular text-center">Documents</h1>
+                                <div class="forum-sections-responsive">
+                                    <ul class="list-group">
+                                        <t t-foreach="documents" t-as="doc">
+                                            <li class="list-group-item anteroom-list-group-item">
+                                                <a t-att-href="'/evento/my/download?attachment_id=%s' % (doc['id'])"
+                                                   target="_blank">
+                                                    <span class="fa fa-file-pdf-o mr-2"/>
+                                                    <t t-esc="doc['name']"/>
+                                                </a>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="mt-3 mx-2">
+                            <t t-if="videos and len(videos) > 0">
+                                <h1 class="exo2-regular text-center">Videos</h1>
+                                <div class="forum-sections-responsive">
+                                    <ul class="list-group">
+                                        <t t-foreach="videos" t-as="video">
+                                            <li class="list-group-item anteroom-list-group-item">
+                                                <a href="#"
+                                                   t-att-onclick="'window.location=\'/evento/%s/track_conference/%s\'' % (event.id, video['id'])">
+                                                    <span class="fa fa-video-camera mr-2"/>
+                                                    <t t-esc="video['name']"/>
+                                                </a>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+
+                    <t t-call="df_website_front.event_conference_chat_modal"/>
+
+                </div>
+                 <!--  Región para configuración de snippets -->
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="new_conference" model="ir.ui.view">
+            <field name="name">New conference</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="conference_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.new_conference_data"/>
+            </field>
+        </record>
+        <!-- End Conference -->
+
+
+         <!-- Conference Serie4-->
+        <template id="new_conference_data_serie4" name="New conference">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+
+                    <div class="new-conference-content position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <t t-if="event and ante_room">
+                                    <li class="breadcrumb-item d-flex">
+                                        <a t-att-href="'/evento/%s/%s/event_area' % (event.id,ante_room.id)"
+                                           class="myriadpro-regular">Anteroom
+                                        </a>
+                                    </li>
+                                </t>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    Conference room
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <t t-call="df_website_front.lateral_menu_id"/>
+                        <div id="new-conference-carousel-pendon-serie4" class="carousel slide" data-ride="carousel"
+                             data-interval="10000">
+                            <div class="carousel-inner h-100">
+                                <t t-foreach="imgs" t-as="img">
+                                    <div t-attf-class="#{'active' if img_index == 0 else ''} carousel-item new-conference-carousel-item h-100">
+                                        <a t-att-href="'/evento/my/download?attachment_id=%s' % (img['id'])"
+                                           data-lightbox="conference-pendon-carousel">
+                                            <img t-att-src="'/evento/my/download?attachment_id=%s' % (img['id'])"
+                                                 class="w-100 h-100"/>
+                                        </a>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+
+                        <div class="embed-responsive embed-responsive-16by9" id="new-conference-video-serie4">
+                            <t t-if="video_url != ''">
+                                <iframe class="embed-responsive-item"
+                                        t-att-src="video_url" allowfullscreen="True"/>
+                            </t>
+                        </div>
+
+                        <div id="new-conference-button-serie4">
+                            <t t-if="ante_room and event">
+                                <a t-att-href="'/evento/%s/%s/event_area' % (event.id,ante_room.id)"
+                                   class="d-inline-block p-2 forum-menu-icon" title="Regresar antesala">
+                                    <img src="/df_website_front/static/src/img/icons8-volver-64.png" width="25"/>
+                                </a>
+                            </t>
+                            <t t-if="track and track.mail_channel_id and track.mail_channel_id.active">
+                                <a href="#" class="d-inline-block p-2 forum-menu-icon event-conference-chat"
+                                   title="Chat">
+                                    <img src="/df_website_front/static/src/img/chat-10.svg" width="25"/>
+                                </a>
+                            </t>
+                            <t t-if="track and track.external_channel_url">
+                                <a t-att-href="track.external_channel_url" target="_blank"
+                                   class="d-inline-block p-2 forum-menu-icon"
+                                   title="External Link">
+                                    <img src="/df_website_front/static/src/img/users-1.svg" width="25"/>
+                                </a>
+                            </t>
+                            <t t-if="documents and check_key_in_list(documents,0)">
+                                <t t-set="doc_download" t-value="check_key_in_list(documents,0)"/>
+                                <a t-att-href="'/evento/my/download?attachment_id=%s' % (doc_download['id'])"
+                                   class="d-inline-block p-2 forum-menu-icon" title="Download document">
+                                    <img src="/df_website_front/static/src/img/folder-15.svg" width="25"/>
+                                </a>
+                            </t>
+
+                            <t t-if="track and event">
+                                <a t-att-href="'/evento/%s/forum_track_detail/track/%s' % (event.id,track.id)"
+                                   class="d-inline-block p-2 forum-menu-icon" title="Ir al foro" target="_blank">
+                                    <img src="/df_website_front/static/src/img/chat-54.png" width="25"/>
+                                </a>
+                            </t>
+                        </div>
+
+                        <t t-if="track">
+                            <marquee id="event-conference-marquee" class="text-white">
+                                <span>
+                                    <t t-esc="track.name"/>
+                                </span>
+                                <span class="mx-1">-</span>
+                                <t t-foreach="speakers" t-as="speaker">
+                                    <t t-if="not speaker_first">
+                                        <span class="mx-1">/</span>
+                                    </t>
+                                    <span>
+                                        <t t-esc="speaker.partner_id.name"/>
+                                    </span>
+
+                                    <t t-if="speaker.partner_id.parent_id">
+                                        <t t-if="speaker.partner_id.parent_id.abbreviation">
+                                            <span>(<t t-esc="speaker.partner_id.parent_id.abbreviation"/>)
+                                            </span>
+                                        </t>
+                                        <t t-else="">
+                                            <span>(<t t-esc="speaker.partner_id.parent_id.name"/>)
+                                            </span>
+                                        </t>
+                                    </t>
+
+                                    <t t-if="speaker.partner_id.function">
+                                        <span class="mx-1">-</span>
+                                        <span>
+                                            <t t-esc="speaker.partner_id.function"/>
+                                        </span>
+                                    </t>
+                                </t>
+
+                                <t t-if="track.description_short">
+                                    <span class="mx-1">-</span>
+                                    <span>
+                                        <t t-esc="track.description_short"/>
+                                    </span>
+                                </t>
+                            </marquee>
+                            <input id="track_conference_id" type="hidden" name="track_id" t-att-value="track.id"/>
+                            <input id="track_conference_name" type="hidden" t-att-value="track.name"/>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/salon de conferencias serie4.png" class="w-100"/>
+                        
+                        
+                    </div>
+
+                    <div class="new-conference-content-responsive d-none">
+                        <div class="position-relative">
+                            <div id="new-conference-carousel-pendon-responsive-serie4" class="carousel slide"
+                                 data-ride="carousel"
+                                 data-interval="10000">
+                                <div class="carousel-inner h-100">
+                                    <t t-foreach="imgs" t-as="img">
+                                        <div t-attf-class="#{'active' if img_index == 0 else ''} carousel-item new-conference-carousel-item h-100">
+                                            <a t-att-href="'/evento/my/download?attachment_id=%s' % (img['id'])"
+                                               data-lightbox="conference-pendon-carousel">
+                                                <img t-att-src="'/evento/my/download?attachment_id=%s' % (img['id'])"
+                                                     class="w-100 h-100"/>
+                                            </a>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <t t-if="track">
+                                <marquee id="event-conference-marquee-responsive" class="text-white">
+                                    <span>
+                                        <t t-esc="track.name"/>
+                                    </span>
+                                    <span class="mx-1">-</span>
+                                    <t t-foreach="speakers" t-as="speaker">
+                                        <t t-if="not speaker_first">
+                                            <span class="mx-1">/</span>
+                                        </t>
+                                        <span>
+                                            <t t-esc="speaker.partner_id.name"/>
+                                        </span>
+
+                                        <t t-if="speaker.partner_id.parent_id">
+                                            <t t-if="speaker.partner_id.parent_id.abbreviation">
+                                                <span>(<t t-esc="speaker.partner_id.parent_id.abbreviation"/>)
+                                                </span>
+                                            </t>
+                                            <t t-else="">
+                                                <span>(<t t-esc="speaker.partner_id.parent_id.name"/>)
+                                                </span>
+                                            </t>
+                                        </t>
+
+                                        <t t-if="speaker.partner_id.function">
+                                            <span class="mx-1">-</span>
+                                            <span>
+                                                <t t-esc="speaker.partner_id.function"/>
+                                            </span>
+                                        </t>
+                                    </t>
+                                </marquee>
+                            </t>
+
+                            <div class="embed-responsive embed-responsive-16by9" id="new-conference-video-responsive-serie4">
+                                <t t-if="video_url != ''">
+                                    <iframe class="embed-responsive-item"
+                                            t-att-src="video_url" allowfullscreen="True"/>
+                                </t>
+                            </div>
+
+                            <div id="new-conference-button-responsive-serie4">
+                                <t t-if="ante_room and event">
+                                    <a t-att-href="'/evento/%s/%s/event_area' % (event.id,ante_room.id)"
+                                       class="d-inline-block p-2 forum-menu-icon" title="Regresar antesala">
+                                        <img src="/df_website_front/static/src/img/icons8-volver-64.png" width="25"/>
+                                    </a>
+                                </t>
+                                <t t-if="track and track.mail_channel_id and track.mail_channel_id.active">
+                                    <a href="#" class="d-inline-block p-2 forum-menu-icon event-conference-chat"
+                                       title="Chat">
+                                        <img src="/df_website_front/static/src/img/chat-10.svg" width="20"/>
+                                    </a>
+                                </t>
+                                <t t-if="track and track.external_channel_url">
+                                    <a t-att-href="track.external_channel_url" target="_blank"
+                                       class="d-inline-block p-2 forum-menu-icon"
+                                       title="External Link">
+                                        <img src="/df_website_front/static/src/img/users-1.svg" width="20"/>
+                                    </a>
+                                </t>
+                                <t t-if="documents and check_key_in_list(documents,0)">
+                                    <t t-set="doc_download" t-value="check_key_in_list(documents,0)"/>
+                                    <a t-att-href="'/evento/my/download?attachment_id=%s' % (doc_download['id'])"
+                                       class="d-inline-block p-2 forum-menu-icon" title="Download document">
+                                        <img src="/df_website_front/static/src/img/folder-15.svg" width="20"/>
+                                    </a>
+                                </t>
+
+                                <t t-if="track and event">
+                                    <a t-att-href="'/evento/%s/forum_track_detail/track/%s' % (event.id,track.id)"
+                                       class="d-inline-block p-2 forum-menu-icon" title="Ir al foro" target="_blank">
+                                        <img src="/df_website_front/static/src/img/chat-54.png" width="25"/>
+                                    </a>
+                                </t>
+                            </div>
+
+                            <img src="/df_website_front/static/src/img/salon de conferencias serie4.jpg"
+                                 class="w-100"/>
+                        </div>
+                        <div class="mt-3 mx-2">
+                            <t t-if="documents and len(documents) > 0">
+                                <h1 class="exo2-regular text-center">Documents</h1>
+                                <div class="forum-sections-responsive">
+                                    <ul class="list-group">
+                                        <t t-foreach="documents" t-as="doc">
+                                            <li class="list-group-item anteroom-list-group-item">
+                                                <a t-att-href="'/evento/my/download?attachment_id=%s' % (doc['id'])"
+                                                   target="_blank">
+                                                    <span class="fa fa-file-pdf-o mr-2"/>
+                                                    <t t-esc="doc['name']"/>
+                                                </a>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="mt-3 mx-2">
+                            <t t-if="videos and len(videos) > 0">
+                                <h1 class="exo2-regular text-center">Videos</h1>
+                                <div class="forum-sections-responsive">
+                                    <ul class="list-group">
+                                        <t t-foreach="videos" t-as="video">
+                                            <li class="list-group-item anteroom-list-group-item">
+                                                <a href="#"
+                                                   t-att-onclick="'window.location=\'/evento/%s/track_conference/%s\'' % (event.id, video['id'])">
+                                                    <span class="fa fa-video-camera mr-2"/>
+                                                    <t t-esc="video['name']"/>
+                                                </a>
+                                            </li>
+                                        </t>
+                                    </ul>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                    <t t-call="df_website_front.event_conference_chat_modal"/>
+
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="new_conference_serie4" model="ir.ui.view">
+            <field name="name">New conference serie4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="conference_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.new_conference_data_serie4"/>
+            </field>
+        </record>
+        <!-- End Conference serie4 -->
+
+        <!-- Antesala de Conference serie4 -->
+         <template id="anteroom_data_serie4" name="Anteroom">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="anteroom-content position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>--> Conference room
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <div id="anteroom-carousel-sponsor-serie4" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner h-100">
+                                <t t-if="images and len(images) > 0">
+                                    <t t-foreach="images" t-as="image">
+                                        <t t-call="df_website_front.carousel_images_conference_item_active"/>
+                                    </t>
+                                </t>
+
+                            </div>
+                        </div>
+
+                        <div id="anteroom-conference-ubication-serie4">
+                            <t t-foreach="locations" t-as="location">
+                                <a href="#"
+                                   class="d-block p-2 mt-1 forum-menu-icon text-white conference-ubication-link"
+                                   t-att-title="location.name" t-att-data-id="location.id">
+                                    <img src="/df_website_front/static/src/img/video-camera.svg" width="25"/>
+                                    <span class="ml-1">
+                                        <t t-if="location.short_name">
+                                            <t t-esc="location.short_name"/>
+                                        </t>
+                                        <t t-else="">
+                                            SALA
+                                        </t>
+                                    </span>
+                                </a>
+                            </t>
+                        </div>
+
+                        <div id="anteroom-video-list-serie4">
+                            <ul class="list-group"/>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/antesala de conferencias serie4.png" class="w-100"/>
+                    </div>
+                    <div class="anteroom-content-responsive d-none">
+                        <div class="position-relative">
+                            <div id="anteroom-carousel-sponsor-responsive-serie4" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner h-100">
+                                    <t t-if="images and len(images) > 0">
+                                        <t t-foreach="images" t-as="image">
+                                            <t t-call="df_website_front.carousel_images_conference_item_active"/>
+                                        </t>
+                                    </t>
+
+                                </div>
+                            </div>
+
+                            <div id="anteroom-conference-ubication-responsive-serie4">
+                                <t t-foreach="locations" t-as="location">
+                                    <a href="#"
+                                       class="d-block p-2 mt-1 forum-menu-icon text-white conference-ubication-link"
+                                       t-att-title="location.name" t-att-data-id="location.id">
+                                        <img src="/df_website_front/static/src/img/video-camera.svg" width="25"/>
+                                        <span class="ml-1">
+                                            <t t-if="location.short_name">
+                                                <t t-esc="location.short_name"/>
+                                            </t>
+                                            <t t-else="">
+                                                SALA
+                                            </t>
+                                        </span>
+                                    </a>
+                                </t>
+                            </div>
+
+                            <div id="anteroom-video-list-responsive-serie4">
+                                <ul class="list-group"/>
+                            </div>
+
+                            <img src="/df_website_front/static/src/img/antesala de conferencias serie4.png"
+                                 class="w-100"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="pre_conference_serie4" model="ir.ui.view">
+            <field name="name">Pre conference serie4</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="pre_conference_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.anteroom_data_serie4"/>
+            </field>
+        </record>
+         <!-- End Antesala de Conference serie4 -->
+
+         <!-- Antesala de Conference -->
+        <template id="anteroom_data" name="Anteroom">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="anteroom-content position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>--> Conference room
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <div id="anteroom-carousel-sponsor" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner h-100">
+                                <t t-if="images and len(images) > 0">
+                                    <t t-foreach="images" t-as="image">
+                                        <t t-call="df_website_front.carousel_images_conference_item_active"/>
+                                    </t>
+                                </t>
+
+                            </div>
+                        </div>
+
+                        <div id="anteroom-conference-ubication">
+                            <t t-foreach="locations" t-as="location">
+                                <a href="#"
+                                   class="d-block p-2 mt-1 forum-menu-icon text-white conference-ubication-link"
+                                   t-att-title="location.name" t-att-data-id="location.id">
+                                    <img src="/df_website_front/static/src/img/video-camera.svg" width="25"/>
+                                    <span class="ml-1">
+                                        <t t-if="location.short_name">
+                                            <t t-esc="location.short_name"/>
+                                        </t>
+                                        <t t-else="">
+                                            SALA
+                                        </t>
+                                    </span>
+                                </a>
+                            </t>
+                        </div>
+
+                        <div id="anteroom-video-list">
+                            <ul class="list-group"/>
+                        </div>
+
+                        <img src="/df_website_front/static/src/img/antesala_conferencia_final2.jpg" class="w-100"/>
+                    </div>
+                    <div class="anteroom-content-responsive d-none">
+                        <div class="position-relative">
+                            <div id="anteroom-carousel-sponsor-responsive" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner h-100">
+                                    <t t-if="images and len(images) > 0">
+                                        <t t-foreach="images" t-as="image">
+                                            <t t-call="df_website_front.carousel_images_conference_item_active"/>
+                                        </t>
+                                    </t>
+
+                                </div>
+                            </div>
+
+                            <div id="anteroom-conference-ubication-responsive">
+                                <t t-foreach="locations" t-as="location">
+                                    <a href="#"
+                                       class="d-block p-2 mt-1 forum-menu-icon text-white conference-ubication-link"
+                                       t-att-title="location.name" t-att-data-id="location.id">
+                                        <img src="/df_website_front/static/src/img/video-camera.svg" width="25"/>
+                                        <span class="ml-1">
+                                            <t t-if="location.short_name">
+                                                <t t-esc="location.short_name"/>
+                                            </t>
+                                            <t t-else="">
+                                                SALA
+                                            </t>
+                                        </span>
+                                    </a>
+                                </t>
+                            </div>
+
+                            <div id="anteroom-video-list-responsive">
+                                <ul class="list-group"/>
+                            </div>
+
+                            <img src="/df_website_front/static/src/img/antesala_conferencia_final_responsive.jpg"
+                                 class="w-100"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="pre_conference" model="ir.ui.view">
+            <field name="name">Pre conference</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="pre_conference_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.anteroom_data"/>
+            </field>
+        </record>
+         <!-- End Antesala de Conference -->
+
+        <template id="presentation_certificate" name="Presentation certificate">
+            <style>
+                .w-100 {
+                width: 100%;
+                }
+                .m-5 {
+                margin: 3rem;
+                }
+                .pl-5, .px-5 {
+                padding-left: 3rem;
+                }
+                .pr-5, .px-5 {
+                padding-right: 3rem;
+                }
+                .text-danger {
+                color: #dc3545;
+                }
+                .text-center {
+                text-align: center;
+                }
+                .mb-0, .my-0 {
+                margin-bottom: 0;
+                }
+                .display-3 {
+                font-size: 4.5rem;
+                font-weight: 300;
+                line-height: 1.2;
+                }
+                .mt-4, .my-4 {
+                margin-top: 1.5rem;
+                }
+                .justify-content-center {
+                justify-content: center;
+                }
+                .d-flex {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: flex;
+                }
+                .font-weight-bold {
+                font-weight: 700;
+                }
+                .ml-3, .mx-3 {
+                margin-left: 1rem;
+                }
+                .ml-5, .mx-5 {
+                margin-left: 3rem;
+                }
+                .mt-3, .my-3 {
+                margin-top: 1rem;
+                }
+                .mt-5, .my-5 {
+                margin-top: 3rem;
+                }
+                .pl-3, .px-3 {
+                padding-left: 1rem;
+                }
+                .pr-3, .px-3 {
+                padding-right: 1rem;
+                }
+                .pt-1, .py-1 {
+                padding-top: 0.25rem;
+                }
+                .flex-wrap {
+                flex-wrap: wrap;
+                }
+                .m-1 {
+                margin: 0.25rem;
+                }
+                @font-face {
+                font-family: 'Algerian Regular';
+                src: url('/df_website_front/static/src/css/presentation_certificate/Algerian Regular.ttf')
+                format('truetype');
+                }
+                .algerian-regular {
+                font-family: 'Algerian Regular';
+                }
+                .sponsor-list-certificate{
+                height: 50px;
+                }
+            </style>
+            <div class="w-100"
+                 style="background-image: url('/df_website_front/static/src/css/presentation_certificate/CERTIFICADOS.jpg'); background-repeat:no-repeat; background-size:100% 100%;">
+                <div class="w-100">
+                    <div>
+                        <div class="mx-3">
+                            <h1 class="text-center text-danger mb-0">METROLOGÍA 2017</h1>
+                            <h1 class="text-center display-3 algerian-regular" style="color: #1b5c8f;">CERTIFICADO
+                            </h1>
+                            <div class="mt-4 d-flex justify-content-center">
+                                <div>
+                                    <h4 class="font-weight-bold">A:</h4>
+                                </div>
+                                <div class="ml-3">
+                                    <h5 class="mb-0">Isis Patricia Rodríguez Socarrás</h5>
+                                    <h5 class="mb-0">Cira Cecilia León Ramentol</h5>
+                                    <h5 class="mb-0">Alis Martínez Rodríguez</h5>
+                                    <h5 class="mb-0">Mailyn Alvariño de Piña</h5>
+                                    <h5 class="mb-0">Ada Burón Almeida</h5>
+                                </div>
+                            </div>
+                            <h5 class="mt-3 ml-5">Por la presentación de la PONENCIA:</h5>
+                            <h2 class="text-center font-weight-bold">Acciones de superación en metrología en función
+                                de los servicios de salud.
+                            </h2>
+                            <h5 class="text-center">en el</h5>
+                            <h4 class="text-center font-weight-bold mb-0">
+                                10. Simposio Internacional Metrología 2017
+                            </h4>
+                            <h5 class="text-center">
+                                celebrado en el Palacio de Convenciones de La Habana, del 27 al 29 de septiembre de
+                                2017.
+                            </h5>
+                            <div class="mt-5 d-flex justify-content-center">
+                                <div class="px-3 pt-1" style="border-top: 2px solid black;">
+                                    <p class="text-center mb-0">MSc. Nelson J. Villalobos Hevia</p>
+                                    <p class="text-center">Presidente del Comité Científico</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-wrap mt-4 justify-content-center">
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_full_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_jep_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_full_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_jep_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_full_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_jep_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_full_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_jep_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_full_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_jep_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_full_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_full_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_jep_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_jep_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_full_negativo.png"/>
+                                <img class="sponsor-list-certificate m-1"
+                                     src="/df_website_front/static/src/img/logo_jep_negativo.png"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--  Galería de documentos, imágenes, etc..-->
+        <template id="posters_gallery_data" name="Posters gallery">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="position-relative">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <!--<span class="material-icons mr-2">chevron_right</span>-->Conference room
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <div class="container">
+                            <div class="row justify-content-between pt-5">
+                                <div class="col-sm-3">
+                                    <input class="form-control" placeholder="Search" id="search_poster_id"
+                                           t-att-value="search_sel"/>
+                                </div>
+                                <div class="col-sm-3">
+                                    <t t-if="area_id.image_1920">
+                                        <img class="img-fluid img-poster-area"
+                                             t-att-src="image_data_uri(area_id.image_1920)"/>
+                                    </t>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="my-form-outline">
+                                        <select class="form-control my-form-control my-select selectpicker"
+                                                id="select_type_talk"
+                                                title=" ">
+                                            <option value="">Select...</option>
+                                            <t t-foreach="type_talk" t-as="type_talk">
+                                                <option t-att-value="type_talk.id"
+                                                        t-att-selected="type_sel == type_talk.id">
+                                                    <t t-esc="type_talk.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                        <label t-attf-class="#{'label-select-automatic-top' if type_sel and type_sel != '' else ''} my-form-label myriadpro-regular">
+                                            Type
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4">
+                                <input type="hidden" t-att-value="area_id.id" id="poster_area_id"/>
+                                <input id="EVENT_ID" t-att-value="event.id" type="hidden"/>
+
+                                <t t-foreach="documents_all_tracks" t-as="doc_track">
+                                    <div class="col-sm-4">
+                                        <div class="card border">
+                                            <div class="row no-gutters">
+                                                <div class="col-4 d-flex align-items-center">
+                                                    <a t-attf-href="#{'/evento/my/download?attachment_id=%s' % (doc_track['document_id']) if doc_track['download'] else '#'}"
+                                                       class="posters-gallery-item"
+                                                       t-att-title="doc_track['document_name']"
+                                                       t-att-data-id="doc_track['document_id']"
+                                                       t-att-data-type-doc="doc_track['index_content']"
+                                                       t-att-data-track-name="doc_track['track_name']"
+                                                       t-att-data-track-download="doc_track['download']"
+                                                    >
+                                                        <t t-if="doc_track['index_content'] == 'image'">
+                                                            <img src="/df_website_front/static/src/img/picture_track.svg"
+                                                                 class="w-100"
+                                                                 alt="..."/>
+                                                        </t>
+                                                        <t t-else="">
+                                                            <img src="/df_website_front/static/src/img/document.svg"
+                                                                 class="w-100"
+                                                                 alt="..."/>
+                                                        </t>
+                                                    </a>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div class="card-body sigestic-darkblue p-3">
+                                                        <a t-attf-href="#{'/evento/my/download?attachment_id=%s' % (doc_track['document_id']) if doc_track['download'] else '#'}"
+                                                           class="posters-gallery-item"
+                                                           t-att-title="doc_track['document_name']"
+                                                           t-att-data-id="doc_track['document_id']"
+                                                           t-att-data-type-doc="doc_track['index_content']"
+                                                           t-att-data-track-name="doc_track['track_name']"
+                                                           t-att-data-track-download="doc_track['download']"
+                                                        >
+                                                            <p class="mb-1 poster-gallery-card-text">
+                                                                <t t-esc="doc_track['track_name']"/>
+                                                            </p>
+                                                        </a>
+                                                        <p class="mb-1 sigestic-darkblue poster-gallery-card-text">
+                                                            Author:
+                                                            <t t-esc="doc_track['track_resp']"/>
+                                                        </p>
+                                                        <div class="row mx-0 justify-content-end">
+                                                            <t t-if="doc_track['facebook_url']">
+                                                                <div class="col-auto px-1">
+                                                                    <a t-att-href="doc_track['facebook_url']"
+                                                                       class="participant-social-link"
+                                                                       target="_blank"
+                                                                       title="Facebook" style="font-size: 25px;">
+                                                                        <span class="fa fa-facebook"/>
+                                                                    </a>
+                                                                </div>
+                                                            </t>
+                                                            <t t-if="doc_track['twitter_url']">
+                                                                <div class="col-auto px-1">
+                                                                    <a t-att-href="doc_track['twitter_url']"
+                                                                       class="participant-social-link"
+                                                                       target="_blank"
+                                                                       title="Twitter" style="font-size: 25px;">
+                                                                        <span class="fa fa-twitter"/>
+                                                                    </a>
+                                                                </div>
+                                                            </t>
+                                                            <t t-if="doc_track['linkedin_url']">
+                                                                <div class="col-auto px-1">
+                                                                    <a t-att-href="doc_track['linkedin_url']"
+                                                                       class="participant-social-link"
+                                                                       target="_blank"
+                                                                       title="Linkedin" style="font-size: 25px;">
+                                                                        <span class="fa fa-linkedin"/>
+                                                                    </a>
+                                                                </div>
+                                                            </t>
+                                                            <t t-if="doc_track['telegram_url']">
+                                                                <div class="col-auto px-1">
+                                                                    <a t-att-href="doc_track['telegram_url']"
+                                                                       class="participant-social-link"
+                                                                       target="_blank"
+                                                                       title="Telegram" style="font-size: 25px;">
+                                                                        <span class="fa fa-telegram"/>
+                                                                    </a>
+                                                                </div>
+                                                            </t>
+                                                            <t t-if="doc_track['email_resp']">
+                                                                <div class="col-auto px-1">
+                                                                    <a t-attf-href="mailto:#{doc_track['email_resp']}"
+                                                                       class="participant-social-link"
+                                                                       target="_blank"
+                                                                       title="Email" style="font-size: 25px;">
+                                                                        <span class="fa fa-envelope"/>
+                                                                    </a>
+                                                                </div>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+
+        <record id="posters_gallery" model="ir.ui.view">
+            <field name="name">Poster gallery</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="poster_gallery_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.posters_gallery_data"/>
+            </field>
+        </record>
+        <!-- End Galería de documentos, imágenes, etc..-->
+
+        <template id="stands_dynamics">
+            <div t-attf-id="new-pavilion-block-#{row_stand}" class="d-flex justify-content-between">
+                <t t-if="check_key_in_list(areas,area_id)">
+                    <a t-att-href="'/evento/%s/%s/event_area' % (areas[area_id].event_id.id,areas[area_id].id)"
+                       class="w-23"
+                       t-att-title="areas[area_id].name">
+                        <div class="position-relative w-100 h-100">
+                            <img t-attf-src="data:image/*; base64,{{areas[area_id].image_1920}}"
+                                 class="logo-stand-new-pavilion"/>
+
+                            <img src="/df_website_front/static/src/img/STAND_PABELLON.png"
+                                 class="w-100 h-100"/>
+                        </div>
+                    </a>
+                </t>
+                <t t-if="check_key_in_list(areas,area_id+1)">
+                    <a t-att-href="'/evento/%s/%s/event_area' % (event.id,areas[area_id+1].id)" class="w-23"
+                       t-att-title="areas[area_id+1].name">
+                        <div class="position-relative w-100 h-100">
+                            <img t-attf-src="data:image/*; base64,{{areas[area_id+1].image_1920}}"
+                                 class="logo-stand-new-pavilion"/>
+
+                            <img src="/df_website_front/static/src/img/STAND_PABELLON.png"
+                                 class="w-100 h-100"/>
+                        </div>
+                    </a>
+                </t>
+                <t t-if="check_key_in_list(areas,area_id+2)">
+                    <a t-att-href="'/evento/%s/%s/event_area' % (event.id,areas[area_id+2].id)" class="w-23"
+                       t-att-title="areas[area_id+2].name">
+                        <div class="position-relative w-100 h-100">
+                            <img t-attf-src="data:image/*; base64,{{areas[area_id+2].image_1920}}"
+                                 class="logo-stand-new-pavilion"/>
+
+                            <img src="/df_website_front/static/src/img/STAND_PABELLON.png"
+                                 class="w-100 h-100"/>
+                        </div>
+                    </a>
+                </t>
+                <t t-if="check_key_in_list(areas,area_id+3)">
+                    <a t-att-href="'/evento/%s/%s/event_area' % (event.id,areas[area_id+3].id)" class="w-23"
+                       t-att-title="areas[area_id+3].name">
+                        <div class="position-relative w-100 h-100">
+                            <img t-attf-src="data:image/*; base64,{{areas[area_id+3].image_1920}}"
+                                 class="logo-stand-new-pavilion"/>
+
+                            <img src="/df_website_front/static/src/img/STAND_PABELLON.png"
+                                 class="w-100 h-100"/>
+                        </div>
+                    </a>
+                </t>
+            </div>
+        </template>
+
+        <template id="new_pavilion_event_data" name="New pavilion event">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div t-if="areas" class="oe_structure">
+                    <div class="position-relative">
+
+                        <t t-set="row_stand" t-value="1"/>
+                        <t t-foreach="range(0,len(areas),4)" t-as="area_id">
+                            <t t-call="df_website_front.stands_dynamics"/>
+                            <t t-set="row_stand" t-value="row_stand + 1"/>
+                        </t>
+
+                        <img src="/df_website_front/static/src/img/PABELLON SOLO.png" class="w-100"/>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+
+        <record id="new_pavilion_event" model="ir.ui.view">
+            <field name="name">Pavilion New</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.new_pavilion_event_data"/>
+            </field>
+        </record>
+
+        <template id="event_stand_product_gallery" name="Event stand product gallery">
+            <t t-call="website.layout">
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+
+                <div class="oe_structure">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb position-absolute w-100">
+                            <li class="breadcrumb-item">
+                                <a href="#" class="m-1 myriadpro-regular">
+                                    <span class="material-icons">home</span>
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item d-flex">
+                                <!--<span class="material-icons mr-2">chevron_right</span>-->
+                                <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                            </li>
+                            <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                <!--<span class="material-icons mr-2">chevron_right</span>-->Conference room
+                            </li>
+                        </ol>
+                    </nav>
+                    <div class="container">
+                        <div class="row justify-content-end pt-5">
+                            <div class="col-sm-3">
+                                <input class="form-control exo2-regular" placeholder="Search"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="my-form-outline">
+                                    <select class="form-control my-form-control my-select selectpicker"
+                                            id=""
+                                            title=" ">
+                                        <option value="">Select...</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                    <label class="my-form-label exo2-regular">
+                                        Category
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-sm-3">
+                                <a href="#" class="products-gallery-item" title="Product">
+                                    <div class="card border">
+                                        <div class="products-gallery-item-img">
+                                            <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png"
+                                                 class="card-img-top"
+                                                 alt="..."/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="sigestic-darkblue exo2-bold">Product name</h5>
+                                            <p class="card-text exo2-regular">
+                                                Category: Product category
+                                            </p>
+                                            <p class="card-text exo2-regular">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                                                voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                                                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" class="products-gallery-item" title="Product">
+                                    <div class="card border">
+                                        <div class="products-gallery-item-img">
+                                            <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png"
+                                                 class="card-img-top"
+                                                 alt="..."/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="sigestic-darkblue exo2-bold">Product name</h5>
+                                            <p class="card-text exo2-regular">
+                                                Category: Product category
+                                            </p>
+                                            <p class="card-text exo2-regular">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                                                voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                                                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" class="products-gallery-item" title="Product">
+                                    <div class="card border">
+                                        <div class="products-gallery-item-img">
+                                            <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png"
+                                                 class="card-img-top"
+                                                 alt="..."/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="sigestic-darkblue exo2-bold">Product name</h5>
+                                            <p class="card-text exo2-regular">
+                                                Category: Product category
+                                            </p>
+                                            <p class="card-text exo2-regular">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                                                voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                                                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" class="products-gallery-item" title="Product">
+                                    <div class="card border">
+                                        <div class="products-gallery-item-img">
+                                            <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png"
+                                                 class="card-img-top"
+                                                 alt="..."/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="sigestic-darkblue exo2-bold">Product name</h5>
+                                            <p class="card-text exo2-regular">
+                                                Category: Product category
+                                            </p>
+                                            <p class="card-text exo2-regular">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                                                voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                                                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" class="products-gallery-item" title="Product">
+                                    <div class="card border">
+                                        <div class="products-gallery-item-img">
+                                            <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png"
+                                                 class="card-img-top"
+                                                 alt="..."/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="sigestic-darkblue exo2-bold">Product name</h5>
+                                            <p class="card-text exo2-regular">
+                                                Category: Product category
+                                            </p>
+                                            <p class="card-text exo2-regular">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                                                voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                                                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" class="products-gallery-item" title="Product">
+                                    <div class="card border">
+                                        <div class="products-gallery-item-img">
+                                            <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png"
+                                                 class="card-img-top"
+                                                 alt="..."/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="sigestic-darkblue exo2-bold">Product name</h5>
+                                            <p class="card-text exo2-regular">
+                                                Category: Product category
+                                            </p>
+                                            <p class="card-text exo2-regular">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                                                voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                                                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" class="products-gallery-item" title="Product">
+                                    <div class="card border">
+                                        <div class="products-gallery-item-img">
+                                            <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png"
+                                                 class="card-img-top"
+                                                 alt="..."/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="sigestic-darkblue exo2-bold">Product name</h5>
+                                            <p class="card-text exo2-regular">
+                                                Category: Product category
+                                            </p>
+                                            <p class="card-text exo2-regular">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                                                voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                                                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-sm-3">
+                                <a href="#" class="products-gallery-item" title="Product">
+                                    <div class="card border">
+                                        <div class="products-gallery-item-img">
+                                            <img src="/df_website_front/static/src/img/IMAGEN noticia 1.png"
+                                                 class="card-img-top"
+                                                 alt="..."/>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="sigestic-darkblue exo2-bold">Product name</h5>
+                                            <p class="card-text exo2-regular">
+                                                Category: Product category
+                                            </p>
+                                            <p class="card-text exo2-regular">
+                                                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+                                                voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                                                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_frontend" inherit_id="website.assets_frontend" name="Custom Assets">
+
+            <xpath expr="link[last()]" position="after">
+                <!-- Toasrt -->
+                <link rel="stylesheet" href="/df_website_front/static/src/css/toastr/toastr.css"/>
+
+                <!-- BOOTSTRAP -->
+                <link rel="stylesheet" href="/df_website_front/static/src/css/bootstrap/bootstrap-select.min.css"/>
+
+                <!-- GOOGLE MATERIAL DESIGN ICON -->
+                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+                <!-- Animate.style -->
+                <link rel="stylesheet" href="/df_website_front/static/src/css/animate.style/animate.style.css"/>
+
+                <!-- Date time picker -->
+                <link rel="stylesheet"
+                      href="/df_website_front/static/src/css/datetimepicker/jquery.datetimepicker.min.css"/>
+
+                <!-- Comment Box -->
+                <link rel="stylesheet" href="/df_website_front/static/src/css/comment_box/comment_box.css"/>
+
+                <!-- LightBox -->
+                <link rel="stylesheet" href="/df_website_front/static/src/css/lightbox/css/lightbox.min.css"/>
+
+                <!-- APP -->
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/myfont.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/ponentes.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/style.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/networking.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/event_page.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/footer.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/resultados.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/fevexpo_home.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/dataTables/jquery.dataTables.min.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/dataTables/select2.min.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/sigestic.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/metrologia.css"/>
+                <link rel="stylesheet" href="/df_website_front/static/src/css/app/desoft.css"/>
+<!--                <link rel="stylesheet" type="text/css"-->
+<!--                      href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"/>-->
+<!--                <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>-->
+
+            </xpath>
+
+            <xpath expr="script[last()]" position="after">
+                <!-- BOOTSTRAP -->
+                <script type="text/javascript" src="/df_website_front/static/src/js/bootstrap/bootstrap-select.min.js"/>
+                <!-- Toastr -->
+                <script type="text/javascript" src="/df_website_front/static/src/js/toastr/toastr.min.js"/>
+
+                <!-- SWEETALERT2 -->
+                <script type="text/javascript" src="/df_website_front/static/src/js/sweetalert2/sweetalert2.js"/>
+
+                <!-- Date Time Picker -->
+                <!-- TODO: Verificar si esta libreria no se esta usando para eliminarla, ya que provoca un ciclo infinito y trae problemas al arrastrar snippets principalmente -->
+                <!-- TODO: Esta es la libreria para el calendario de la cita en los stands -->
+<!--                <script type="text/javascript"-->
+<!--                        src="/df_website_front/static/src/js/datetimepicker/jquery.datetimepicker.full.min.js"/>-->
+
+                <!-- LightBox -->
+                <script type="text/javascript"
+                        src="/df_website_front/static/src/js/lightbox/lightbox.min.js"/>
+
+                <!-- APP -->
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/user_sign_in.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/custom_hover.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/event_main.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/sidebar_menu.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/event.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/participant_list.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/event_message.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/stand_load_info.js"/>
+                <!--                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"/>-->
+                <!--                <script type="text/javascript" src="/df_website_front/static/src/js/libs/jquery.min.js"/>-->
+                <script type="text/javascript" src="/df_website_front/static/src/js/select2/select2.min.js"/>
+                <!--                <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>-->
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/event_stand.js"/>
+                <script type="text/javascript"
+                        src="/df_website_front/static/src/js/bootstrap-confirm-delete/bootstrap-confirm-delete.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/payments.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/conference.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/networking.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/schedule.js"/>
+                <script type="text/javascript" src="/df_website_front/static/src/js/app/sigestic.js"/>
+                <!--                <script type="text/javascript" src="/df_website_front/static/src/js/app/metrologia.js"/>-->
+            </xpath>
+        </template>
+    </data>
+</odoo>

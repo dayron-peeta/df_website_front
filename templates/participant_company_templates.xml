@@ -1,0 +1,173 @@
+<odoo>
+    <data>
+        <template id="participant_company_event" name="Companys">
+            <t t-call="website.layout">
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page"/>
+
+                <t t-call="df_website_front.modal_detail_attendee_speaker"/>
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="container mt-2 mb-5 px-sm-0">
+                        <div class="row mt-4">
+                            <t t-if="len(types_institution) > 0">
+                                <div class="col-sm-5 mt-2 mt-sm-0">
+                                    <form t-att-action="'/evento/%s/search_company' % (event.id)"
+                                          id="search_company_form">
+                                        <div class="myriadpro-regular">
+                                            <div>
+                                                <div class="my-form-outline">
+                                                    <select id="types_ins_id"
+                                                            name="types_ins"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true">
+                                                        <t t-foreach="types_institution" t-as="types_ins">
+                                                            <t t-if="types_ins">
+                                                                <t t-if="types_ins.id == types_ins_sel">
+                                                                    <option t-att-value="types_ins.id"
+                                                                            selected="selected">
+                                                                        <t
+                                                                                t-esc="types_ins.name"/>
+                                                                    </option>
+                                                                </t>
+                                                                <t t-else="">
+                                                                    <option t-att-value="types_ins.id">
+                                                                        <t
+                                                                                t-esc="types_ins.name"/>
+                                                                    </option>
+                                                                </t>
+                                                            </t>
+                                                            <t t-else="">
+                                                                <option t-att-value="types_ins.id">
+                                                                    <t
+                                                                            t-esc="types_ins.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </t>
+                                                    </select>
+                                                    <label t-attf-class="#{'label-select-automatic-top' if types_ins_sel else ''} my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Types of institution
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </t>
+                            <div class="col-sm-5">
+                                <div class="myriadpro-regular">
+                                    <div class="my-form-outline">
+                                        <input type="text" name="search_part" id="search_list_part_company"
+                                               class="form-control my-form-control"
+                                               t-att-value="search_part_sel"/>
+                                        <label t-attf-class="#{'label-select-automatic-top' if search_part_sel else ''} my-form-label myriadpro-regular">
+                                            Search
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <button id="clear_filters_participant_company"
+                                        class="ml-3 btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <t t-foreach="speakers_attendees" t-as="obj">
+                                <div class="col-sm-6 mt-3 mt-sm-0 pt-3">
+                                    <div class="participant-company-card h-100"
+                                         t-att-data-id="obj.id">
+                                        <div class="row no-gutters h-100">
+                                            <div class="col-md-4">
+                                                <t t-if="obj.image_1920">
+                                                    <div class="h-100 w-100 speaker-participant-card-img"
+                                                         t-attf-style="background-image: url(data:image/*;base64,{{obj.image_1920}}); background-size: cover;"/>
+                                                </t>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="h-100 d-flex flex-column">
+                                                    <div class="participant-data">
+                                                        <h6 class="text-uppercase myriadpro-regular"
+                                                            style="color: #257bb5;">
+                                                            <t t-esc="obj.name"/>
+                                                        </h6>
+                                                        <t t-if="obj.parent_id.name">
+                                                            <p class="myriadpro-regular mb-1 text-uppercase"
+                                                               style="font-size: .9rem;">
+                                                                <t t-esc="obj.name"/>
+                                                            </p>
+                                                        </t>
+                                                        <t t-if="obj.function">
+                                                            <p class="myriadpro-regular mb-1" style="font-size: .9rem;">
+                                                                <t t-esc="obj.function"/>
+                                                            </p>
+                                                        </t>
+                                                        <t t-if="obj.country_id.name">
+                                                            <p class="myriadpro-regular" style="font-size: .9rem;">
+                                                                <t t-esc="obj.country_id.name"/>
+                                                            </p>
+                                                        </t>
+                                                    </div>
+                                                    <div class="participant-social row mx-0 justify-content-end">
+                                                        <t t-if="obj.facebook_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="obj.facebook_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Facebook" style="font-size: 25px;">
+                                                                    <span class="fa fa-facebook"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                        <t t-if="obj.twitter_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="obj.twitter_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Twitter" style="font-size: 25px;">
+                                                                    <span class="fa fa-twitter"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                        <t t-if="obj.linkedin_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="obj.linkedin_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Linkedin" style="font-size: 25px;">
+                                                                    <span class="fa fa-linkedin"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+                                                        <t t-if="obj.telegram_url">
+                                                            <div class="col-auto px-1">
+                                                                <a t-att-href="obj.telegram_url"
+                                                                   class="participant-social-link"
+                                                                   target="_blank"
+                                                                   title="Telegram" style="font-size: 25px;">
+                                                                    <span class="fa fa-telegram"/>
+                                                                </a>
+                                                            </div>
+                                                        </t>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--  Región para configuración de snippets -->
+                <div class="oe_structure internal_page_footer"/>
+            </t>
+        </template>
+    </data>
+</odoo>

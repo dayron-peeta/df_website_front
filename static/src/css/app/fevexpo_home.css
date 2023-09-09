@@ -1,0 +1,20 @@
+
+.banner-fevexpo {
+    position: relative;
+    width: 100%;
+}
+
+.w-inherit {
+    width: inherit;
+}
+
+.underline_titles {
+    width: 110px;
+    height: 20px;
+}
+
+.footer-copyright-fevexpo {
+    border-top: 1px solid;
+    width: 98%;
+    margin-top: 15px;
+}

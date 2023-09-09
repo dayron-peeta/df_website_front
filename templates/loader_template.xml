@@ -1,0 +1,10 @@
+<odoo>
+    <data>
+        <template id="loader_event" name="Loader Event">
+            <div id="loader-parent" class="d-none">
+                <div id="loader">
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

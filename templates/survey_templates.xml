@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="survey_page_fill" name="Survey: main page (take survey)" inherit_id="survey.survey_page_fill">
+            <xpath expr="//div[hasclass('o_survey_form')]" position="before">
+<!--                todo: aki va lo nuevo-->
+<!--                <t t-call="df_website_front.event_cintillo_pages_internas"/>-->
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,111 @@
+<odoo>
+    <data>
+        <template id="event_lobby_data" name="Lobby">
+            <t t-call="website.layout">
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+                <div class="oe_structure">
+                    <div class="navigation">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb position-absolute w-100">
+                                <li class="breadcrumb-item">
+                                    <a href="#" class="m-1 myriadpro-regular">
+                                        <span class="material-icons">home</span>
+                                    </a>
+                                </li>
+                                <li class="breadcrumb-item d-flex">
+                                    <span class="material-icons mr-2">chevron_right</span>
+                                    <a href="#" class="myriadpro-regular">Thematic rooms</a>
+                                </li>
+                                <li class="breadcrumb-item active myriadpro-regular d-flex" aria-current="page">
+                                    <span class="material-icons mr-2">chevron_right</span>Lobby
+                                </li>
+                            </ol>
+                        </nav>
+
+                        <a class="enlace" id="enlace-conference-room" href="#" title="Conference room">
+                        </a>
+
+                        <t t-if="len(data_count_nav['thematic_rooms']['press_room']) &gt; 0">
+                            <a class="enlace" id="enlace-press-room"
+                               t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['press_room'].id)"
+                               title="Press room">
+                            </a>
+                        </t>
+
+                        <t t-if="pavilion and len(pavilion) &gt; 0">
+                            <a class="enlace" id="enlace-showrooms"
+                               t-att-href="'/evento/%s/%s/pavilion_event' % (event.id,pavilion[0].id)"
+                               title="Showrooms">
+                            </a>
+                        </t>
+
+                        <t t-if="len(data_count_nav['thematic_rooms']['forum']) &gt; 0">
+                            <a class="enlace" id="enlace-forum"
+                               t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['forum'].id)"
+                               title="Investment forum">
+                            </a>
+                        </t>
+
+
+                        <t t-if="len(data_count_nav['thematic_rooms']['information']) &gt; 0">
+                            <a class="enlace" id="enlace-information"
+                               t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['information'].id)"
+                               title="Information">
+                            </a>
+                        </t>
+
+
+                        <t t-if="len(data_count_nav['thematic_rooms']['networking']) &gt; 0">
+                            <a class="enlace" id="enlace-networking"
+                               t-att-href="'/evento/%s/%s/event_area' % (event.id,data_count_nav['thematic_rooms']['networking'].id)"
+                               title="Networking">
+                            </a>
+                        </t>
+
+                    </div>
+                    <t t-if="sponsors and len(sponsors) > 0">
+                        <div class="container-fluid">
+                            <div class="container my-5">
+                                <h2 class="text-center encabezados myriadpro-semibold-condensed">PATROCINADORES</h2>
+                                <hr class="encabezado-underline"/>
+                            </div>
+                            <div class="container my-5 ">
+                                <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active" data-interval="10000">
+                                            <div class="d-flex flex-row">
+                                                <t t-foreach="sponsors['sponsors']" t-as="sponsor_a">
+                                                    <div class="items-carousel">
+                                                        <t t-if="sponsor_a.image_512">
+                                                        <img t-att-src="image_data_uri(sponsor_a.image_512)"
+                                                             alt="" class="img"/>
+                                                        </t>
+                                                        <!--                                                <img src="/df_website_front/static/src/img/image_carousel/rating_carousel/Bronce.svg"-->
+                                                        <!--                                                     alt="" class="rating"/>-->
+                                                    </div>
+                                                </t>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </template>
+
+        <record id="event_lobby" model="ir.ui.view">
+            <field name="name">Lobby</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="lobby_virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.event_lobby_data"/>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,2360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!--Modal para
+        los detalles de los ponentes y participantes-->
+        <template id="modal_detail_attendee_speaker">
+            <div class="modal fade" id="participant-detail" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button"
+                                class="btn btn-danger df_website_front_modal_close_button"
+                                data-dismiss="modal">X
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-7 speaker-detail-divider div-detail-modal">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img id="participant-detail-image"
+                                                    class="img-fluid w-100" src=""
+                                                    alt="..." />
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <h2 id="participant-detail-name"
+                                                    class="text-uppercase myriadpro-regular mt-3 mb-0"
+                                                    style="color: #257bb5;">
+                                                </h2>
+                                                <p class="myriadpro-regular" id="speaker-function" />
+                                                <p class="myriadpro-regular" id="speaker-company" />
+                                                <p class="myriadpro-regular participant-email" />
+                                                <div>
+                                                    <a t-att-href="fb_url" target="_blank"
+                                                        id="speaker-face-url">
+                                                        <button class="btn btn-facebook p-0">
+                                                            <i class="fa fa-facebook" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="tw_url" target="_blank"
+                                                        id="speaker-twitter-url">
+                                                        <button class="btn btn-twitter p-0">
+                                                            <i class="fa fa-twitter" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="link_url" target="_blank"
+                                                        id="speaker-linkedin-url">
+                                                        <button class="btn btn-linkedin p-0">
+                                                            <i class="fa fa-linkedin" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="teleg_url" target="_blank"
+                                                        id="speaker-telegram-url">
+                                                        <button class="btn btn-telegram p-0">
+                                                            <i class="fa fa-telegram" />
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <p
+                                                    class="myriadpro-regular mt-2 text-speakers-modal"
+                                                    id="participant-detail-description" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 div-detail-modal-right">
+                                        <h5 class="myriadpro-regular">Presentation Agenda</h5>
+                                        <ul class="list-group" id="list-tracks" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--Modal
+        para términos y condiciones del Evento-->
+        <template id="modal_terms_condition">
+            <div class="modal fade" id="term_condition_event" tabindex="-1"
+                aria-labelledby="participant-detail"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center pt-0">
+                            <div class="container-fluid">
+                                <p class="myriadpro-regular mt-2" id="ter_condition_description">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--Modal
+        para agregar acréditados -->
+        <template id="modal_resources_accredited">
+            <div class="modal fade mt-5" id="modalResourcesAccredited" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_save_edit_resources" />
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formModalResourcesAccredited">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="action_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
+
+                                    <div class="row name_image_file">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="name"
+                                                        class="form-control my-form-control"
+                                                        is-required="true" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        <span class="text-danger">*</span> Name </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="email"
+                                                        class="form-control my-form-control"
+                                                        is-required="true"
+                                                        is-email="true" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        <span class="text-danger">*</span> Email </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-email-alert d-none">
+                                                    The mail format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="select_event_id"
+                                                        name="event_ticket_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true"
+                                                        is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label exo2-regular">
+                                                        <span class="text-danger">*</span> Event </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="select_accredited_ticket_id"
+                                                        name="ticket_id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true"
+                                                        is-required="true">
+                                                    </select>
+                                                    <label class="my-form-label exo2-regular">
+                                                        <span class="text-danger">*</span> Ticket </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveEditResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnCancelResourcesStand"
+                                data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--Modals
+        para agregar los recursos de pendones, imágenes, documentos,medias, productos en los Stand -->
+        <template id="modal_save_edit_resources">
+
+            <div class="modal fade mt-5" id="modalResourcesPendon" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_save_edit_resources" />
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formModalResourcesPendon">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="action_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
+
+                                    <div class="ml-2 my-4">
+                                        <div class="my-form-outline">
+                                            <select
+                                                class="form-control my-form-control my-select selectpicker"
+                                                name="position" id="select_position_pendon"
+                                                title="" data-live-search="true" is-required="true">
+                                            </select>
+                                            <label
+                                                class="my-form-label myriadpro-regular label-position">
+                                                <span class="text-danger">*</span> Position </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4 d-flex">
+                                        <div>
+                                            <img
+                                                src="/df_website_front/static/src/img/user_profile_default.png"
+                                                width="75px" alt="Picture" id="load-img-url" />
+                                        </div>
+                                        <div class="ml-3 w-100" style="align-self: flex-end;">
+                                            <div class="my-form-outline">
+                                                <input accept="image/*" type="file"
+                                                    name="image_file"
+                                                    onChange="img_pathUrl_Modal(this);"
+                                                    class="form-control my-form-control"
+                                                    is-required="true" />
+                                            </div>
+                                            <div
+                                                class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveEditResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnCancelResourcesStand"
+                                data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade mt-5" id="modalResourcesImages" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_save_edit_resources" />
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formModalResourcesImages">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="action_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
+
+                                    <div class="mb-4 d-flex">
+                                        <div>
+                                            <img
+                                                src="/df_website_front/static/src/img/user_profile_default.png"
+                                                width="75px" alt="Picture" id="load-img-url" />
+                                        </div>
+                                        <div class="ml-3 w-100" style="align-self: flex-end;">
+                                            <div class="my-form-outline">
+                                                <input accept="image/*" type="file"
+                                                    name="image_file"
+                                                    onChange="img_pathUrl_Modal(this);"
+                                                    class="form-control my-form-control"
+                                                    is-required="true" />
+                                            </div>
+                                            <div
+                                                class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveEditResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnCancelResourcesStand"
+                                data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade mt-5" id="modalResourcesDocs" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_save_edit_resources" />
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formModalResourcesDocs">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="action_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
+
+                                    <div class="mb-4">
+                                        <div class="my-form-outline">
+                                            <input type="text" name="name"
+                                                class="form-control my-form-control" />
+                                            <label
+                                                class="my-form-label myriadpro-regular label-position">
+                                                Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="my-form-outline ml-3 w-100"
+                                            style="align-self: flex-end;">
+                                            <input type="file" name="doc_file"
+                                                class="form-control my-form-control"
+                                                is-required="true" />
+                                        </div>
+                                        <div
+                                            class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                            The field is required
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveEditResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnCancelResourcesStand"
+                                data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade mt-5" id="modalResourcesMedias" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_save_edit_resources" />
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formModalResourcesMedias">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="action_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
+
+                                    <div class="row name_image_file">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="name"
+                                                        class="form-control my-form-control"
+                                                        is-required="true" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        <span class="text-danger">*</span> Name </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="media_url"
+                                                        class="form-control my-form-control"
+                                                        is-required="true"
+                                                        is-url="true" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        <span class="text-danger">*</span> URL </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                    The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control"
+                                                    name="description"
+                                                    rows="4" />
+                                                <label
+                                                    class="my-form-label myriadpro-regular label-position">
+                                                    Description
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--                                    <div class="row ml-2">-->
+                                </div>
+                                <!--                                </div>-->
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveEditResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnCancelResourcesStand"
+                                data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade mt-5" id="modalResourcesProducts" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_save_edit_resources" />
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body" style="overflow: auto;">
+                            <form id="formModalResourcesProducts">
+                                <div class="container">
+
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="action_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
+
+                                    <div class="mb-4 d-flex">
+                                        <div>
+                                            <img
+                                                src="/df_website_front/static/src/img/user_profile_default.png"
+                                                width="75px" alt="Picture"
+                                                id="load-img-url-resources" />
+                                        </div>
+                                        <div class="ml-3 w-100" style="align-self: flex-end;">
+                                            <div class="my-form-outline">
+                                                <input accept="image/*" type="file"
+                                                    name="image_file"
+                                                    onChange="img_pathUrl_Modal(this);"
+                                                    class="form-control my-form-control"
+                                                    is-required="true" />
+                                            </div>
+                                            <div
+                                                class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                The field is required
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row name_image_file">
+                                        <div class="col-12">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="name"
+                                                        class="form-control my-form-control"
+                                                        is-required="true" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        <span class="text-danger">*</span> Name </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="reference"
+                                                        class="form-control my-form-control" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        Reference
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Esta
+                                        clase: price-product es para usarla de forma organizativa en
+                                        el form-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="number" name="price"
+                                                        class="form-control my-form-control" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        Price
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 price-product">
+                                            <div class="my-form-outline">
+                                                <textarea class="form-control my-form-control"
+                                                    name="description"
+                                                    rows="4" maxlength="255" />
+                                                <label
+                                                    class="my-form-label myriadpro-regular label-position">
+                                                    Description
+                                                </label>
+                                            </div>
+
+                                            <div class="form-check mt-4">
+                                                <input class="form-check-input" type="checkbox"
+                                                    value=""
+                                                    id="opt_for_prize"
+                                                />
+                                                <label class="form-check-label myriadpro-regular"
+                                                    for="opt_for_prize">
+                                                    Opt for prize
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveEditResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnCancelResourcesStand"
+                                data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade mt-5" id="modalSelectResourcesProducts" tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_save_edit_resources" />
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formSelectResourcesProducts">
+                                <div class="container">
+
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="action_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
+
+                                    <div class="mb-4">
+                                        <div class="my-form-outline">
+                                            <select
+                                                class="form-control my-form-control my-select selectpicker"
+                                                name="product_id" id="select_product_id"
+                                                title="" data-live-search="true" is-required="true">
+                                            </select>
+                                            <label
+                                                class="my-form-label myriadpro-regular label-position">
+                                                <span class="text-danger">*</span> Products </label>
+                                        </div>
+                                    </div>
+
+                                    <!--                                    <div class="mb-4 d-flex">-->
+                                    <!--                                        <div>-->
+                                    <!--                                            <img
+                                    src="/df_website_front/static/src/img/user_profile_default.png"-->
+                                    <!--                                                 width="75px" alt="Picture" id="load-img-url-resources"/>-->
+                                    <!--                                        </div>-->
+                                    <!--                                        <div class="my-form-outline ml-3 w-100" style="align-self:
+                                    flex-end;">-->
+                                    <!--                                            <input accept="image/*" type="file" name="image_file"-->
+                                    <!--                                                   onChange="img_pathUrl_Stand(this);"-->
+                                    <!--                                                   class="form-control my-form-control"/>-->
+                                    <!--                                        </div>-->
+                                    <!--                                    </div>-->
+
+                                    <div class="row name_image_file">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="name"
+                                                        class="form-control my-form-control"
+                                                        is-required="true" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Name </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="reference"
+                                                        class="form-control my-form-control"
+                                                        is-required="true" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Reference </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveEditResourcesStand">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnCancelResourcesStand"
+                                data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <t t-call="df_website_front.modal_resources_accredited" />
+
+        </template>
+
+        <!--Modal
+        para agregar acréditados en el perfil de usuario -->
+        <template id="modal_accredited_profile_user">
+            <t t-call="df_website_front.modal_resources_accredited" />
+        </template>
+
+        <!--Modal
+        para los pagos-->
+        <template id="modal_detail_payment">
+
+            <div class="modal fade" id="payment-detail" tabindex="-1" role="dialog"
+                aria-labelledby="payment-detail"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <form id="formPayments">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <input type="hidden" name="invoice_id" value="" />
+                                <div class="mx-4">
+                                    <div class="mb-4 mt-2">
+                                        <div class="my-form-outline">
+                                            <select name="payment_method" id="payment_method"
+                                                class="form-control my-form-control my-select selectpicker"
+                                                title=" " data-live-search="true" is-required="true">
+                                            </select>
+                                            <label class="my-form-label myriadpro-regular">
+                                                <span class="text-danger">*</span> Payment Method </label>
+                                        </div>
+                                        <div
+                                            class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                            The field is required
+                                        </div>
+                                        <div id="pay_description">
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <h5>Once the payment has been made, enter the transaction ID
+                                            here.</h5>
+                                        <div class="my-form-outline">
+                                            <input type="text" class="form-control my-form-control"
+                                                name="operation_id" is-required="true" />
+                                            <label class="my-form-label myriadpro-regular">
+                                                <span class="text-danger">*</span> Operation ID </label>
+                                        </div>
+                                        <div
+                                            class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                            The field is required
+                                        </div>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="my-form-outline">
+                                            <input type="file"
+                                                class="form-control my-form-control d-none"
+                                                name="image_operation_id" />
+                                            <a href="#" class="load-image-image-operation">
+                                                <span class="fa fa-camera mr-2" />Operation image <span
+                                                    class="text-danger">*</span>
+                                            </a>
+                                            <a href="#"
+                                                class="show-load-image-image-operation d-none" />
+                                            <!--                                            <label class="my-form-label myriadpro-regular">-->
+                                            <!--                                                <span class="text-danger">*</span>-->
+                                            <!--                                                Operation image-->
+                                            <!--                                            </label>-->
+                                        </div>
+                                    </div>
+                                    <div id="transfer-qr" class="text-center">
+                                        <img src="#" class="w-50 d-none" id="img-transfer-qr" />
+                                    </div>
+                                    <!--                                    <div id="enzona-qr" class="text-center">-->
+                                    <!--                                        <img src="/df_website_front/static/src/img/Enzona-qr.jpg"
+                                    class="w-50"-->
+                                    <!--                                             style="display: none;"/>-->
+                                    <!--                                    </div>-->
+                                    <div id="div-url-pay" class="text-center d-none">
+                                        <h5>Please access the following URL to proceed with the
+                                            payment.</h5>
+                                        <a href="#" target="_blank" id="url-pay">
+                                            <span class="url-pay-name" />
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <a href="#" id="add-payment-method"
+                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        SAVE
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template id="modal_add_payment_method">
+
+            <div class="modal fade" id="payment-add-payment-method" tabindex="-1" role="dialog"
+                aria-labelledby="payment-add-payment-method" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <form id="formOnlyPaymentMethod">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <input type="hidden" name="invoice_id" value="" />
+                                <div class="mx-4">
+                                    <div class="mb-4 mt-2">
+                                        <div class="my-form-outline">
+                                            <select name="payment_method" id="payment_only_method"
+                                                class="form-control my-form-control my-select selectpicker"
+                                                title=" " data-live-search="true" is-required="true">
+                                            </select>
+                                            <label class="my-form-label myriadpro-regular">
+                                                <span class="text-danger">*</span> Payment Method </label>
+                                        </div>
+                                        <div
+                                            class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                            The field is required
+                                        </div>
+
+                                        <div class="text-right mt-2">
+                                            <a href="#" id="add-only-payment-method"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                                Export
+                                            </a>
+                                        </div>
+                                        <div id="pay_only_description">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--Modal
+        para las sessiones (ponencias) -->
+        <template id="modal_track">
+
+            <div class="modal fade mt-5" id="modalTrack" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_track">Track</span>
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formEditTrack">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <input type="hidden" name="elem_id" value="" />
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <!-- Track date-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="track_date" disabled="disabled" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Track date
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="track_duration" disabled="disabled" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Track duration
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="track_name" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Presentation Title </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="track_video"
+                                                        class="form-control my-form-control"
+                                                        is-url="true" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        URL Video
+                                                    </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                    The url format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mt-1">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select name="theme_tag_id"
+                                                        id="theme-tag-edit-id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true"
+                                                        multiple="">
+                                                        <t t-foreach="theme_tags" t-as="theme_t">
+                                                            <option t-att-value="theme_t.id">
+                                                                <t t-esc="theme_t.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Thematic
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <textarea class="form-control my-form-control"
+                                                        name="description"
+                                                        rows="2" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Presentation Summary </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="btnSaveTrack">
+                                    <i class="fa fa-check-square-o" /> Accept </button>
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    data-toggle="tooltip" title="Cancel">
+                                    <i class="fa fa-window-close-o" /> Cancel </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade mt-5" id="modalTableResourcesDocsPresentation" tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document" style="height: 500px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span>Documents</span>
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <div class="container">
+                                <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                                    <button id="add_doc_track_id" data-resources="3"
+                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        Add document
+                                    </button>
+                                </div>
+                                <input type="hidden" name="track_id" value="" />
+                                <div
+                                    class="table-responsive table-wrapper-scroll-y my-custom-scrollbar mt-3">
+                                    <table class="table" id="user_tracks_docs" data-track-id="">
+                                        <thead>
+                                            <tr id="header_track_docs">
+                                                <th scope="col">#</th>
+                                                <th scope="col">
+                                                    Name
+                                                </th>
+                                                <th scope="col">
+                                                    Image
+                                                </th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cerrar </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade mt-5" id="modalTableResourcesImgPresentation" tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document" style="height: 500px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span>Images</span>
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <div class="container">
+                                <div class="col-sm text-sm-right mb-3 mb-sm-0">
+                                    <button id="add_img_track_id" data-resources="3"
+                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        Add image
+                                    </button>
+                                </div>
+                                <input type="hidden" name="track_id" value="" />
+                                <div
+                                    class="table-responsive table-wrapper-scroll-y my-custom-scrollbar mt-3">
+                                    <table class="table" id="user_tracks_imgs" data-track-id="">
+                                        <thead>
+                                            <tr id="header_track_imgs">
+                                                <th scope="col">#</th>
+                                                <th scope="col">
+                                                    Name
+                                                </th>
+                                                <th scope="col">
+                                                    Image
+                                                </th>
+                                                <th scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cerrar </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal de add Authors-->
+            <div class="modal fade mt-5" id="modalResourcesAuthPresentation" tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_save_edit_resources_presentation" />
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formModalResourcesAuthPresentation">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+
+                                    <input type="hidden" name="track_id" value="" />
+
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" name="name"
+                                            placeholder="Enter name" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name">Email</label>
+                                        <input type="email" class="form-control" name="email"
+                                            placeholder="Enter email" />
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary"
+                                id="btnSaveResourcesAuthorPresentation">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal de add Doc-->
+            <div class="modal fade mt-5" id="modalResourcesDocsPresentation" tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_save_edit_resources_presentation" />
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formModalResourcesDocsPresentation">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="track_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
+
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" name="name"
+                                            placeholder="Enter name" />
+                                    </div>
+
+                                    <div class="mb-4 d-flex">
+                                        <div class="my-form-outline ml-3 w-100"
+                                            style="align-self: flex-end;">
+                                            <input type="file" name="doc_file"
+                                                class="form-control my-form-control" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary"
+                                id="btnSaveResourcesDocPresentation">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal de add Image-->
+            <div class="modal fade mt-5" id="modalResourcesImgsPresentation" tabindex="-1"
+                role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                Add image
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formModalResourcesImgsPresentation">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="track_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
+
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" name="name"
+                                            placeholder="Enter name" />
+                                    </div>
+
+                                    <div class="mb-4 d-flex">
+                                        <div class="my-form-outline ml-3 w-100"
+                                            style="align-self: flex-end;">
+                                            <input type="file" name="doc_file"
+                                                class="form-control my-form-control" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary"
+                                id="btnSaveResourcesImgsPresentation">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal de add Presentation-->
+            <div class="modal fade mt-5" id="modalAddTrack" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_add_track">Track</span>
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formAddTrack" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <!-- Presentation Title -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="track_name" is-required="true" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Presentation Title </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Url-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="track_url" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Url
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <!-- Event -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="profile-conference-event"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true"
+                                                        name="event_id"
+                                                        is-required="true">
+                                                        <t t-foreach="event" t-as="events_t">
+                                                            <option t-att-value="events_t.id">
+                                                                <t t-esc="events_t.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Event </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Type track-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select id="profile-conference-type-track"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true"
+                                                        name="conference_type_track"
+                                                        is-required="true">
+                                                        <t t-foreach="type_presentations" t-as="type_p">
+                                                            <option t-att-value="type_p.id">
+                                                                <t t-esc="type_p.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span> Type
+                                                        track </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Thematic-->
+                                    <div class="row mt-1">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <select name="theme_tag_id" id="theme-tag-id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true"
+                                                        multiple="">
+                                                        <t t-foreach="theme_tags" t-as="theme_t">
+                                                            <option t-att-value="theme_t.id">
+                                                                <t t-esc="theme_t.name" />
+                                                            </option>
+                                                        </t>
+                                                    </select>
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Thematic
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Presentation
+                                    Summary -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <textarea class="form-control my-form-control"
+                                                        name="description"
+                                                        rows="2" is-required="true" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger">*</span>
+                                                        Presentation Summary </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="btnAddSaveTrack">
+                                    <i class="fa fa-check-square-o" /> Accept </button>
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                    data-toggle="tooltip" title="Cancel">
+                                    <i class="fa fa-window-close-o" /> Cancel </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </template>
+
+        <template id="modal_view_schudele">
+            <div class="modal fade" id="eventScheduleModal" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <img id="user-request-image" class="img-fluid w-100"
+                                                    src=""
+                                                    alt="" />
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <h2 id="user-request-name"
+                                                    class="text-uppercase myriadpro-regular mt-3 mb-0"
+                                                    style="color: #257bb5;">
+                                                </h2>
+                                                <!--                                                todo: asunto cita-->
+                                                <p class="myriadpro-regular mb-0"
+                                                    id="user-request-subject" />
+                                                <!--                                                todo: fecha cita-->
+                                                <p class="myriadpro-regular mb-0" id="date_date" />
+                                                <!--                                                todo: correo persona solicita cita-->
+                                                <p class="myriadpro-regular mb-0"
+                                                    id="user-request-email" />
+                                                <!--                                                todo: télefono persona solicita cita-->
+                                                <p class="myriadpro-regular mb-0"
+                                                    id="user-request-phone" />
+                                                <!--                                                todo: móvil persona solicita cita-->
+                                                <p class="myriadpro-regular mb-0"
+                                                    id="user-request-mobile" />
+                                                <!--                                                todo: whatsapp persona solicita cita-->
+                                                <p class="myriadpro-regular mb-0"
+                                                    id="user-request-whatsapp" />
+                                                <div class="col-sm-7">
+                                                    <a t-att-href="fb_url" target="_blank"
+                                                        id="speaker-face-url">
+                                                        <button class="btn btn-facebook p-0">
+                                                            <i class="fa fa-facebook" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="tw_url" target="_blank"
+                                                        id="speaker-twitter-url">
+                                                        <button class="btn btn-twitter p-0">
+                                                            <i class="fa fa-twitter" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="link_url" target="_blank"
+                                                        id="speaker-linkedin-url">
+                                                        <button class="btn btn-linkedin p-0">
+                                                            <i class="fa fa-linkedin" />
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <p
+                                                    class="myriadpro-regular mt-2 px-3 text-speakers-modal"
+                                                    id="user-request-description" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="modal_confirmation_reject_date">
+            <div class="modal fade" id="modalConfirmationDate" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">
+                                <span class="title_message_confirmation" />
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true" />
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formConfirmationDate">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <input type="hidden" name="calendar_attendee_id" value="" />
+                                <div id="div-accept-date">
+                                    Are you sure you want to approve the appointment?
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Cancel</button>
+                            <button type="button" class="btn btn-primary act-accept-date">Accept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDeniedDate" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">
+                                <span class="title_message_confirmation" />
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true" />
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formDeniedDate">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <input type="hidden" name="calendar_attendee_id" value="" />
+                                <div id="description-reject-date">
+                                    <label for="reject-response">Write a description explaining your
+                                        decision:
+                                        (Optional)
+                                    </label>
+                                    <textarea type="text" id="reject-response"
+                                        name="reject-response" />
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Cancel</button>
+                            <button type="button" class="btn btn-primary act-reject-date">Accept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="modalDoneDate" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">
+                                <span class="title_done_confirmation" />
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true" />
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="formDoneDate">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <input type="hidden" name="calendar_attendee_id" value="" />
+                                <div id="div-done-date">
+                                    Are you sure the appointment was made?
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                Cancel</button>
+                            <button type="button" class="btn btn-primary act-done-date">Accept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--Modal
+        para los detalles de los expositores-->
+        <template id="modal_detail_exhibitor">
+
+            <div class="modal fade" id="exhibitor-detail" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button"
+                                class="btn btn-danger df_website_front_modal_close_button"
+                                data-dismiss="modal">X
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img id="participant-detail-image"
+                                                    class="img-fluid w-100" src=""
+                                                    alt="..." />
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <h2 id="exhibitor-company"
+                                                    class="text-uppercase myriadpro-regular mt-3 mb-0"
+                                                    style="color: #257bb5;">
+                                                </h2>
+                                                <h3 class="myriadpro-regular mb-0"
+                                                    id="participant-detail-name" />
+                                                <p class="myriadpro-regular mb-0"
+                                                    id="exhibitor-pavilion" />
+                                                <p class="myriadpro-regular mb-0"
+                                                    id="exhibitor-website" />
+                                                <p class="myriadpro-regular participant-email" />
+                                                <div>
+                                                    <a t-att-href="fb_url" target="_blank"
+                                                        id="speaker-face-url">
+                                                        <button class="btn btn-facebook p-0">
+                                                            <i class="fa fa-facebook" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="tw_url" target="_blank"
+                                                        id="speaker-twitter-url">
+                                                        <button class="btn btn-twitter p-0">
+                                                            <i class="fa fa-twitter" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="link_url" target="_blank"
+                                                        id="speaker-linkedin-url">
+                                                        <button class="btn btn-linkedin p-0">
+                                                            <i class="fa fa-linkedin" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="teleg_url" target="_blank"
+                                                        id="speaker-telegram-url">
+                                                        <button class="btn btn-telegram p-0">
+                                                            <i class="fa fa-telegram" />
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <p
+                                                    class="myriadpro-regular mt-2 text-speakers-modal"
+                                                    id="participant-detail-description" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="event_conference_chat_modal">
+            <div id="event-conference-chat-modal" class="modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content event-conference-chat-content">
+                        <div class="modal-header titleBox">
+                            <span class="modal-title text-white" id="chat_conference_span" />
+                            <button type="button" class="close text-white" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body bg-light">
+                            <ul id="commentList" class="commentList" />
+                        </div>
+
+                        <form id="formCommentConference">
+                            <div class="modal-footer bg-light p-2">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <input type="hidden" name="track_id" id="track_conference_chat_id"
+                                    value="" />
+                                <div class="form-group mb-0 w-100">
+                                    <input name="my-comment-input" class="form-control" type="text"
+                                        placeholder="Your comments" />
+                                </div>
+                                <div class="form-group ml-1 mb-0">
+                                    <button id="my-comment-button"
+                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        Send
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!-- Añadir una session desde el registro de usuario -->
+        <template id="modal_add_conference_register">
+            <div class="modal fade mt-5" id="modalAddConference" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span>Add conference</span>
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formModalAddConference">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+
+                                    <div class="row name_image_file">
+
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="name"
+                                                        id="track_name_register"
+                                                        class="form-control my-form-control"
+                                                        is-required="true" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        <span class="text-danger">*</span> Name </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-3">
+                                                <div class="my-form-outline">
+                                                    <select name="event_track_type_id"
+                                                        id="type_track_select"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true">
+                                                    </select>
+                                                    <label class="my-form-label exo2-regular">
+                                                        Presentation Type
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <textarea id="brief_resume_id"
+                                                        class="form-control my-form-control"
+                                                        name="brief-resume" is-required="true" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        <span class="text-danger">*</span> Brief
+                                                        resume </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--                                        <div class="col-sm-6">-->
+
+                                        <!--                                            <div class="mb-4">-->
+                                        <!--                                                <div class="my-form-outline">-->
+                                        <!--                                                    <div class="my-form-outline">-->
+                                        <!--                                                        <input type="file" id="file_session_id"
+                                        name="file_session"-->
+                                        <!--                                                               class="form-control my-form-control"/>-->
+                                        <!--                                                    </div>-->
+                                        <!--                                                    <label class="my-form-label myriadpro-regular
+                                        label-position">-->
+                                        <!--                                                        Presentation file-->
+                                        <!--                                                    </label>-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </div>-->
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveConference">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0"
+                                data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="modal_add_speaker_conference">
+            <div class="modal fade mt-5" id="modalAddSpeaker" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span>Add Speaker</span>
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formAddSpeaker">
+                                <div class="container">
+                                    <input type="hidden" name="csrf_token"
+                                        t-att-value="request.csrf_token()" />
+                                    <input type="hidden" name="track_id" />
+
+                                    <div class="row name_image_file">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="name"
+                                                        class="form-control my-form-control"
+                                                        is-required="true" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        <span class="text-danger">*</span> Name </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text" name="email"
+                                                        class="form-control my-form-control"
+                                                        is-required="true"
+                                                        is-email="true" />
+                                                    <label
+                                                        class="my-form-label myriadpro-regular label-position">
+                                                        <span class="text-danger">*</span> Email </label>
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                    The field is required
+                                                </div>
+                                                <div
+                                                    class="text-danger myriadpro-regular px-3 pt-2 my-email-alert d-none">
+                                                    The mail format is incorrect
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--                                        <div class="col-sm-12">-->
+                                        <!--                                            <div class="mb-4">-->
+                                        <!--                                                <div class="my-form-outline">-->
+                                        <!--                                                    <select id="select_conference_ticket_id"-->
+                                        <!--                                                            name="ticket_id"-->
+                                        <!--                                                            class="form-control my-form-control my-select
+                                        selectpicker"-->
+                                        <!--                                                            title=" " data-live-search="true"
+                                        is-required="true">-->
+                                        <!--                                                    </select>-->
+                                        <!--                                                    <label class="my-form-label exo2-regular">-->
+                                        <!--                                                        <span class="text-danger">*</span>-->
+                                        <!--                                                        Ticket-->
+                                        <!--                                                    </label>-->
+                                        <!--                                                </div>-->
+                                        <!--                                                <div class="text-danger exo2-regular px-3 pt-2 my-alert
+                                        d-none">-->
+                                        <!--                                                    The field is required-->
+                                        <!--                                                </div>-->
+                                        <!--                                            </div>-->
+                                        <!--                                        </div>-->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 btnSaveSpeaker">
+                                <i class="fa fa-check-square-o" /> Accept </button>
+
+                            <button type="button"
+                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0"
+                                data-dismiss="modal"
+                                data-toggle="tooltip" title="Cancel">
+                                <i class="fa fa-window-close-o" /> Cancel </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--Modal
+        para mostrar los speaker de la charla-->
+        <template id="modal_detail_speaker">
+
+            <div class="modal fade" id="modalTrackSpeaker" tabindex="-1" role="dialog"
+                aria-labelledby="modalTrackSpeaker"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-7 speaker-detail-divider div-detail-modal">
+                                        <div class="row">
+                                            <div class="col-sm-7">
+                                                <h2 id="track-name"
+                                                    class="text-uppercase myriadpro-regular mt-3 mb-0"
+                                                    style="color: #257bb5;">
+                                                </h2>
+                                                <p class="myriadpro-regular" id="track-duration" />
+                                                <p class="myriadpro-regular" id="track-date" />
+                                                <p class="myriadpro-regular" id="track-location" />
+                                                <p class="myriadpro-regular" id="track-responsable" />
+                                            </div>
+                                            <div class="col-12">
+                                                <p
+                                                    class="myriadpro-regular mt-2 text-speakers-modal"
+                                                    id="track-description" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 div-detail-modal-right">
+                                        <h5 class="myriadpro-regular">Speakers</h5>
+                                        <ul class="list-group" id="list-track-speakers" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="modal_dinamic_url_video">
+            <div class="modal fade" id="dinamic-url-video" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail" data-backdrop="static" data-keyboard="false"
+                aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <h4 class="modal-title ml-3">
+                                Insert promotional video
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid my-3">
+                                <div class="row">
+                                    <div class="col d-flex">
+                                        <div class="my-form-outline w-100">
+                                            <input type="text" id="url-video-input"
+                                                class="form-control my-form-control" />
+                                            <label class="my-form-label myriadpro-regular">
+                                                Url video
+                                            </label>
+                                        </div>
+                                        <button id="video-promo-button"
+                                            class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 ml-3">
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="modal_dinamic_logo">
+            <div class="modal fade" id="dinamic-logo" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail" data-backdrop="static" data-keyboard="false"
+                aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <h4 class="modal-title ml-3">
+                                Insert logo
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid my-3">
+                                <div class="row">
+                                    <div class="col mt-2">
+                                        <p class="myriadpro-semibold-condensed">
+                                            Logo transparent background (PNG format). Size 275 x 135
+                                            px.
+                                        </p>
+                                        <div class="my-form-outline">
+                                            <input type="file" id="logo-input"
+                                                class="form-control my-form-control" />
+                                        </div>
+                                        <div class="text-right">
+                                            <button id="logo-button"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 mt-3">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="modal_dinamic_pendon_1">
+            <div class="modal fade" id="dinamic-pendon-1" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail" data-backdrop="static" data-keyboard="false"
+                aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <h4 class="modal-title ml-3">
+                                Insert pendón 1
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid my-3">
+                                <div class="row">
+                                    <div class="col mt-2">
+                                        <p class="myriadpro-semibold-condensed">
+                                            Pendón 1 (PNG o JPG). Size 179 x 422 px.
+                                        </p>
+                                        <div class="my-form-outline">
+                                            <input type="file" id="pendon-1-input"
+                                                class="form-control my-form-control" />
+                                        </div>
+                                        <div class="text-right">
+                                            <button id="pendon-1-button"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 mt-3">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="modal_dinamic_pendon_2">
+            <div class="modal fade" id="dinamic-pendon-2" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail" data-backdrop="static" data-keyboard="false"
+                aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <h4 class="modal-title ml-3">
+                                Insert pendón 2
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid my-3">
+                                <div class="row">
+                                    <div class="col mt-2">
+                                        <p class="myriadpro-semibold-condensed">
+                                            Pendón 2 (PNG o JPG). Size 201 x 422 px.
+                                        </p>
+                                        <div class="my-form-outline">
+                                            <input type="file" id="pendon-2-input"
+                                                class="form-control my-form-control" />
+                                        </div>
+                                        <div class="text-right">
+                                            <button id="pendon-2-button"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 mt-3">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="modal_dinamic_pendon_3">
+            <div class="modal fade" id="dinamic-pendon-3" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail" data-backdrop="static" data-keyboard="false"
+                aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <h4 class="modal-title ml-3">
+                                Insert pendón 3
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid my-3">
+                                <div class="row">
+                                    <div class="col mt-2">
+                                        <p class="myriadpro-semibold-condensed">
+                                            Pendón 3 (PNG o JPG). Size 534 x 131 px.
+                                        </p>
+                                        <div class="my-form-outline">
+                                            <input type="file" id="pendon-3-input"
+                                                class="form-control my-form-control" />
+                                        </div>
+                                        <div class="text-right">
+                                            <button id="pendon-3-button"
+                                                class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 mt-3">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="modal_stand_info">
+            <div class="modal fade" id="modal-stand-info" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail" data-backdrop="static" data-keyboard="false"
+                aria-hidden="true">
+                <div class="modal-dialog modal-md" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid my-3">
+                                <div class="row">
+                                    <div class="col description_stand">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <!--Modal
+        para el detalle del jurado -->
+        <template id="modal_detail_jury">
+            <div class="modal fade" id="jury-detail" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button"
+                                class="btn btn-danger df_website_front_modal_close_button"
+                                data-dismiss="modal">X
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <img id="participant-detail-image"
+                                                    class="img-fluid w-100" src=""
+                                                    alt="..." style="max-width: " />
+                                            </div>
+                                            <div class="col-sm-9">
+                                                <h2 id="jury-company"
+                                                    class="text-uppercase myriadpro-regular mt-3 mb-0"
+                                                    style="color: #257bb5;">
+                                                </h2>
+                                                <h3 class="myriadpro-regular"
+                                                    id="participant-detail-name" />
+                                                <p class="myriadpro-regular mb-0"
+                                                    id="exhibitor-pavilion" />
+                                                <p class="myriadpro-regular mb-0"
+                                                    id="exhibitor-website" />
+                                                <p class="myriadpro-regular participant-email" />
+
+                                                <div>
+                                                    <a t-att-href="fb_url" target="_blank"
+                                                        id="speaker-face-url">
+                                                        <button class="btn btn-facebook p-0">
+                                                            <i class="fa fa-facebook" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="tw_url" target="_blank"
+                                                        id="speaker-twitter-url">
+                                                        <button class="btn btn-twitter p-0">
+                                                            <i class="fa fa-twitter" />
+                                                        </button>
+                                                    </a>
+
+                                                    <a t-att-href="link_url" target="_blank"
+                                                        id="speaker-linkedin-url">
+                                                        <button class="btn btn-linkedin p-0">
+                                                            <i class="fa fa-linkedin" />
+                                                        </button>
+                                                    </a>
+                                                    <a t-att-href="teleg_url" target="_blank"
+                                                        id="speaker-telegram-url">
+                                                        <button class="btn btn-telegram p-0">
+                                                            <i class="fa fa-telegram" />
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <p
+                                                    class="myriadpro-regular mt-2 text-speakers-modal"
+                                                    id="participant-detail-description" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+
+        <template id="modal_stand_visitor_info">
+            <div class="modal fade" id="modal-stand-visitor-info" tabindex="-1" role="dialog"
+                aria-labelledby="participant-detail" data-backdrop="static" data-keyboard="false"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content participant-detail-content">
+                        <div class="modal-header participant-detail-header px-2 py-2">
+                            <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                                <span class="material-icons">close</span>
+                            </button>
+                        </div>
+                        <div class="modal-body pt-0">
+                            <div class="container-fluid my-3">
+                                <div class="row">
+                                    <div
+                                        class="table-responsive table-wrapper-scroll-y my-custom-scrollbar mt-3">
+                                        <table class="table" id="user_visitor_stand">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">
+                                                        Name
+                                                    </th>
+                                                    <th scope="col">
+                                                        Date
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+    </data>
+</odoo>

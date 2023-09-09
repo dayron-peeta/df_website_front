@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+<!--Todo: 1. Sponsor-->
+        <record id="df_website_front.sponsor_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_sponsor_event'))]"/>
+        </record>
+
+        <!--Todo: 2. About us-->
+        <record id="df_website_front.event_about_us" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_event_about_us'))]"/>
+        </record>
+
+        <!--Todo: 3. Committee-->
+        <record id="df_website_front.committee_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_committee_event'))]"/>
+        </record>
+
+        <!--Todo: 4. Exhibitor-->
+        <record id="df_website_front.exhibitor_template" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_exhibitor_template'))]"/>
+        </record>
+
+        <!--Todo: 5. Participant-->
+        <record id="df_website_front.participant_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_participant_event'))]"/>
+        </record>
+
+        <!--Todo: 6. Speaker-->
+        <record id="df_website_front.speaker_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_speaker_event'))]"/>
+        </record>
+
+        <!--Todo: 7. Pavillion-->
+        <record id="df_website_front.pavilion_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_pavilion_event'))]"/>
+        </record>
+
+        <!--Todo: 8. Forum (Business opportunities) rooms-->
+        <record id="df_website_front.forum_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_forum_event'))]"/>
+        </record>
+
+        <!--Todo: 9. Conference rooms-->
+        <record id="df_website_front.conference_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_conference_event'))]"/>
+        </record>
+
+        <!--Todo: 10. Press rooms-->
+        <record id="df_website_front.press_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_press_event'))]"/>
+        </record>
+
+        <!--Todo: 11. Reception rooms-->
+        <record id="df_website_front.reception_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_reception_event'))]"/>
+        </record>
+
+        <!--Todo: 12. Networking rooms-->
+        <record id="df_website_front.networking_rom_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_networking_rom_event'))]"/>
+        </record>
+
+        <!--Todo: Lobby-->
+        <record id="df_website_front.event_lobby" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_event_lobby'))]"/>
+        </record>
+
+        <!--Todo: 13. Program-->
+        <record id="website_event_track.agenda_online" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_agenda_online'))]"/>
+        </record>
+
+        <!--Todo: 14. Sign in-->
+        <record id="df_website_front.event_sign_in" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_event_sign_in'))]"/>
+        </record>
+
+        <!--Todo: 15. All news-->
+        <record id="df_website_front.event_news" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_event_news'))]"/>
+        </record>
+
+        <!--Todo: 16. News detail-->
+        <record id="df_website_front.event_new_detail" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_event_new_detail'))]"/>
+        </record>
+
+        <!--Todo: 17. User profile-->
+        <record id="df_website_front.user_profile" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_user_profile'))]"/>
+        </record>
+
+        <!--Todo: 18. Contact us-->
+        <record id="df_website_front.event_contact_us" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_event_contact_us'))]"/>
+        </record>
+
+        <!--Todo: 19. Search event-->
+        <record id="df_website_front.search_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_search_event'))]"/>
+        </record>
+
+        <!--Todo: 20. Track proposal-->
+        <record id="df_website_front.custom_event_track_proposal" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_custom_event_track_proposal'))]"/>
+        </record>
+
+        <!--Todo: 21. Stand profile-->
+        <record id="df_website_front.stand_profile" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_stand_profile'))]"/>
+        </record>
+
+        <!--Todo: 22. Sala conference new-->
+        <record id="df_website_front.new_conference" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_new_conference'))]"/>
+        </record>
+
+        <!--Todo: 23. Sala poster gallery-->
+        <record id="df_website_front.posters_gallery" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_posters_gallery'))]"/>
+        </record>
+
+        <!--Todo: 24. Anteroom-->
+        <record id="df_website_front.pre_conference" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_pre_conference'))]"/>
+        </record>
+
+        <!--Todo: 25. Pavillion new -->
+        <record id="df_website_front.new_pavilion_event" model="ir.ui.view">
+            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_pavilion_new_event'))]"/>
+        </record>
+
+    </data>
+</odoo>

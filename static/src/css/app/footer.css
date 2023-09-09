@@ -1,0 +1,364 @@
+
+.footer_img {
+    background-image: url("/df_website_front/static/src/img/footer-felti.jpg");
+    background-size: cover;
+}
+
+.footer_jep_img {
+    background-image: url("/df_website_front/static/src/img/footer_jep_oscuro.jpg");
+    background-size: cover;
+}
+
+.footer_container {
+    text-align: center;
+    color: #FFFFFF;
+    display: grid;
+    grid-template-columns: 32% 28% 18% 22%;
+    justify-content: center;
+}
+
+.footer-img-felti {
+    position: relative;
+    height: 450px;
+    width: 100% !important;
+}
+
+.footer-titulos {
+    font-size: 3vw !important;
+    font-stretch: semi-condensed !important;
+}
+
+.footer-tittle {
+    font-size: 2.4em !important;
+    font-family: myriadpro-semibold-condensed;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.footer-tittle-organizer {
+    font-size: 2.4em !important;
+    font-family: myriadpro-semibold-condensed;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.footer-logo-geic {
+    width: 220px;
+    margin-left: 10px;
+    margin-top: 12px;
+}
+
+.width-logo-camara {
+    width: 155px;
+}
+
+.width-logo-felti {
+    width: 250px;
+}
+
+.width-logo-jep {
+    width: 50px;
+    height: 40px;
+}
+
+.logo-jep-footer {
+    width: 220px;
+    height: 75px;
+}
+
+.logo-mep-footer {
+    width: 180px;
+}
+
+.logo-mincex-footer {
+    width: 130px;
+}
+
+.logo-camara-footer {
+    width: 175px;
+    height: 110px;
+}
+
+.footer-container {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer-separator {
+    border-right: 1px solid;
+    height: calc(100% - 40px);
+}
+
+.footer-copyright {
+    border-top: 1px solid;
+    width: 98%;
+}
+
+.Organizador {
+    margin-top: 40px;
+    border-right: 1px solid;
+    display: grid;
+    justify-items: center;
+}
+
+.Queremos-conocerte {
+    margin-top: 40px;
+    border-right: 1px solid;
+    display: grid;
+    grid-auto-rows: max-content;
+}
+
+.siguenos {
+    margin-top: 40px;
+    border-right: 1px solid;
+    display: grid;
+    grid-auto-rows: max-content;
+}
+
+.Nosotros {
+    margin-top: 40px;
+    display: grid;
+    grid-auto-rows: max-content;
+}
+
+.text-regular {
+    text-transform: initial;
+}
+
+.logo-geic-footer-img {
+    width: 14vw;
+    margin: 20px auto;
+}
+
+.queremos-conocerte-description {
+    text-align: justify;
+    margin: 35px 10px;
+    text-transform: initial;
+    font-size: 1.1vw;
+}
+
+.contact-us-footer {
+    background-color: transparent;
+    color: white !important;
+    border-radius: 50rem !important;
+    width: 20vw;
+    display: block;
+    height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem;
+    font-size: 1.4vw;
+    font-weight: 400;
+    border: 2px solid #FFFFFF;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.contact-us-footer:hover {
+    background-color: #ffffff !important;
+    color: #1b5c8f !important;
+    text-decoration: none !important;
+}
+
+.imagen-cuba-footer {
+    width: 40px;
+    margin: auto;
+}
+
+.footer-felti-logo {
+    width: 16vw;
+    padding: 28px 0;
+    margin: 0 auto;
+}
+
+.footer-copyright-felti {
+    padding-top: 15px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 55px;
+}
+
+.rule-bottom {
+    border-top: 1px solid;
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.siguenos-container {
+    padding: 15px 20px;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-copyright {
+        margin-top: 12px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .sm-logo-geic {
+        width: 200px;
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .footer_container {
+        display: grid;
+        grid-template-columns: 33% 33% 33% !important;
+    }
+
+    .siguenos {
+        border: none;
+    }
+
+    .queremos-conocerte-description {
+        font-size: 14px !important;
+        margin: auto;
+        width: 80%;
+    }
+
+    .footer-titulos {
+        font-size: 24px !important;
+        font-stretch: semi-condensed !important;
+    }
+
+    .contact-us-footer {
+        width: 25vw;
+        height: 46px;
+        padding: 0.5rem;
+        font-size: 16px;
+    }
+
+    .logo-geic-footer-img, .footer-felti-logo {
+        width: 150px !important;
+    }
+
+    .siguenos-container {
+        padding: 10px 5px;
+    }
+
+    .footer-separator {
+        min-height: auto;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .footer_container {
+        display: grid;
+        grid-template-columns: 50% 50% !important;
+    }
+
+    .footer-separator {
+        border-right: none;
+    }
+
+    .siguenos {
+        border-right: 1px solid;
+    }
+
+    .contact-us-footer {
+        width: 150px;
+    }
+
+    .footer-copyright-felti {
+        height: auto;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .footer_container {
+        display: grid;
+        grid-template-columns: 100% !important;
+    }
+
+    .siguenos {
+        border-right: none;
+    }
+
+    .footer-copyright-felti {
+        height: auto;
+        font-size: 10px;
+    }
+
+    .contact-us-footer {
+        width: 240px;
+        height: 46px;
+        padding: 10px;
+        font-size: 16px;
+    }
+}
+
+.search-panel {
+    overflow: hidden !important;
+    position: absolute;
+    left: -170px;
+    padding: 0;
+    height: 35px;
+}
+
+@media only screen and (max-width: 900px) {
+    .search-panel {
+        width: fit-content;
+    }
+}
+
+.input-group {
+    height: 35px;
+}
+
+.input-group-search {
+    right: -5px;
+    position: absolute;
+    bottom: -1px;
+    border: 0px;
+}
+
+#search_button:focus-visible {
+    border: 0px !important;
+}
+
+#search:focus {
+    border: 0px !important;
+}
+
+#search:focus-visible {
+    border: 0px !important;
+    padding: 0 4px;
+}
+
+#navbarSearch {
+    padding: 0;
+    display: block;
+}
+
+#search-icon {
+    padding: 5px;
+    margin: 5px;
+}
+
+#navbarSearch::after {
+    display: none;
+}
+
+.icons-footer {
+    font-size: 35px;
+    padding: 10px 10px;
+}
+
+.icons-footer:hover {
+    color: #1b5c8f !important;
+}
+
+/*Estilos para el login*/
+div.oe_login_buttons > button.btn-block {
+    background-color: #1b5c8f !important;
+    border-color: #1b5c8f !important;
+}
+
+div.justify-content-between > a {
+    color: #1b5c8f !important;
+}
+
+.color-social-felti {
+    color: #1b5c8f !important
+}

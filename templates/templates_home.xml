@@ -1,0 +1,110 @@
+<odoo>
+    <data>
+        <template id="template_feria_event_homepage" name="Template FELTI">
+            <t t-call="df_website_front.template_header_default_inherit">
+
+                <t t-call="df_website_front.modal_detail_attendee_speaker"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+
+                <div class="oe_structure">
+                    <t t-call="df_website_front.felti_banner"/>
+
+                    <t t-call="df_website_front.felti_intro"/>
+
+                    <t t-call="df_website_front.felti_contador"/>
+
+                    <t t-call="df_website_front.felti_planes"/>
+
+                    <t t-call="df_website_front.felti_patrocinadores"/>
+
+                    <t t-call="df_website_front.felti_ponentes"/>
+
+                    <t t-call="df_website_front.felti_noticias"/>
+
+                    <t t-call="df_website_front.felti_newsletter"/>
+
+                    <t t-call="df_website_front.scrollToTop"/>
+                </div>
+            </t>
+        </template>
+
+
+        <template id="template_feria_event_jep_homepage" name="Template JEP">
+            <t t-call="df_website_front.template_header_default_inherit">
+                <t t-call="df_website_front.modal_detail_attendee_speaker"/>
+
+                <t t-call="df_website_front.event_navbar_dinamic"/>
+
+                <div class="oe_structure">
+                    <t t-call="df_website_front.jep_banner"/>
+
+                    <t t-call="df_website_front.jep_intro"/>
+
+                    <t t-call="df_website_front.jep_contador"/>
+
+                    <t t-call="df_website_front.jep_planes"/>
+
+                    <t t-call="df_website_front.jep_patrocinadores"/>
+
+                    <t t-call="df_website_front.jep_ponentes"/>
+
+                    <t t-call="df_website_front.jep_noticias"/>
+
+                    <t t-call="df_website_front.jep_newsletter"/>
+
+                    <t t-call="df_website_front.scrollToTop"/>
+                </div>
+            </t>
+        </template>
+
+<!--        <template id="template_header_default_inherit" inherit_id="website.layout">-->
+<!--            &lt;!&ndash;             <xpath expr="//div[@id='top_menu_container']" position="attributes">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <attribute name="invisible">1</attribute>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </xpath>&ndash;&gt;-->
+<!--            <xpath expr="//header[@id='top']" position="inside">-->
+<!--                <style>-->
+<!--                    header#top {-->
+<!--                    display: none !important;-->
+<!--                    }-->
+<!--                </style>-->
+<!--            </xpath>-->
+<!--            &lt;!&ndash;            <xpath expr="//div[@id='wrapwrap']" position="attributes">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <attribute name="event">1</attribute>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </xpath>&ndash;&gt;-->
+
+
+<!--        </template>-->
+
+        <record id="feria_event_homepage" model="ir.ui.view">
+            <field name="name">FELTi</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.template_feria_event_homepage"/>
+            </field>
+        </record>
+
+        <record id="feria_event_jep_homepage" model="ir.ui.view">
+            <field name="name">Jornada Económica Productiva</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.template_feria_event_jep_homepage"/>
+            </field>
+        </record>
+
+        <record id="plataforma_virtual_homepage" model="ir.ui.view">
+            <field name="name">Plataforma virtual homepage</field>
+            <field name="type">qweb</field>
+            <field name="model">ir.ui.view</field>
+            <field name="virtual_fair">True</field>
+            <field name="arch" type="xml">
+                <t t-call="df_website_front.feria_main_template"/>
+            </field>
+        </record>
+
+    </data>
+</odoo>
