@@ -727,6 +727,9 @@
                                                 <a
                                                     class='deleteTrack fa fa-close icon-fa-myfont cursor-pointer'
                                                     title="Cancel inscription" />
+                                                <a
+                                                    class='deleteTrack fa fa-eye icon-fa-myfont cursor-pointer'
+                                                    title="Show inscription info" />
                                             </td>
                                         </tr>
                                     </t>
