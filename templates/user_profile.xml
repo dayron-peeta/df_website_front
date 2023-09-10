@@ -704,29 +704,42 @@
                                                 <t t-esc="inscription_index + 1" />
                                             </th>
                                             <td>
-                                                <t t-esc="inscription.event_id" />
+                                                <p class="inscription.event_id">
+                                                    <t t-esc="inscription.event_id" />
+                                                </p>
                                             </td>
                                             <td>
-                                                <t t-esc="inscription.pricelist_id" />
+                                                <p class="inscription.inscription.pricelist_id">
+                                                    <t t-esc="inscription.pricelist_id" />
+                                                </p>
                                             </td>
                                             <td>
-                                                <t t-esc="inscription.type_attendees" />
+                                                <p class="inscription.type_attendees">
+                                                    <t t-esc="inscription.type_attendees" />
+                                                </p>
                                             </td>
                                             <td>
-                                                <t t-esc="inscription.event_ticket_id" />
+                                                <p class="inscription.event_ticket_id">
+                                                    <t t-esc="inscription.event_ticket_id" />
+                                                </p>
                                             </td>
                                             <td>
-                                                <t t-esc="inscription.lodgign_id" />
+                                                <p class="inscription.lodgign_id">
+                                                    <t t-esc="inscription.lodgign_id" />
+                                                </p>
                                             </td>
                                             <!--  Acciones de la tabla  -->
                                             <td>
                                                 <a
-                                                    t-attf-href="/#{track.id}/info_documents_presentations"
+                                                    t-attf-href=""
                                                     class='fa fa-edit icon-fa-myfont cursor-pointer'
-                                                    title="Edit inscription" />
+                                                    title="Edit Inscription" />
                                                 <a
                                                     class='deleteTrack fa fa-close icon-fa-myfont cursor-pointer'
-                                                    title="Cancel inscription" />
+                                                    title="Change Status Inscription" />
+                                                <a
+                                                    class='deleteTrack fa fa-eye icon-fa-myfont cursor-pointer'
+                                                    title="View Inscription" />    
                                             </td>
                                         </tr>
                                     </t>
