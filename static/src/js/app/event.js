@@ -644,7 +644,7 @@ odoo.define('df_website_front.event', function (require) {
         });
 
          /* Eliminar un autor */
-        $('a.deleteSpeaker').click(function (e) {
+         $('a.deleteSpeaker').click(function (e) {
             e.preventDefault();
             var elem_id = $(this).closest('tr').attr('id');
             $(this).bootstrap_confirm_delete({
@@ -765,11 +765,8 @@ odoo.define('df_website_front.event', function (require) {
     $('#add_author_track_id').click(function () {
         var modal = '#modalResourcesAuthPresentation';
         $('span.title_modal_save_edit_resources_presentation').text(event_message.getMessage(60));
-
-        $('#modalResourcesAuthPresentation input[name=track_id]').val($('#input-track-id').val());
         $('#modalResourcesAuthPresentation input[name=name]').val('');
-        $('#modalResourcesAuthPresentation input[name=email]').val('');
-
+        $('#modalResourcesAuthPresentation input[email=email]').val('');
         $(modal).modal('show');
     });
     
@@ -1239,10 +1236,13 @@ odoo.define('df_website_front.event', function (require) {
     };
 
     $('button#btnSaveResourcesAuthorPresentation').click(function (e) {
-        e.preventDefault();
-        var formData = new FormData($('form#formModalResourcesAuthPresentation')[0]);
+        e.preventDefault();        
+        var $form = 'form#formModalResourcesAuthPresentation';
+        var formData = new FormData($($form)[0]);
+        var EVENT_ID = event_main.get_event_id(true);
+        //            event_main.showLoader();
         $.ajax({
-            url: '/evento/add_speaker',
+            url: '/evento/' + EVENT_ID + '/add_speaker',
             data: formData,
             type: 'POST',
             processData: false, // tell jQuery not to process the data
@@ -1252,7 +1252,7 @@ odoo.define('df_website_front.event', function (require) {
             event_main.hideLoader();
             if (result.success == true) {
                 toastr.success(event_message.getMessage(result.message));
-                $('#modalResourcesAuthPresentation').modal('hide');
+                $('#modalAddSpeaker').modal('hide');
             } else if (result.error == true) {
                 toastr.error(event_message.getMessage(result.message));
             }
@@ -1312,10 +1312,33 @@ odoo.define('df_website_front.event', function (require) {
         },1800000);
     }
 
+    //INSCRIPTIONS
+    $('a.ChangeStatusInscription').click(function (e) {
+        e.preventDefault();
+
+        $(this).bootstrap_confirm_changeStatus({
+            heading: event_message.getMessage(62),
+            message: event_message.getMessage(61),
+            btn_ok_label: event_message.getMessage(14),
+            btn_cancel_label: event_message.getMessage(15),
+            callback: function (event) {
+                
+            }
+        });
+    });
+
+    $('a.ViewInscription').click(function () {
+        var modal = 'modalViewRegistrations';
+        $('span.title_modal_view_registrations').text(event_message.getMessage(63));
+        $(modal).modal('show');
+    });
+    
+
 
     return {
         'redirectHome': redirectHome,
         'set_empty_all_fields': set_empty_all_fields
     }
+
 
 });

@@ -1,4 +1,4 @@
-odoo.define('df_website_front.event_message', function(require) {
+odoo.define('df_website_front.event_message', function (require) {
     "use strict";
 
     /* Esto realiza la misma función que $(document).ready(), para una vez que se cargue el DOM se carque el código JS */
@@ -188,6 +188,15 @@ odoo.define('df_website_front.event_message', function(require) {
                 break;
             case 60:
                 message = _t('Add author');
+                break;
+            case 61:
+                message = _t('Are you sure you want to change your registration status?');
+                break;
+            case 62:
+                message = _t('Change Status');
+                break;
+            case 63:
+                message = _t('View Registration');
                 break;
         }
         return message;
