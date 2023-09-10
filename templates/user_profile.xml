@@ -176,7 +176,8 @@
 
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
 
-                        <!--Pestaña de sus datos de perfil-->
+                        <!--Pestaña
+                        de sus datos de perfil-->
                         <div class="tab-pane fade show active" id="user_profile_datas_form"
                             role="tabpanel"
                             aria-labelledby="user_profile_datas_form-tab">
@@ -675,7 +676,8 @@
                             </form>
                         </div>
 
-                        <!--Pestaña de inscripciones-->
+                        <!--Pestaña
+                        de inscripciones-->
                         <div class="tab-pane fade" id="user_profile_inscriptions_form"
                             role="tabpanel"
                             aria-labelledby="user_profile_inscriptions_form-tab">
@@ -689,7 +691,7 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Event</th>
                                         <th scope="col">Currency</th>
-                                        <th scope="col">Type of participation</th>
+                                        <th scope="col">Type attendee</th>
                                         <th scope="col">Entrance type</th>
                                         <th scope="col">Hotel</th>
                                         <th scope="col">Actions</th>
@@ -705,17 +707,26 @@
                                                 <t t-esc="inscription.event_id" />
                                             </td>
                                             <td>
-                                                <t t-esc="inscription.event_id()" />
+                                                <t t-esc="inscription.pricelist_id" />
                                             </td>
                                             <td>
-                                                <t  t-att-value="inscription.event_id()"/>
+                                                <t t-esc="inscription.type_attendees" />
                                             </td>
                                             <td>
-                                                <t  t-att-value="inscription.event_id"/>
+                                                <t t-esc="inscription.event_ticket_id" />
                                             </td>
                                             <td>
+                                                <t t-esc="inscription.lodgign_id" />
                                             </td>
+                                            <!--  Acciones de la tabla  -->
                                             <td>
+                                                <a
+                                                    t-attf-href="/#{track.id}/info_documents_presentations"
+                                                    class='fa fa-edit icon-fa-myfont cursor-pointer'
+                                                    title="Edit inscription" />
+                                                <a
+                                                    class='deleteTrack fa fa-close icon-fa-myfont cursor-pointer'
+                                                    title="Cancel inscription" />
                                             </td>
                                         </tr>
                                     </t>
