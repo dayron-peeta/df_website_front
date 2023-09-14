@@ -425,7 +425,7 @@ odoo.define('df_website_front.event', function (require) {
 
         event_main.showLoader();
         $.ajax({
-            url: '/evento/' + event_id + '/event_track',
+            url: '/evento/' + event_id + '/event_registrations',
             data: formData,
             type: 'POST',
             processData: false, // tell jQuery not to process the data
@@ -492,21 +492,21 @@ odoo.define('df_website_front.event', function (require) {
 
         if (event_id == null)
             event_id = $(elem_id).attr('event_id');
-        
-        if(elem_id == '' || elem_id == undefined || elem_id == 'undefined'){
+
+        if (elem_id == '' || elem_id == undefined || elem_id == 'undefined') {
             elem_id = $('#input-track-id').val();
         }
-        
-        if(event_id == '' || event_id == undefined || event_id == 'undefined'){
+
+        if (event_id == '' || event_id == undefined || event_id == 'undefined') {
             event_id = $('#input-event-id').val();
         }
 
         formData.append('elem_id', elem_id);
 
-         if ($('select[name=theme_tag_id]').val() != '' && $('select[name=theme_tag_id]').val() != undefined &&
-                $('select[name=theme_tag_id]').val() != 'undefined') {
-                formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val());
-         }
+        if ($('select[name=theme_tag_id]').val() != '' && $('select[name=theme_tag_id]').val() != undefined &&
+            $('select[name=theme_tag_id]').val() != 'undefined') {
+            formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val());
+        }
 
         if ($('select[name=event-list]').val() != '' && $('select[name=event-list]').val() != undefined &&
             $('select[name=event-list]').val() != 'undefined') {
@@ -643,8 +643,8 @@ odoo.define('df_website_front.event', function (require) {
             });
         });
 
-         /* Eliminar un autor */
-         $('a.deleteSpeaker').click(function (e) {
+        /* Eliminar un autor */
+        $('a.deleteSpeaker').click(function (e) {
             e.preventDefault();
             var elem_id = $(this).closest('tr').attr('id');
             $(this).bootstrap_confirm_delete({
@@ -687,7 +687,7 @@ odoo.define('df_website_front.event', function (require) {
                 }
             });
         });
-        
+
         /* Agregar speakers a la charla */
         $('a.add_speaker_profile').click(function (e) {
             e.preventDefault();
@@ -769,7 +769,7 @@ odoo.define('df_website_front.event', function (require) {
         $('#modalResourcesAuthPresentation input[email=email]').val('');
         $(modal).modal('show');
     });
-    
+
     $('#add_doc_track_id, #add_doc').click(function () {
         var modal = '#modalResourcesDocsPresentation';
         $('span.title_modal_save_edit_resources_presentation').text(event_message.getMessage(39));
@@ -798,7 +798,7 @@ odoo.define('df_website_front.event', function (require) {
     $('#modalResourcesDocsPresentation button#btnSaveResourcesDocPresentation').click(function (e) {
         e.preventDefault();
         var modal = '#modalResourcesDocsPresentation';
-        $(modal + ' input[name=track_id]').val($('#input-track-id').val());        
+        $(modal + ' input[name=track_id]').val($('#input-track-id').val());
         save_edit_track_resources(1);
     });
 
@@ -861,7 +861,7 @@ odoo.define('df_website_front.event', function (require) {
                     modal = '#modalResourcesDocsPresentation';
                 } else if (action == 2) {
                     modal = '#modalResourcesImgsPresentation';
-                } 
+                }
                 $(modal).modal('hide');
                 toastr.success(_t(event_message.getMessage(result.message)));
                 set_row_track_docs(action, result.data);
@@ -1156,7 +1156,7 @@ odoo.define('df_website_front.event', function (require) {
         var formData = new FormData();
         formData.append('id', id);
         //event_main.showLoader();
-    
+
         $.ajax({
             url: event_id != '' && event_id != undefined && event_id != 'undefined' ? '/evento/' + event_id + '/remove_track' : '/evento/remove_track',
             data: formData,
@@ -1178,7 +1178,7 @@ odoo.define('df_website_front.event', function (require) {
         var formData = new FormData();
         formData.append('id', id);
         //event_main.showLoader();
-    
+
         $.ajax({
             url: '/evento/remove_author',
             data: formData,
@@ -1198,7 +1198,7 @@ odoo.define('df_website_front.event', function (require) {
         var formData = new FormData();
         formData.append('id', id);
         //event_main.showLoader();
-    
+
         $.ajax({
             url: '/evento/remove_doc',
             data: formData,
@@ -1219,7 +1219,7 @@ odoo.define('df_website_front.event', function (require) {
         formData.append('id', id);
         //event_main.showLoader();
         alert(id)
-    
+
         $.ajax({
             url: '/evento/remove_img',
             data: formData,
@@ -1236,7 +1236,7 @@ odoo.define('df_website_front.event', function (require) {
     };
 
     $('button#btnSaveResourcesAuthorPresentation').click(function (e) {
-        e.preventDefault();        
+        e.preventDefault();
         var $form = 'form#formModalResourcesAuthPresentation';
         var formData = new FormData($($form)[0]);
         var EVENT_ID = event_main.get_event_id(true);
@@ -1257,7 +1257,7 @@ odoo.define('df_website_front.event', function (require) {
                 toastr.error(event_message.getMessage(result.message));
             }
         });
-        
+
     });
 
     $('input#search_poster_id').bind("enterKey", function (e) {
@@ -1287,53 +1287,90 @@ odoo.define('df_website_front.event', function (require) {
     }
 
     // Contador para el HOME, revisar luego con el snippet
-    function update_counts_home(){
+    function update_counts_home() {
         var event_id = event_main.get_event_id();
         ajax.jsonRpc('/counts', 'call', {
             'event_id': event_id
         }).then(function (result) {
             console.warn(result);
-            if(result.success == true){
+            if (result.success == true) {
                 $('span.s_numbers_countrys').html(result.countrys);
                 $('span.s_numbers_attendees').html(result.attendees);
                 $('span.s_numbers_sessions').html(result.sessions);
             }
         });
     }
-    if($('section.s_custom_numbers').length > 0){
+    if ($('section.s_custom_numbers').length > 0) {
         //Cada 30 min
-        setTimeout(function(){
+        setTimeout(function () {
             update_counts_home();
-        },3000);
+        }, 3000);
 
         //Cada 30 min
-        setInterval(function(){
+        setInterval(function () {
             update_counts_home();
-        },1800000);
+        }, 1800000);
     }
 
     //INSCRIPTIONS
     $('a.ChangeStatusInscription').click(function (e) {
-        e.preventDefault();
+        var elem_id = $(this).closest('tr').attr('id');
+        var formData = new FormData();
+        formData.append('elem_id', elem_id);
 
-        $(this).bootstrap_confirm_changeStatus({
+        $(this).bootstrap_confirm_delete({
             heading: event_message.getMessage(62),
             message: event_message.getMessage(61),
             btn_ok_label: event_message.getMessage(14),
             btn_cancel_label: event_message.getMessage(15),
             callback: function (event) {
-                
+                event_main.showLoader();
+                $.ajax({
+                    url: '/evento/edit_status_registrations',
+                    data: formData,
+                    type: 'POST',
+                    processData: false, // tell jQuery not to process the data
+                    contentType: false // tell jQuery not to set contentType
+                })
             }
         });
     });
 
     $('a.ViewInscription').click(function () {
-        var modal = 'modalViewRegistrations';
-        $('span.title_modal_view_registrations').text(event_message.getMessage(63));
-        $(modal).modal('show');
+        var elem_id = $(this).closest('tr').attr('id');
+        var formData = new FormData();
+        formData.append('elem_id', elem_id);
+        event_main.showLoader();
+        $.ajax({
+            url: '/evento/event_registrations',
+            data: formData,
+            type: 'POST',
+            processData: false, // tell jQuery not to process the data
+            contentType: false // tell jQuery not to set contentType
+        }).done(function (data_result) {
+            var result = parse_result(data_result);
+            if (result) {
+                var modal = '#modalViewRegistrations';
+                event_main.hideLoader();
+                $('input[name=event_registrations]').val(result.event_id.name);
+                $('input[name=event_tickets_registrations]').val(result.event_ticket_id.name);
+                $('input[name=event_type_attendee_registrations]').val(result.type_attendees);
+                $('input[name=event_lodging_registrations]').val(result.lodging_id.name);
+                $('input[name=event_room_type_registrations]').val(result.room_type_id.name);
+                $('input[name=event_event_number_nights_registrations]').val(result.number_nights);
+                $('input[name=event_entry_date_registrations]').val(result.entry_date);
+                $('input[name=event_companion_registrations]').val(result.companion);
+                $('input[name=event_type_institution_registrations]').val(result.type_institution);
+                $('input[name=event_category_investigative_registrations]').val(result.category_investigative_id.name);
+                $('input[name=event_price_list_registrations]').val(result.pricelist_id.name);
+                $('input[name=event_invoice_registrations]').val(result.invoice_id.name);
+                $('input[name=event_state_registrations]').val(result.state);
+            } else {
+                event_main.hideLoader();
+                toastr.error(_t(event_message.getMessage(result.message)));
+            }
+        });
     });
-    
-
 
     return {
         'redirectHome': redirectHome,

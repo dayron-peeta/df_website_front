@@ -81,7 +81,11 @@
                     </div>
                 </div>
             </div>
-            <!-- Modal View Registrations -->
+            
+        </template>
+
+        <!-- Modal View Registrations -->
+        <template  id="modal_view_registrations" >
             <div class="modal fade mt-5" id="modalViewRegistrations" tabindex="-1" role="dialog"
                 aria-labelledby="myModalLabel"
                 aria-hidden="true" data-keyboard="false" data-backdrop="static">
@@ -104,7 +108,8 @@
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_registrations" is-required="true" readonly="1"/>
+                                                        name="event_registrations"
+                                                        is-required="true" readonly="1" />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Event </label>
                                                 </div>
@@ -116,7 +121,8 @@
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_tickets_registrations" readonly = "1"
+                                                        name="event_tickets_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Event tickets
@@ -132,7 +138,8 @@
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_type_attendee_registrations" readonly = "1"
+                                                        name="event_type_attendee_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Type attendee
@@ -146,7 +153,8 @@
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_lodging_registrations" readonly = "1"
+                                                        name="event_lodging_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Lodging
@@ -162,7 +170,8 @@
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_room_type_registrations" readonly = "1"
+                                                        name="event_room_type_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Room Type
@@ -171,14 +180,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--Event Registrations Number Nights-->
+                                    <!--Event
+                                    Registrations Number Nights-->
                                     <div class="row mt-1">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_number_nights_registrations" readonly = "1"
+                                                        name="event_number_nights_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Number nights
@@ -187,14 +198,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--Event Registrations Entry Date-->
+                                    <!--Event
+                                    Registrations Entry Date-->
                                     <div class="row mt-1">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_entry_date_registrations" readonly = "1"
+                                                        name="event_entry_date_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Entry Date
@@ -203,14 +216,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--Event Registrations Companion-->
+                                    <!--Event
+                                    Registrations Companion-->
                                     <div class="row mt-1">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_companion_registrations" readonly = "1"
+                                                        name="event_companion_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Companion
@@ -219,14 +234,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--Event Registrations Type Institution-->
+                                    <!--Event
+                                    Registrations Type Institution-->
                                     <div class="row mt-1">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_type_institution_registrations" readonly = "1"
+                                                        name="event_type_institution_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Type Institution
@@ -235,14 +252,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--Event Registrations Category Investigative-->
+                                    <!--Event
+                                    Registrations Category Investigative-->
                                     <div class="row mt-1">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_category_investigative_registrations" readonly = "1"
+                                                        name="event_category_investigative_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Category Investigative
@@ -251,14 +270,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--Event Price List Investigative-->
+                                    <!--Event
+                                    Registrations Price List Investigative-->
                                     <div class="row mt-1">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_price_list_registrations" readonly = "1"
+                                                        name="event_price_list_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Price List
@@ -267,14 +288,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--Event Invoice Investigative-->
+                                    <!--Event
+                                    Registrations Invoice Investigative-->
                                     <div class="row mt-1">
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="text"
                                                         class="form-control my-form-control"
-                                                        name="event_invoice_registrations" readonly = "1"
+                                                        name="event_invoice_registrations"
+                                                        readonly="1"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Invoice
@@ -283,10 +306,29 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <!--Event
+                                    Registrations State-->
+                                    <div class="row mt-1">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_state_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        State
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="btnAceptViewRegistrations" data-dismiss="modal">
+                                <button type="button" class="btn btn-primary"
+                                    id="btnAceptViewRegistrations" data-dismiss="modal">
                                     <i class="fa fa-check-square-o" /> Accept </button>
                             </div>
                         </div>

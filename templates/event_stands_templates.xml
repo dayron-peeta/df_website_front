@@ -1131,7 +1131,7 @@
                         <t t-call="df_website_front.menu_bottom_redes"/>
                         <t t-call="df_website_front.visit_counter"/>
 
-                        <div class="embed-responsive embed-responsive-16by9" id="stand-a3-video-promo">
+                        <div class="embed-responsive embed-responsive-16by9" id="stand-premium3-video-promo">
                             <t t-if="area_id and area_id.video_stand_url">
                                 <iframe class="embed-responsive-item"
                                         t-att-src="area_id.video_stand_url"
@@ -1141,17 +1141,17 @@
 
                         <t t-if="area_id">
                             <t t-if="area_id.image_1920">
-                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-a3-logo"/>
+                                <img  t-attf-src="data:image/*; base64,{{area_id.image_1920}}" id="stand-premium3-logo"/>
 
                                 <img t-attf-src="data:image/*; base64,{{area_id.image_1920}}" alt="Picture"
-                                     id="stand-a3-logo-2"/>
+                                     id="stand-premium3-logo-2"/>
                             </t>
 
                             <t t-if="len(pendons) > 0 and pendons['pendon_1']">
                                 <a t-attf-href="data:image/*; base64,{{pendons['pendon_1']['image']}}"
                                    data-lightbox="pendon-carousel">
                                     <img t-attf-src="data:image/*; base64,{{pendons['pendon_1']['image']}}"
-                                         id="stand-a3-pendon"/>
+                                         id="stand-premium3-pendon"/>
                                 </a>
                             </t>
 
@@ -1159,7 +1159,7 @@
                                 <a t-attf-href="data:image/*; base64,{{pendons['pendon_2']['image']}}"
                                    data-lightbox="pendon-carousel">
                                     <img t-attf-src="data:image/*; base64,{{pendons['pendon_2']['image']}}"
-                                         id="stand-a3-pendon-2"/>
+                                         id="stand-premium3-pendon-2"/>
                                 </a>
                             </t>
 
@@ -1167,7 +1167,7 @@
                                 <a t-attf-href="data:image/*; base64,{{pendons['pendon_3']['image']}}"
                                    data-lightbox="pendon-carousel">
                                     <img t-attf-src="data:image/*; base64,{{pendons['pendon_3']['image']}}"
-                                         id="stand-a3-pendon-3"/>
+                                         id="stand-premium3-pendon-3"/>
                                 </a>
                             </t>
                         </t>
