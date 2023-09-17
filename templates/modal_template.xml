@@ -81,11 +81,11 @@
                     </div>
                 </div>
             </div>
-            
+
         </template>
 
         <!-- Modal View Registrations -->
-        <template  id="modal_view_registrations" >
+        <template id="modal_view_registrations">
             <div class="modal fade mt-5" id="modalViewRegistrations" tabindex="-1" role="dialog"
                 aria-labelledby="myModalLabel"
                 aria-hidden="true" data-keyboard="false" data-backdrop="static">
@@ -179,10 +179,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!--Event
-                                    Registrations Number Nights-->
-                                    <div class="row mt-1">
+                                        <!--Event
+                                        Registrations Number Nights-->
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
@@ -215,10 +213,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!--Event
-                                    Registrations Companion-->
-                                    <div class="row mt-1">
+                                        <!--Event
+                                        Registrations Companion-->
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
@@ -234,6 +230,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <!--Event
                                     Registrations Type Institution-->
                                     <div class="row mt-1">
@@ -251,10 +248,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!--Event
-                                    Registrations Category Investigative-->
-                                    <div class="row mt-1">
+                                        <!--Event
+                                        Registrations Category Investigative-->
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
@@ -270,6 +265,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <!--Event
                                     Registrations Price List Investigative-->
                                     <div class="row mt-1">
@@ -287,10 +283,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!--Event
-                                    Registrations Invoice Investigative-->
-                                    <div class="row mt-1">
+                                        <!--Event
+                                        Registrations Invoice Investigative-->
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
@@ -306,6 +300,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <!--Event
                                     Registrations State-->
                                     <div class="row mt-1">

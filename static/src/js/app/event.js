@@ -1332,8 +1332,10 @@ odoo.define('df_website_front.event', function (require) {
                     processData: false, // tell jQuery not to process the data
                     contentType: false // tell jQuery not to set contentType
                 })
+                event_main.hideLoader();
             }
         });
+
     });
 
     $('a.ViewInscription').click(function () {
@@ -1352,19 +1354,21 @@ odoo.define('df_website_front.event', function (require) {
             if (result) {
                 var modal = '#modalViewRegistrations';
                 event_main.hideLoader();
-                $('input[name=event_registrations]').val(result.event_id.name);
-                $('input[name=event_tickets_registrations]').val(result.event_ticket_id.name);
+                $('input[name=event_registrations]').val(result.event);
+                $('input[name=event_tickets_registrations]').val(result.event_ticket);
                 $('input[name=event_type_attendee_registrations]').val(result.type_attendees);
-                $('input[name=event_lodging_registrations]').val(result.lodging_id.name);
-                $('input[name=event_room_type_registrations]').val(result.room_type_id.name);
+                $('input[name=event_lodging_registrations]').val(result.lodging);
+                $('input[name=event_room_type_registrations]').val(result.room_type);
                 $('input[name=event_event_number_nights_registrations]').val(result.number_nights);
                 $('input[name=event_entry_date_registrations]').val(result.entry_date);
                 $('input[name=event_companion_registrations]').val(result.companion);
                 $('input[name=event_type_institution_registrations]').val(result.type_institution);
-                $('input[name=event_category_investigative_registrations]').val(result.category_investigative_id.name);
-                $('input[name=event_price_list_registrations]').val(result.pricelist_id.name);
-                $('input[name=event_invoice_registrations]').val(result.invoice_id.name);
+                $('input[name=event_category_investigative_registrations]').val(result.category_investigative);
+                $('input[name=event_price_list_registrations]').val(result.pricelist);
+                $('input[name=event_invoice_registrations]').val(result.invoice);
                 $('input[name=event_state_registrations]').val(result.state);
+
+                $(modal).modal('show');
             } else {
                 event_main.hideLoader();
                 toastr.error(_t(event_message.getMessage(result.message)));

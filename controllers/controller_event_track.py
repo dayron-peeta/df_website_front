@@ -173,26 +173,4 @@ class EventTrackControllerInherit(EventTrackController):
 
         return http.request.render('df_website_front.info_documents_presentations', datas)
     
-    @http.route(['/evento/event_registrations'], type='http', auth="public", website=True,csrf=False)
-    def view_event_registrations(self, **post):
-          registrations = {}
-          if post.get('elem_id', False):
-             registrations = request.env['event.registration'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id']))
-          return json.dumps(registrations)
-    
-    @http.route(['/evento/edit_status_registrations'], type='http', auth="public", website=True,
-                csrf=False)
-    def edit_status_registrations(self,  **post):
-        if post.get('elem_id', False):
-            registrations = request.env['event.registration'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id']))
-            elem_update = {}
-            if registrations:
-                if registrations.state == 'cancel':
-                    statusRegistrations = 'draft'
-                else:
-                    statusRegistrations = 'cancel'   
-                elem_update.update({
-                    'state': statusRegistrations,
-                })
-            registrations.sudo().write(elem_update)
-        return json.dumps({'success': True, 'message': 10})
+   
