@@ -176,8 +176,7 @@
 
                         <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
 
-                        <!--Pestaña
-                        de sus datos de perfil-->
+                        <!--Pestaña de sus datos de perfil-->
                         <div class="tab-pane fade show active" id="user_profile_datas_form"
                             role="tabpanel"
                             aria-labelledby="user_profile_datas_form-tab">
@@ -676,12 +675,10 @@
                             </form>
                         </div>
 
-                        <!--Pestaña
-                        de inscripciones-->
+                        <!--Pestaña de inscripciones-->
                         <div class="tab-pane fade" id="user_profile_inscriptions_form"
                             role="tabpanel"
                             aria-labelledby="user_profile_inscriptions_form-tab">
-                            <p> hello </p>
 
                             <!--  Tabla -->
                             <table class="table" id="user_inscriptions" data-resources="3">
