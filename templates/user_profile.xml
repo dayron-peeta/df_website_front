@@ -80,6 +80,7 @@
                 <t t-call="df_website_front.modal_accredited_profile_user" />
                 <t t-call="df_website_front.modal_add_speaker_conference" />
                 <t t-call="df_website_front.modal_detail_speaker" />
+                <t t-call="df_website_front.modal_view_registrations" />
                 <t t-if="event">
                     <t t-call="df_website_front.event_navbar_dinamic" />
                 </t>
@@ -123,19 +124,6 @@
                                 User Data
                             </a>
                         </li>
-                        <!--                        Para el primero: mx-auto ml-sm-auto mr-sm-0-->
-                        <!--                        Para el ultimo: mx-auto mr-sm-auto ml-sm-0-->
-                        <!--                        Para los intermedios: mx-auto mx-sm-0-->
-                        <!--                        <t t-if="is_speaker == true">-->
-                        <!-- <li class="nav-item mx-auto mx-sm-0" role="presentation">
-                            <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
-                            id="user_profile_presentation"
-                            data-toggle="tab" href="#user_profile_presentation_form" role="tab"
-                            aria-controls="user_profile_presentation_form" aria-selected="false">
-                                Presentation
-                            </a>
-                        </li>-->
-                        <!--                        </t>-->
                         <li t-attf-class="nav-item mx-auto mx-sm-0" role="inscriptions">
                             <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
                                 id="user_profile_inscriptions"
@@ -144,6 +132,20 @@
                                 Inscriptions
                             </a>
                         </li>
+                        <!--                        Para el primero: mx-auto ml-sm-auto mr-sm-0-->
+                        <!--                        Para el ultimo: mx-auto mr-sm-auto ml-sm-0-->
+                        <!--                        Para los intermedios: mx-auto mx-sm-0-->
+                        <!--                        <t t-if="is_speaker == true">-->
+                        <!-- <li class="nav-item mx-auto mx-sm-0" role="presentation">
+                            <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                               id="user_profile_presentation"
+                               data-toggle="tab" href="#user_profile_presentation_form" role="tab"
+                               aria-controls="user_profile_presentation_form" aria-selected="false">
+                                Presentation
+                            </a>
+                        </li>-->
+                        <!--                        </t>-->
+
                         <li t-attf-class="nav-item mx-auto mx-sm-0" role="presentation">
                             <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
                                 id="user_profile_payment"
@@ -679,7 +681,6 @@
                         <div class="tab-pane fade" id="user_profile_inscriptions_form"
                             role="tabpanel"
                             aria-labelledby="user_profile_inscriptions_form-tab">
-
                             <!--  Tabla -->
                             <table class="table" id="user_inscriptions" data-resources="3">
                                 <thead>
@@ -691,42 +692,58 @@
                                         <th scope="col">Type attendee</th>
                                         <th scope="col">Entrance type</th>
                                         <th scope="col">Hotel</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <t t-foreach="event_registration_ids" t-as="inscription">
+                                    <t t-foreach="event_registration" t-as="inscription">
                                         <tr t-att-id="inscription.id">
                                             <th scope='row'>
                                                 <t t-esc="inscription_index + 1" />
                                             </th>
                                             <td>
-                                                <t t-esc="inscription.event_id" />
+                                                <p class="inscription_event">
+                                                    <t t-esc="inscription.event_id.name" />
+                                                </p>
                                             </td>
                                             <td>
-                                                <t t-esc="inscription.pricelist_id" />
+                                                <p class="inscription_pricelist">
+                                                    <t t-esc="inscription.pricelist_id.name" />
+                                                </p>
                                             </td>
                                             <td>
-                                                <t t-esc="inscription.type_attendees" />
+                                                <p class="inscription_type_attendees">
+                                                    <t t-esc="inscription.type_attendees" />
+                                                </p>
                                             </td>
                                             <td>
-                                                <t t-esc="inscription.event_ticket_id" />
+                                                <p class="inscription_event_ticket">
+                                                    <t t-esc="inscription.event_ticket_id.name" />
+                                                </p>
                                             </td>
                                             <td>
-                                                <t t-esc="inscription.lodgign_id" />
+                                                <p class="inscription_lodgign">
+                                                    <t t-esc="inscription.lodging_id.name" />
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="inscription_status">
+                                                    <t t-esc="inscription.state" />
+                                                </p>
                                             </td>
                                             <!--  Acciones de la tabla  -->
                                             <td>
                                                 <a
-                                                    t-attf-href="/#{track.id}/info_documents_presentations"
-                                                    class='fa fa-edit icon-fa-myfont cursor-pointer'
-                                                    title="Edit inscription" />
+                                                    class='EditInscription fa fa-edit icon-fa-myfont cursor-pointer'
+                                                    t-if="inscription.state != 'cancel' and inscription.state != 'approved' and inscription.state != 'done'"
+                                                    title="Edit Inscription" />
                                                 <a
-                                                    class='deleteTrack fa fa-close icon-fa-myfont cursor-pointer'
-                                                    title="Cancel inscription" />
+                                                    class='ChangeStatusInscription fa fa-circle-o-notch icon-fa-myfont cursor-pointer'
+                                                    title="Change Status Inscription" />
                                                 <a
-                                                    class='deleteTrack fa fa-eye icon-fa-myfont cursor-pointer'
-                                                    title="Show inscription info" />
+                                                    class='ViewInscription fa fa-eye icon-fa-myfont cursor-pointer'
+                                                    title="View Inscription" />
                                             </td>
                                         </tr>
                                     </t>
@@ -872,8 +889,7 @@
                             </form>
                         </div>
 
-                        <!--Pestaña
-                        de pagos-->
+
                         <div class="tab-pane fade" id="user_profile_payment_form" role="tabpanel"
                             aria-labelledby="user_profile_payment_form-tab">
                             <t t-call="df_website_front.modal_detail_payment" />

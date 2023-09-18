@@ -1240,7 +1240,7 @@ class WebsiteEventControllerInherit(http.Controller):
     @http.route(['/evento/<int:event_id>/add_speaker','/evento/add_speaker'], type='http', auth='public', website=True)
     def add_speaker(self, event_id=None, **kw):
         messages = {'error': True, 'message': 29}
-        if kw.get('track_id', False) and kw['track_id'] != '':
+        if kw.get('track_id', False) and kw.get('track_id',False) != '':
             event_track_id = request.env['event.track'].browse(int(kw['track_id']))
             messages = event_track_id.add_speaker_by_track(kw)
         return json.dumps(messages)

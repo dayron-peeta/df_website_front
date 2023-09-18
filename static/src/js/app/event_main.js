@@ -410,12 +410,24 @@ odoo.define('df_website_front.event_main', function (require) {
         });
     }
 
+    function confirm_delete_modal(fn_remove_callback, elem_id) {
+        $('#deleteConfirmElementModal').modal('show');
+        // Set the delete button's click event handler
+        $("#deleteConfirmElementDelete").off("click").on("click", function () {
+            // Perform the deletion logic here
+            fn_remove_callback(elem_id);
+            // Close the modal
+            $('#deleteConfirmElementModal').modal('hide');
+        });
+    }
+
     return {
         'get_event_id': get_event_id,
         'showLoader': showLoader,
         'hideLoader': hideLoader,
         'parse_result': parse_result,
-        'set_empty_all_fields': set_empty_all_fields
+        'set_empty_all_fields': set_empty_all_fields,
+        'confirm_delete_modal': confirm_delete_modal
     }
 
 

@@ -81,6 +81,255 @@
                     </div>
                 </div>
             </div>
+
+        </template>
+
+        <!-- Modal View Registrations -->
+        <template id="modal_view_registrations">
+            <div class="modal fade mt-5" id="modalViewRegistrations" tabindex="-1" role="dialog"
+                aria-labelledby="myModalLabel"
+                aria-hidden="true" data-keyboard="false" data-backdrop="static">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                <span class="title_modal_add_track">Registrations</span>
+                            </h4>
+                        </div>
+                        <div class="modal-body my-modal-body">
+                            <form id="formViewRegistrations" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token"
+                                    t-att-value="request.csrf_token()" />
+                                <div class="container">
+                                    <div class="row mt-5">
+                                        <!-- Event Registrations -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_registrations"
+                                                        is-required="true" readonly="1" />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Event </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Event Registrations Tickets-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_tickets_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Event tickets
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-1">
+                                        <!-- Event Registrations Type Attendee -->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_type_attendee_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Type attendee
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Event Registrations Lodging-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_lodging_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Lodging
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Event Registrations Room Type-->
+                                    <div class="row mt-1">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_room_type_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Room Type
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Event
+                                        Registrations Number Nights-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_number_nights_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Number nights
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--Event
+                                    Registrations Entry Date-->
+                                    <div class="row mt-1">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_entry_date_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Entry Date
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Event
+                                        Registrations Companion-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_companion_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Companion
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Event
+                                    Registrations Type Institution-->
+                                    <div class="row mt-1">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_type_institution_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Type Institution
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Event
+                                        Registrations Category Investigative-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_category_investigative_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Category Investigative
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Event
+                                    Registrations Price List Investigative-->
+                                    <div class="row mt-1">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_price_list_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Price List
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--Event
+                                        Registrations Invoice Investigative-->
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_invoice_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        Invoice
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--Event
+                                    Registrations State-->
+                                    <div class="row mt-1">
+                                        <div class="col-sm-6">
+                                            <div class="mb-4">
+                                                <div class="my-form-outline">
+                                                    <input type="text"
+                                                        class="form-control my-form-control"
+                                                        name="event_state_registrations"
+                                                        readonly="1"
+                                                    />
+                                                    <label class="my-form-label myriadpro-regular">
+                                                        State
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary"
+                                    id="btnAceptViewRegistrations" data-dismiss="modal">
+                                    <i class="fa fa-check-square-o" /> Accept </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </template>
 
         <!--Modal
@@ -1168,8 +1417,8 @@
                                 <div class="container">
                                     <input type="hidden" name="csrf_token"
                                         t-att-value="request.csrf_token()" />
-
                                     <input type="hidden" name="track_id" value="" />
+                                    <input type="hidden" name="elem_id" value="" />
 
                                     <div class="form-group">
                                         <label for="name">Name</label>
@@ -1334,9 +1583,10 @@
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <input type="text"
+                                                    <input type="url"
                                                         class="form-control my-form-control"
-                                                        name="track_url" />
+                                                        name="track_url"
+                                                    />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Url
                                                     </label>
@@ -1374,7 +1624,8 @@
                                                         title=" " data-live-search="true"
                                                         name="conference_type_track"
                                                         is-required="true">
-                                                        <t t-foreach="type_presentations" t-as="type_p">
+                                                        <t t-foreach="type_presentations"
+                                                            t-as="type_p">
                                                             <option t-att-value="type_p.id">
                                                                 <t t-esc="type_p.name" />
                                                             </option>
@@ -2355,6 +2606,5 @@
                 </div>
             </div>
         </template>
-
     </data>
 </odoo>

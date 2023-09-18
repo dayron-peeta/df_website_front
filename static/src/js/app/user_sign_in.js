@@ -952,10 +952,9 @@ odoo.define('df_website_front.user_sign', function (require) {
             var $form = $('form#formAddTrack');
             var formData = new FormData($form[0]);
             formData.append('event_id',event_id);
-
-             if ($('select[name=theme_tag_id]').val() != '' && $('select[name=theme_tag_id]').val() != undefined &&
-                    $('select[name=theme_tag_id]').val() != 'undefined') {
-                    formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val());
+            let theme_tag_id = $('select#theme-tag-id');
+             if (theme_tag_id.val() != '' && theme_tag_id.val() != undefined && theme_tag_id.val() != 'undefined') {
+                    formData.append('theme_tag_id_all', theme_tag_id.val());
              }
 
             $.ajax({
@@ -969,6 +968,7 @@ odoo.define('df_website_front.user_sign', function (require) {
                 if (result.success == true) {
                     toastr.success(event_message.getMessage(58));
                     $('div#table-users-profile-id').html(result.html);
+                    window.location.reload();
                     $($modal).modal('hide');
                 } else if (result.success == false) {
                     toastr.error(result.message);

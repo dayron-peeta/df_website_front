@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-import base64
-import json
-import werkzeug
+import base64, json, werkzeug
 
 from odoo import http, _
 from odoo.http import request
@@ -14,54 +12,42 @@ class WebsiteUserController(http.Controller):
     def user_profile(self, event_id=None, user_id=None):
         datas = {}
         datas = request.env['event.event'].get_datas_aux()
-
-        event_registration_ids = request.env['event.registration'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)])
-        datas['event_registration_ids'] = event_registration_ids
-
         datas['user_id'] = request.env['res.users'].sudo().browse(user_id)
         datas['title'] = 'Event'
         # if event_id:
         # datas['event'] = request.env['event.event'].sudo().browse(event_id)
         datas['area_id'] = request.env.user.stand_by_user()
-
         if datas['area_id']:
             datas['users_acre'] = datas['area_id'].mapped('attendees_ids')
         # if len(datas['event']) > 0:
-            datas['schedules'] = request.env.user.partner_id.get_schudele_by_partner(
-            datas)
+        datas['schedules'] = request.env.user.partner_id.get_schudele_by_partner(datas)
         # datas['data_count_nav'] = datas['event'].get_counts_event()
         # datas['title'] = datas['event'].name
         # datas['is_speaker'] = datas['event'].is_speaker_by_event()
-
         if event_id:
             datas['event'] = request.env['event.event'].sudo().browse(event_id)
-            datas['present_stand'] = request.env.user.present_stand_user(
-                False, datas['event'].id)
-            datas['invoices'] = request.env.user.partner_id.get_my_invoices()
-            datas['provinces'] = request.env['res.country.state'].province_by_country_obj(
+            datas['present_stand'] = request.env.user.present_stand_user(False, datas['event'].id)
+        datas['invoices'] = request.env.user.partner_id.get_my_invoices()
+        datas['provinces'] = request.env['res.country.state'].province_by_country_obj(
             datas['user_id'].country_id.id)
-            datas['municipalitys'] = request.env['df.municipality'].municipality_by_province_obj(
+        datas['municipalitys'] = request.env['df.municipality'].municipality_by_province_obj(
             datas['user_id'].state_id.id)
-            datas['objetives'] = request.env['df_event_virtual_fair.participation.objective'].sudo().search([]).sorted(
+        datas['objetives'] = request.env['df_event_virtual_fair.participation.objective'].sudo().search([]).sorted(
             lambda po: po.name)
         """ Listando los estados en los cuales los tipos son is_done o is_accepted """
-        state_published = request.env['event.event'].sudo(
-        ).get_state_is_accepted()
-        state_published.extend(
-            request.env['event.event'].sudo().get_state_is_done())
-        state_published.extend(
-            request.env['event.event'].sudo().get_state_is_cancel())
+        state_published = request.env['event.event'].sudo().get_state_is_accepted()
+        state_published.extend(request.env['event.event'].sudo().get_state_is_done())
+        state_published.extend(request.env['event.event'].sudo().get_state_is_cancel())
         datas['track_states'] = list(set(state_published))
         datas['tracks'] = request.env['event.track'].sudo().get_tracks_by_speaker()
 
         """ Verificando que el módulo df_event_certificate exista y este instalado, para no mostrar
-                        un error al acceder al perfil sin que este módulo este instalado """
+                           un error al acceder al perfil sin que este módulo este instalado """
         module_certificate = request.env['ir.module.module'].sudo().search(
             [('name', '=', 'df_event_certificate'), ('state', '=', 'installed')])
         if module_certificate:
             """ Devolviendo los certificados asociados al usuario en los eventos """
-        datas['certifications'] = request.env.user.partner_id.get_all_certifications(
-                datas=datas)
+            datas['certifications'] = request.env.user.partner_id.get_all_certifications(datas=datas)
 
         datas['no_is_home'] = True
         datas['stands_favorites'] = request.env.user.get_stand_favorites()
@@ -73,15 +59,17 @@ class WebsiteUserController(http.Controller):
             [('category_type', '=', 'investigative')]).sorted(lambda st: st.name)
         # else:
         #     return werkzeug.exceptions.Forbidden()
-        return http.request.render('df_website_front.user_profile', datas,)
+        event_registration = request.env['event.registration'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)])
+        datas['event_registration'] = event_registration
+
+        return http.request.render('df_website_front.user_profile', datas)
 
     @http.route(['/<int:user_id>/save_profile', '/<int:event_id>/<int:user_id>/save_profile'], type='http', auth='user',
                 website=True)
     def save_profile(self, event_id=None, user_id=None, **kw):
         if event_id:
             kw['event_id'] = event_id
-        result = request.env['res.users'].sudo().browse(
-            user_id).save_user_profile(kw)
+        result = request.env['res.users'].sudo().browse(user_id).save_user_profile(kw)
         return json.dumps(result)
 
     @http.route(['/evento/<int:event_id>/search_schudele_user'], type='http', auth='user', website=True, csrf=False)
@@ -89,8 +77,7 @@ class WebsiteUserController(http.Controller):
         result = ''
         if event_id and kw.get('filter', False):
             kw['event'] = request.env['event.event'].sudo().browse(event_id)
-            result = request.env.user.partner_id.sudo(
-            ).get_schudele_by_partner(kw, kw['filter'])
+            result = request.env.user.partner_id.sudo().get_schudele_by_partner(kw, kw['filter'])
         return json.dumps(result)
 
     @http.route(['/evento/<int:event_id>/accept_denied_date'], type='http', auth='user', website=True)
@@ -125,10 +112,8 @@ class WebsiteUserController(http.Controller):
     @http.route(['/evento/add_track'], type='http', auth='user', website=True, csrf=False)
     def add_new_track(self, **kw):
         if kw.get('event_id', False):
-            event = request.env['event.event'].browse(
-                int(kw.get('event_id', False)))
-            result = request.env['res.users'].add_event_track(
-                int(kw.get('event_id', False)), kw)
+            event = request.env['event.event'].browse(int(kw.get('event_id', False)))
+            result = request.env['res.users'].add_event_track(int(kw.get('event_id', False)), kw)
             result = self.update_list_tracks_in_profile(result, event)
             result['message'] = 59
             return json.dumps(result)
@@ -137,7 +122,7 @@ class WebsiteUserController(http.Controller):
             'message': _("The conference was not added")
         })
 
-    @http.route(['/evento/<int:event_id>/remove_track', '/evento/remove_track'], type='http', auth='user', website=True, csrf=False)
+    @http.route(['/evento/<int:event_id>/remove_track','/evento/remove_track'], type='http', auth='user', website=True, csrf=False)
     def remove_track(self, event_id=None, **kw):
         result = {}
         if event_id:
@@ -160,24 +145,46 @@ class WebsiteUserController(http.Controller):
     @http.route(['/evento/remove_author'], type='http', auth='user', website=True, csrf=False)
     def remove_author(self, **kw):
         result = {}
-        request.env['event.track.speaker'].sudo().browse(
-            int(kw['id'])).unlink()
+        request.env['event.track.speaker'].sudo().browse(int(kw['id'])).unlink()
         result['success'] = True
         result['message'] = 59
-        return json.dumps(result)
-
+        return json.dumps(result)      
+    
     @http.route(['/evento/remove_doc'], type='http', auth='user', website=True, csrf=False)
     def remove_doc(self, **kw):
         result = {}
         request.env['ir.attachment'].sudo().browse(int(kw['id'])).unlink()
         result['success'] = True
         result['message'] = 59
-        return json.dumps(result)
-
+        return json.dumps(result)   
+    
     @http.route(['/evento/remove_img'], type='http', auth='user', website=True, csrf=False)
     def remove_img(self, **kw):
         result = {}
         request.env['ir.attachment'].sudo().browse(int(kw['id'])).unlink()
         result['success'] = True
         result['message'] = 59
-        return json.dumps(result)
+        return json.dumps(result)  
+
+    @http.route(['/evento/event_registrations'], type='http', auth="public", website=True,csrf=False)
+    def view_event_registrations(self, **post):
+          if post.get('elem_id', False):
+             registrations = request.env['event.registration'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id'])).get_registrations_json()
+          return json.dumps(registrations)
+    
+    @http.route(['/evento/edit_status_registrations'], type='http', auth="public", website=True,
+                csrf=False)
+    def edit_status_registrations(self,  **post):
+        if post.get('elem_id', False):
+            registrations = request.env['event.registration'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id']))
+            elem_update = {}
+            if registrations:
+                if registrations.state == 'cancel':
+                    statusRegistrations = 'draft'
+                else:
+                    statusRegistrations = 'cancel'   
+                elem_update.update({
+                    'state': statusRegistrations,
+                })
+            registrations.sudo().write(elem_update)
+        return json.dumps({'success': True, 'message': 10})    
