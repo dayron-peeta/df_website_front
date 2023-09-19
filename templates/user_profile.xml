@@ -81,6 +81,7 @@
                 <t t-call="df_website_front.modal_add_speaker_conference" />
                 <t t-call="df_website_front.modal_detail_speaker" />
                 <t t-call="df_website_front.modal_view_registrations" />
+                <t t-call="df_website_front.modal_edit_registrations" />
                 <t t-if="event">
                     <t t-call="df_website_front.event_navbar_dinamic" />
                 </t>
