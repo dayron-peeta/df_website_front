@@ -211,3 +211,37 @@ class WebsiteUserController(http.Controller):
             registrations = request.env['event.registration'].sudo().search(
                 [('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id'])).get_registrations_json()
         return json.dumps(registrations)
+    
+
+    #PENDIENTE //TODO
+    """
+    @http.route(['/evento/<int:event_id>/edit_inscription', '/evento/edit_inscription'], type='http', auth="public", website=True,
+                csrf=False)
+    def edit_track(self, event_id=None, **post):
+        if post.get('elem_id', False):
+            track_id = request.env['event.track'].sudo().browse(int(post['elem_id']))
+            elem_update = {}
+            if track_id:
+                elem_update.update({
+                    'name': post.get('track_name', False),
+                    'video_track_url': post.get('track_video', False),
+                    'description': post.get('description', False),
+                    'event_track_type_id': post.get('track_type_id', False)
+                })
+            if post.get('thematic_all', False):
+                thematic = [int(t) for t in post['thematic_all'].split(',')]
+                elem_update['theme_tag_ids'] = [(6, 0, thematic)]
+
+            if post.get('event-list_all', False):
+                event = [int(t) for t in post['event-list_all'].split(',')]
+                elem_update['event_id'] = event[0]
+
+            if post.get('presentation_all', False):
+                presentation = [int(t) for t in post['presentation_all'].split(',')]
+                elem_update['event_track_type_id'] = [(6, 0, presentation)]
+
+            track_id.sudo().write(elem_update)
+            # 'data': {'id': int(post['elem_id']), 'name': post['track_name']}
+        return json.dumps(
+            {'success': True, 'message': 10})
+            """
