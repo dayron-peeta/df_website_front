@@ -485,7 +485,7 @@ odoo.define('df_website_front.event', function (require) {
 
     });
 
-    function edit_track(elem_id, event_id) {
+    function edit_track(elem_id, event_id) { //TODO
         var $form = $('#form_edit_track');
         var formData = new FormData($form[0]);
         var event_id = event_id;
@@ -1338,7 +1338,7 @@ odoo.define('df_website_front.event', function (require) {
 
     });
 
-    $('a.EditInscription').click(function () {
+    $('a.EditInscription').click(function () { //TODO
         var elem_id = $(this).closest('tr').attr('id');
         var formData = new FormData();
         formData.append('elem_id', elem_id);
@@ -1367,7 +1367,7 @@ odoo.define('df_website_front.event', function (require) {
                 $('input[name=event_price_list_registrations]').val(result.pricelist);
                 $('input[name=event_invoice_registrations]').val(result.invoice);
                 $('input[name=event_state_registrations]').val(result.state);
-    
+
                 $(modal).modal('show');
             } else {
                 event_main.hideLoader();
@@ -1375,6 +1375,70 @@ odoo.define('df_website_front.event', function (require) {
             }
         });
     });
+
+
+    // PENDIENTE
+    function edit_inscription(elem_id, event_id) { //TODO
+        var $form = $('#formEditRegistrations');
+        var formData = new FormData($form[0]);
+        var event_id = event_id;
+
+        if (event_id == null)
+            event_id = $(elem_id).attr('event_id');
+
+        if (elem_id == '' || elem_id == undefined || elem_id == 'undefined') {
+            elem_id = $('#input-track-id').val();
+        }
+
+        if (event_id == '' || event_id == undefined || event_id == 'undefined') {
+            event_id = $('#input-event-id').val();
+        }
+
+        formData.append('elem_id', elem_id);
+
+        if ($('select[name=theme_tag_id]').val() != '' && $('select[name=theme_tag_id]').val() != undefined &&
+            $('select[name=theme_tag_id]').val() != 'undefined') {
+            formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val());
+        }
+
+        if ($('select[name=event-list]').val() != '' && $('select[name=event-list]').val() != undefined &&
+            $('select[name=event-list]').val() != 'undefined') {
+            formData.append('event-list_all', $('select[name=event-list]').val());
+        }
+
+        if ($('select[name=presentation]').val() != '' && $('select[name=presentation]').val() != undefined &&
+            $('select[name=presentation]').val() != 'undefined') {
+            formData.append('presentation_all', $('select[name=presentation]').val());
+        }
+
+        event_main.showLoader();
+        $.ajax({
+            url: '/evento/' + event_id + '/edit_inscription',
+            data: formData,
+            type: 'POST',
+            processData: false, // tell jQuery not to process the data
+            contentType: false // tell jQuery not to set contentType
+        }).done(function (data_result) {
+            var result = parse_result(data_result);
+            if (result.success == true) {
+                var modal = '#modal_edit_registrations';
+                event_main.hideLoader();
+                $(modal).modal('hide');
+                toastr.success(_t(event_message.getMessage(result.message)));
+            } else {
+                event_main.hideLoader();
+                toastr.error(_t(event_message.getMessage(result.message)));
+            }
+        });
+    }
+
+    $('#btnAceptEditRegistrations').click(function () {
+        var elem_id = $('#form_edit_track input[name=elem_id]').val();
+        var event_id = $('select#event-list-edit').val();
+        edit_inscription(elem_id, event_id);
+    });
+    // PENDIENTE
+
 
     $('a.ViewInscription').click(function () {
         var elem_id = $(this).closest('tr').attr('id');

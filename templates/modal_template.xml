@@ -341,11 +341,11 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">
-                                <span class="title_modal_add_track">Registrations</span>
+                                <span class="title_modal_add_track">Edit Registrations</span>
                             </h4>
                         </div>
                         <div class="modal-body my-modal-body">
-                            <form id="formViewRegistrations" enctype="multipart/form-data">
+                            <form id="formRegistrations" enctype="multipart/form-data">
                                 <input type="hidden" name="csrf_token"
                                     t-att-value="request.csrf_token()" />
                                 <div class="container">
@@ -558,8 +558,11 @@
                                 </div>
                             </form>
                             <div class="modal-footer">
+                                <button type="button" class="btn btn-danger"
+                                    id="btnCancelEditRegistrations" data-dismiss="modal">
+                                    <i class="fa fa-close" /> Cancel </button>
                                 <button type="button" class="btn btn-primary"
-                                    id="btnAceptEditRegistrations" data-dismiss="modal">
+                                    id="btnAceptEditRegistrations" >
                                     <i class="fa fa-check-square-o" /> Accept </button>
                             </div>
                         </div>
