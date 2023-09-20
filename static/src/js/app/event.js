@@ -1379,7 +1379,7 @@ odoo.define('df_website_front.event', function (require) {
 
     // PENDIENTE
     function edit_inscription(elem_id, event_id) { //TODO
-        var $form = $('#formEditRegistrations');
+        /*var $form = $('#formEditRegistrations');
         var formData = new FormData($form[0]);
         var event_id = event_id;
 
@@ -1429,12 +1429,12 @@ odoo.define('df_website_front.event', function (require) {
                 event_main.hideLoader();
                 toastr.error(_t(event_message.getMessage(result.message)));
             }
-        });
+        });*/
     }
 
     $('#btnAceptEditRegistrations').click(function () {
-        var elem_id = $('#form_edit_track input[name=elem_id]').val();
-        var event_id = $('select#event-list-edit').val();
+        /*var elem_id = $('#form_edit_track input[name=elem_id]').val();
+        var event_id = $('select#event-list-edit').val();*/
         edit_inscription(elem_id, event_id);
     });
     // PENDIENTE
