@@ -577,6 +577,10 @@ aside.sidebar .side-inner {
     overflow-x: hidden;
 }
 
+.min-h{
+    min-height: 350px;
+}
+
 .js-menu-toggle {
     background: linear-gradient(to right, transparent 50%, #005990 50%);
     background-size: 200% 100%;

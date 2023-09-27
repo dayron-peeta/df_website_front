@@ -928,7 +928,7 @@ odoo.define('df_website_front.user_sign', function (require) {
                 }
             });
         });
-     }
+    }
 
     /* Adicionar nueva presentacion */
     $('#btnAddSaveTrack').click(function (e) {

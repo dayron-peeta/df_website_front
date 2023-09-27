@@ -18,7 +18,7 @@
                     <a class="btn btn-outline-primary" href="/documents_presentations">BACK</a>
                 </div>
 
-                <div class="oe_structure">
+                <div class="oe_structure ">
                     <!--  Etiquetas de la tabla de navegacion-->
                     <ul class="nav nav-tabs my-nav-tabs" role="tablist">
                         <li t-attf-class="nav-item mx-auto ml-sm-auto mr-sm-0"
@@ -76,7 +76,7 @@
                 </div>
 
                 <!--  Contenido de la tabla de navegacion  -->
-                <div class="tab-content">
+                <div class="tab-content min-h">
 
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
 
@@ -245,8 +245,16 @@
                             </form>
 
                             <div class="mb-2 d-flex justify-content-end">
-                                <button type="button" class="btn btn-primary" id="btnSaveTrack">
-                                    <i class="fa fa-check-square-o" /> Save </button>
+                                <t t-if="event_track_id">
+                                    <button type="button" class="btn btn-primary" id="btnSaveTrack">
+                                        <i class="fa fa-check-square-o" /> Save </button>
+                                </t>
+
+                                <t t-if="not event_track_id">
+                                    <button type="button" class="btn btn-primary"
+                                        id="btnAddSaveTrack">
+                                        <i class="fa fa-check-square-o" /> Create </button>
+                                </t>
                             </div>
                         </div>
 
