@@ -138,7 +138,7 @@ class EventTrackControllerInherit(EventTrackController):
 
         # Pagina para editar documents/presentations
 
-    @http.route('/<int:track_id>/info_documents_presentations', type='http', auth='public', website=True)
+    @http.route(['/info_documents_presentations', '/<int:track_id>/info_documents_presentations' ], type='http', auth='public', website=True)
     def show_info_documents_presentations(self, track_id=None, **kw):
         datas = {}
         if track_id:
@@ -161,18 +161,32 @@ class EventTrackControllerInherit(EventTrackController):
                 datas['text_description'] = event_track_id.description_short
                 datas['events_track'] = event_ids
                 datas['concurrent_event'] = event_track_id.event_id
-
                 datas['locations'] = location_ids
                 datas['concurrent_location'] = event_track_id.location_id
-
                 datas['thematics'] = theme_tag_ids
                 datas['concurrent_thematic'] = event_track_id.theme_tag_ids
-
                 datas['type_presentations'] = track_type_ids
                 datas['track_id'] = track_id
 
+            else:
+                datas['event_track_id'] = None
+                datas['session_name'] = None
+                datas['session_duration'] = None
+                datas['session_date_and_time'] = None
+                datas['event'] = None
+                datas['presentation'] = None
+                datas['text_description'] = None
+                datas['events_track'] = None
+                datas['concurrent_event'] = None
+                datas['locations'] = None
+                datas['concurrent_location'] = None
+                datas['thematics'] = None
+                datas['concurrent_thematic'] = None
+                datas['type_presentations'] = None
+                datas['track_id'] = None
         return http.request.render('df_website_front.info_documents_presentations', datas)
-    
+
+
     @http.route(['''/evento/event_registrations'''], type='http', auth="public", website=True,csrf=False)
     def get_event_track(self, event_id, **post):
           tracks = {}

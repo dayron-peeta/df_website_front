@@ -120,9 +120,9 @@
                             role="user_data">
                             <a class="nav-link active my-nav-link mb-0 myriadpro-regular enable-tab"
                                 id="user_profile_datas" data-toggle="tab"
-                                href="#user_profile_datas_form" role="tab"
+                                href="#user_profile_datas_form" role="tab" 
                                 aria-controls="user_profile_datas_form" aria-selected="true">
-                                User Data
+                                User Data 
                             </a>
                         </li>
 <!--                        <li t-attf-class="nav-item mx-auto mx-sm-0" role="inscriptions">-->
@@ -755,7 +755,7 @@
                             aria-labelledby="user_profile_presentation_form-tab">
                             <div class="container mt-3">
                                 <div class="col-sm text-sm-right mb-3 mb-sm-0">
-                                    <button id="add_profile_presentation"
+                                    <button id="add_profile_presentation" 
                                         class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
                                         Add presentation
                                     </button>
