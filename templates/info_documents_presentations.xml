@@ -11,7 +11,7 @@
                 <t t-call="df_website_front.modal_add_speaker_conference"/>
                 <t t-call="df_website_front.modal_detail_speaker"/>
                 <t t-call="df_website_front.modal_track"/>
-                <t t-call="df_website_front.model_confirm_delete_element"/>
+                <t t-call="df_website_front.modal_confirm_delete_element"/>
                 <div
                         class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow ">
                     <h2 class="my-0 mr-md-auto text-left">INFO DOCUMENTS/PRESENTATIONS</h2>
