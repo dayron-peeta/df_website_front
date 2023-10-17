@@ -125,14 +125,14 @@
                                 User Data 
                             </a>
                         </li>
-<!--                        <li t-attf-class="nav-item mx-auto mx-sm-0" role="inscriptions">-->
-<!--                            <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"-->
-<!--                                id="user_profile_inscriptions"-->
-<!--                                data-toggle="tab" href="#user_profile_inscriptions_form" role="tab"-->
-<!--                                aria-controls="user_profile_inscriptions_form" aria-selected="false">-->
-<!--                                Inscriptions-->
-<!--                            </a>-->
-<!--                        </li>-->
+                        <li t-attf-class="nav-item mx-auto mx-sm-0" role="inscriptions">
+                            <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
+                                id="user_profile_inscriptions"
+                                data-toggle="tab" href="#user_profile_inscriptions_form" role="tab"
+                                aria-controls="user_profile_inscriptions_form" aria-selected="false">
+                                Inscriptions
+                            </a>
+                        </li>
                         <!--                        Para el primero: mx-auto ml-sm-auto mr-sm-0-->
                         <!--                        Para el ultimo: mx-auto mr-sm-auto ml-sm-0-->
                         <!--                        Para los intermedios: mx-auto mx-sm-0-->
@@ -678,74 +678,79 @@
                             </form>
                         </div>
 
-                        <!--Pestaña
-                        de inscripciones-->
-<!--                        <div class="tab-pane fade" id="user_profile_inscriptions_form"-->
-<!--                            role="tabpanel"-->
-<!--                            aria-labelledby="user_profile_inscriptions_form-tab">-->
-<!--                            &lt;!&ndash;  Tabla &ndash;&gt;-->
-<!--                            <table class="table" id="user_inscriptions" data-resources="3">-->
-<!--                                <thead>-->
-<!--                                    &lt;!&ndash;  Columnas de la tabla &ndash;&gt;-->
-<!--                                    <tr>-->
-<!--                                        <th scope="col">#</th>-->
-<!--                                        <th scope="col">Event</th>-->
-<!--                                        <th scope="col">Currency</th>-->
-<!--                                        <th scope="col">Type attendee</th>-->
-<!--                                        <th scope="col">Entrance type</th>-->
-<!--                                        <th scope="col">Hotel</th>-->
-<!--                                        <th scope="col">Actions</th>-->
-<!--                                    </tr>-->
-<!--                                </thead>-->
-<!--                                <tbody>-->
-<!--                                    <t t-foreach="event_registration" t-as="inscription">-->
-<!--                                        <tr t-att-id="inscription.id">-->
-<!--                                            <th scope='row'>-->
-<!--                                                <t t-esc="inscription_index + 1" />-->
-<!--                                            </th>-->
-<!--                                            <td>-->
-<!--                                                <p class="inscription_event">-->
-<!--                                                    <t t-esc="inscription.event_id.name" />-->
-<!--                                                </p>-->
-<!--                                            </td>-->
-<!--                                            <td>-->
-<!--                                                <p class="inscription_pricelist">-->
-<!--                                                    <t t-esc="inscription.pricelist_id.name" />-->
-<!--                                                </p>-->
-<!--                                            </td>-->
-<!--                                            <td>-->
-<!--                                                <p class="inscription_type_attendees">-->
-<!--                                                    <t t-esc="inscription.type_attendees" />-->
-<!--                                                </p>-->
-<!--                                            </td>-->
-<!--                                            <td>-->
-<!--                                                <p class="inscription_event_ticket">-->
-<!--                                                    <t t-esc="inscription.event_ticket_id.name" />-->
-<!--                                                </p>-->
-<!--                                            </td>-->
-<!--                                            <td>-->
-<!--                                                <p class="inscription_lodgign">-->
-<!--                                                    <t t-esc="inscription.lodging_id.name" />-->
-<!--                                                </p>-->
-<!--                                            </td>-->
-<!--                                            &lt;!&ndash;  Acciones de la tabla  &ndash;&gt;-->
-<!--                                            <td>-->
-<!--                                                <a-->
-<!--                                                    class='EditInscription fa fa-edit icon-fa-myfont cursor-pointer'-->
-<!--                                                    t-if="inscription.state != 'cancel' and inscription.state != 'approved' and inscription.state != 'done'"-->
-<!--                                                    title="Edit Inscription" />-->
-<!--                                                <a-->
-<!--                                                    class='ChangeStatusInscription fa fa-circle-o-notch icon-fa-myfont cursor-pointer'-->
-<!--                                                    title="Change Status Inscription" />-->
-<!--                                                <a-->
-<!--                                                    class='ViewInscription fa fa-eye icon-fa-myfont cursor-pointer'-->
-<!--                                                    title="View Inscription" />-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
-<!--                                    </t>-->
-<!--                                </tbody>-->
-<!--                            </table>-->
-<!--                        </div>-->
+                        <!--Pestaña de inscripciones-->
+                        <div class="tab-pane fade" id="user_profile_inscriptions_form"
+                            role="tabpanel"
+                            aria-labelledby="user_profile_inscriptions_form-tab">
+                            <!--  Tabla -->
+                            <table class="table" id="user_inscriptions" data-resources="3">
+                                <thead>
+                                    <!--  Columnas de la tabla -->
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Event</th>
+                                        <th scope="col">Currency</th>
+                                        <th scope="col">Type attendee</th>
+                                        <th scope="col">Entrance type</th>
+                                        <th scope="col">Hotel</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="event_registration" t-as="inscription">
+                                        <tr t-att-id="inscription.id">
+                                            <th scope='row'>
+                                                <t t-esc="inscription_index + 1" />
+                                            </th>
+                                            <td>
+                                                <p class="inscription_event">
+                                                    <t t-esc="inscription.event_id.name" />
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="inscription_pricelist">
+                                                    <t t-esc="inscription.pricelist_id.name" />
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="inscription_type_attendees">
+                                                    <t t-esc="inscription.type_attendees" />
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="inscription_event_ticket">
+                                                    <t t-esc="inscription.event_ticket_id.name" />
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="inscription_lodgign">
+                                                    <t t-esc="inscription.lodging_id.name" />
+                                                </p>
+                                            </td>
+                                            <td>
+                                                <p class="inscription_status">
+                                                    <t t-esc="inscription.state" />
+                                                </p>
+                                            </td>
+                                            <!--  Acciones de la tabla  -->
+                                            <td>
+                                                <a
+                                                    class='EditInscription fa fa-edit icon-fa-myfont cursor-pointer'
+                                                    t-if="inscription.state != 'cancel' and inscription.state != 'approved' and inscription.state != 'done'"
+                                                    title="Edit Inscription" />
+                                                <a
+                                                    class='ChangeStatusInscription fa fa-circle-o-notch icon-fa-myfont cursor-pointer'
+                                                    title="Change Status Inscription" />
+                                                <a
+                                                    class='ViewInscription fa fa-eye icon-fa-myfont cursor-pointer'
+                                                    title="View Inscription" />
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
 
                         <!--Pestaña
                         de ponencias del usuario, en caso de que este sea un ponente en el evento
