@@ -133,15 +133,16 @@
                                 Inscriptions
                             </a>
                         </li>
+
                         <!--                        Para el primero: mx-auto ml-sm-auto mr-sm-0-->
                         <!--                        Para el ultimo: mx-auto mr-sm-auto ml-sm-0-->
                         <!--                        Para los intermedios: mx-auto mx-sm-0-->
                         <!--                        <t t-if="is_speaker == true">-->
                         <!-- <li class="nav-item mx-auto mx-sm-0" role="presentation">
                             <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
-                               id="user_profile_presentation"
-                               data-toggle="tab" href="#user_profile_presentation_form" role="tab"
-                               aria-controls="user_profile_presentation_form" aria-selected="false">
+                            id="user_profile_presentation"
+                            data-toggle="tab" href="#user_profile_presentation_form" role="tab"
+                            aria-controls="user_profile_presentation_form" aria-selected="false">
                                 Presentation
                             </a>
                         </li>-->

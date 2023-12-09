@@ -109,7 +109,7 @@
                                                     <input type="text"
                                                         class="form-control my-form-control"
                                                         name="event_registrations"
-                                                        is-required="true" readonly="1" />
+                                                        is-required="true"  />
                                                     <label class="my-form-label myriadpro-regular">
                                                         Event </label>
                                                 </div>
@@ -354,10 +354,19 @@
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <input type="text"
-                                                        class="form-control my-form-control"
-                                                        name="event_registrations"
-                                                        is-required="true"  />
+                                                        //TODOworkingHere
+                                                        <select type="text" class="form-control my-form-control"  name="event_registrations"
+                                                        id="event_registration-edit-id" 
+                                                        is-required="true" readonly="0"
+                                                        data-live-search="true"
+                                                        multiple="">
+                                                        <t t-foreach="thematics" t-as="thema_t">
+                                                            <option t-att-value="thema_t.id"
+                                                                t-att-selected="thema_t.id in concurrent_thematic.ids">
+                                                                <t t-esc="thema_t.name" />
+                                                            </option>
+                                                        </t>
+                                                        </select>
                                                     <label class="my-form-label myriadpro-regular">
                                                         Event </label>
                                                 </div>
