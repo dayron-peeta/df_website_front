@@ -490,57 +490,58 @@ odoo.define('df_website_front.event', function (require) {
 
     });
 
-    function edit_track(elem_id, event_id) { //TODO
-        var $form = $('#form_edit_track');
-        var formData = new FormData($form[0]);
+    //TODO
+    function edit_track(elem_id, event_id) { 
+        var $form = $('#form_edit_track'); //el formulario con id "form_edit_track" se guarda en $form
+        var formData = new FormData($form[0]); //Se crea un objeto FormData a partir del formulario seleccionado
         var event_id = event_id;
 
         if (event_id == null)
-            event_id = $(elem_id).attr('event_id');
+            event_id = $(elem_id).attr('event_id'); //Si event_id es nulo, se obtiene el valor del atributo "event_id" del elemento elem_id
 
         if (elem_id == '' || elem_id == undefined || elem_id == 'undefined') {
-            elem_id = $('#input-track-id').val();
+            elem_id = $('#input-track-id').val();  //Si no elem_id, se obtiene el valor del campo de entrada con el id "input-track-id"
         }
 
         if (event_id == '' || event_id == undefined || event_id == 'undefined') {
-            event_id = $('#input-event-id').val();
+            event_id = $('#input-event-id').val(); //Si no event_id, se obtiene el valor del campo de entrada con el id "input-event-id" 
         }
 
-        formData.append('elem_id', elem_id);
+        formData.append('elem_id', elem_id); // Se agrega el valor de elem_id al objeto FormData con la clave 'elem_id'
 
         if ($('select[name=theme_tag_id]').val() != '' && $('select[name=theme_tag_id]').val() != undefined &&
             $('select[name=theme_tag_id]').val() != 'undefined') {
-            formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val());
+            formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val()); // Si el elemento select con el nombre "theme_tag_id" es válido, se agrega ese valor al objeto FormData con la clave 'theme_tag_id_all'
         }
 
         if ($('select[name=event-list]').val() != '' && $('select[name=event-list]').val() != undefined &&
             $('select[name=event-list]').val() != 'undefined') {
-            formData.append('event-list_all', $('select[name=event-list]').val());
+            formData.append('event-list_all', $('select[name=event-list]').val()); //Si el elemento select con el nombre "event-list" es válido, se agrega ese valor al objeto FormData con la clave 'event-list_all'
         }
 
         if ($('select[name=presentation]').val() != '' && $('select[name=presentation]').val() != undefined &&
             $('select[name=presentation]').val() != 'undefined') {
-            formData.append('presentation_all', $('select[name=presentation]').val());
+            formData.append('presentation_all', $('select[name=presentation]').val()); //Si el elemento select con el nombre "presentation" es válido, se agrega ese valor al objeto FormData con la clave 'presentation_all'
         }
 
-        event_main.showLoader();
-        $.ajax({
+        event_main.showLoader(); //Se muestra un cargador en la interfaz
+        $.ajax({ //Se realiza una solicitud AJAX
             url: '/evento/' + event_id + '/edit_track',
             data: formData,
             type: 'POST',
             processData: false, // tell jQuery not to process the data
             contentType: false // tell jQuery not to set contentType
-        }).done(function (data_result) {
-            var result = parse_result(data_result);
-            if (result.success == true) {
-                var modal = '#modalTrack';
-                event_main.hideLoader();
+        }).done(function (data_result) { // Cuando la solicitud AJAX se completa con éxito, se ejecuta esta función con la respuesta recibida
+            var result = parse_result(data_result); //Se analiza la respuesta recibida y se guarda
+            if (result.success == true) { //Si la propiedad success de result es verdadera
+                var modal = '#modalTrack'; // Se guarda el selector '#modalTrack'
+                event_main.hideLoader(); //Se oculta el cargador en la interfaz
                 //$('table#user_tracks tr[id=' + result.data.id + '] p.track_name_id').text(result.data.name);
-                $(modal).modal('hide');
-                toastr.success(_t(event_message.getMessage(result.message)));
-            } else {
-                event_main.hideLoader();
-                toastr.error(_t(event_message.getMessage(result.message)));
+                $(modal).modal('hide'); //Se oculta el modal con el selector guardado en la variable modal
+                toastr.success(_t(event_message.getMessage(result.message))); //mensaje de éxito utilizando la biblioteca Toastr
+            } else { 
+                event_main.hideLoader(); //Se oculta el cargador en la interfaz
+                toastr.error(_t(event_message.getMessage(result.message))); //mensaje de error utilizando la biblioteca Toastr.
             }
         });
     }
