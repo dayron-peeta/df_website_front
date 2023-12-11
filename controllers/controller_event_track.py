@@ -113,7 +113,7 @@ class EventTrackControllerInherit(EventTrackController):
 
         # Pagina para mostrar documents/presentations
 
-    @http.route('/documents_presentations', type='http', auth='public', website=True)
+    @http.route('/documents_presentations', type='http', auth='user', website=True)
     def show_documents_presentations(self, **kw):
         Event = request.env['event.event'].sudo()
         track_ids = request.env['event.track.speaker'].sudo().search([
@@ -161,38 +161,31 @@ class EventTrackControllerInherit(EventTrackController):
                 datas['text_description'] = event_track_id.description_short
                 datas['events_track'] = event_ids
                 datas['concurrent_event'] = event_track_id.event_id
+
                 datas['locations'] = location_ids
                 datas['concurrent_location'] = event_track_id.location_id
+
                 datas['thematics'] = theme_tag_ids
                 datas['concurrent_thematic'] = event_track_id.theme_tag_ids
+
                 datas['type_presentations'] = track_type_ids
                 datas['track_id'] = track_id
 
-            else:
-                datas['event_track_id'] = None
-                datas['session_name'] = None
-                datas['session_duration'] = None
-                datas['session_date_and_time'] = None
-                datas['event'] = None
-                datas['presentation'] = None
-                datas['text_description'] = None
-                datas['events_track'] = None
-                datas['concurrent_event'] = None
-                datas['locations'] = None
-                datas['concurrent_location'] = None
-                datas['thematics'] = None
-                datas['concurrent_thematic'] = None
-                datas['type_presentations'] = None
-                datas['track_id'] = None
         return http.request.render('df_website_front.info_documents_presentations', datas)
 
-
-    @http.route(['''/evento/event_registrations'''], type='http', auth="public", website=True,csrf=False)
-    def get_event_track(self, event_id, **post):
-          tracks = {}
-          if post.get('elem_id', False):
-             registrations = request.env['event.registration'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id'])).get_speaker_json()
-          return json.dumps(tracks)
+    #TODOWORKINGHEREEDILIO
+    
+    @http.route(['''/evento/event_registrationss'''], type='http', auth="public", website=True,csrf=False)
+    def get_event_track(self, **post):
+      registrations= {}
+      if post.get('elem_id', False):
+         registration_id = request.env['event.registration'].sudo().search([('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id']))
+         for registration in registration_id:
+             registrations = {
+                 'event_name': registration.event_id.name,
+                 'event_ticket_name': registration.event_id.event_ticket_id.name
+             }
+      return json.dumps(registrations)
     
     @http.route(['/evento/edit_status_registrations'], type='http', auth="public", website=True,
                 csrf=False)

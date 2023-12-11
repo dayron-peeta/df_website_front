@@ -286,6 +286,11 @@ odoo.define('df_website_front.event', function (require) {
 
     $('#register_user_profile').click(function (e) {
         e.preventDefault();
+
+//         bootbox.alert('This is an alert with a callback!', function() {
+//                    console.log('This was logged in the callback!');
+//                    });
+
         $('.input-error').removeClass('input-error');
         $('.select-error').removeClass('select-error');
         $('.label-error').removeClass('label-error');
@@ -765,6 +770,7 @@ odoo.define('df_website_front.event', function (require) {
     $('#add_author_track_id').click(function () {
         var modal = '#modalResourcesAuthPresentation';
         $('span.title_modal_save_edit_resources_presentation').text(event_message.getMessage(60));
+        $(modal + ' input[name=track_id]').val($('#input-track-id').val());
         $('#modalResourcesAuthPresentation input[name=name]').val('');
         $('#modalResourcesAuthPresentation input[email=email]').val('');
         $(modal).modal('show');
@@ -773,7 +779,7 @@ odoo.define('df_website_front.event', function (require) {
     $('#add_doc_track_id, #add_doc').click(function () {
         var modal = '#modalResourcesDocsPresentation';
         $('span.title_modal_save_edit_resources_presentation').text(event_message.getMessage(39));
-        var track_id = $(modal + ' input[name=track_id]').val($('table#user_tracks_docs').data('track-id'));
+        $(modal + ' input[name=track_id]').val($('table#user_tracks_docs').data('track-id'));
         $('#modalResourcesDocsPresentation input[name=name]').val('');
         $('#modalResourcesDocsPresentation input[name=doc_file]').val('');
         $(modal).modal('show');
@@ -1218,7 +1224,6 @@ odoo.define('df_website_front.event', function (require) {
         var formData = new FormData();
         formData.append('id', id);
         //event_main.showLoader();
-        alert(id)
 
         $.ajax({
             url: '/evento/remove_img',
@@ -1237,12 +1242,10 @@ odoo.define('df_website_front.event', function (require) {
 
     $('button#btnSaveResourcesAuthorPresentation').click(function (e) {
         e.preventDefault();
-        var $form = 'form#formModalResourcesAuthPresentation';
-        var formData = new FormData($($form)[0]);
-        var EVENT_ID = event_main.get_event_id(true);
-        //            event_main.showLoader();
+        let $form = 'form#formModalResourcesAuthPresentation';
+        let formData = new FormData($($form)[0]);
         $.ajax({
-            url: '/evento/' + EVENT_ID + '/add_speaker',
+            url: '/evento/add_speaker',
             data: formData,
             type: 'POST',
             processData: false, // tell jQuery not to process the data
@@ -1253,6 +1256,7 @@ odoo.define('df_website_front.event', function (require) {
             if (result.success == true) {
                 toastr.success(event_message.getMessage(result.message));
                 $('#modalAddSpeaker').modal('hide');
+                window.location.reload();
             } else if (result.error == true) {
                 toastr.error(event_message.getMessage(result.message));
             }
@@ -1292,7 +1296,6 @@ odoo.define('df_website_front.event', function (require) {
         ajax.jsonRpc('/counts', 'call', {
             'event_id': event_id
         }).then(function (result) {
-            console.warn(result);
             if (result.success == true) {
                 $('span.s_numbers_countrys').html(result.countrys);
                 $('span.s_numbers_attendees').html(result.attendees);
@@ -1314,8 +1317,9 @@ odoo.define('df_website_front.event', function (require) {
 
     //INSCRIPTIONS
     $('a.ChangeStatusInscription').click(function (e) {
+        e.preventDefault();
         var elem_id = $(this).closest('tr').attr('id');
-        var formData = new FormData();
+        var formData = new FormData($form[0]);
         formData.append('elem_id', elem_id);
 
         $(this).bootstrap_confirm_delete({
@@ -1332,121 +1336,21 @@ odoo.define('df_website_front.event', function (require) {
                     processData: false, // tell jQuery not to process the data
                     contentType: false // tell jQuery not to set contentType
                 })
-                event_main.hideLoader();
             }
         });
 
     });
-
-    $('a.EditInscription').click(function () { //TODO
-        var elem_id = $(this).closest('tr').attr('id');
-        var formData = new FormData();
-        formData.append('elem_id', elem_id);
-        event_main.showLoader();
-        $.ajax({
-            url: '/evento/edit_event_registrations',
-            data: formData,
-            type: 'POST',
-            processData: false, // tell jQuery not to process the data
-            contentType: false // tell jQuery not to set contentType
-        }).done(function (data_result) {
-            var result = parse_result(data_result);
-            if (result) {
-                var modal = '#modalEditRegistrations';
-                event_main.hideLoader();
-                $('input[name=event_registrations]').val(result.event);
-                $('input[name=event_tickets_registrations]').val(result.event_ticket);
-                $('input[name=event_type_attendee_registrations]').val(result.type_attendees);
-                $('input[name=event_lodging_registrations]').val(result.lodging);
-                $('input[name=event_room_type_registrations]').val(result.room_type);
-                $('input[name=event_event_number_nights_registrations]').val(result.number_nights);
-                $('input[name=event_entry_date_registrations]').val(result.entry_date);
-                $('input[name=event_companion_registrations]').val(result.companion);
-                $('input[name=event_type_institution_registrations]').val(result.type_institution);
-                $('input[name=event_category_investigative_registrations]').val(result.category_investigative);
-                $('input[name=event_price_list_registrations]').val(result.pricelist);
-                $('input[name=event_invoice_registrations]').val(result.invoice);
-                $('input[name=event_state_registrations]').val(result.state);
-
-                $(modal).modal('show');
-            } else {
-                event_main.hideLoader();
-                toastr.error(_t(event_message.getMessage(result.message)));
-            }
-        });
-    });
-
-
-    // PENDIENTE
-    function edit_inscription(elem_id, event_id) { //TODO
-        /*var $form = $('#formEditRegistrations');
-        var formData = new FormData($form[0]);
-        var event_id = event_id;
-
-        if (event_id == null)
-            event_id = $(elem_id).attr('event_id');
-
-        if (elem_id == '' || elem_id == undefined || elem_id == 'undefined') {
-            elem_id = $('#input-track-id').val();
-        }
-
-        if (event_id == '' || event_id == undefined || event_id == 'undefined') {
-            event_id = $('#input-event-id').val();
-        }
-
-        formData.append('elem_id', elem_id);
-
-        if ($('select[name=theme_tag_id]').val() != '' && $('select[name=theme_tag_id]').val() != undefined &&
-            $('select[name=theme_tag_id]').val() != 'undefined') {
-            formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val());
-        }
-
-        if ($('select[name=event-list]').val() != '' && $('select[name=event-list]').val() != undefined &&
-            $('select[name=event-list]').val() != 'undefined') {
-            formData.append('event-list_all', $('select[name=event-list]').val());
-        }
-
-        if ($('select[name=presentation]').val() != '' && $('select[name=presentation]').val() != undefined &&
-            $('select[name=presentation]').val() != 'undefined') {
-            formData.append('presentation_all', $('select[name=presentation]').val());
-        }
-
-        event_main.showLoader();
-        $.ajax({
-            url: '/evento/' + event_id + '/edit_inscription',
-            data: formData,
-            type: 'POST',
-            processData: false, // tell jQuery not to process the data
-            contentType: false // tell jQuery not to set contentType
-        }).done(function (data_result) {
-            var result = parse_result(data_result);
-            if (result.success == true) {
-                var modal = '#modal_edit_registrations';
-                event_main.hideLoader();
-                $(modal).modal('hide');
-                toastr.success(_t(event_message.getMessage(result.message)));
-            } else {
-                event_main.hideLoader();
-                toastr.error(_t(event_message.getMessage(result.message)));
-            }
-        });*/
-    }
-
-    $('#btnAceptEditRegistrations').click(function () {
-        /*var elem_id = $('#form_edit_track input[name=elem_id]').val();
-        var event_id = $('select#event-list-edit').val();*/
-        edit_inscription(elem_id, event_id);
-    });
-    // PENDIENTE
-
 
     $('a.ViewInscription').click(function () {
         var elem_id = $(this).closest('tr').attr('id');
         var formData = new FormData();
+        var urlInscription = ''
         formData.append('elem_id', elem_id);
         event_main.showLoader();
+
+        //TODOWORKINGHEREEDILIO
         $.ajax({
-            url: '/evento/event_registrations',
+            url: '/evento/event_registrationss',
             data: formData,
             type: 'POST',
             processData: false, // tell jQuery not to process the data
@@ -1456,21 +1360,19 @@ odoo.define('df_website_front.event', function (require) {
             if (result) {
                 var modal = '#modalViewRegistrations';
                 event_main.hideLoader();
-                $('input[name=event_registrations]').val(result.event);
-                $('input[name=event_tickets_registrations]').val(result.event_ticket);
-                $('input[name=event_type_attendee_registrations]').val(result.type_attendees);
-                $('input[name=event_lodging_registrations]').val(result.lodging);
-                $('input[name=event_room_type_registrations]').val(result.room_type);
+                $('input[name=event_registrations]').val(result.event_name);
+                $('input[name=event_tickets_registrations]').val(result.event_ticket_name);
+                /*$('input[name=event_type_attendee_registrations]').val(result.type_attendees.name);
+                $('input[name=event_lodging_registrations]').val(result.lodging_id.name);
+                $('input[name=event_room_type_registrations]').val(result.room_type_id.name);
                 $('input[name=event_event_number_nights_registrations]').val(result.number_nights);
                 $('input[name=event_entry_date_registrations]').val(result.entry_date);
                 $('input[name=event_companion_registrations]').val(result.companion);
                 $('input[name=event_type_institution_registrations]').val(result.type_institution);
-                $('input[name=event_category_investigative_registrations]').val(result.category_investigative);
-                $('input[name=event_price_list_registrations]').val(result.pricelist);
-                $('input[name=event_invoice_registrations]').val(result.invoice);
-                $('input[name=event_state_registrations]').val(result.state);
-
-                $(modal).modal('show');
+                $('input[name=event_category_investigative_registrations]').val(result.category_investigative_id.name);
+                $('input[name=event_price_list_registrations]').val(result.pricelist_id.name);
+                $('input[name=event_invoice_registrations]').val(result.invoice_id.name);
+                $('input[name=event_state_registrations]').val(result.state);*/
             } else {
                 event_main.hideLoader();
                 toastr.error(_t(event_message.getMessage(result.message)));

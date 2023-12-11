@@ -16,6 +16,7 @@ odoo.define('df_website_front.event-stand', function (require) {
     var emailVerify = require('df_website_front.user_sign').emailVerify;
     var phoneValidation = require('df_website_front.user_sign').phoneValidation;
     var urlValidation = require('df_website_front.user_sign').urlValidation;
+    var session = require('web.session');
     var core = require('web.core');
     var translation = require('web.translation');
     var _t = translation._t;
@@ -470,9 +471,9 @@ odoo.define('df_website_front.event-stand', function (require) {
         }
     }
 
-    function fn_add_resources(action,event_id='') {
+    function fn_add_resources(action, event_id = '') {
 
-        if (action != 8){
+        if (action != 8) {
             event_id = event_main.get_event_id(true);
         }
 
@@ -644,11 +645,11 @@ odoo.define('df_website_front.event-stand', function (require) {
         e.preventDefault();
         var action = $(this).parent().prev().children().find('input[name=action_id]').val();
         var event_id = '';
-        if (action == 8){
+        if (action == 8) {
             event_id = $('#select_event_id').val();
         }
 
-        fn_add_resources(parseInt(action),event_id);
+        fn_add_resources(parseInt(action), event_id);
     });
 
     $('button.btnSaveEditResourcesStand').click(function (e) {
@@ -790,7 +791,7 @@ odoo.define('df_website_front.event-stand', function (require) {
         e.preventDefault();
         var formData = new FormData();
         $.ajax({
-            url: '/evento/'+$(this).val()+'/tickets_acre',
+            url: '/evento/' + $(this).val() + '/tickets_acre',
             data: formData,
             type: 'POST',
             processData: false, // tell jQuery not to process the data
@@ -1043,13 +1044,40 @@ odoo.define('df_website_front.event-stand', function (require) {
     });
 
     function load_message_stand() {
-        setInterval(() => {
+        if (session && session.user_id != false) {
+            setInterval(() => {
+                var event_id = event_main.get_event_id(true);
+                var formData = new FormData();
+                formData.append('stand', true);
+                formData.append('current_area_id', $('input[name=current_area_id]').val());
+                $.ajax({
+                    url: '/evento/' + event_id + '/get_message_networking',
+                    data: formData,
+                    type: 'POST',
+                    processData: false, // tell jQuery not to process the data
+                    contentType: false // tell jQuery not to set contentType
+                }).done(function (data_result) {
+                    var result = event_main.parse_result(data_result)
+                    if (result.success == true) {
+                        $('ul#commentListStand').html(result.messages);
+                        event_main.hideLoader();
+                    } else if (result.error == true) {
+                        toastr.error(event_message.getMessage(result.message));
+                    }
+                });
+            }, 3000);
+
+        }
+    }
+
+    function load_message_by_networking_stand_recursive() {
+        if (session && session.user_id != false) {
             var event_id = event_main.get_event_id(true);
             var formData = new FormData();
             formData.append('stand', true);
             formData.append('current_area_id', $('input[name=current_area_id]').val());
             $.ajax({
-                url: '/evento/' + event_id + '/get_message_networking',
+                url: '/evento/' + event_id + '/get_message_stand',
                 data: formData,
                 type: 'POST',
                 processData: false, // tell jQuery not to process the data
@@ -1057,33 +1085,10 @@ odoo.define('df_website_front.event-stand', function (require) {
             }).done(function (data_result) {
                 var result = event_main.parse_result(data_result)
                 if (result.success == true) {
-                    $('ul#commentListStand').html(result.messages);
-                    event_main.hideLoader();
-                } else if (result.error == true) {
-                    toastr.error(event_message.getMessage(result.message));
+                    $('ul.chatContainerScroll').html(result.messages);
                 }
             });
-        }, 3000);
-
-    }
-
-    function load_message_by_networking_stand_recursive() {
-        var event_id = event_main.get_event_id(true);
-        var formData = new FormData();
-        formData.append('stand', true);
-        formData.append('current_area_id', $('input[name=current_area_id]').val());
-        $.ajax({
-            url: '/evento/' + event_id + '/get_message_stand',
-            data: formData,
-            type: 'POST',
-            processData: false, // tell jQuery not to process the data
-            contentType: false // tell jQuery not to set contentType
-        }).done(function (data_result) {
-            var result = event_main.parse_result(data_result)
-            if (result.success == true) {
-                $('ul.chatContainerScroll').html(result.messages);
-            }
-        });
+        }
     }
 
     $('select#stand_select_id').on('hidden.bs.select', function (e) {
@@ -1099,30 +1104,35 @@ odoo.define('df_website_front.event-stand', function (require) {
 
     $('a.favorite-icon-stand').on('click', function (e) {
         e.preventDefault();
-        var event_id = event_main.get_event_id(true);
-        var area_id = $(this).data('area');
-        var formData = new FormData();
-        formData.append('area_id', area_id);
+        if (session && session.user_id != false) {
+            var event_id = event_main.get_event_id(true);
+            var area_id = $(this).data('area');
+            var formData = new FormData();
+            formData.append('area_id', area_id);
 
-        $.ajax({
-            url: '/evento/' + event_id + '/event_favorite_history',
-            data: formData,
-            type: 'POST',
-            processData: false, // tell jQuery not to process the data
-            contentType: false // tell jQuery not to set contentType
-        }).done(function (data_result) {
-            var result = event_main.parse_result(data_result)
-            if (result.success == true) {
-                if (result.deselect == undefined || result.deselect == 'undefined') {
-                    $('a.favorite-icon-stand').find('img').attr('src', '/df_website_front/static/src/img/like-1-full.svg');
-                } else {
-                    $('a.favorite-icon-stand').find('img').attr('src', '/df_website_front/static/src/img/like-1.svg');
+            $.ajax({
+                url: '/evento/' + event_id + '/event_favorite_history',
+                data: formData,
+                type: 'POST',
+                processData: false, // tell jQuery not to process the data
+                contentType: false // tell jQuery not to set contentType
+            }).done(function (data_result) {
+                var result = event_main.parse_result(data_result)
+                if (result.success == true) {
+                    if (result.deselect == undefined || result.deselect == 'undefined') {
+                        $('a.favorite-icon-stand').find('img').attr('src', '/df_website_front/static/src/img/like-1-full.svg');
+                    } else {
+                        $('a.favorite-icon-stand').find('img').attr('src', '/df_website_front/static/src/img/like-1.svg');
+                    }
+                    toastr.success(event_message.getMessage(result.message));
+                } else if (result.error == true) {
+                    toastr.error(event_message.getMessage(result.message));
                 }
-                toastr.success(event_message.getMessage(result.message));
-            } else if (result.error == true) {
-                toastr.error(event_message.getMessage(result.message));
-            }
-        });
+            });
+        } else {
+            toastr.info(_t('You must register in the system to be able to mark as a favorite.'));
+            return;
+        }
     });
 
 

@@ -45,19 +45,19 @@ class WebsiteEventControllerInherit(http.Controller):
     def eventos(self, event_id):
         datas = {}
         datas['event'] = request.env['event.event'].sudo().browse(event_id)
-        datas['sponsors'] = datas['event'].get_sponsor_by_event()
-        datas['date_range_str'] = datas['event'].get_range_date_event()
-        datas['exhibitors'] = datas['event'].get_exhibitor_by_event()
-        datas['speakers'] = datas['event'].get_speaker_by_event(False, True)
-        datas['news'] = datas['event'].get_news_by_event()
-        datas['counts'] = datas['event'].get_counts_event()
-        datas['data_count_nav'] = datas['event'].get_counts_event()
-        datas['plans'] = datas['event'].get_plans_by_event()
-        template_home = datas['event'].template_id
-        datas['present_stand'] = request.env.user.present_stand_user(False, datas['event'].id)
-        datas['check_key_in_list'] = datas['event'].check_key_in_list
-        datas['title'] = datas['event'].name
-        datas = datas['event'].get_countdown_event(datas)
+        datas['sponsors'] = datas['event'].sudo().get_sponsor_by_event()
+        datas['date_range_str'] = datas['event'].sudo().get_range_date_event()
+        datas['exhibitors'] = datas['event'].sudo().get_exhibitor_by_event()
+        datas['speakers'] = datas['event'].sudo().get_speaker_by_event(False, True)
+        datas['news'] = datas['event'].sudo().get_news_by_event()
+        datas['counts'] = datas['event'].sudo().get_counts_event()
+        datas['data_count_nav'] = datas['event'].sudo().get_counts_event()
+        datas['plans'] = datas['event'].sudo().get_plans_by_event()
+        template_home = datas['event'].sudo().template_id
+        datas['present_stand'] = request.env.user.sudo().present_stand_user(False, datas['event'].id)
+        datas['check_key_in_list'] = datas['event'].sudo().check_key_in_list
+        datas['title'] = datas['event'].sudo().name
+        datas = datas['event'].sudo().get_countdown_event(datas)
         """ 
             Buscando plantilla por defecto para el sitio del evento en caso de que no se seleccione ninguna, y así 
             se pueda constuir dinamicamente con snippets
@@ -70,7 +70,6 @@ class WebsiteEventControllerInherit(http.Controller):
                 ('key', '=', 'df_website_front.event_empty_page_view'),
                 ('website_id', '=', current_website.id)
             ], limit=1)
-
             if website_specific_view:
                 return website_specific_view._render(datas)
             else:
@@ -395,8 +394,7 @@ class WebsiteEventControllerInherit(http.Controller):
             'present_stand': present_stand
         })
 
-    @http.route('/evento/<int:event_id>/<int:pavilion_id>/pavilion_event', type='http', auth='user', website=True)
-    def pavilion_event(self, event_id, pavilion_id, **kw):
+    def _pavilion_event(self, event_id, pavilion_id, kw):
         event = request.env['event.event'].sudo().browse(event_id)
         pavilion = event.get_pavilion_by_event(pavilion_id)
         datas = {}
@@ -414,12 +412,12 @@ class WebsiteEventControllerInherit(http.Controller):
                 'df_event_virtual_fair.group_event_organizer') and not request.env.user.has_group(
             'base.group_system') and not request.env.user.has_group(
             'event.group_event_manager'):
-            datas['areas'] = pavilion.area_ids.filtered(lambda ar: ar.state == 'done')
+            datas['areas'] = pavilion.sudo().area_ids.filtered(lambda ar: ar.state == 'done')
         else:
-            datas['areas'] = pavilion.area_ids
+            datas['areas'] = pavilion.sudo().area_ids
         datas['pavilion'] = pavilion
         if len(pavilion) > 0:
-            template_pavilion = pavilion.event_template_id.template_id
+            template_pavilion = pavilion.sudo().event_template_id.template_id
             # Validando el acceso a la página
             if not request.env['ir.ui.view'].sudo().validate_user_groups_view(event, template_pavilion.xml_id) and (
                     not request.env.user.has_group(
@@ -430,6 +428,15 @@ class WebsiteEventControllerInherit(http.Controller):
             return template_pavilion._render(datas)
         else:
             raise Forbidden()
+
+    @http.route('/evento/<int:event_id>/<int:pavilion_id>/pavilion_event', type='http', auth='user', website=True)
+    def pavilion_event(self, event_id, pavilion_id, **kw):
+        return self._pavilion_event(event_id, pavilion_id, kw)
+
+    @http.route('/evento/<int:event_id>/<int:pavilion_id>/pavilion_event_pub', type='http', auth='public',
+                website=True)
+    def pavilion_event_public(self, event_id, pavilion_id, **kw):
+        return self._pavilion_event(event_id, pavilion_id, kw)
 
     @http.route(['/evento/<int:event_id>/speaker_detail'], type='json', auth='public', website=True)
     def speaker_detail(self, event_id, **kw):
@@ -518,6 +525,8 @@ class WebsiteEventControllerInherit(http.Controller):
     @http.route('/evento/<int:event_id>/<int:area_id>/networking_update', csrf=False)
     def event_networking_update(self, event_id, area_id, **kwargs):
         event = request.env['event.event'].sudo().browse(event_id)
+        if event_id.pavilion_stand_public:
+            return {}
         area = event.get_room_networking()
         selected_partner_id = kwargs.get('selected_partner_id', False)  # usuario seleccionado para chatear
         filter_username = kwargs.get('filter_username', '')  # texto escrito en el campo de busqueda
@@ -593,16 +602,13 @@ class WebsiteEventControllerInherit(http.Controller):
             'new_messages_count': new_messages_count
         })
 
-    @http.route(['/evento/<int:event_id>/<int:area_id>/event_area',
-                 '/evento/<int:event_id>/<int:area_id>/event_area/<stand_networking>/<val_area_stand_id>'], type='http',
-                auth='user', website=True)
-    def event_area(self, event_id, area_id, stand_networking=False, val_area_stand_id=False, **post):
+    def _event_area(self, event_id, area_id, stand_networking, val_area_stand_id, post, area_public=False):
         obj_area, event_history_obj = request.env['df_event_virtual_fair.area'], request.env[
             'df_event_virtual_fair.event.history']
         datas = {}
         datas['no_is_home'] = True
         datas['val_area_stand_id'] = False
-        datas['event'] = request.env['event.event'].sudo().browse(event_id)
+        datas['event'] = event_id
         present_stand = request.env.user.present_stand_user(True, datas['event'].id)
         valido, valido_admin = False, False
         datas['conference'] = False
@@ -618,23 +624,23 @@ class WebsiteEventControllerInherit(http.Controller):
                 if len(datas['area_id']) > 0:
                     valido = True
                     datas['room_networking'] = datas['event'].get_room_networking()
-                    datas['present_stand'] = request.env.user.present_stand_user(False, datas['event'].id)
+                    datas['present_stand'] = request.env.user.present_stand_user(False, event_id.id)
             # Validar si el usuario logueado no es el exhibitor del stand que se desea entrar, validar que
             # dicho stand ya se facturo (pagado)
             if not valido:
                 # Verificar que el area esta finalizada
-                datas['area_id'] = obj_area.sudo().search([('id', '=', area_id), ('event_id', '=', event_id),
+                datas['area_id'] = obj_area.sudo().search([('id', '=', area_id), ('event_id', '=', event_id.id),
                                                            ('state', '=', 'done')])
                 # Obtener el area propia del usuario logueado en caso de que sea un expositor
                 if present_stand:
-                    datas['my_area_id'] = obj_area.sudo().search([('event_id', '=', event_id),
+                    datas['my_area_id'] = obj_area.sudo().search([('event_id', '=', event_id.id),
                                                                   ('partner_id.id', '=', present_stand.id)])
                 if len(datas['area_id']) > 0:
                     valido = True
                 if datas.get('my_area_id', False) and len(datas['my_area_id']) > 0:
                     datas['room_networking'] = datas['event'].get_room_networking()
         else:
-            datas['area_id'] = obj_area.sudo().search([('id', '=', area_id), ('event_id', '=', event_id)])
+            datas['area_id'] = obj_area.sudo().search([('id', '=', area_id), ('event_id', '=', event_id.id)])
             valido_admin = True
             if datas['area_id'].template_id.template_id.conference_virtual_fair:
                 datas['conference'] = True
@@ -666,6 +672,7 @@ class WebsiteEventControllerInherit(http.Controller):
         expositor_area = request.env.user.partner_id.validate_partner_area(datas['area_id'],
                                                                            request.env.user.partner_id)
         """ Verificar que tenga permiso para esta plantilla """
+        perm_template = False
         if template_area:
             perm_template = request.env['ir.ui.view'].sudo().validate_user_groups_view(datas['event'],
                                                                                        template_area.xml_id)
@@ -717,7 +724,7 @@ class WebsiteEventControllerInherit(http.Controller):
         if datas.get('area_id', False):
             datas['all_stands'] = datas['area_id'].get_all_stands()
             datas['title'] = datas['area_id'].name + "|" + datas['event'].name
-            datas['count_visit_area'] = event_history_obj.get_visits_by_area(datas.get('area_id').id)
+            datas['count_visit_area'] = event_history_obj.sudo().get_visits_by_area(datas.get('area_id').id)
         if template_area:
             datas['sessionId'] = request.session.session_token
             """ Generar historial del acceso a las áreas temáticas """
@@ -737,6 +744,22 @@ class WebsiteEventControllerInherit(http.Controller):
             return template_area._render(datas)
         else:
             raise werkzeug.exceptions.NotFound()
+
+    @http.route(['/evento/<int:event_id>/<int:area_id>/event_area',
+                 '/evento/<int:event_id>/<int:area_id>/event_area/<stand_networking>/<val_area_stand_id>'], type='http',
+                auth='user', website=True)
+    def event_area(self, event_id, area_id, stand_networking=False, val_area_stand_id=False, **post):
+        event = request.env['event.event'].sudo().browse(event_id)
+        return self._event_area(event, area_id, stand_networking, val_area_stand_id, post)
+
+    @http.route(['/evento/<int:event_id>/<int:area_id>/event_area_pub',
+                 '/evento/<int:event_id>/<int:area_id>/event_area_public/<stand_networking>/<val_area_stand_id>'],
+                type='http', auth='public', website=True, crsf=False)
+    def event_area_public(self, event_id, area_id, stand_networking=False, val_area_stand_id=False, **post):
+        event = request.env['event.event'].sudo().browse(event_id)
+        if not event.sudo().pavilion_stand_public:
+            raise NotFound
+        return self._event_area(event, area_id, stand_networking, val_area_stand_id, post, area_public=True)
 
     @http.route(['/evento/<int:event_id>/schedule'], type='http', auth='user', website=True)
     def event_schedule(self, event_id, tag=None, **kw):
@@ -933,8 +956,10 @@ class WebsiteEventControllerInherit(http.Controller):
 
     @http.route('/evento/<int:event_id>/get_message_networking', type='http', auth='user', website=True, csrf=False)
     def get_message_networking(self, event_id, **kw):
-        messages = {'error': True, 'message': 29}
         event = request.env['event.event'].sudo().browse(event_id)
+        if event.pavilion_stand_public:
+            return {}
+        messages = {'error': True, 'message': 29}
         if (kw.get('partner_id', False) and kw['partner_id'] != '') or (kw.get('stand', False) and kw['stand'] != ''):
             if kw.get('stand', False) and kw['stand'] != '':
                 kw['area_id'] = request.env['df_event_virtual_fair.area'].browse(int(kw['current_area_id']))
@@ -1206,7 +1231,7 @@ class WebsiteEventControllerInherit(http.Controller):
 
             datas['speakers'] = datas['track'].event_track_speakers
             rooms = datas['event'].get_thematic_rooms(event_id=event_id)
-            if rooms['pre_conference']:
+            if rooms.get('pre_conference', False):
                 datas['ante_room'] = rooms['pre_conference']
             if datas['track']:
                 if datas['track'].event_area_id:
@@ -1237,10 +1262,10 @@ class WebsiteEventControllerInherit(http.Controller):
         else:
             raise werkzeug.exceptions.NotFound()
 
-    @http.route(['/evento/<int:event_id>/add_speaker','/evento/add_speaker'], type='http', auth='public', website=True)
+    @http.route(['/evento/<int:event_id>/add_speaker', '/evento/add_speaker'], type='http', auth='public', website=True)
     def add_speaker(self, event_id=None, **kw):
         messages = {'error': True, 'message': 29}
-        if kw.get('track_id', False) and kw.get('track_id',False) != '':
+        if kw.get('track_id', False) and kw.get('track_id', False) != '':
             event_track_id = request.env['event.track'].browse(int(kw['track_id']))
             messages = event_track_id.add_speaker_by_track(kw)
         return json.dumps(messages)

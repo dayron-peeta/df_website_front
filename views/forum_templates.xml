@@ -2036,7 +2036,11 @@
         <template id="stands_dynamics">
             <div t-attf-id="new-pavilion-block-#{row_stand}" class="d-flex justify-content-between">
                 <t t-if="check_key_in_list(areas,area_id)">
-                    <a t-att-href="'/evento/%s/%s/event_area' % (areas[area_id].event_id.id,areas[area_id].id)"
+
+                    <t t-if="areas[area_id].event_id.pavilion_stand_public == True" t-set="area_url" t-value="'event_area_pub'" />
+                    <t t-else="" t-set="area_url" t-value="'event_area'" />
+
+                    <a t-att-href="'/evento/%s/%s/%s' % (areas[area_id].event_id.id,areas[area_id].id,area_url)"
                        class="w-23"
                        t-att-title="areas[area_id].name">
                         <div class="position-relative w-100 h-100">
@@ -2049,7 +2053,11 @@
                     </a>
                 </t>
                 <t t-if="check_key_in_list(areas,area_id+1)">
-                    <a t-att-href="'/evento/%s/%s/event_area' % (event.id,areas[area_id+1].id)" class="w-23"
+
+                    <t t-if="areas[area_id].event_id.pavilion_stand_public == True" t-set="area_url" t-value="'event_area_pub'" />
+                    <t t-else="" t-set="area_url" t-value="'event_area'" />
+
+                    <a t-att-href="'/evento/%s/%s/%s' % (event.id,areas[area_id+1].id,area_url)" class="w-23"
                        t-att-title="areas[area_id+1].name">
                         <div class="position-relative w-100 h-100">
                             <img t-attf-src="data:image/*; base64,{{areas[area_id+1].image_1920}}"

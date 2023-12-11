@@ -863,7 +863,7 @@ odoo.define('df_website_front.user_sign', function (require) {
         }
     };
 
-    /* Modal de adicionar nueva presentacion DESCONECTADO*/
+    /* Modal de adicionar nueva presentacion */
     $('button#add_profile_presentation').click(function (e) {
         e.preventDefault();
         var $modal = '#modalAddTrack';
@@ -928,7 +928,7 @@ odoo.define('df_website_front.user_sign', function (require) {
                 }
             });
         });
-    }
+     }
 
     /* Adicionar nueva presentacion */
     $('#btnAddSaveTrack').click(function (e) {
