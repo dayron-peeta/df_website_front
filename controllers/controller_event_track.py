@@ -46,34 +46,35 @@ class EventTrackControllerInherit(EventTrackController):
         return json.dumps(tracks)
 
     @http.route(['/evento/<int:event_id>/edit_track', '/evento/edit_track'], type='http', auth="public", website=True,
-                csrf=False)
-    def edit_track(self, event_id=None, **post):
-        if post.get('elem_id', False):
-            track_id = request.env['event.track'].sudo().browse(int(post['elem_id']))
-            elem_update = {}
-            if track_id:
-                elem_update.update({
-                    'name': post.get('track_name', False),
-                    'video_track_url': post.get('track_video', False),
-                    'description': post.get('description', False),
-                    'event_track_type_id': post.get('track_type_id', False)
+                csrf=False) #Ruta de la URL para editar una presentación
+    def edit_track(self, event_id=None, **post): #Definición de la función para editar una presentación
+        if post.get('elem_id', False): #si se proporciona un ID de elemento en los datos enviados
+            track_id = request.env['event.track'].sudo().browse(int(post['elem_id'])) #Obtiene el objeto de la pista de evento correspondiente al ID proporcionado
+            elem_update = {} #Inicializa un diccionario para almacenar las actualizaciones de datos de la pista
+            if track_id: #si se encontró la pista de evento correspondiente al ID proporcionado
+                elem_update.update({ #Actualiza el diccionario de actualizaciones con los datos proporcionados
+                    'name': post.get('track_name', False), #nombre de la pista con el valor de 'track_name' en los datos enviados
+                    'video_track_url': post.get('track_video', False), #la URL del video de la pista con el valor de 'track_video' 
+                    'description': post.get('description', False), #la descripción de la pista con el valor de 'description'
+                    'event_track_type_id': post.get('track_type_id', False) #el tipo de pista del evento con el valor de 'track_type_id'
                 })
-            if post.get('thematic_all', False):
-                thematic = [int(t) for t in post['thematic_all'].split(',')]
-                elem_update['theme_tag_ids'] = [(6, 0, thematic)]
+            if post.get('thematic_all', False): #si se proporcionan temáticas en los datos enviados
+                thematic = [int(t) for t in post['thematic_all'].split(',')] #Obtiene una lista de IDs de temáticas a partir de 'thematic_all' en los datos enviados
+                elem_update['theme_tag_ids'] = [(6, 0, thematic)] # Actualiza las temáticas de la pista con la lista de IDs obtenida anteriormente
 
-            if post.get('event-list_all', False):
-                event = [int(t) for t in post['event-list_all'].split(',')]
-                elem_update['event_id'] = event[0]
+            if post.get('event-list_all', False): #si se proporcionan eventos en los datos enviados
+                event = [int(t) for t in post['event-list_all'].split(',')] #Obtiene una lista de IDs de eventos a partir de 'event-list_all' en los datos enviados
+                elem_update['event_id'] = event[0] #Actualiza el ID del evento de la pista con el primer ID de la lista obtenida anteriormente
 
-            if post.get('presentation_all', False):
-                presentation = [int(t) for t in post['presentation_all'].split(',')]
-                elem_update['event_track_type_id'] = [(6, 0, presentation)]
+            if post.get('presentation_all', False): #si se proporcionan presentaciones en los datos enviados
+                presentation = [int(t) for t in post['presentation_all'].split(',')] #Obtiene una lista de IDs de presentaciones a partir de 'presentation_all' en los datos enviados
+                elem_update['event_track_type_id'] = [(6, 0, presentation)] #Actualiza las presentaciones de la pista con la lista de IDs obtenida anteriormente
 
-            track_id.sudo().write(elem_update)
+            track_id.sudo().write(elem_update) #Actualiza los valores de la pista con los datos actualizados
             # 'data': {'id': int(post['elem_id']), 'name': post['track_name']}
         return json.dumps(
-            {'success': True, 'message': 10})
+            {'success': True, 'message': 10}) #Devuelve un JSON indicando que la operación fue exitosa y un mensaje con el valor 10
+    
 
     @http.route(['/evento/<int:event_id>/save_doc_track', '/evento/save_doc_track'], type='http', auth="public",
                 website=True)
