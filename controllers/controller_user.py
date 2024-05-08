@@ -70,7 +70,11 @@ class WebsiteUserController(http.Controller):
         event_registration = request.env['event.registration'].sudo().search(
             [('partner_id', '=', request.env.user.partner_id.id)])
         datas['event_registration'] = event_registration
-
+         
+        datas['type_attendee'] = request.env['type.attendee.registration'].sudo().search([])
+        datas['lodging'] = request.env['product.template'].sudo().search([])
+        datas['room_type'] = request.env['product.product'].sudo().search([])
+        datas['payment_method'] = request.env['res.currency'].sudo().search([])
         return http.request.render('df_website_front.user_profile', datas)
 
     @http.route(['/<int:user_id>/save_profile', '/<int:event_id>/<int:user_id>/save_profile'], type='http', auth='user',
@@ -208,40 +212,39 @@ class WebsiteUserController(http.Controller):
     @http.route(['/evento/edit_event_registrations'], type='http', auth="public", website=True, csrf=False)
     def edit_event_registrations(self, **post):
         if post.get('elem_id', False):
-            registrations = request.env['event.registration'].sudo().search(
-                [('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id'])).get_registrations_json()
+           # registrations = request.env['event.registration'].sudo().search(
+           #     [('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id'])).get_registrations_json()
+            
+            registrations = request.env['event.registration'].sudo().browse(int(post['elem_id'])).get_registrations_json()
         return json.dumps(registrations)
     
 
     #PENDIENTE //TODO
-    """
-    @http.route(['/evento/<int:event_id>/edit_inscription', '/evento/edit_inscription'], type='http', auth="public", website=True,
-                csrf=False)
-    def edit_track(self, event_id=None, **post):
-        if post.get('elem_id', False):
-            track_id = request.env['event.track'].sudo().browse(int(post['elem_id']))
-            elem_update = {}
-            if track_id:
-                elem_update.update({
-                    'name': post.get('track_name', False),
-                    'video_track_url': post.get('track_video', False),
-                    'description': post.get('description', False),
-                    'event_track_type_id': post.get('track_type_id', False)
-                })
-            if post.get('thematic_all', False):
-                thematic = [int(t) for t in post['thematic_all'].split(',')]
-                elem_update['theme_tag_ids'] = [(6, 0, thematic)]
+    @http.route('/evento/edit_inscription', type='http', auth="public", website=True,
+    csrf=False) #Ruta de la URL para editar una inscripción
+    def edit_inscription(self, **post): #Definición de la función para editar una inscripción
 
-            if post.get('event-list_all', False):
-                event = [int(t) for t in post['event-list_all'].split(',')]
-                elem_update['event_id'] = event[0]
+        #if post.get('elem_id', False) and post.get('event_ticket_id', False): #si se proporciona un ID de elemento en los datos enviados
+        elem_id = post.get('elem_id', False)
+        if elem_id != '' and elem_id != 'undefined': #si se proporciona un ID de elemento en los datos enviados
+            
+            registration_id = request.env['event.registration'].sudo().browse(int(post['elem_id'])) #Obtiene el objeto de la pista de evento correspondiente al ID proporcionado
 
-            if post.get('presentation_all', False):
-                presentation = [int(t) for t in post['presentation_all'].split(',')]
-                elem_update['event_track_type_id'] = [(6, 0, presentation)]
+            #Inicializa un diccionario para almacenar las actualizaciones de datos de la pista            
+            elem_update = { #Actualiza el diccionario de actualizaciones con los datos proporcionados
+                # Acceder a los valores enviados desde el formulario
+                'event_ticket_id': post.get('event_tickets_registrations'), #nombre de la pista con el valor de 'event_tickets_registrations' en los datos enviados
+                'type_attendees': post.get('event_type_attendee_registrations', False), 
+                #'lodging': post.get('event_lodging_registrations', False), 
+                #'room_type': post.get('event_room_type_registrations', False), 
+                'number_nights': post.get('event_number_nights_registrations', False), 
+                'entry_date': post.get('event_entry_date_registrations', False), 
+                'companion': post.get('event_companion_registrations', False), 
+                'type_institution': post.get('event_type_institution_registrations', False), 
+                #'category_investigative': post.get('event_category_investigative_registrations', False), 
 
-            track_id.sudo().write(elem_update)
-            # 'data': {'id': int(post['elem_id']), 'name': post['track_name']}
+            }
+        registration_id.write(elem_update)
         return json.dumps(
-            {'success': True, 'message': 10})
-            """
+            {'success': True, 'message': 10}) #Devuelve un JSON indicando que la operación fue exitosa y un mensaje con el valor 10
+    

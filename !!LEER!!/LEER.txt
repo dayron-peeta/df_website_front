@@ -1,2 +1,0 @@
-Pon el fichero event_registration en la ruta \fevexpo\df_event_virtual_fair\models. 
-Esto es necesario para tomar la info del modelo, aqui añadi una funcion llamada get_registrations_json()

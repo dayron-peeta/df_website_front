@@ -82,6 +82,7 @@
                 <t t-call="df_website_front.modal_detail_speaker" />
                 <t t-call="df_website_front.modal_view_registrations" />
                 <t t-call="df_website_front.modal_edit_registrations" />
+<t t-call="df_website_front.modal_add_payment_method" />
                 <t t-if="event">
                     <t t-call="df_website_front.event_navbar_dinamic" />
                 </t>
@@ -133,16 +134,15 @@
                                 Inscriptions
                             </a>
                         </li>
-
                         <!--                        Para el primero: mx-auto ml-sm-auto mr-sm-0-->
                         <!--                        Para el ultimo: mx-auto mr-sm-auto ml-sm-0-->
                         <!--                        Para los intermedios: mx-auto mx-sm-0-->
                         <!--                        <t t-if="is_speaker == true">-->
                         <!-- <li class="nav-item mx-auto mx-sm-0" role="presentation">
                             <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
-                            id="user_profile_presentation"
-                            data-toggle="tab" href="#user_profile_presentation_form" role="tab"
-                            aria-controls="user_profile_presentation_form" aria-selected="false">
+                               id="user_profile_presentation"
+                               data-toggle="tab" href="#user_profile_presentation_form" role="tab"
+                               aria-controls="user_profile_presentation_form" aria-selected="false">
                                 Presentation
                             </a>
                         </li>-->
@@ -739,13 +739,17 @@
                                                 <a
                                                     class='EditInscription fa fa-edit icon-fa-myfont cursor-pointer'
                                                     t-if="inscription.state != 'cancel' and inscription.state != 'approved' and inscription.state != 'done'"
-                                                    title="Edit Inscription" />
+                                                    title="Edit Inscription"/>
                                                 <a
                                                     class='ChangeStatusInscription fa fa-circle-o-notch icon-fa-myfont cursor-pointer'
                                                     title="Change Status Inscription" />
                                                 <a
                                                     class='ViewInscription fa fa-eye icon-fa-myfont cursor-pointer'
                                                     title="View Inscription" />
+                                                <a
+                                                    class='InscriptionsRegistration fa fa-send icon-fa-myfont cursor-pointer'
+                                                    t-if="inscription.state == 'cancel' or inscription.state == 'approved'"
+                                                    title="Inscriptions Registration" />
                                             </td>
                                         </tr>
                                     </t>
@@ -918,7 +922,8 @@
                                                     </thead>
                                                     <tbody>
                                                         <t t-foreach="invoices" t-as="invoice">
-                                                            <tr t-att-id="invoice.id">
+                                                            <tr t-att-id="invoice.id"
+                                                                t-att-payment-acquirer-id="invoice.payment_acquirer_id.id">
                                                                 <th scope="row">
                                                                     <t t-esc="invoice_index + 1" />
                                                                 </th>
@@ -978,7 +983,7 @@
                                                                     </t>
                                                                 </td>
                                                                 <td>
-                                                                    <a
+                                                                    <a id="exportInvoice"
                                                                         class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0 seePaymentRow"
                                                                         style="padding: 1px 6px;"
                                                                         target="_blank"

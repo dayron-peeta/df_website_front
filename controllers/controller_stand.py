@@ -136,7 +136,7 @@ class WebsiteStandController(http.Controller):
             messages = event_area.get_message_by_stand()
         return json.dumps(messages)
 
-    @http.route('/evento/<int:event_id>/information_stand', type='http', auth='user', website=True, csrf=False)
+    @http.route('/evento/<int:event_id>/information_stand', type='http', auth='public', website=True, csrf=False)
     def information_stand(self, event_id, **kw):
         event = request.env['event.event'].sudo().browse(event_id)
         description_area = ''
@@ -149,7 +149,7 @@ class WebsiteStandController(http.Controller):
             'success': True
         })
 
-    @http.route('/evento/<int:event_id>/information_stand_statistic', type='http', auth='user', website=True,
+    @http.route('/evento/<int:event_id>/information_stand_statistic', type='http', auth='public', website=True,
                 csrf=False)
     def information_stand_statistic(self, event_id, **kw):
         event, statistics = request.env['event.event'].sudo().browse(event_id), []

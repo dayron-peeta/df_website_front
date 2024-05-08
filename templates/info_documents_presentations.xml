@@ -4,8 +4,8 @@
             <t t-call="website.layout">
 
                 <!--  Región para configuración de snippets -->
-                <div class="oe_structure internal_page" />
-                <input t-if="event" id="EVENT_ID" t-att-value="event.id" type="hidden" />
+                <div class="oe_structure internal_page"/>
+                <input t-if="event" id="EVENT_ID" t-att-value="event.id" type="hidden"/>
 
                 <t t-call="df_website_front.loader_event"/>
                 <t t-call="df_website_front.modal_add_speaker_conference"/>
@@ -13,62 +13,62 @@
                 <t t-call="df_website_front.modal_track"/>
                 <t t-call="df_website_front.modal_confirm_delete_element"/>
                 <div
-                    class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow ">
+                        class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow ">
                     <h2 class="my-0 mr-md-auto text-left">INFO DOCUMENTS/PRESENTATIONS</h2>
                     <a class="btn btn-outline-primary" href="/documents_presentations">BACK</a>
                 </div>
 
-                <div class="oe_structure ">
+                <div class="oe_structure">
                     <!--  Etiquetas de la tabla de navegacion-->
                     <ul class="nav nav-tabs my-nav-tabs" role="tablist">
                         <li t-attf-class="nav-item mx-auto ml-sm-auto mr-sm-0"
                             role="user_data">
                             <a class="nav-link active my-nav-link mb-0 myriadpro-regular enable-tab"
-                                id="datas" data-toggle="tab"
-                                href="#documents_presentations_datas" role="tab"
-                                aria-controls="user_profile_datas_form" aria-selected="true">
+                               id="datas" data-toggle="tab"
+                               href="#documents_presentations_datas" role="tab"
+                               aria-controls="user_profile_datas_form" aria-selected="true">
                                 Documents/Presentations Data
                             </a>
                         </li>
                         <li class="nav-item mx-auto mx-sm-0" role="presentation">
                             <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
-                                id="authors"
-                                data-toggle="tab" href="#documents_presentations_authors" role="tab"
-                                aria-controls="user_profile_presentation_form" aria-selected="false">
+                               id="authors"
+                               data-toggle="tab" href="#documents_presentations_authors" role="tab"
+                               aria-controls="user_profile_presentation_form" aria-selected="false">
                                 Authors
                             </a>
                         </li>
                         <li t-attf-class="nav-item mx-auto mx-sm-0" role="presentation">
                             <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
-                                id="files"
-                                data-toggle="tab" href="#documents_presentations_files" role="tab"
-                                aria-controls="user_profile_payment_form" aria-selected="false">
+                               id="files"
+                               data-toggle="tab" href="#documents_presentations_files" role="tab"
+                               aria-controls="user_profile_payment_form" aria-selected="false">
                                 Files
                             </a>
                         </li>
                         <li class="nav-item mx-auto mx-sm-0" role="presentation">
                             <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
-                                id="images" data-toggle="tab"
-                                href="#documents_presentations_images" role="tab"
-                                aria-controls="user_profile_agenda_form" aria-selected="false">
+                               id="images" data-toggle="tab"
+                               href="#documents_presentations_images" role="tab"
+                               aria-controls="user_profile_agenda_form" aria-selected="false">
                                 Images
                             </a>
                         </li>
                         <li class="nav-item mx-auto mx-sm-0" role="presentation"
                             id="presentation-program-id">
                             <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
-                                id="program"
-                                data-toggle="tab" href="#documents_presentations_program" role="tab"
-                                aria-controls="accredited_profile_user_form" aria-selected="false">
+                               id="program"
+                               data-toggle="tab" href="#documents_presentations_program" role="tab"
+                               aria-controls="accredited_profile_user_form" aria-selected="false">
                                 Program
                             </a>
                         </li>
                         <li class="nav-item mx-auto mr-sm-auto ml-sm-0" role="presentation"
                             id="presentation-note-id">
                             <a class="nav-link my-nav-link mb-0 myriadpro-regular enable-tab"
-                                id="notes"
-                                data-toggle="tab" href="#documents_presentations_notes" role="tab"
-                                aria-controls="accredited_profile_user_form" aria-selected="false">
+                               id="notes"
+                               data-toggle="tab" href="#documents_presentations_notes" role="tab"
+                               aria-controls="accredited_profile_user_form" aria-selected="false">
                                 Notes
                             </a>
                         </li>
@@ -78,22 +78,21 @@
                 <!--  Contenido de la tabla de navegacion  -->
                 <div class="tab-content min-h">
 
-                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
 
                     <!--  Panel  documents/presentations -->
                     <div class="tab-pane fade show active" id="documents_presentations_datas"
-                        role="tabpanel"
-                        aria-labelledby="user_profile_datas_form-tab">
+                         role="tabpanel"
+                         aria-labelledby="user_profile_datas_form-tab">
 
-                        <input type="hidden" name="elem_id" id="input-track-id"
-                            t-att-value="track_id" />
+                        <input type="hidden" name="elem_id" id="input-track-id" t-att-value="track_id"/>
                         <input type="hidden" name="event_id" id="input-event-id"
                             t-if="event" t-att-value="event.id" />
 
                         <div class="container">
                             <form id="form_edit_track">
                                 <input type="hidden" name="csrf_token"
-                                    t-att-value="request.csrf_token()" />
+                                       t-att-value="request.csrf_token()"/>
 
                                 <div class="container">
                                     <div class="row mt-5">
@@ -102,15 +101,16 @@
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="text"
-                                                        class="form-control my-form-control"
-                                                        name="track_name" t-att-value="session_name" />
+                                                           class="form-control my-form-control"
+                                                           name="track_name" t-att-value="session_name"/>
                                                     <label
-                                                        class="my-form-label myriadpro-regular">
-                                                        <span class="text-danger" /> Presentation
-                                                        Title </label>
+                                                            class="my-form-label myriadpro-regular">
+                                                        <span class="text-danger"/>
+                                                        Presentation Title
+                                                    </label>
                                                 </div>
                                                 <div
-                                                    class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
+                                                        class="text-danger myriadpro-regular px-3 pt-2 my-alert d-none">
                                                     The field is required
                                                 </div>
                                             </div>
@@ -124,12 +124,12 @@
                                                         t-if="event_track_id"
                                                         t-att-value="event_track_id.video_track_url" />
                                                     <label
-                                                        class="my-form-label myriadpro-regular">
+                                                            class="my-form-label myriadpro-regular">
                                                         URL Video
                                                     </label>
                                                 </div>
                                                 <div
-                                                    class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
+                                                        class="text-danger myriadpro-regular px-3 pt-2 my-url-alert d-none">
                                                     The url format is incorrect
                                                 </div>
                                             </div>
@@ -141,19 +141,19 @@
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <select name="thematic"
-                                                        id="thematic-edit-id"
-                                                        class="form-control my-form-control my-select selectpicker"
-                                                        title=" " data-live-search="true"
-                                                        multiple="">
+                                                            id="thematic-edit-id"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true"
+                                                            multiple="">
                                                         <t t-foreach="thematics" t-as="thema_t">
                                                             <option t-att-value="thema_t.id"
-                                                                t-att-selected="thema_t.id in concurrent_thematic.ids">
-                                                                <t t-esc="thema_t.name" />
+                                                                    t-att-selected="thema_t.id in concurrent_thematic.ids">
+                                                                <t t-esc="thema_t.name"/>
                                                             </option>
                                                         </t>
                                                     </select>
                                                     <label
-                                                        class="my-form-label myriadpro-regular">
+                                                            class="my-form-label myriadpro-regular">
                                                         Thematic
                                                     </label>
                                                 </div>
@@ -164,18 +164,18 @@
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <select name="event-list"
-                                                        id="event-list-edit"
-                                                        class="form-control my-form-control my-select selectpicker"
-                                                        title=" " data-live-search="true">
+                                                            id="event-list-edit"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true">
                                                         <t t-foreach="events_track" t-as="events_t">
                                                             <option t-att-value="events_t.id"
-                                                                t-att-selected="events_t.id == concurrent_event.id">
-                                                                <t t-esc="events_t.name" />
+                                                                    t-att-selected="events_t.id == concurrent_event.id">
+                                                                <t t-esc="events_t.name"/>
                                                             </option>
                                                         </t>
                                                     </select>
                                                     <label
-                                                        class="my-form-label myriadpro-regular">
+                                                            class="my-form-label myriadpro-regular">
                                                         Event
                                                     </label>
                                                 </div>
@@ -189,19 +189,18 @@
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <select name="track_type_id"
-                                                        id="presentation-edit"
-                                                        class="form-control my-form-control my-select selectpicker"
-                                                        title=" " data-live-search="true">
-                                                        <t t-foreach="type_presentations"
-                                                            t-as="type_t">
+                                                            id="presentation-edit"
+                                                            class="form-control my-form-control my-select selectpicker"
+                                                            title=" " data-live-search="true">
+                                                        <t t-foreach="type_presentations" t-as="type_t">
                                                             <option t-att-value="type_t.id"
-                                                                t-att-selected="type_t.id == event_track_id.event_track_type_id.id">
-                                                                <t t-esc="type_t.name" />
+                                                                    t-att-selected="type_t.id == event_track_id.event_track_type_id.id">
+                                                                <t t-esc="type_t.name"/>
                                                             </option>
                                                         </t>
                                                     </select>
                                                     <label
-                                                        class="my-form-label myriadpro-regular">
+                                                            class="my-form-label myriadpro-regular">
                                                         Type of presentation
                                                     </label>
                                                 </div>
@@ -235,8 +234,9 @@
                                                             t-esc="event_track_id.description" />
                                                     </textarea>
                                                     <label class="my-form-label myriadpro-regular">
-                                                        <span class="text-danger" /> Presentation
-                                                        Summary </label>
+                                                        <span class="text-danger"/>
+                                                        Presentation Summary
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -262,19 +262,19 @@
 
                     <!--  Panel Authors  -->
                     <div class="tab-pane fade " id="documents_presentations_authors"
-                        role="tabpanel"
-                        aria-labelledby="user_profile_datas_form-tab">
+                         role="tabpanel"
+                         aria-labelledby="user_profile_datas_form-tab">
 
                         <div class="container">
                             <div class="col-sm text-sm-right mb-3 mb-sm-0">
                                 <button id="add_author_track_id" data-resources="3"
-                                    class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
                                     Add author
                                 </button>
                             </div>
-                            <input type="hidden" name="track_id" value="" />
+                            <input type="hidden" name="track_id" value=""/>
                             <div
-                                class="table-responsive table-wrapper-scroll-y my-custom-scrollbar mt-3">
+                                    class="table-responsive table-wrapper-scroll-y my-custom-scrollbar mt-3">
                                 <table class="table" id="user_tracks_authors">
                                     <thead>
                                         <tr>
@@ -310,8 +310,6 @@
                                                 </tr>
                                             </t>
                                         </t>
-
-
                                     </tbody>
                                 </table>
                             </div>
@@ -320,18 +318,18 @@
 
                     <!--  Panel  files -->
                     <div class="tab-pane fade " id="documents_presentations_files"
-                        role="tabpanel"
+                         role="tabpanel"
                         aria-labelledby="user_profile_datas_form-tab">
                         <div class="container">
                             <div class="col-sm text-sm-right mb-3 mb-sm-0">
                                 <button id="add_doc_track_id" data-resources="3"
-                                    class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
                                     Add document
                                 </button>
                             </div>
-                            <input type="hidden" name="track_id" value="" />
+                            <input type="hidden" name="track_id" value=""/>
                             <div
-                                class="table-responsive table-wrapper-scroll-y my-custom-scrollbar mt-3">
+                                    class="table-responsive table-wrapper-scroll-y my-custom-scrollbar mt-3">
                                 <table class="table" id="user_tracks_docs" data-track-id="">
                                     <thead>
                                         <tr id="header_track_docs">
@@ -383,21 +381,21 @@
 
                     <!--  Panel  images -->
                     <div class="tab-pane fade " id="documents_presentations_images"
-                        role="tabpanel"
-                        aria-labelledby="user_profile_datas_form-tab">
+                         role="tabpanel"
+                         aria-labelledby="user_profile_datas_form-tab">
 
                         <div class="container">
                             <div class="col-sm text-sm-right mb-3 mb-sm-0">
                                 <button id="add_img_track_id" data-resources="3"
-                                    class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
+                                        class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0">
                                     Add image
                                 </button>
                             </div>
 
                             <div
-                                class="table-responsive table-wrapper-scroll-y my-custom-scrollbar mt-3">
+                                    class="table-responsive table-wrapper-scroll-y my-custom-scrollbar mt-3">
                                 <table class="table" id="user_tracks_imgs"
-                                    data-track-id="">
+                                       data-track-id="">
                                     <thead>
                                         <tr id="header_track_imgs">
                                             <th scope="col">#</th>
@@ -448,8 +446,8 @@
 
                     <!--  Panel  programa -->
                     <div class="tab-pane fade " id="documents_presentations_program"
-                        role="tabpanel"
-                        aria-labelledby="user_profile_datas_form-tab">
+                         role="tabpanel"
+                         aria-labelledby="user_profile_datas_form-tab">
 
                         <div class="container">
                             <div class="row mt-5">
@@ -464,7 +462,7 @@
                                                 value="Valor inicial" />
 
                                             <label
-                                                class="my-form-label myriadpro-regular">
+                                                    class="my-form-label myriadpro-regular">
                                                 Date and time
                                             </label>
                                         </div>
@@ -474,11 +472,11 @@
                                     <div class="mb-4">
                                         <div class="my-form-outline">
                                             <input type="text" name="track_duration"
-                                                class="form-control my-form-control"
-                                                t-att-value="session_duration" readonly="readonly"
-                                                value="Valor inicial" />
+                                                   class="form-control my-form-control"
+                                                   t-att-value="session_duration" readonly="readonly"
+                                                   value="Valor inicial"/>
                                             <label
-                                                class="my-form-label myriadpro-regular">
+                                                    class="my-form-label myriadpro-regular">
                                                 Duration
                                             </label>
                                         </div>
@@ -491,20 +489,20 @@
                                     <div class="mb-4">
                                         <div class="my-form-outline">
                                             <select name="location_id"
-                                                id="location-select-id"
-                                                class="form-control my-form-control my-select selectpicker"
-                                                title=" " data-live-search="true"
-                                                multiple="">
+                                                    id="location-select-id"
+                                                    class="form-control my-form-control my-select selectpicker"
+                                                    title=" " data-live-search="true"
+                                                    multiple="">
 
-                                                <t t-foreach="locations" t-as="location_l">//TODO <option
-                                                        t-att-value="location_l.id"
-                                                        t-att-selected="location_l.id == concurrent_location.id">
-                                                        <t t-esc="location_l.name" />
+                                                <t t-foreach="locations" t-as="location_l">//TODO
+                                                    <option t-att-value="location_l.id"
+                                                            t-att-selected="location_l.id == concurrent_location.id">
+                                                        <t t-esc="location_l.name"/>
                                                     </option>
                                                 </t>
                                             </select>
                                             <label
-                                                class="my-form-label myriadpro-regular">
+                                                    class="my-form-label myriadpro-regular">
                                                 Location
                                             </label>
                                         </div>
@@ -515,18 +513,18 @@
                                     <div class="mb-4">
                                         <div class="my-form-outline">
                                             <select name="virtual_room_id"
-                                                id="virtual-room-select-id"
-                                                class="form-control my-form-control my-select selectpicker"
-                                                title=" " data-live-search="true"
-                                                multiple="" disabled="disabled">
+                                                    id="virtual-room-select-id"
+                                                    class="form-control my-form-control my-select selectpicker"
+                                                    title=" " data-live-search="true"
+                                                    multiple="" disabled="disabled">
                                                 <t t-foreach="theme_tags" t-as="theme_t">
                                                     <option t-att-value="theme_t.id">
-                                                        <t t-esc="theme_t.name" />
+                                                        <t t-esc="theme_t.name"/>
                                                     </option>
                                                 </t>
                                             </select>
                                             <label
-                                                class="my-form-label myriadpro-regular">
+                                                    class="my-form-label myriadpro-regular">
                                                 Virtual room
                                             </label>
                                         </div>
@@ -539,8 +537,8 @@
 
                     <!--  Panel  notas -->
                     <div class="tab-pane fade " id="documents_presentations_notes"
-                        role="tabpanel"
-                        aria-labelledby="user_profile_datas_form-tab">
+                         role="tabpanel"
+                         aria-labelledby="user_profile_datas_form-tab">
                     </div>
                 </div>
 
@@ -548,7 +546,7 @@
         </template>
         <template id="my_documents_presentations" inherit_id="website.user_dropdown">
             <xpath expr="//div[@id='o_logout_divider']" position="before">
-                <div id="o_stand_divider" class="dropdown-divider" />
+                <div id="o_stand_divider" class="dropdown-divider"/>
                 <a href="/documents_presentations" role="menuitem" class="dropdown-item">
                     My Presentations
                 </a>

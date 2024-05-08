@@ -21,10 +21,8 @@
                         <div class="mb-2">
                             <div class="col-sm text-sm-right mb-3 mb-sm-0 mt-4">
                                 <a t-attf-href="/info_documents_presentations" class="btn text-uppercase feria-see-all myriadpro-regular texto rounded-0" >
-                                    Add presentation //TODO
-                                </a>
-                                        
-                                
+                                    Add presentation
+                                </a>  
                             </div>
                         </div>
                     </div>
@@ -76,7 +74,7 @@
                                     <td>
                                         <a t-attf-href="/#{track.id}/info_documents_presentations"
                                             class='fa fa-edit icon-fa-myfont cursor-pointer'
-                                            title="Edit track"/> //TODO
+                                            title="Edit track"/> 
                                         <a 
                                                 class='deleteTrack fa fa-close icon-fa-myfont cursor-pointer'
                                                 title="Delete track"/>

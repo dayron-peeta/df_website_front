@@ -3103,3 +3103,29 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
 msgid "Theme tag"
 msgstr "Temáticas"
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/sidebar_menu.js:0
+#, python-format
+msgid ""
+"You must register in the system to be able to exchange with the exhibitor."
+msgstr ""
+"Debe registrate en el sistema para poder intercambiar con el expositor."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/sidebar_menu.js:0
+#, python-format
+msgid ""
+"You must register in the system to be able to make an appointment with the "
+"exhibitor."
+msgstr ""
+"Debe registrate en el sistema para poder concertar una cita con el expositor."
+
+#. module: df_website_front
+#. openerp-web
+#: code:addons/df_website_front/static/src/js/app/event_stand.js:0
+#, python-format
+msgid "You must register in the system to be able to mark as a favorite."
+msgstr "Debe registrarse en el sistema para poder marcar como favorito."

@@ -26,18 +26,20 @@ odoo.define('df_website_front.event_payments', function(require) {
         event_main.showLoader();
         var elem_id = $(this).attr('id');
         var invoice_id = $(this).closest('tr').attr('id');
+        var payment_acquirer_id = $(this).closest('tr').attr('payment-acquirer-id');
         var payment_method_id = $(this).closest('tr').attr('data-payment-method-id');
         if(elem_id == 'payment_invoice'){
             $('a.load-image-image-operation').removeClass('d-none').addClass('d-block');
             $('a.show-load-image-image-operation').removeClass('d-block').addClass('d-none');
         }
+
         var formData = new FormData();
         if (invoice_id != 'undefined' && invoice_id != undefined && invoice_id != ''){
             formData.append('invoice_id',invoice_id);
         }
         $.ajax({
             url: '/get_payment_acquires',
-            type: 'GET',
+            type: 'POST',
             data: formData,
             processData: false, // tell jQuery not to process the data
             contentType: false // tell jQuery not to set contentType
@@ -70,6 +72,8 @@ odoo.define('df_website_front.event_payments', function(require) {
                 } if(elem_id == 'exportInvoice'){
                     $('div#pay_only_description').html('');
                     $('select#payment_only_method').html(html);
+                    $('select#payment_only_method').selectpicker('refresh');
+                    $('select#payment_only_method').selectpicker('val', payment_acquirer_id);
                     $('select#payment_only_method').selectpicker('refresh');
                     if(payment_method_id != 'undefined' && payment_method_id != undefined && payment_method_id != ''){
                         $('select#payment_only_method').selectpicker('val',payment_method_id);

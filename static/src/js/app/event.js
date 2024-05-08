@@ -286,6 +286,11 @@ odoo.define('df_website_front.event', function (require) {
 
     $('#register_user_profile').click(function (e) {
         e.preventDefault();
+
+        //         bootbox.alert('This is an alert with a callback!', function() {
+        //                    console.log('This was logged in the callback!');
+        //                    });
+
         $('.input-error').removeClass('input-error');
         $('.select-error').removeClass('select-error');
         $('.label-error').removeClass('label-error');
@@ -485,57 +490,61 @@ odoo.define('df_website_front.event', function (require) {
 
     });
 
-    function edit_track(elem_id, event_id) { //TODO
-        var $form = $('#form_edit_track');
-        var formData = new FormData($form[0]);
+    //TODO
+    function edit_track(elem_id, event_id) {
+        var $form = $('#form_edit_track'); //el formulario con id "form_edit_track" se guarda en $form
+        var formData = new FormData($form[0]); //Se crea un objeto FormData a partir del formulario seleccionado
         var event_id = event_id;
 
         if (event_id == null)
-            event_id = $(elem_id).attr('event_id');
+            event_id = $(elem_id).attr('event_id'); //Si event_id es nulo, se obtiene el valor del atributo "event_id" del elemento elem_id
 
         if (elem_id == '' || elem_id == undefined || elem_id == 'undefined') {
-            elem_id = $('#input-track-id').val();
+            elem_id = $('#input-track-id').val();  //Si no elem_id, se obtiene el valor del campo de entrada con el id "input-track-id"
         }
 
         if (event_id == '' || event_id == undefined || event_id == 'undefined') {
-            event_id = $('#input-event-id').val();
+            event_id = $('#input-event-id').val(); //Si no event_id, se obtiene el valor del campo de entrada con el id "input-event-id" 
+
         }
 
-        formData.append('elem_id', elem_id);
+        formData.append('elem_id', elem_id); // Se agrega el valor de elem_id al objeto FormData con la clave 'elem_id'
 
         if ($('select[name=theme_tag_id]').val() != '' && $('select[name=theme_tag_id]').val() != undefined &&
             $('select[name=theme_tag_id]').val() != 'undefined') {
-            formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val());
+
+            formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val()); // Si el elemento select con el nombre "theme_tag_id" es válido, se agrega ese valor al objeto FormData con la clave 'theme_tag_id_all'
+
         }
 
         if ($('select[name=event-list]').val() != '' && $('select[name=event-list]').val() != undefined &&
             $('select[name=event-list]').val() != 'undefined') {
-            formData.append('event-list_all', $('select[name=event-list]').val());
+            formData.append('event-list_all', $('select[name=event-list]').val()); //Si el elemento select con el nombre "event-list" es válido, se agrega ese valor al objeto FormData con la clave 'event-list_all'
         }
 
         if ($('select[name=presentation]').val() != '' && $('select[name=presentation]').val() != undefined &&
             $('select[name=presentation]').val() != 'undefined') {
-            formData.append('presentation_all', $('select[name=presentation]').val());
+            formData.append('presentation_all', $('select[name=presentation]').val()); //Si el elemento select con el nombre "presentation" es válido, se agrega ese valor al objeto FormData con la clave 'presentation_all'
         }
 
-        event_main.showLoader();
-        $.ajax({
+        event_main.showLoader(); //Se muestra un cargador en la interfaz
+        $.ajax({ //Se realiza una solicitud AJAX
             url: '/evento/' + event_id + '/edit_track',
             data: formData,
             type: 'POST',
             processData: false, // tell jQuery not to process the data
             contentType: false // tell jQuery not to set contentType
-        }).done(function (data_result) {
-            var result = parse_result(data_result);
-            if (result.success == true) {
-                var modal = '#modalTrack';
-                event_main.hideLoader();
+        }).done(function (data_result) { // Cuando la solicitud AJAX se completa con éxito, se ejecuta esta función con la respuesta recibida
+            var result = parse_result(data_result); //Se analiza la respuesta recibida y se guarda
+            if (result.success == true) { //Si la propiedad success de result es verdadera
+                var modal = '#modalTrack'; // Se guarda el selector '#modalTrack'
+                event_main.hideLoader(); //Se oculta el cargador en la interfaz
                 //$('table#user_tracks tr[id=' + result.data.id + '] p.track_name_id').text(result.data.name);
-                $(modal).modal('hide');
-                toastr.success(_t(event_message.getMessage(result.message)));
+                $(modal).modal('hide'); //Se oculta el modal con el selector guardado en la variable modal
+                toastr.success(_t(event_message.getMessage(result.message))); //mensaje de éxito utilizando la biblioteca Toastr
             } else {
-                event_main.hideLoader();
-                toastr.error(_t(event_message.getMessage(result.message)));
+                event_main.hideLoader(); //Se oculta el cargador en la interfaz
+                toastr.error(_t(event_message.getMessage(result.message))); //mensaje de error utilizando la biblioteca Toastr.
             }
         });
     }
@@ -765,6 +774,7 @@ odoo.define('df_website_front.event', function (require) {
     $('#add_author_track_id').click(function () {
         var modal = '#modalResourcesAuthPresentation';
         $('span.title_modal_save_edit_resources_presentation').text(event_message.getMessage(60));
+        $(modal + ' input[name=track_id]').val($('#input-track-id').val());
         $('#modalResourcesAuthPresentation input[name=name]').val('');
         $('#modalResourcesAuthPresentation input[email=email]').val('');
         $(modal).modal('show');
@@ -773,7 +783,7 @@ odoo.define('df_website_front.event', function (require) {
     $('#add_doc_track_id, #add_doc').click(function () {
         var modal = '#modalResourcesDocsPresentation';
         $('span.title_modal_save_edit_resources_presentation').text(event_message.getMessage(39));
-        var track_id = $(modal + ' input[name=track_id]').val($('table#user_tracks_docs').data('track-id'));
+        $(modal + ' input[name=track_id]').val($('table#user_tracks_docs').data('track-id'));
         $('#modalResourcesDocsPresentation input[name=name]').val('');
         $('#modalResourcesDocsPresentation input[name=doc_file]').val('');
         $(modal).modal('show');
@@ -1253,6 +1263,7 @@ odoo.define('df_website_front.event', function (require) {
             if (result.success == true) {
                 toastr.success(event_message.getMessage(result.message));
                 $('#modalAddSpeaker').modal('hide');
+                window.location.reload();
             } else if (result.error == true) {
                 toastr.error(event_message.getMessage(result.message));
             }
@@ -1314,8 +1325,9 @@ odoo.define('df_website_front.event', function (require) {
 
     //INSCRIPTIONS
     $('a.ChangeStatusInscription').click(function (e) {
+        e.preventDefault();
         var elem_id = $(this).closest('tr').attr('id');
-        var formData = new FormData();
+        var formData = new FormData($form[0]);
         formData.append('elem_id', elem_id);
 
         $(this).bootstrap_confirm_delete({
@@ -1338,8 +1350,10 @@ odoo.define('df_website_front.event', function (require) {
 
     });
 
-    $('a.EditInscription').click(function () { //TODO
+    //Levanta modal Edit Inscriptions //TODO
+    $('a.EditInscription').click(function () {
         var elem_id = $(this).closest('tr').attr('id');
+
         var formData = new FormData();
         formData.append('elem_id', elem_id);
         event_main.showLoader();
@@ -1351,24 +1365,42 @@ odoo.define('df_website_front.event', function (require) {
             contentType: false // tell jQuery not to set contentType
         }).done(function (data_result) {
             var result = parse_result(data_result);
+
+            //cargando campos del select y preseleccionando
+            // let htmlOptionsSelect = '';
+            // if (result.length > 0) {
+            //     let field = result;
+            //     field.forEach(function (item, i) {
+            //let selected = (item.id === result.country_id) ? 'selected' : ''; // Comprueba si el item actual es el seleccionado SELECCIóN
+            //         htmlOptionsSelect += '<option data-sponsor="' + item.sponsor + '" data-exhibitor="' + item.exhibitor + '" data-description="' + item.description + '" data-speaker="' + item.speaker + '" value="' + item.id + '" ' + selected + '>' + item.name + '</option>';
+            //     });
+            //     $('#event-to-participate-' + event_id + '-select-ticket-' + event_id).html(htmlOptionsSelect);
+            //     $('#event-to-participate-' + event_id + '-select-ticket-' + event_id).selectpicker('refresh');            
+            // } else {
+            //     $('#event-to-participate-' + event_id + '-select-ticket-' + event_id).html(htmlOptionsSelect);
+            //     $('#event-to-participate-' + event_id + '-select-ticket-' + event_id).selectpicker('refresh');
+            // }
+            //
+
             if (result) {
                 var modal = '#modalEditRegistrations';
                 event_main.hideLoader();
+                $('input[name=registration_idn]').val(elem_id);
+
                 $('input[name=event_registrations]').val(result.event);
-                $('input[name=event_tickets_registrations]').val(result.event_ticket);
-                $('input[name=event_type_attendee_registrations]').val(result.type_attendees);
-                $('input[name=event_lodging_registrations]').val(result.lodging);
-                $('input[name=event_room_type_registrations]').val(result.room_type);
-                $('input[name=event_event_number_nights_registrations]').val(result.number_nights);
+                $('select[name=country_person_id]').val(result.country_id);
+                $('select[name=event_currency_id]').val(result.pricelist_ids);
+                $('select[name=event_type_attendee_registrations]').val(result.type_attendees);
+                $('select[name=event_tickets_registrations]').val(result.event_ticket_id);
+                $('input[name=event_required_lodging]').val(result.required_lodging);
+                $('select[name=event_lodging_registrations]').val(result.lodging);
+                $('select[name=event_room_type_registrations]').val(result.room_type);
+                $('input[name=event_number_nights_registrations]').val(result.number_nights);
                 $('input[name=event_entry_date_registrations]').val(result.entry_date);
                 $('input[name=event_companion_registrations]').val(result.companion);
-                $('input[name=event_type_institution_registrations]').val(result.type_institution);
-                $('input[name=event_category_investigative_registrations]').val(result.category_investigative);
-                $('input[name=event_price_list_registrations]').val(result.pricelist);
-                $('input[name=event_invoice_registrations]').val(result.invoice);
-                $('input[name=event_state_registrations]').val(result.state);
 
                 $(modal).modal('show');
+
             } else {
                 event_main.hideLoader();
                 toastr.error(_t(event_message.getMessage(result.message)));
@@ -1377,67 +1409,168 @@ odoo.define('df_website_front.event', function (require) {
     });
 
 
-    // PENDIENTE
-    function edit_inscription(elem_id, event_id) { //TODO
-        /*var $form = $('#formEditRegistrations');
-        var formData = new FormData($form[0]);
-        var event_id = event_id;
-
-        if (event_id == null)
-            event_id = $(elem_id).attr('event_id');
-
-        if (elem_id == '' || elem_id == undefined || elem_id == 'undefined') {
-            elem_id = $('#input-track-id').val();
-        }
-
-        if (event_id == '' || event_id == undefined || event_id == 'undefined') {
-            event_id = $('#input-event-id').val();
-        }
-
-        formData.append('elem_id', elem_id);
-
-        if ($('select[name=theme_tag_id]').val() != '' && $('select[name=theme_tag_id]').val() != undefined &&
-            $('select[name=theme_tag_id]').val() != 'undefined') {
-            formData.append('theme_tag_id_all', $('select[name=theme_tag_id]').val());
-        }
-
-        if ($('select[name=event-list]').val() != '' && $('select[name=event-list]').val() != undefined &&
-            $('select[name=event-list]').val() != 'undefined') {
-            formData.append('event-list_all', $('select[name=event-list]').val());
-        }
-
-        if ($('select[name=presentation]').val() != '' && $('select[name=presentation]').val() != undefined &&
-            $('select[name=presentation]').val() != 'undefined') {
-            formData.append('presentation_all', $('select[name=presentation]').val());
-        }
-
-        event_main.showLoader();
-        $.ajax({
-            url: '/evento/' + event_id + '/edit_inscription',
+    //PENDIENTE //TODO
+    function edit_inscription(elem_id) {
+        var $form = $('#formEditRegistrations');//el formulario con id "formEditRegistrations" se guarda en $form
+        var formData = new FormData($form[0]); //Se crea un objeto ARREGLO FormData a partir del formulario seleccionado con todos los valores en la estructura name:value A ESTOS DATOS SE PUEDE ACCEDER DIRECTAMENTE LUEGO SIN LLAMAR AL ARREGLO
+        //formData.append('otro_valor',56*89);
+        formData.append('elem_id', elem_id); // See agrega el valor de elem_id al objeto FormData con la clave 'elem_id'
+        //alert(elem_id)
+        //event_main.showLoader(); //Se muestra un cargador en la interfaz
+        $.ajax({ //Se realiza una solicitud AJAX
+            url: '/evento/edit_inscription',
             data: formData,
             type: 'POST',
             processData: false, // tell jQuery not to process the data
             contentType: false // tell jQuery not to set contentType
-        }).done(function (data_result) {
-            var result = parse_result(data_result);
-            if (result.success == true) {
-                var modal = '#modal_edit_registrations';
-                event_main.hideLoader();
-                $(modal).modal('hide');
-                toastr.success(_t(event_message.getMessage(result.message)));
+        }).done(function (data_result) { // Cuando la solicitud AJAX se completa con éxito, se ejecuta esta función con la respuesta recibida
+            var result = parse_result(data_result); //Se analiza la respuesta recibida y se guarda
+            if (result.success == true) { //Si la propiedad success de result es verdadera
+                var modal = '#modal_edit_registrations'; // Se guarda el selector '#modal_edit_registrations'
+                event_main.hideLoader(); //Se oculta el cargador en la interfaz
+                $(modal).modal('hide'); //Se oculta el modal con el selector guardado en la variable modal
+                toastr.success(_t(event_message.getMessage(result.message))); //mensaje de éxito utilizando la biblioteca Toastr
             } else {
-                event_main.hideLoader();
-                toastr.error(_t(event_message.getMessage(result.message)));
+                event_main.hideLoader(); //Se oculta el cargador en la interfaz
+                toastr.error(_t(event_message.getMessage(result.message))); //mensaje de error utilizando la biblioteca Toastr.
             }
-        });*/
+        });
+    }
+
+    function check_empty_val(varEmpty, elem_id) {
+        switch (varEmpty) {
+            case 'CL': toastr.error("El campo 'Country of location' es obligatorio."); break
+            case 'CR': toastr.error("El campo 'Currency' es obligatorio."); break
+            case 'TA': toastr.error(`El campo 'Type of participation' es obligatorio. `); break
+            case 'ET': toastr.error("El campo 'Event Ticket' es obligatorio."); break
+            //
+            case 'LV': toastr.error("El campo 'Lodging' es obligatorio."); break
+            case 'RT': toastr.error("El campo 'Room Type' es obligatorio."); break
+            case 'NN': toastr.error(`El campo 'Number of nights' es obligatorio. `); break
+            case 'ED': toastr.error("El campo 'Entry Date' es obligatorio."); break
+
+            default: edit_inscription(elem_id);
+        }
     }
 
     $('#btnAceptEditRegistrations').click(function () {
-        /*var elem_id = $('#form_edit_track input[name=elem_id]').val();
-        var event_id = $('select#event-list-edit').val();*/
-        edit_inscription(elem_id, event_id);
+        var elem_id = $('#registration_id').val();
+        var varEmpty = undefined;
+
+        // var type_attendee_val = $('select#event_registration-edit-id').val();
+        //Variables de campos obligatorios
+        var country_val = $('select#country_person_id').val();
+        var currency_val = $('select#event_currency_id').val();
+        var type_attendee_val = $('select#event_type_attendee_registrations').val();
+        var tickets_val = $('select#event_tickets_registrations').val();
+        //Variables de campos obligatorios si se alojará
+        var required_lodging_val = $('select#event_required_lodging').val();
+        var lodging_val = $('select#event_lodging_registrations').val();
+        var room_type_val = $('select#event_room_type_registrations').val();
+        var number_nights_val = $('select#event_number_nights_registrations').val();
+        var entry_date_val = $('select#event_entry_date_registrations').val();
+
+
+
+        //comprobando campos obligatorios
+        if (country_val == null || country_val == "" || country_val == undefined || country_val == 'undefined') { varEmpty = 'CL'; check_empty_val(varEmpty, elem_id) }
+        else if (currency_val == null || currency_val == "" || currency_val == undefined || currency_val == 'undefined') { varEmpty = 'CR'; check_empty_val(varEmpty, elem_id) }
+        else if (type_attendee_val == null || type_attendee_val == "" || type_attendee_val == undefined || type_attendee_val == 'undefined') { varEmpty = 'TA'; check_empty_val(varEmpty, elem_id) }
+        else if (tickets_val == null || tickets_val == "" || tickets_val == undefined || tickets_val == 'undefined') { varEmpty = 'ET'; check_empty_val(varEmpty, elem_id) }
+
+        //comprobando campos obligatorios si se Alojará
+        else if (required_lodging_val) {
+            if (lodging_val == null || lodging_val == "" || lodging_val == undefined || lodging_val == 'undefined') { varEmpty = 'LV'; check_empty_val(varEmpty, elem_id) }
+            else if (room_type_val == null || room_type_val == "" || room_type_val == undefined || room_type_val == 'undefined') { varEmpty = 'RT'; check_empty_val(varEmpty, elem_id) }
+            else if (number_nights_val == null || number_nights_val == "" || number_nights_val == undefined || number_nights_val == 'undefined') { varEmpty = 'NN'; check_empty_val(varEmpty, elem_id) }
+            else if (entry_date_val == null || entry_date_val == "" || entry_date_val == undefined || entry_date_val == 'undefined') { varEmpty = 'ED'; check_empty_val(varEmpty, elem_id) }
+        }
+
+        else { check_empty_val(varEmpty, elem_id) }
+
     });
-    // PENDIENTE
+
+    //Configuración del check ´Required-Lodging´
+
+    //Resetear campos de la selección //TODO
+    // function reset_fields_lodging() {
+    //     let register_lodging_id = $('select#event_lodging_registrations');
+    //     let register_type_room_id = $('select#event_room_type_registrations');
+
+    //     register_lodging_id.parent().parent().removeClass('label-select-automatic-top');
+    //     register_lodging_id.html('');
+    //     register_lodging_id.selectpicker('refresh');
+
+    //     register_type_room_id.parent().parent().removeClass('label-select-automatic-top');
+    //     register_type_room_id.html('');
+    //     register_type_room_id.selectpicker('refresh');
+    // };
+
+    //Muestra/Oculta los campos relacionados al lodging
+    function enable_disable_lodging(EVENT_REQUIRED_LODGING = false) {
+        let fade_lodging = $('.fade-lodging');
+        let lodging = $('#event_lodging_registrations');
+        let typeRoom = $('#event_room_type_registrations');
+        let numberNights = $('#event_number_nights_registrations');
+        let entryDate = $('#event_entry_date_registrations');
+        
+
+        if (EVENT_REQUIRED_LODGING == true) { //oculta
+            fade_lodging.removeClass('d-none')
+            lodging.attr('is-required', 'true');
+            typeRoom.attr('is-required', 'true');
+            numberNights.attr('is-required', 'true');
+            entryDate.attr('is-required', 'true');
+            
+        } else { //muestra
+            fade_lodging.addClass('d-none');
+            lodging.removeAttr('is-required');
+            typeRoom.removeAttr('is-required');
+            numberNights.removeAttr('is-required');
+            entryDate.removeAttr('is-required');
+            
+        }
+    };
+
+    //obtiene los datos relacionados con el lodging //TODO
+    // function get_lodgings(){
+    //     var formData = new FormData();
+    //     formData.append('event_ids', JSON.stringify(EVENT_IDS));
+    //     $.ajax({
+    //             url: '/evento/lodgings',
+    //             data: formData,
+    //             type: 'POST',
+    //             processData: false, // tell jQuery not to process the data
+    //             contentType: false // tell jQuery not to set contentType
+    //         }).done(function (data_result) {
+    //             var lodgings = event_main.parse_result(data_result);
+    //             let register_lodging_id = $('select#register-lodging-id');
+    //             let html = '';
+    //             if (lodgings.length > 0) {
+    //                 lodgings.forEach(function (item, i) {
+    //                     html += '<option value="' + item.id + '">' + item.name + '</option>';
+    //                 });
+    //                 register_lodging_id.html(html);
+    //                 register_lodging_id.selectpicker('refresh');
+    //             } else {
+    //                 register_lodging_id.html('');
+    //                 register_lodging_id.selectpicker('refresh');
+    //             }
+    //         });
+    // }
+
+    //Al hacer click al check ´Required-Lodging´
+    $('#event_required_lodging').on('change', function (ev) {
+        ev.preventDefault();
+        //reset_fields_lodging();
+        if ($(this).is(':checked')) {
+            enable_disable_lodging(true); //mostrar campos
+            //get_lodgings();
+        } else {
+            enable_disable_lodging(); //ocultar campos
+        }
+    });
+
 
 
     $('a.ViewInscription').click(function () {
@@ -1470,6 +1603,31 @@ odoo.define('df_website_front.event', function (require) {
                 $('input[name=event_invoice_registrations]').val(result.invoice);
                 $('input[name=event_state_registrations]').val(result.state);
 
+                $(modal).modal('show');
+            } else {
+                event_main.hideLoader();
+                toastr.error(_t(event_message.getMessage(result.message)));
+            }
+        });
+    });
+    $('a.InscriptionsRegistration').click(function () {
+        var elem_id = $(this).closest('tr').attr('id');
+        var formData = new FormData();
+        formData.append('elem_id', elem_id);
+        event_main.showLoader();
+        $.ajax({
+            url: '/evento/event_registrations',
+            data: formData,
+            type: 'POST',
+            processData: false, // tell jQuery not to process the data
+            contentType: false // tell jQuery not to set contentType
+        }).done(function (data_result) {
+            var result = parse_result(data_result);
+            if (result) {
+                var modal = '#modal_inscriptions_registration';
+                event_main.hideLoader();
+                $('input[name=event_registrations]').val(result.event);
+                $('input[name=event_tickets_registrations]').val(result.event_ticket);
                 $(modal).modal('show');
             } else {
                 event_main.hideLoader();

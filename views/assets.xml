@@ -40,9 +40,9 @@
                 <link rel="stylesheet" href="/df_website_front/static/src/css/app/sigestic.css"/>
                 <link rel="stylesheet" href="/df_website_front/static/src/css/app/metrologia.css"/>
                 <link rel="stylesheet" href="/df_website_front/static/src/css/app/desoft.css"/>
-<!--                <link rel="stylesheet" type="text/css"-->
-<!--                      href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"/>-->
-<!--                <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>-->
+                <!--                <link rel="stylesheet" type="text/css"-->
+                <!--                      href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"/>-->
+                <!--                <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>-->
 
             </xpath>
 
@@ -58,8 +58,8 @@
                 <!-- Date Time Picker -->
                 <!-- TODO: Verificar si esta libreria no se esta usando para eliminarla, ya que provoca un ciclo infinito y trae problemas al arrastrar snippets principalmente -->
                 <!-- TODO: Esta es la libreria para el calendario de la cita en los stands -->
-<!--                <script type="text/javascript"-->
-<!--                        src="/df_website_front/static/src/js/datetimepicker/jquery.datetimepicker.full.min.js"/>-->
+                <!--                <script type="text/javascript"-->
+                <!--                        src="/df_website_front/static/src/js/datetimepicker/jquery.datetimepicker.full.min.js"/>-->
 
                 <!-- LightBox -->
                 <script type="text/javascript"
@@ -87,6 +87,14 @@
                 <script type="text/javascript" src="/df_website_front/static/src/js/app/schedule.js"/>
                 <script type="text/javascript" src="/df_website_front/static/src/js/app/sigestic.js"/>
                 <!--                <script type="text/javascript" src="/df_website_front/static/src/js/app/metrologia.js"/>-->
+
+                <!-- Bootbox -->
+                <!--  Note the order of the script references-->
+                <!--Since Bootbox is a wrapper around Bootstrap's modal functionality, you need to include the libraries in order:-->
+                <!--jQuery, Popper.js, Bootstrap, Bootbox-->
+<!--                <script type="text/javascript" src="/df_website_front/static/src/js/popper/popper.min.js"/>-->
+<!--                <script type="text/javascript" src="/df_website_front/static/src/js/bootbox/bootbox.all.min.js"/>-->
+
             </xpath>
         </template>
     </data>

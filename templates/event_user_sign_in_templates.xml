@@ -260,7 +260,7 @@
 
                                     </div>
 
-                                    <div class="col-12 mt-4">
+                                    <div class="col-12 mt-4" id="select-event-multiple-id">
                                         <h3 class="mb-2 exo2-regular">Select the event(s) to participate</h3>
                                         <div>
                                             <ul class="list-group list-group-flush">
@@ -274,7 +274,8 @@
                                                                            t-attf-id="event-to-participate-#{event_id.id}"
                                                                            t-attf-name="event-to-participate-event-#{event_id.id}"
                                                                            t-att-data-event-id="event_id.id"
-                                                                           t-attf-data-principal="#{'true' if event_id.principal else 'false'}"/>
+                                                                           t-attf-data-principal="#{'true' if event_id.principal else 'false'}"
+                                                                           t-attf-data-required-lodging="#{'true' if event_id.required_lodging else 'false'}"/>
                                                                 </div>
                                                                 <div class="row ml-2 ml-sm-0 w-100">
                                                                     <div class="col-9 col-sm-4 d-flex align-items-center">
