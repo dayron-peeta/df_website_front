@@ -614,7 +614,7 @@
                                                 <div class="my-form-outline">
                                                     <input type="text" readonly="0"
                                                         class="form-control my-form-control"
-                                                        name="event_registrations"
+                                                        id="event"
                                                     />
                                                     <label class="my-form-label myriadpro-regular">
                                         Event </label>

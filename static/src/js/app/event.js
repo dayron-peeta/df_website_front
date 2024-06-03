@@ -1372,11 +1372,11 @@ odoo.define('df_website_front.event', function (require) {
             
                 $('input[name=registration_id]').val(registrationId);
 
-                $('input[name=event_registrations]').val(data.event);
+                $('input[id=event]').val(data.event);
                 loadOptions('currency_id', data.currency_id_options, data.selected_currency_id);
                 loadOptions('type_attendee', data.type_attendee_options, data.selected_type_attendee);
                 loadOptions('event_tickets', data.event_tickets_options, data.selected_event_tickets);
-                // $('input[name=event_required_lodging]').val(result.required_lodging);
+                $('input[id=required_lodging]').val(data.required_lodging);
                 // $('select[name=event_lodging_registrations]').val(result.lodging);
                 // $('select[name=event_room_type_registrations]').val(result.room_type);
                 // $('input[name=event_number_nights_registrations]').val(result.number_nights);
