@@ -2,10 +2,12 @@
 import base64
 import json
 import werkzeug
+import logging
 
 from odoo import http, _
 from odoo.http import request
 
+_logger = logging.getLogger(__name__)
 
 class WebsiteUserController(http.Controller):
 
@@ -209,14 +211,62 @@ class WebsiteUserController(http.Controller):
             registrations.sudo().write(elem_update)
         return json.dumps({'success': True, 'message': 10})
 
-    @http.route(['/evento/edit_event_registrations'], type='http', auth="public", website=True, csrf=False)
-    def edit_event_registrations(self, **post):
-        if post.get('elem_id', False):
-           # registrations = request.env['event.registration'].sudo().search(
-           #     [('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id'])).get_registrations_json()
+
+
+    @http.route('/evento/get_data_event_registrations', type='http', auth='public', csrf=False, methods=['GET'])
+    def get_data_event_registrations(self, registration_id=None, **kwargs):
+        _logger.info('********************************Registration ID recibido: %s', registration_id)
+        
+        
+        if not registration_id:
+            _logger.error('Missing registration_id')
+            return {'error': 'Missing registration_id'}
+        
+        registration = request.env['event.registration'].sudo().browse(int(registration_id))
+        if not registration.exists():
+            _logger.error('registration not found: %s', registration_id)
+            return {'error': 'registration not found'}
+
+        _logger.info('********************************Registration: %s', registration)
+        # Log all attributes of the registration object
+        # attributes = dir(registration)
+        # _logger.info('********************************Attributes of registration: %s', attributes)
+
+        def get_field_options(field_name):
+                field = registration._fields.get(field_name)
+                if not field or not field.comodel_name:
+                    return []
+                comodel = request.env[field.comodel_name].sudo()
+                return [{'id': record.id, 'name': record.name} for record in comodel.search([])]
+
+        data = {
+            'event': registration.event_id.name,
+            'currency_id_options': get_field_options('pricelist_id'),
+            'selected_currency_id': registration.pricelist_id.id if registration.pricelist_id else None,
+        }
+        return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})
+    
+    # @http.route(['/evento/edit_event_registrations'], type='http', auth="public", website=True, csrf=False)
+    # def edit_event_registrations(self, **post):
+    #     if post.get('elem_id', False):
+    #         # registrations = request.env['event.registration'].sudo().search(
+    #         #     [('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id'])).get_registrations_json()
             
-            registrations = request.env['event.registration'].sudo().browse(int(post['elem_id'])).get_registrations_json()
-        return json.dumps(registrations)
+    #         registration = request.env['event.registration'].sudo().browse(int(post['elem_id']))
+    #         _logger.info('Registration: %s', registration)
+    #         # def get_field_options(field_name):
+    #         #     field = registration._fields.get(field_name)
+    #         #     if not field or not field.comodel_name:
+    #         #         return []
+    #         #     comodel = request.env[field.comodel_name].sudo()
+    #         #     return [{'id': record.id, 'name': record.name} for record in comodel.search([])]
+
+    #         # data = {
+    #         #     'currency_id_options': get_field_options('pricelist'),
+    #         #     'selected_currency_id': registration.pricelist.id if registration.pricelist else None,
+    #         #     }
+    #         return request.make_response(json.dumps( registration), headers={'Content-Type': 'application/json'})
+    #                 # return json.dumps(registrations)
     
 
     #PENDIENTE //TODO

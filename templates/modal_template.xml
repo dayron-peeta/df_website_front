@@ -604,11 +604,10 @@
                                 <div class="container">
 
 
-                                    <input type="text" name="registration_idn" id="registration_id"
+                                    <input type="text" name="registration_id" id="registration_id"
                                         style="display: none;" />
 
                                     <div class="row mt-4">
-                                        <!-- PENDIENTE //TODO cambiar a select -->
                                         <!-- Event Registrations -->
                                         <div class="col-sm-12">
                                             <div class="mb-4">
@@ -631,17 +630,17 @@
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true"
                                                         is-required="true">
-                                                        <t t-foreach="countrys" t-as="country"> <!--de donde esta tomando los valores "countrys"? -->
+                                                        <t t-foreach="countrys" t-as="country"> <!--de
+                                                            donde esta tomando los valores
+                                                            "countrys"? -->
                                                             <option t-att-value="country.id"
                                                                 t-att-data-code="country.code"
-                                                                t-att-data-phone-code="country.phone_code"                         
-                                                                t-att-selected="country.id == request.env.user.partner_id.country_id.id"> 
-
+                                                                t-att-data-phone-code="country.phone_code"
+                                                                t-att-selected="country.id == request.env.user.partner_id.country_id.id">
                                                                 <t t-esc="country.name" />
                                                             </option>
                                                         </t>
                                                     </select>
-
                                                     <label class="my-form-label exo2-regular">
                                                         <span class="text-danger">*</span> Country
                                         of location </label>
@@ -652,19 +651,22 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- PENDIENTE //TODO cambiar a select -->
                                         ​<!-- Event Registrations Currency -->
                                         <!-- <t t-if="event.event_free is False"></t> -->
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <select id="event_currency_id"
-                                                        name="event_currency_id"
+                                                    <select id="pricelistt_id"
+                                                    name="pricelistt_id"
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true"
                                                         is-required="true">
+                                                        <!-- Options will be dynamically loaded -->
                                                     </select>
                                                     <label class="my-form-label exo2-regular">
-                                                        <span class="text-danger">*</span> Currency </label>
+                                                        <span class="text-danger">*</span> Currency 
+                                                    </label>
                                                 </div>
                                                 <div
                                                     class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
@@ -678,12 +680,29 @@
                                             class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <select
+                                                    <!-- <select
                                                         t-attf-id="event_type_attendee_registrations"
                                                         t-attf-name="event_type_attendee_registrations"
                                                         class="form-control my-form-control my-select selectpicker event_type_select"
                                                         title=" " data-live-search="true">
+                                                    </select> -->
+                                                    <!-- example -->
+                                                    <select name="location_id"
+                                                        id="location-select-id"
+                                                        class="form-control my-form-control my-select selectpicker"
+                                                        title=" " data-live-search="true"
+                                                        multiple="">
+
+                                                        <t t-foreach="type_attendees"
+                                                            t-as="type_attendee"> //TODO <option
+                                                                t-att-value="type_attendee.id"
+                                                                t-att-selected="type_attendee.id == concurrent_type_attendee.id">
+                                                                <t t-esc="type_attendee.name" />
+                                                            </option>
+                                                        </t>
                                                     </select>
+                                                    <!-- example -->
+
 
                                                     <label class="my-form-label exo2-regular ">
                                                         <span class="text-danger">*</span> Type of
@@ -737,12 +756,12 @@
                                             </div>
                                         </div>
 
-                                        
+
                                         <!-- Event Registrations Lodging -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
                                         <!-- <t t-if="result.event_required_lodging"> -->
                                         <div
-                                        class="col-sm-6 fade-lodging">
+                                            class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <select id="event_lodging_registrations"
@@ -750,7 +769,8 @@
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true">
                                                     </select>
-                                                    <label class="my-form-label exo2-regular label-select-automatic-top">
+                                                    <label
+                                                        class="my-form-label exo2-regular label-select-automatic-top">
                                                         <span class="text-danger">*</span> Lodging </label>
                                                 </div>
                                                 <div
@@ -764,7 +784,7 @@
                                         <!-- Event Registrations Room Type -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
                                         <div
-                                        class="col-sm-6 fade-lodging">
+                                            class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <select id="event_room_type_registrations"
@@ -772,7 +792,8 @@
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true">
                                                     </select>
-                                                    <label class="my-form-label exo2-regular label-select-automatic-top" >
+                                                    <label
+                                                        class="my-form-label exo2-regular label-select-automatic-top">
                                                         <span class="text-danger">*</span> Type of
                                                         room </label>
                                                 </div>
@@ -786,7 +807,7 @@
                                         <!-- Event Registrations Number Nights -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
                                         <div
-                                        class="col-sm-6 fade-lodging">
+                                            class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="number"
@@ -807,7 +828,7 @@
                                         <!-- Event Registrations Entry Date -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
                                         <div
-                                        class="col-sm-6 fade-lodging">
+                                            class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="date"
@@ -829,7 +850,7 @@
                                         <!-- Event Registrations Companion -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
                                         <div
-                                            class="col-sm-6 fade-lodging" >
+                                            class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
                                                     <input type="text"
