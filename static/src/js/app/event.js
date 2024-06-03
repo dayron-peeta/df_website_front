@@ -1373,9 +1373,9 @@ odoo.define('df_website_front.event', function (require) {
                 $('input[name=registration_id]').val(registrationId);
 
                 $('input[name=event_registrations]').val(data.event);
-                loadOptions('pricelistt_id', data.currency_id_options, data.selected_currency_id);
-                // $('select[name=event_type_attendee_registrations]').val(result.type_attendees);
-                // $('select[name=event_tickets_registrations]').val(result.event_ticket_id);
+                loadOptions('currency_id', data.currency_id_options, data.selected_currency_id);
+                loadOptions('type_attendee', data.type_attendee_options, data.selected_type_attendee);
+                loadOptions('event_tickets', data.event_tickets_options, data.selected_event_tickets);
                 // $('input[name=event_required_lodging]').val(result.required_lodging);
                 // $('select[name=event_lodging_registrations]').val(result.lodging);
                 // $('select[name=event_room_type_registrations]').val(result.room_type);
@@ -1392,72 +1392,36 @@ odoo.define('df_website_front.event', function (require) {
             }
         });
     });
-    // $('a.EditInscription').click(function () {
-    //     var elem_id = $(this).closest('tr').attr('id');
-
-    //     var formData = new FormData();
-    //     formData.append('elem_id', elem_id);
-    //     event_main.showLoader();
-    //     $.ajax({
-    //         url: '/evento/edit_event_registrations',
-    //         data: formData,
-    //         type: 'POST',
-    //         processData: false, // tell jQuery not to process the data
-    //         contentType: false // tell jQuery not to set contentType
-    //     }).done(function (data_result) {
-    //         var result = parse_result(data_result);
-    //         console.log("Datos recibidos:", result);
-
-    //         //cargando campos del select y preseleccionando
-    //         // let htmlOptionsSelect = '';
-    //         // if (result.length > 0) {
-    //         //     let field = result;
-    //         //     field.forEach(function (item, i) {
-    //         //let selected = (item.id === result.country_id) ? 'selected' : ''; // Comprueba si el item actual es el seleccionado SELECCIóN
-    //         //         htmlOptionsSelect += '<option data-sponsor="' + item.sponsor + '" data-exhibitor="' + item.exhibitor + '" data-description="' + item.description + '" data-speaker="' + item.speaker + '" value="' + item.id + '" ' + selected + '>' + item.name + '</option>';
-    //         //     });
-    //         //     $('#event-to-participate-' + event_id + '-select-ticket-' + event_id).html(htmlOptionsSelect);
-    //         //     $('#event-to-participate-' + event_id + '-select-ticket-' + event_id).selectpicker('refresh');            
-    //         // } else {
-    //         //     $('#event-to-participate-' + event_id + '-select-ticket-' + event_id).html(htmlOptionsSelect);
-    //         //     $('#event-to-participate-' + event_id + '-select-ticket-' + event_id).selectpicker('refresh');
-    //         // }
-    //         //
-
-    //         if (result) {
-    //             var modal = '#modalEditRegistrations';
-    //             event_main.hideLoader();
-    //             $('input[name=registration_id]').val(elem_id);
-
-    //             $('input[name=event_registrations]').val(result.event);
-    //             loadOptions('currency_id', result.currency_id_options, result.selected_currency_id);
-    //             // $('select[name=event_type_attendee_registrations]').val(result.type_attendees);
-    //             // $('select[name=event_tickets_registrations]').val(result.event_ticket_id);
-    //             // $('input[name=event_required_lodging]').val(result.required_lodging);
-    //             // $('select[name=event_lodging_registrations]').val(result.lodging);
-    //             // $('select[name=event_room_type_registrations]').val(result.room_type);
-    //             // $('input[name=event_number_nights_registrations]').val(result.number_nights);
-    //             // $('input[name=event_entry_date_registrations]').val(result.entry_date);
-    //             // $('input[name=event_companion_registrations]').val(result.companion);
-
-    //             $(modal).modal('show');
-
-    //         } else {
-    //             event_main.hideLoader();
-    //             toastr.error(_t(event_message.getMessage(result.message)));
-    //         }
-    //     });
-    // });
 
     function loadOptions(selectId, options, selectedValue) {
         var selectElement = $('#' + selectId);
         selectElement.empty(); // Limpiar el select
-
+    
+        console.log('Select Element:', selectElement);
+        console.log('Options:', options);
+        console.log('Selected Value:', selectedValue);
+    
         options.forEach(function(option) {
-            var isSelected = option.id === selectedValue ? 'selected' : '';
-            selectElement.append('<option value="' + option.id + '" ' + isSelected + '>' + option.name + '</option>');
+            selectElement.append('<option value="' + option.id + '">' + option.name + '</option>');
         });
+    
+        // Verificar la selección de la opción después de añadirlas
+        if (selectedValue) {
+            selectElement.val(selectedValue);
+            console.log('Set Selected Value:', selectedValue);
+        }
+    
+        // Forzar actualización si estás usando un plugin como selectpicker de Bootstrap
+        if (selectElement.hasClass('selectpicker')) {
+            selectElement.selectpicker('refresh');
+            selectElement.selectpicker('val', selectedValue);
+            console.log('Selectpicker refreshed and value set');
+        } else {
+            // Forzar cambio si no estás usando selectpicker
+            selectElement.change();
+        }
     }
+    
 
 
 
