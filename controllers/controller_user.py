@@ -213,7 +213,7 @@ class WebsiteUserController(http.Controller):
 
 
 
-    @http.route('/evento/get_data_event_registrations', type='http', auth='public', csrf=False, methods=['GET'])
+    @http.route('/evento/get_data_event_registration', type='http', auth='public', csrf=False, methods=['GET'])
     def get_data_event_registrations(self, registration_id=None, **kwargs):
         _logger.info('********************************Registration ID recibido: %s', registration_id)
         
@@ -241,36 +241,25 @@ class WebsiteUserController(http.Controller):
 
         data = {
             'event': registration.event_id.name,
-            'currency_id_options': get_field_options('pricelist_id'),
             'selected_currency_id': registration.pricelist_id.id if registration.pricelist_id else None,
+            'selected_type_attendee': registration.type_attendees if registration.type_attendees else None,
+            'selected_event_tickets': registration.event_ticket_id.id if registration.event_ticket_id else None,
+            'required_lodging': registration.required_lodging,
+            'selected_lodging_id': registration.lodging_id.id if registration.lodging_id else None,
+            'selected_room_type': registration.room_type_id.id if registration.room_type_id else None,
+            'number_nights': registration.number_nights,
+            'entry_date': registration.entry_date,
+            'companion': registration.companion,
+            'currency_id_options': get_field_options('pricelist_id'),
+            'type_attendee_options': get_field_options('type_attendees'),
+            'event_tickets_options': get_field_options('event_ticket_id'),
+            'lodging_id_options': get_field_options('lodging_id'),
+            'room_type_options': get_field_options('room_type_id'),
         }
-        return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})
-    
-    # @http.route(['/evento/edit_event_registrations'], type='http', auth="public", website=True, csrf=False)
-    # def edit_event_registrations(self, **post):
-    #     if post.get('elem_id', False):
-    #         # registrations = request.env['event.registration'].sudo().search(
-    #         #     [('partner_id', '=', request.env.user.partner_id.id)]).browse(int(post['elem_id'])).get_registrations_json()
-            
-    #         registration = request.env['event.registration'].sudo().browse(int(post['elem_id']))
-    #         _logger.info('Registration: %s', registration)
-    #         # def get_field_options(field_name):
-    #         #     field = registration._fields.get(field_name)
-    #         #     if not field or not field.comodel_name:
-    #         #         return []
-    #         #     comodel = request.env[field.comodel_name].sudo()
-    #         #     return [{'id': record.id, 'name': record.name} for record in comodel.search([])]
-
-    #         # data = {
-    #         #     'currency_id_options': get_field_options('pricelist'),
-    #         #     'selected_currency_id': registration.pricelist.id if registration.pricelist else None,
-    #         #     }
-    #         return request.make_response(json.dumps( registration), headers={'Content-Type': 'application/json'})
-    #                 # return json.dumps(registrations)
-    
+        return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})    
 
     #PENDIENTE //TODO
-    @http.route('/evento/edit_inscription', type='http', auth="public", website=True,
+    @http.route('/evento/update_registration"', type='http', auth="public", website=True,
     csrf=False) #Ruta de la URL para editar una inscripción
     def edit_inscription(self, **post): #Definición de la función para editar una inscripción
 
