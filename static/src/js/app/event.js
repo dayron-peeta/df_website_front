@@ -1466,19 +1466,21 @@ odoo.define('df_website_front.event', function (require) {
     //PENDIENTE //TODO
     $('#btnAceptEditRegistrations').click(function () {
         var registration_id = $('#registration_id').val();
-        var varEmpty = undefined;
-
-        //Variables de campos obligatorios
+    
+        // Variables de campos obligatorios
         var country_val = $('#country_person_id').val();
         var currency_val = $('#currency_id').val();
         var type_attendee_val = $('#type_attendee').val();
         var tickets_val = $('#event_tickets').val();
-        //Variables de campos obligatorios si se alojará
+    
+        // Variables de campos obligatorios si se alojará
         var required_lodging_val = $('#required_lodging').val();
         var lodging_val = $('#lodging_id').val();
         var room_type_val = $('#room_type').val();
         var number_nights_val = $('#number_nights').val();
-        var entry_date_val = $('#number_nights').val();
+        var entry_date_val = $('#entry_date').val();
+        var companion_val = $('#companion').val();
+    
         var data = {
             country_val: country_val,
             currency_val: currency_val,
@@ -1489,64 +1491,62 @@ odoo.define('df_website_front.event', function (require) {
             room_type_val: room_type_val,
             number_nights_val: number_nights_val,
             entry_date_val: entry_date_val,
-            
+            companion_val: companion_val,
             registration_id: registration_id,
         };
-
-
-        //comprobando campos obligatorios
-        if (country_val == null || country_val == "" || country_val == undefined || country_val == 'undefined') { varEmpty = 'CL'; check_empty_val(varEmpty, elem_id) }
-        else if (currency_val == null || currency_val == "" || currency_val == undefined || currency_val == 'undefined') { varEmpty = 'CR'; check_empty_val(varEmpty, elem_id) }
-        // else if (type_attendee_val == null || type_attendee_val == "" || type_attendee_val == undefined || type_attendee_val == 'undefined') { varEmpty = 'TA'; check_empty_val(varEmpty, elem_id) }
-        else if (tickets_val == null || tickets_val == "" || tickets_val == undefined || tickets_val == 'undefined') { varEmpty = 'ET'; check_empty_val(varEmpty, elem_id) }
-
-        //comprobando campos obligatorios si se Alojará
-        // else if (required_lodging_val) {
-        //     if (lodging_val == null || lodging_val == "" || lodging_val == undefined || lodging_val == 'undefined') { varEmpty = 'LV'; check_empty_val(varEmpty, elem_id) }
-        //     else if (room_type_val == null || room_type_val == "" || room_type_val == undefined || room_type_val == 'undefined') { varEmpty = 'RT'; check_empty_val(varEmpty, elem_id) }
-        //     else if (number_nights_val == null || number_nights_val == "" || number_nights_val == undefined || number_nights_val == 'undefined') { varEmpty = 'NN'; check_empty_val(varEmpty, elem_id) }
-        //     else if (entry_date_val == null || entry_date_val == "" || entry_date_val == undefined || entry_date_val == 'undefined') { varEmpty = 'ED'; check_empty_val(varEmpty, elem_id) }
+    
+        // Limpiar mensajes de error anteriores
+        $('.my-alert').addClass('d-none');
+    
+        // Comprobar y marcar campos obligatorios vacíos
+        var hasError = false;
+        if (isEmpty(country_val)) { showError('#country_person_id'); hasError = true; }
+        if (isEmpty(currency_val)) { showError('#currency_id'); hasError = true; }
+        // if (isEmpty(type_attendee_val)) { showError('#type_attendee'); hasError = true; }
+        // if (isEmpty(tickets_val)) { showError('#event_tickets'); hasError = true; }
+    
+        // // Comprobar campos obligatorios si se aloja
+        // if (required_lodging_val) {
+        //     if (isEmpty(lodging_val)) { showError('#lodging_id'); hasError = true; }
+        //     if (isEmpty(room_type_val)) { showError('#room_type'); hasError = true; }
+        //     if (isEmpty(number_nights_val)) { showError('#number_nights'); hasError = true; }
+        //     if (isEmpty(entry_date_val)) { showError('#entry_date'); hasError = true; }
         // }
-
-        else { check_empty_val(varEmpty, data) }
-
-    });
-
-    function check_empty_val(varEmpty, data) {
-        switch (varEmpty) {
-            case 'CL': toastr.error("El campo 'Country of location' es obligatorio."); break
-            case 'CR': toastr.error("El campo 'Currency' es obligatorio."); break
-            case 'TA': toastr.error(`El campo 'Type of participation' es obligatorio. `); break
-            case 'ET': toastr.error("El campo 'Event Ticket' es obligatorio."); break
-            //
-            case 'LV': toastr.error("El campo 'Lodging' es obligatorio."); break
-            case 'RT': toastr.error("El campo 'Room Type' es obligatorio."); break
-            case 'NN': toastr.error(`El campo 'Number of nights' es obligatorio. `); break
-            case 'ED': toastr.error("El campo 'Entry Date' es obligatorio."); break
-
-            default: edit_inscription(data);
+    
+        // Si hay errores, no continuar
+        if (!hasError) {
+            edit_inscription(data);
         }
+    });
+    
+    function isEmpty(value) {
+        return value == null || value === "" || value === undefined || value === 'undefined';
     }
-
+    
+    function showError(fieldId) {
+        $(fieldId).closest('.mb-4').find('.my-alert').removeClass('d-none');
+    }
+    
     function edit_inscription(data) {
         $.ajax({
             url: "/evento/update_registration",
             type: "POST",
             data: $.param(data), // Convertir el objeto a formato URL-encoded
             success: function (response) {
-                if (response) {
-                    var result = parse_result(response);
-                    $('#modalEditRegistrations').modal('hide'); //Se oculta el modal con el selector guardado en la variable modal
-                    toastr.success(_t(event_message.getMessage(result.message))); //mensaje de éxito utilizando la biblioteca Toastr
+                if (response.success) {
+                    $('#modalEditRegistrations').modal('hide');
+                    toastr.success("Registro actualizado con éxito.");
                     location.reload();
+                } else {
+                    toastr.error(response.error || "Error al actualizar el registro.");
                 }
             },
             error: function (error) {
                 console.log("Error:", error);
+                toastr.error("Error al actualizar el registro.");
             },
         });
-        
-    }    
+    }   
 
     $('a.ViewInscription').click(function () {
         var elem_id = $(this).closest('tr').attr('id');

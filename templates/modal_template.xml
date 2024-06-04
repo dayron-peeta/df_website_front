@@ -585,7 +585,8 @@
             </div>
         </template>
 
-        <!-- Modal Edit Registrations --> <!-- PENDIENTE //TODO  -->
+        <!-- Modal Edit Registrations --> <!--
+        PENDIENTE //TODO  -->
         <template id="modal_edit_registrations">
             <div class="modal fade mt-5" id="modalEditRegistrations" tabindex="-1" role="dialog"
                 aria-labelledby="myModalLabel"
@@ -614,14 +615,14 @@
                                                 <div class="my-form-outline">
                                                     <input type="text" readonly="0"
                                                         class="form-control my-form-control"
-                                                        id="event"
-                                                    />
+                                                        id="event" />
                                                     <label class="my-form-label myriadpro-regular">
-                                        Event </label>
+                                                        Event</label>
                                                 </div>
                                             </div>
                                         </div>
-                                        ​<!-- Event Registrations Country -->
+
+                                        <!-- Event Registrations Country -->
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
@@ -630,8 +631,8 @@
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true"
                                                         is-required="true">
-                                                        <t t-foreach="countrys" t-as="country"> <!--de
-                                                            donde esta tomando los valores
+                                                        <t t-foreach="countrys" t-as="country"> <!--
+                                                            de donde esta tomando los valores
                                                             "countrys"? -->
                                                             <option t-att-value="country.id"
                                                                 t-att-data-code="country.code"
@@ -643,20 +644,20 @@
                                                     </select>
                                                     <label class="my-form-label exo2-regular">
                                                         <span class="text-danger">*</span> Country
-                                        of location </label>
+                                                        of location </label>
                                                 </div>
                                                 <div
                                                     class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
-                                        The field is required
+                                                    The field is required
                                                 </div>
                                             </div>
                                         </div>
-                                        ​<!-- Event Registrations Currency -->
+
+                                        <!-- Event Registrations Currency -->
                                         <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <select id="currency_id"
-                                                        name="currency_id"
+                                                    <select id="currency_id" name="currency_id"
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true"
                                                         is-required="true">
@@ -667,18 +668,16 @@
                                                 </div>
                                                 <div
                                                     class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
-                                        The field is required
+                                                    The field is required
                                                 </div>
                                             </div>
                                         </div>
 
                                         <!-- Event Registrations Type Attendee -->
-                                        <div
-                                            class="col-sm-6">
+                                        <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <select id="type_attendee"
-                                                        name="type_attendee"
+                                                    <select id="type_attendee" name="type_attendee"
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true"
                                                         is-required="true">
@@ -686,22 +685,20 @@
                                                     </select>
                                                     <label class="my-form-label exo2-regular">
                                                         <span class="text-danger">*</span> Type of
-                                        participation </label>
+                                                        participation </label>
                                                 </div>
                                                 <div
                                                     class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
-                                        The field is required
+                                                    The field is required
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <!-- Event Registrations Tickets --> 
-                                        <div
-                                            class="col-sm-6">
+                                        <!-- Event Registrations Tickets -->
+                                        <div class="col-sm-6">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <select id="event_tickets"
-                                                        name="event_tickets"
+                                                    <select id="event_tickets" name="event_tickets"
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true"
                                                         is-required="true">
@@ -709,25 +706,22 @@
                                                     </select>
                                                     <label class="my-form-label exo2-regular">
                                                         <span class="text-danger">*</span> Event
-                                        Ticket </label>
+                                                        Ticket </label>
                                                 </div>
                                                 <div
                                                     class="text-danger exo2-regular px-3 pt-2 my-alert d-none">
-                                        The field is required
+                                                    The field is required
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
 
                                     <!-- HOSPEDAJE -->
                                     <div class="row mt-4">
                                         <!-- Event Registrations Required Lodging -->
-                                        <div
-                                            class="col-sm-6">
+                                        <div class="col-sm-6">
                                             <div class="mb-4">
-                                                <input type="checkbox"
-                                                    id="required_lodging"
+                                                <input type="checkbox" id="required_lodging"
                                                     name="required_lodging" />
                                                 <label
                                                     class="form-check-label exo2-regular font-weight-normal">
@@ -736,14 +730,12 @@
                                             </div>
                                         </div>
 
-
                                         <!-- Event Registrations Lodging -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
                                         <div class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <select id="lodging_id"
-                                                        name="lodging_id"
+                                                    <select id="lodging_id" name="lodging_id"
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true"
                                                         is-required="true">
@@ -761,11 +753,10 @@
 
                                         <!-- Event Registrations Room Type -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
-                                        <div class="col-sm-6 fade-lodging" >
+                                        <div class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <select id="room_type"
-                                                        name="room_type"
+                                                    <select id="room_type" name="room_type"
                                                         class="form-control my-form-control my-select selectpicker"
                                                         title=" " data-live-search="true"
                                                         is-required="true">
@@ -784,14 +775,13 @@
 
                                         <!-- Event Registrations Number Nights -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
-                                        <div
-                                            class="col-sm-6 fade-lodging">
+                                        <div class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <input type="number"
-                                                        name="number_nights"
+                                                    <input type="number" name="number_nights"
                                                         id="number_nights"
-                                                        class="form-control my-form-control" />
+                                                        class="form-control my-form-control"
+                                                        is-required="true" />
                                                     <label class="my-form-label exo2-regular">
                                                         <span class="text-danger">*</span> Number
                                                         nights </label>
@@ -805,14 +795,13 @@
 
                                         <!-- Event Registrations Entry Date -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
-                                        <div
-                                            class="col-sm-6 fade-lodging">
+                                        <div class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <input type="date"
-                                                        name="entry_date"
+                                                    <input type="date" name="entry_date"
                                                         id="entry_date"
-                                                        class="form-control my-form-control" />
+                                                        class="form-control my-form-control"
+                                                        is-required="true" />
                                                     <label
                                                         class="my-form-label myriadpro-regular my-date-aux-form-label label-select-automatic-top">
                                                         <span class="text-danger">*</span> Entry
@@ -827,12 +816,10 @@
 
                                         <!-- Event Registrations Companion -->
                                         <!-- <t t-if="result.required_lodging is True"></t> -->
-                                        <div
-                                            class="col-sm-6 fade-lodging">
+                                        <div class="col-sm-6 fade-lodging">
                                             <div class="mb-4">
                                                 <div class="my-form-outline">
-                                                    <input type="text"
-                                                        name="companion"
+                                                    <input type="text" name="companion"
                                                         id="companion"
                                                         class="form-control my-form-control" />
                                                     <label class="my-form-label exo2-regular">
@@ -842,6 +829,7 @@
                                             </div>
                                         </div>
                                     </div>
+
 
                                     <div class="modal-footer">
 
