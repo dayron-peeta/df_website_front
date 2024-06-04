@@ -1380,7 +1380,9 @@ odoo.define('df_website_front.event', function (require) {
                 loadOptions('lodging_id', data.lodging_id_options, data.selected_lodging_id);
                 loadOptions('room_type', data.room_type_options, data.selected_room_type);
                 $('input[id=number_nights]').val(data.number_nights);
-                $('input[id=entry_date]').val(data.entry_date);
+                // Asegúrate de que el valor de la fecha está en un formato compatible con el input de tipo "date"
+                var formattedDate = data.entry_date ? new Date(data.entry_date).toISOString().split('T')[0] : '';
+                $('input[id=entry_date]').val(formattedDate);
                 $('input[id=companion]').val(data.companion);
             
                 $('#modalEditRegistrations').modal('show'); // Abre el modal después de cargar los datos
