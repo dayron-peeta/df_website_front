@@ -212,7 +212,7 @@ class WebsiteUserController(http.Controller):
         return json.dumps({'success': True, 'message': 10})
 
 
-
+    #PENDIENTE EDIT_EVENT_REGISTRATION (inscription) //TODO  
     @http.route('/evento/get_data_event_registration', type='http', auth='public', csrf=False, methods=['GET'])
     def get_data_event_registrations(self, registration_id=None, **kwargs):
         _logger.info('********************************Registration ID recibido: %s', registration_id)
@@ -240,12 +240,11 @@ class WebsiteUserController(http.Controller):
             return [{'id': record.id, 'name': record.name} for record in comodel.search([])]
         
         def get_selection_options(field_name):
-            field = registration._fields.get(field_name)
-            if not field or not isinstance(field.selection, list):
+            field_options = registration.fields_get(allfields=[field_name])[field_name]['selection']
+            if not field_options:
                 return []
-            # Ensure that each item in the selection is a tuple with exactly two items
-            return [{'id': value, 'name': name} for value, name in field.selection if isinstance(value, str) and isinstance(name, str)]
-        
+            return [{'id': value, 'name': name} for value, name in field_options]
+
         # Convert datetime to string in ISO 8601 format
         def format_datetime(dt):
             return dt.isoformat() if dt else None
@@ -270,7 +269,6 @@ class WebsiteUserController(http.Controller):
         }
         return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})    
 
-    #PENDIENTE //TODO    
     @http.route('/evento/update_registration', type='http', auth="public", website=True,
     csrf=False, methods=['POST']) #Ruta de la URL para editar una inscripción
     def update_registration(self, **post): #Definición de la función para editar una inscripción
@@ -284,7 +282,7 @@ class WebsiteUserController(http.Controller):
         room_type_val= post.get('room_type_val')
         number_nights_val= post.get('number_nights_val')
         entry_date_val= post.get('entry_date_val')
-        companion_val= post.get('companion')
+        companion_val= post.get('companion_val')
 
         if registration_id: 
             registration = request.env['event.registration'].sudo().browse(int(post['registration_id'])) #objeto correspondiente al ID proporcionado

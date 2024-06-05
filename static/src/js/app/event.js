@@ -1504,16 +1504,16 @@ odoo.define('df_website_front.event', function (require) {
         var hasError = false;
         if (isEmpty(country_val)) { showError('#country_person_id'); hasError = true; }
         if (isEmpty(currency_val)) { showError('#currency_id'); hasError = true; }
-        // if (isEmpty(type_attendee_val)) { showError('#type_attendee'); hasError = true; }
-        // if (isEmpty(tickets_val)) { showError('#event_tickets'); hasError = true; }
+        if (isEmpty(type_attendee_val)) { showError('#type_attendee'); hasError = true; }
+        if (isEmpty(tickets_val)) { showError('#event_tickets'); hasError = true; }
     
-        // // Comprobar campos obligatorios si se aloja
-        // if (required_lodging_val) {
-        //     if (isEmpty(lodging_val)) { showError('#lodging_id'); hasError = true; }
-        //     if (isEmpty(room_type_val)) { showError('#room_type'); hasError = true; }
-        //     if (isEmpty(number_nights_val)) { showError('#number_nights'); hasError = true; }
-        //     if (isEmpty(entry_date_val)) { showError('#entry_date'); hasError = true; }
-        // }
+        // Comprobar campos obligatorios si se aloja
+        if (required_lodging_val) {
+            if (isEmpty(lodging_val)) { showError('#lodging_id'); hasError = true; }
+            if (isEmpty(room_type_val)) { showError('#room_type'); hasError = true; }
+            if (isEmpty(number_nights_val)) { showError('#number_nights'); hasError = true; }
+            if (isEmpty(entry_date_val)) { showError('#entry_date'); hasError = true; }
+        }
     
         // Si hay errores, no continuar
         if (!hasError) {
