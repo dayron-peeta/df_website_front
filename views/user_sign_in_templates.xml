@@ -45,10 +45,6 @@
                                             <div class="col-7" style="position: relative;">
                                                 <h1 class="myriadpro-semibold-condensed text-center user_sign_vis_exp">VISITOR
                                                 </h1>
-                                                <t t-if="event.image_register_visitor">
-                                                    <img class="img-fluid" t-att-src="image_data_uri(event.image_register_visitor)"
-                                                     alt="..."/>
-                                                </t>
                                             </div>
                                         </div>
                                         <p class="mt-4 pr-sm-3 myriadpro-regular texto text-justify">
@@ -69,10 +65,6 @@
                                             <div class="col-7" style="position: relative">
                                                 <h1 class="myriadpro-semibold-condensed text-center user_sign_vis_exp">EXPOSITOR
                                                 </h1>
-                                                <t t-if="event.image_register_exhibitor">
-                                                    <img class="img-fluid" t-att-src="image_data_uri(event.image_register_exhibitor)"
-                                                     alt="..."/>
-                                                </t>
                                             </div>
                                         </div>
                                         <p class="mt-4 pl-sm-3 myriadpro-regular texto text-justify">

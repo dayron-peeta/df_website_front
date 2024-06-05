@@ -31,11 +31,6 @@ msgid "WE WANT TO KNOW YOU"
 msgstr "Queremos conocerte"
 
 #. module: df_website_front
-#: model_terms:ir.ui.view,arch_db:df_website_front.event_about_us
-msgid "<span class=\"material-icons mr-2\">chevron_right</span> About us"
-msgstr "<span class=\"material-icons mr-2\">chevron_right</span> Quiénes somos"
-
-#. module: df_website_front
 #: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
 msgid "<span class=\"material-icons mr-2\">chevron_right</span> Contact us"
 msgstr "<span class=\"material-icons mr-2\">chevron_right</span> Contáctanos"
@@ -106,7 +101,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
 #: model_terms:ir.ui.view,arch_db:df_website_front.committee_event
 #: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
-#: model_terms:ir.ui.view,arch_db:df_website_front.event_about_us
 #: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
 #: model_terms:ir.ui.view,arch_db:df_website_front.event_new_detail
 #: model_terms:ir.ui.view,arch_db:df_website_front.event_news
@@ -1455,7 +1449,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:df_website_front.business_visitor_pre_sign_in
 #: model_terms:ir.ui.view,arch_db:df_website_front.committee_event
 #: model_terms:ir.ui.view,arch_db:df_website_front.custom_event_track_proposal
-#: model_terms:ir.ui.view,arch_db:df_website_front.event_about_us
 #: model_terms:ir.ui.view,arch_db:df_website_front.event_contact_us
 #: model_terms:ir.ui.view,arch_db:df_website_front.event_new_detail
 #: model_terms:ir.ui.view,arch_db:df_website_front.event_news
@@ -3103,29 +3096,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:df_website_front.event_sign_in
 msgid "Theme tag"
 msgstr "Temáticas"
-
-#. module: df_website_front
-#. openerp-web
-#: code:addons/df_website_front/static/src/js/app/sidebar_menu.js:0
-#, python-format
-msgid ""
-"You must register in the system to be able to exchange with the exhibitor."
-msgstr ""
-"Debe registrate en el sistema para poder intercambiar con el expositor."
-
-#. module: df_website_front
-#. openerp-web
-#: code:addons/df_website_front/static/src/js/app/sidebar_menu.js:0
-#, python-format
-msgid ""
-"You must register in the system to be able to make an appointment with the "
-"exhibitor."
-msgstr ""
-"Debe registrate en el sistema para poder concertar una cita con el expositor."
-
-#. module: df_website_front
-#. openerp-web
-#: code:addons/df_website_front/static/src/js/app/event_stand.js:0
-#, python-format
-msgid "You must register in the system to be able to mark as a favorite."
-msgstr "Debe registrarse en el sistema para poder marcar como favorito."

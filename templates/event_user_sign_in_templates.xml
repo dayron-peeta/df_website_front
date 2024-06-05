@@ -26,12 +26,6 @@
                         </li>
                     </ol>
                 </nav>
-                <!--                <div class="position-relative">-->
-                <!--                    <t t-call="df_website_front.event_cintillo_pages_internas"/>-->
-                <!--                    <h1 class="text-center exo2-regular encabezado-interno">-->
-                <!--                        REGISTRATION-->
-                <!--                    </h1>-->
-                <!--                </div>-->
 
                 <!--  Región para configuración de snippets -->
                 <div class="oe_structure internal_page"/>

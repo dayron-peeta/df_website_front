@@ -6,11 +6,6 @@
             <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_sponsor_event'))]"/>
         </record>
 
-        <!--Todo: 2. About us-->
-        <record id="df_website_front.event_about_us" model="ir.ui.view">
-            <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_event_about_us'))]"/>
-        </record>
-
         <!--Todo: 3. Committee-->
         <record id="df_website_front.committee_event" model="ir.ui.view">
             <field name="groups_id" eval="[(4, ref('df_website_front.group_website_template_committee_event'))]"/>

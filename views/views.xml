@@ -1,34 +1,5 @@
 <odoo>
     <data>
-        <!-- TODO: Esto se comentareo porque no se usara la pagina web de la plataforma -->
-<!--        <record id="feria_custom_footer" model="ir.ui.view">-->
-<!--            <field name="name">feria.footer</field>-->
-<!--            <field name="inherit_id" ref="website.layout"/>-->
-<!--            <field name="arch" type="xml">-->
-
-<!--                <xpath expr="//div[@id='footer']" position="replace">-->
-<!--                    <div id="footer">-->
-<!--                        <t t-if="event">-->
-<!--                            <t t-set="footer_event" t-value="event.sudo().get_template_footer()"/>-->
-<!--                            <t t-if="footer_event">-->
-<!--                                <t t-raw="footer_event"/>-->
-<!--                            </t>-->
-<!--                        </t>-->
-<!--                        <t t-else="">-->
-<!--                            <t t-call="df_website_front.fevexpo_footer_template"/>-->
-<!--                        </t>-->
-<!--                    </div>-->
-<!--                </xpath>-->
-<!--                <xpath expr="//div[hasclass('o_footer_copyright')]" position="replace">-->
-<!--                    &lt;!&ndash;                    <div class="text-center mt-2 mb-2">&ndash;&gt;-->
-<!--                    &lt;!&ndash;                        Copyright © 2020 Fevexpo, Desoft. Todos los Derechos Reservados&ndash;&gt;-->
-<!--                    &lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--                </xpath>-->
-<!--            </field>-->
-<!--        </record>-->
-
         <menuitem id="action_feria_root" name="Secciones" parent="website.menu_website_configuration"/>
-
-
     </data>
 </odoo>

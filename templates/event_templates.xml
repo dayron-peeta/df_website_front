@@ -6,19 +6,8 @@
         </xpath>
     </template>
 
-    <template id="event_cintillo_pages_internas">
-        <t t-if="event.cintillo">
-            <img t-att-src="image_data_uri(event.cintillo)" class="cintillo-about-us"/>
-        </t>
-    </template>
+    <template id="event_cintillo_pages_internas"/>
 
-    <template id="event_navbar_dinamic">
-        <t t-if="event">
-            <t t-set="nav_event" t-value="event.sudo().get_template_nav(no_is_home)"/>
-            <t t-if="nav_event">
-                <t t-raw="nav_event"/>
-            </t>
-        </t>
-    </template>
+    <template id="event_navbar_dinamic"/>
 
 </odoo>

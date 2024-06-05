@@ -53,27 +53,21 @@ class WebsiteEventControllerInherit(http.Controller):
         datas['counts'] = datas['event'].sudo().get_counts_event()
         datas['data_count_nav'] = datas['event'].sudo().get_counts_event()
         datas['plans'] = datas['event'].sudo().get_plans_by_event()
-        template_home = datas['event'].sudo().template_id
+
         datas['present_stand'] = request.env.user.sudo().present_stand_user(False, datas['event'].id)
         datas['check_key_in_list'] = datas['event'].sudo().check_key_in_list
         datas['title'] = datas['event'].sudo().name
         datas = datas['event'].sudo().get_countdown_event(datas)
-        """ 
-            Buscando plantilla por defecto para el sitio del evento en caso de que no se seleccione ninguna, y así 
-            se pueda constuir dinamicamente con snippets
-        """
-        if template_home:
-            return template_home._render(datas)
+
+        current_website = request.env['website'].get_current_website()
+        website_specific_view = request.env['ir.ui.view'].sudo().search([
+            ('key', '=', 'df_website_front.event_empty_page_view'),
+            ('website_id', '=', current_website.id)
+        ], limit=1)
+        if website_specific_view:
+            return website_specific_view._render(datas)
         else:
-            current_website = request.env['website'].get_current_website()
-            website_specific_view = request.env['ir.ui.view'].sudo().search([
-                ('key', '=', 'df_website_front.event_empty_page_view'),
-                ('website_id', '=', current_website.id)
-            ], limit=1)
-            if website_specific_view:
-                return website_specific_view._render(datas)
-            else:
-                raise werkzeug.exceptions.NotFound()
+            raise werkzeug.exceptions.NotFound()
 
     @http.route('''/evento/<int:event_id>/announcement_en''', type='http', auth='public')
     def show_announcement_event_en(self, event_id):
@@ -234,23 +228,6 @@ class WebsiteEventControllerInherit(http.Controller):
         else:
             raise werkzeug.exceptions.NotFound()
 
-    @http.route(['/evento/<int:event_id>/about_us'], type='http', auth='public', website=True)
-    def event_about_us(self, event_id, **kw):
-        event = request.env['event.event'].sudo().browse(event_id)
-        # Validando el acceso a la página
-        template_current = 'df_website_front.event_about_us'
-        # if not request.env['ir.ui.view'].validate_user_groups_view(event, template_current):
-        #     raise Forbidden()
-        data_count_nav = event.get_counts_event()
-        present_stand = request.env.user.present_stand_user(False, event.id)
-        return http.request.render(template_current, {
-            'event': event,
-            'data_count_nav': data_count_nav,
-            'title': event.name,
-            'no_is_home': True,
-            'present_stand': present_stand
-        })
-
     @http.route('/evento/<int:event_id>/event_sign_in', type='http', auth='public', website=True)
     def event_sign_in(self, event_id, **kw):
         event = request.env['event.event'].sudo().browse(event_id)
@@ -324,24 +301,6 @@ class WebsiteEventControllerInherit(http.Controller):
         plan_id = request.env['df_event_virtual_fair.event.plan'].sudo().browse(plan_id)
         if plan_id.file:
             pdf = base64.decodebytes(plan_id.file)
-            pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
-            return request.make_response(pdf, headers=pdfhttpheaders)
-        return False
-
-    @http.route('''/evento/<int:event_id>/event_plan_es''', type='http', auth='public')
-    def plan_event_es(self, event_id):
-        event = request.env['event.event'].sudo().browse(event_id)
-        if event.event_file_plan_es:
-            pdf = base64.decodebytes(event.event_file_plan_es)
-            pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
-            return request.make_response(pdf, headers=pdfhttpheaders)
-        return False
-
-    @http.route('''/evento/<int:event_id>/event_plan_en''', type='http', auth='public')
-    def plan_event_en(self, event_id):
-        event = request.env['event.event'].sudo().browse(event_id)
-        if event.event_file_plan_en:
-            pdf = base64.decodebytes(event.event_file_plan_en)
             pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
             return request.make_response(pdf, headers=pdfhttpheaders)
         return False
@@ -1042,7 +1001,6 @@ class WebsiteEventControllerInherit(http.Controller):
         news = event.get_news_by_event()
         counts = event.get_counts_event()
         plans = event.get_plans_by_event()
-        template_home = event.template_id
         present_stand = request.env.user.present_stand_user(False, event.id)
         thematic_rooms = event.get_thematic_rooms()
 
@@ -1293,15 +1251,6 @@ class WebsiteEventControllerInherit(http.Controller):
                 'speakers': speaker_det
             }
         return json.dumps(details)
-
-    @http.route('''/evento/<int:event_id>/handbook''', type='http', auth='public')
-    def event_handbook(self, event_id):
-        event = request.env['event.event'].sudo().browse(event_id)
-        if event.handbook:
-            pdf = base64.decodebytes(event.handbook)
-            pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
-            return request.make_response(pdf, headers=pdfhttpheaders)
-        return False
 
     @http.route('''/evento/<int:event_id>/event_favorite_history''', type='http', auth='user', website=True, csrf=False)
     def event_favorite_history(self, event_id, **post):

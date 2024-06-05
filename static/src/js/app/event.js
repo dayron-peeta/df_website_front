@@ -129,17 +129,6 @@ odoo.define('df_website_front.event', function (require) {
         show_dialog(title, content)
     });
 
-    /*
-       Para mostrar el manual del evento
-    */
-    $('img#handbook-id').on('click', function () {
-        var self = this;
-        var event_id = event_main.get_event_id()
-        var content = "<iframe  src='/evento/" + event_id + "/handbook'  width='100%' height='600px' style='border: none;' />";
-        var title = _t("Handbook");
-        show_dialog(title, content);
-    });
-
     $('button#newsletter_id').on('click', function (ev) {
         ev.preventDefault();
         var $form = $('form#form_newsletter_id');

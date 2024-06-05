@@ -9,12 +9,6 @@
             <field name="comment">Group for permission on sponsors page</field>
         </record>
 
-        <!--Todo: 2. About us-->
-        <record id="group_website_template_event_about_us" model="res.groups">
-            <field name="name">Group website template event about us</field>
-            <field name="comment">Group for permission on the about us page</field>
-        </record>
-
         <!--Todo: 3. Committee-->
         <record id="group_website_template_committee_event" model="res.groups">
             <field name="name">Group website template committee event</field>

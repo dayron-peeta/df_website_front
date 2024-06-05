@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-
         <!-- Icono de scroll en la página principal-->
         <template name="Scroll Button" id="scrollToTop">
             <img title="Go to top" id="btnToTop" onClick="topFunction()"
                  src="/df_website_front/static/src/img/boton-to-top.png"/>
-        </template>
-
-        <!-- Icono para descargar el manu dele vento-->
-        <template name="Handbook Button" id="handbookButton">
-            <img title="Handbook" id="handbook-id" src="/df_website_front/static/src/img/handbook.png"/>
         </template>
 
     </data>

@@ -34,13 +34,7 @@
                     </section>
                     <section class="row mt-5">
                         <div class="col-lg-9">
-                            <div class="oe_structure">
-                                <section>
-                                    <p class="myriadpro-regular">
-                                        <t t-raw="event.description_track"/>
-                                    </p>
-                                </section>
-                            </div>
+                            <div class="oe_structure"/>
                             <div t-if="not track">
                                 <section class="mt-5">
                                     <p class="myriadpro-regular">
