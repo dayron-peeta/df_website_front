@@ -240,7 +240,7 @@ class WebsiteUserController(http.Controller):
             return [{'id': record.id, 'name': record.name} for record in comodel.search([])]
         
         def get_selection_options(field_name):
-            field_options = registration.fields_get(allfields=[field_name])[field_name]['selection']
+            field_options = registration.fields_get(allfields=[field_name])[field_name]['selection'] #check this latter to understand well how it works
             if not field_options:
                 return []
             return [{'id': value, 'name': name} for value, name in field_options]
@@ -260,7 +260,7 @@ class WebsiteUserController(http.Controller):
             'selected_room_type': registration.room_type_id.id if registration.room_type_id else None,
             'number_nights': registration.number_nights,
             'entry_date': format_datetime(registration.entry_date),
-            'companion': registration.companion,
+            'companion': registration.companion if registration.companion else None,
             'currency_id_options': get_field_options('pricelist_id'),
             'type_attendee_options': get_selection_options('type_attendees'),
             'event_tickets_options': get_field_options('event_ticket_id'),
