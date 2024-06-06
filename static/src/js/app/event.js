@@ -1365,7 +1365,9 @@ odoo.define('df_website_front.event', function (require) {
                 loadOptions('currency_id', data.currency_id_options, data.selected_currency_id);
                 loadOptions('type_attendee', data.type_attendee_options, data.selected_type_attendee);
                 loadOptions('event_tickets', data.event_tickets_options, data.selected_event_tickets);
-                $('input[id=required_lodging]').val(data.required_lodging);
+                $('#required_lodging').prop('checked', data.required_lodging);
+                // Mostrar u ocultar campos relacionados al lodging 
+                enable_disable_lodging(data.required_lodging);
                 loadOptions('lodging_id', data.lodging_id_options, data.selected_lodging_id);
                 loadOptions('room_type', data.room_type_options, data.selected_room_type);
                 $('input[id=number_nights]').val(data.number_nights);
@@ -1412,18 +1414,17 @@ odoo.define('df_website_front.event', function (require) {
         }
     }
     
-    //Configuración del check ´Required-Lodging´
+     // Configuración del check ´Required-Lodging´
     $('#required_lodging').on('change', function (ev) {
-        ev.preventDefault();
-        //reset_fields_lodging();
+        ev.preventDefault(); //mod
         if ($(this).is(':checked')) {
-            enable_disable_lodging(true); //mostrar campos
-            //get_lodgings();
+            enable_disable_lodging(true); // mostrar campos
         } else {
-            enable_disable_lodging(false); //ocultar campos
+            enable_disable_lodging(false); // ocultar campos
         }
     });
 
+    
     //Muestra/Oculta los campos relacionados al lodging
     function enable_disable_lodging(EVENT_REQUIRED_LODGING) {
         let fade_lodging = $('.fade-lodging');
@@ -1434,7 +1435,7 @@ odoo.define('df_website_front.event', function (require) {
         let companion = $('#companion');
         
 
-        if (EVENT_REQUIRED_LODGING == true) { //oculta
+        if (EVENT_REQUIRED_LODGING == true) { //mostrar
             fade_lodging.removeClass('d-none')
             lodging.attr('is-required', 'true');
             typeRoom.attr('is-required', 'true');
@@ -1443,7 +1444,7 @@ odoo.define('df_website_front.event', function (require) {
             companion.attr('is-required', 'true');
             //Resetear campos //TODO
             
-        } else { //muestra
+        } else { //ocultar
             fade_lodging.addClass('d-none');
             lodging.removeAttr('is-required');
             typeRoom.removeAttr('is-required');
@@ -1465,7 +1466,7 @@ odoo.define('df_website_front.event', function (require) {
         var tickets_val = $('#event_tickets').val();
     
         // Variables de campos obligatorios si se alojará
-        var required_lodging_val = $('#required_lodging').val();
+        var required_lodging_val = $('#required_lodging').is(':checked');
         var lodging_val = $('#lodging_id').val();
         var room_type_val = $('#room_type').val();
         var number_nights_val = $('#number_nights').val();
