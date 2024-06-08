@@ -286,23 +286,24 @@ class WebsiteUserController(http.Controller):
         companion_val= post.get('companion_val')
 
         # Log the values received from the AJAX request
-        _logger.info('********************************registration_id: %s', registration_id) 
+        # _logger.info('********************************registration_id: %s', registration_id) 
         _logger.info('********************************country_val: %s', country_val) 
-        _logger.info('********************************currency_val: %s', currency_val) 
-        _logger.info('********************************type_attendee_val: %s', type_attendee_val) 
-        _logger.info('********************************tickets_val: %s', tickets_val) 
-        _logger.info('********************************required_lodging_val: %s', required_lodging_val) 
-        _logger.info('********************************lodging_val: %s', lodging_val) 
-        _logger.info('********************************room_type_val: %s', room_type_val) 
-        _logger.info('********************************number_nights_val: %s', number_nights_val) 
-        _logger.info('********************************entry_date_val: %s', entry_date_val) 
-        _logger.info('********************************companion_val: %s', companion_val) 
+        # _logger.info('********************************currency_val: %s', currency_val) 
+        # _logger.info('********************************type_attendee_val: %s', type_attendee_val) 
+        # _logger.info('********************************tickets_val: %s', tickets_val) 
+        # _logger.info('********************************required_lodging_val: %s', required_lodging_val) 
+        # _logger.info('********************************lodging_val: %s', lodging_val) 
+        # _logger.info('********************************room_type_val: %s', room_type_val) 
+        # _logger.info('********************************number_nights_val: %s', number_nights_val) 
+        # _logger.info('********************************entry_date_val: %s', entry_date_val) 
+        # _logger.info('********************************companion_val: %s', companion_val) 
 
         if registration_id: 
             registration = request.env['event.registration'].sudo().browse(int(post['registration_id'])) #objeto correspondiente al ID proporcionado
             _logger.info('********************************Registration to update: %s', registration)
             if registration.exists():
                 registration.write({
+                # 'country_id': country_val if country_val else False,
                 'pricelist_id': currency_val if currency_val else False,
                 'type_attendees': type_attendee_val if type_attendee_val else False,
                 # 'event_ticket_id': tickets_val if tickets_val else False,
@@ -312,7 +313,6 @@ class WebsiteUserController(http.Controller):
                 'number_nights': number_nights_val if number_nights_val else False,
                 'entry_date': entry_date_val if entry_date_val else False,
                 'companion': companion_val if companion_val else False,
-                
                 })
                 return http.request.make_response(json.dumps({'success': True, 'message': 10}), headers={'Content-Type': 'application/json'})
         
