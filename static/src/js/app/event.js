@@ -1366,8 +1366,14 @@ odoo.define('df_website_front.event', function (require) {
                 loadOptions('type_attendee', data.type_attendee_options, data.selected_type_attendee);
                 loadOptions('event_tickets', data.event_tickets_options, data.selected_event_tickets);
                 $('#required_lodging').prop('checked', data.required_lodging);
-                // Mostrar u ocultar campos relacionados al lodging 
-                enable_disable_lodging(data.required_lodging);
+                // Mostrar u ocultar sección y campos relacionados al lodging 
+                if (data.event_required_lodging) { 
+                    $('.lodging-section').removeClass('d-none'); 
+                    $('#required_lodging').prop('checked', data.required_lodging); 
+                    enable_disable_lodging(data.required_lodging); 
+                } else {
+                    $('.lodging-section').addClass('d-none'); 
+                }
                 loadOptions('lodging_id', data.lodging_id_options, data.selected_lodging_id);
                 loadOptions('room_type', data.room_type_options, data.selected_room_type);
                 $('input[id=number_nights]').val(data.number_nights);
@@ -1390,19 +1396,19 @@ odoo.define('df_website_front.event', function (require) {
         var selectElement = $('#' + selectId);
         selectElement.empty(); // Limpiar el select
     
-        console.log('Select Element:', selectElement);
-        console.log('Options:', options);
-        console.log('Selected Value:', selectedValue);
+        // console.log('Select Element:', selectElement);
+        // console.log('Options:', options);
+        // console.log('Selected Value:', selectedValue);
     
         options.forEach(function(option) {
             selectElement.append('<option value="' + option.id + '">' + option.name + '</option>');
         });
     
         // Verificar la selección de la opción después de añadirlas
-        if (selectedValue) {
-            selectElement.val(selectedValue);
-            console.log('Set Selected Value:', selectedValue);
-        }
+        // if (selectedValue) {
+        //     selectElement.val(selectedValue);
+        //     console.log('Set Selected Value:', selectedValue);
+        // }
     
         // refresh Selectpicker and set value  
         if (selectElement.hasClass('selectpicker')) {
@@ -1416,7 +1422,7 @@ odoo.define('df_website_front.event', function (require) {
     
      // Configuración del check ´Required-Lodging´
     $('#required_lodging').on('change', function (ev) {
-        ev.preventDefault(); //mod
+        ev.preventDefault(); 
         if ($(this).is(':checked')) {
             enable_disable_lodging(true); // mostrar campos
         } else {
@@ -1425,35 +1431,17 @@ odoo.define('df_website_front.event', function (require) {
     });
 
     
-    //Muestra/Oculta los campos relacionados al lodging
-    function enable_disable_lodging(EVENT_REQUIRED_LODGING) {
+    function enable_disable_lodging(REQUIRED_LODGING) {
         let fade_lodging = $('.fade-lodging');
-        let lodging = $('#lodging_id');
-        let typeRoom = $('#room_type');
-        let numberNights = $('#number_nights');
-        let entryDate = $('#entry_date');
-        let companion = $('#companion');
-        
-
-        if (EVENT_REQUIRED_LODGING == true) { //mostrar
-            fade_lodging.removeClass('d-none')
-            lodging.attr('is-required', 'true');
-            typeRoom.attr('is-required', 'true');
-            numberNights.attr('is-required', 'true');
-            entryDate.attr('is-required', 'true');
-            companion.attr('is-required', 'true');
-            //Resetear campos //TODO
-            
+    
+        if (REQUIRED_LODGING == true) { //mostrar
+            fade_lodging.removeClass('d-none');
+            fade_lodging.find('select, input').attr('is-required', 'true');
         } else { //ocultar
             fade_lodging.addClass('d-none');
-            lodging.removeAttr('is-required');
-            typeRoom.removeAttr('is-required');
-            numberNights.removeAttr('is-required');
-            entryDate.removeAttr('is-required');
-            companion.removeAttr('is-required');
-            
+            fade_lodging.find('select, input').removeAttr('is-required');
         }
-    };
+    }
 
     //PENDIENTE //TODO
     $('#btnAceptEditRegistrations').click(function () {
@@ -1535,7 +1523,7 @@ odoo.define('df_website_front.event', function (require) {
             },
             error: function (error) {
                 console.log("Error:", error);
-                toastr.error("Error al actualizar el registro.");
+                toastr.error("Error al actualizar el registro, falla del servidor.");
             },
         });
     }   

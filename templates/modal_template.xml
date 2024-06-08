@@ -717,7 +717,7 @@
                                     </div>
 
                                     <!-- HOSPEDAJE -->
-                                    <div class="row mt-4">
+                                    <div class="row mt-4 lodging-section d-none">
                                         <!-- Event Registrations Required Lodging -->
                                         <div class="col-sm-6">
                                             <div class="mb-4">
