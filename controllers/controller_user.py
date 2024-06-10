@@ -272,6 +272,8 @@ class WebsiteUserController(http.Controller):
             'event_tickets_options': get_field_options('event_ticket_id', event_ticket_domain),
             'lodging_id_options': get_field_options('lodging_id'),
             'room_type_options': get_field_options('room_type_id'),
+            
+            'state': registration.state,
         }
         return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})    
 
@@ -311,7 +313,7 @@ class WebsiteUserController(http.Controller):
                 # 'country_id': country_val if country_val else False,
                 'pricelist_id': currency_val if currency_val else False,
                 'type_attendees': type_attendee_val if type_attendee_val else False,
-                'event_ticket_id': tickets_val if tickets_val else False,
+                # 'event_ticket_id': tickets_val if tickets_val else False,
                 'required_lodging': required_lodging_val if required_lodging_val else False,
                 'lodging_id': lodging_val if lodging_val else False,
                 'room_type_id': room_type_val if room_type_val else False,
@@ -319,6 +321,26 @@ class WebsiteUserController(http.Controller):
                 'entry_date': entry_date_val if entry_date_val else False,
                 'companion': companion_val if companion_val else False,
                 })
+                
+                # partner_id= registration.partner_id.id #obteniendo el partner del evento
+                # partner = request.env['res.partner'].sudo().browse(int(partner_id)) #partner correspondiente al ID proporcionado
+                # _logger.info('********************************Partner to update: %s', partner)
+                # if partner:
+                #     partner.write({
+                #         'country_id': country_val if country_val else False,
+                #     })
+                # return http.request.make_response(json.dumps({'success': True, 'message': 10}), headers={'Content-Type': 'application/json'})
+        
+        
+                # registration = request.env['event.registration'].sudo().browse(int(post['registration_id'])) #objeto correspondiente al ID proporcionado
+                # _logger.info('********************************Registration to update: %s', registration)
+
+                # if registration.partner_id:
+                #     registration.partner_id.write({
+                #         'country_id': country_val if country_val else False,
+                #     })
+                # return http.request.make_response(json.dumps({'success': True, 'message': 10}), headers={'Content-Type': 'application/json'})
+        
                 return http.request.make_response(json.dumps({'success': True, 'message': 10}), headers={'Content-Type': 'application/json'})
         
         return http.request.make_response(json.dumps({'success': False, 'error': 'Registration not found'}), headers={'Content-Type': 'application/json'})

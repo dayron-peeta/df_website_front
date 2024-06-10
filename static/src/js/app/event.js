@@ -1382,6 +1382,8 @@ odoo.define('df_website_front.event', function (require) {
                 $('input[id=entry_date]').val(formattedDate);
                 $('input[id=companion]').val(data.companion);
             
+                applyModifiers(data.state); 
+
                 $('#modalEditRegistrations').modal('show'); // Abre el modal después de cargar los datos
             },
             error: function (error) {
@@ -1440,6 +1442,19 @@ odoo.define('df_website_front.event', function (require) {
         } else { //ocultar
             fade_lodging.addClass('d-none');
             fade_lodging.find('select, input').removeAttr('is-required');
+        }
+    }
+
+    // Aplicar modificadores al campo event_ticket_id
+    function applyModifiers(state) {
+        let eventTicketField = $('#event_tickets');
+        
+        // Aplicar readonly basado en el estado del evento
+        if (state != 'draft') {
+            console.log('state:', state);
+            eventTicketField.attr('disabled', 'disabled');
+        } else {
+            eventTicketField.removeAttr('disabled');
         }
     }
 
