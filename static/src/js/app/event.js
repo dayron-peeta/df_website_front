@@ -1449,7 +1449,7 @@ odoo.define('df_website_front.event', function (require) {
     function applyModifiers(state) {
         let eventTicketField = $('#event_tickets');
         
-        // Aplicar readonly basado en el estado del evento
+        // Aplicar disabled basado en el estado del evento
         if (state != 'draft') {
             console.log('state:', state);
             eventTicketField.attr('disabled', 'disabled');

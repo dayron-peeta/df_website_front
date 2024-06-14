@@ -313,7 +313,7 @@ class WebsiteUserController(http.Controller):
                 # 'country_id': country_val if country_val else False,
                 'pricelist_id': currency_val if currency_val else False,
                 'type_attendees': type_attendee_val if type_attendee_val else False,
-                # 'event_ticket_id': tickets_val if tickets_val else False,
+                'event_ticket_id': tickets_val if tickets_val else False,
                 'required_lodging': required_lodging_val if required_lodging_val else False,
                 'lodging_id': lodging_val if lodging_val else False,
                 'room_type_id': room_type_val if room_type_val else False,
