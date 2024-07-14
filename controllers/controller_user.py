@@ -309,27 +309,26 @@ class WebsiteUserController(http.Controller):
             registration = request.env['event.registration'].sudo().browse(int(post['registration_id'])) #objeto correspondiente al ID proporcionado
             _logger.info('********************************Registration to update: %s', registration)
             if registration.exists():
+                partner_id= registration.partner_id.id #obteniendo el partner del evento
+                partner = request.env['res.partner'].sudo().browse(int(partner_id)) #partner correspondiente al ID proporcionado
+                _logger.info('********************************Partner to update: %s', partner)
+                if partner:
+                    partner.write({
+                        'country_id': int(country_val) if country_val else False,
+                    })
                 registration.write({
-                # 'country_id': country_val if country_val else False,
-                'pricelist_id': currency_val if currency_val else False,
+                'pricelist_id': int(currency_val) if currency_val else False,
                 'type_attendees': type_attendee_val if type_attendee_val else False,
-                # 'event_ticket_id': tickets_val if tickets_val else False,
-                'required_lodging': required_lodging_val if required_lodging_val else False,
-                # 'lodging_id': lodging_val if lodging_val else False,
-                'room_type_id': room_type_val if room_type_val else False,
-                'number_nights': number_nights_val if number_nights_val else False,
+                'event_ticket_id': int(tickets_val) if tickets_val else False,
+                'required_lodging': required_lodging_val == 'true',  # asegura que sea booleano
+                'lodging_id': int(lodging_val) if lodging_val else False,
+                'room_type_id': int(room_type_val) if room_type_val else False,
+                'number_nights': int(number_nights_val) if number_nights_val else False,
                 'entry_date': entry_date_val if entry_date_val else False,
                 'companion': companion_val if companion_val else False,
                 })
                 
-                # partner_id= registration.partner_id.id #obteniendo el partner del evento
-                # partner = request.env['res.partner'].sudo().browse(int(partner_id)) #partner correspondiente al ID proporcionado
-                # _logger.info('********************************Partner to update: %s', partner)
-                # if partner:
-                #     partner.write({
-                #         'country_id': country_val if country_val else False,
-                #     })
-                # return http.request.make_response(json.dumps({'success': True, 'message': 10}), headers={'Content-Type': 'application/json'})
+                
         
         
                 # registration = request.env['event.registration'].sudo().browse(int(post['registration_id'])) #objeto correspondiente al ID proporcionado
