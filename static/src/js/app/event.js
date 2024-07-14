@@ -1358,7 +1358,7 @@ odoo.define('df_website_front.event', function (require) {
                     console.log('Error:', data.error);
                     return;
                 }
-            
+
                 $('input[name=registration_id]').val(registrationId);
 
                 $('input[id=event]').val(data.event);
@@ -1367,15 +1367,15 @@ odoo.define('df_website_front.event', function (require) {
                 loadOptions('event_tickets', data.event_tickets_options, data.selected_event_tickets);
                 $('#required_lodging').prop('checked', data.selected_lodging_id);
                 // Mostrar u ocultar sección y campos relacionados al lodging 
-                if (data.event_required_lodging) { 
-                    $('.lodging-section').removeClass('d-none'); 
-                    $('#required_lodging').prop('checked', data.selected_lodging_id); 
-                    if(data.selected_lodging_id){
+                if (data.event_required_lodging) {
+                    $('.lodging-section').removeClass('d-none');
+                    $('#required_lodging').prop('checked', data.selected_lodging_id);
+                    if (data.selected_lodging_id) {
                         enable_disable_lodging(true);
-                    } else { enable_disable_lodging(false);}
+                    } else { enable_disable_lodging(false); }
 
                 } else {
-                    $('.lodging-section').addClass('d-none'); 
+                    $('.lodging-section').addClass('d-none');
                 }
                 loadOptions('lodging_id', data.lodging_id_options, data.selected_lodging_id);
                 loadOptions('room_type', data.room_type_options, data.selected_room_type);
@@ -1384,8 +1384,8 @@ odoo.define('df_website_front.event', function (require) {
                 var formattedDate = data.entry_date ? new Date(data.entry_date).toISOString().split('T')[0] : '';
                 $('input[id=entry_date]').val(formattedDate);
                 $('input[id=companion]').val(data.companion);
-            
-                applyModifiers(data.state); 
+
+                applyModifiers(data.state);
 
                 $('#modalEditRegistrations').modal('show'); // Abre el modal después de cargar los datos
             },
@@ -1400,21 +1400,21 @@ odoo.define('df_website_front.event', function (require) {
     function loadOptions(selectId, options, selectedValue) {
         var selectElement = $('#' + selectId);
         selectElement.empty(); // Limpiar el select
-    
+
         // console.log('Select Element:', selectElement);
         // console.log('Options:', options);
         // console.log('Selected Value:', selectedValue);
-    
-        options.forEach(function(option) {
+
+        options.forEach(function (option) {
             selectElement.append('<option value="' + option.id + '">' + option.name + '</option>');
         });
-    
+
         // Verificar la selección de la opción después de añadirlas
         // if (selectedValue) {
         //     selectElement.val(selectedValue);
         //     console.log('Set Selected Value:', selectedValue);
         // }
-    
+
         // refresh Selectpicker and set value  
         if (selectElement.hasClass('selectpicker')) {
             selectElement.selectpicker('refresh');
@@ -1424,10 +1424,10 @@ odoo.define('df_website_front.event', function (require) {
             selectElement.change();
         }
     }
-    
-     // Configuración del check ´Required-Lodging´
+
+    // Configuración del check ´Required-Lodging´
     $('#required_lodging').on('change', function (ev) {
-        ev.preventDefault(); 
+        ev.preventDefault();
         if ($(this).is(':checked')) {
             enable_disable_lodging(true); // mostrar campos
         } else {
@@ -1435,10 +1435,10 @@ odoo.define('df_website_front.event', function (require) {
         }
     });
 
-    
+
     function enable_disable_lodging(REQUIRED_LODGING) {
         let fade_lodging = $('.fade-lodging');
-    
+
         if (REQUIRED_LODGING == true) { //mostrar
             fade_lodging.removeClass('d-none');
             fade_lodging.find('select, input').attr('is-required', 'true');
@@ -1451,9 +1451,9 @@ odoo.define('df_website_front.event', function (require) {
     // Aplicar modificadores al campo event_ticket_id
     function applyModifiers(state) {
         let eventTicketField = $('#event_tickets');
-        
+
         // Aplicar disabled basado en el estado del evento
-        if (state != 'draft') {
+        if (state != 'draft' && state != 'open') {
             console.log('state:', state);
             eventTicketField.attr('disabled', 'disabled');
         } else {
@@ -1464,13 +1464,13 @@ odoo.define('df_website_front.event', function (require) {
     //PENDIENTE //TODO
     $('#btnAceptEditRegistrations').click(function () {
         var registration_id = $('#registration_id').val();
-    
+
         // Variables de campos obligatorios
         var country_val = $('#country_person_id').val();
         var currency_val = $('#currency_id').val();
         var type_attendee_val = $('#type_attendee').val();
         var tickets_val = $('#event_tickets').val();
-    
+
         // Variables de campos obligatorios si se alojará
         var required_lodging_val = $('#required_lodging').is(':checked');
         var lodging_val = $('#lodging_id').val();
@@ -1478,7 +1478,7 @@ odoo.define('df_website_front.event', function (require) {
         var number_nights_val = $('#number_nights').val();
         var entry_date_val = $('#entry_date').val();
         var companion_val = $('#companion').val();
-    
+
         var data = {
             country_val: country_val,
             currency_val: currency_val,
@@ -1500,17 +1500,17 @@ odoo.define('df_website_front.event', function (require) {
             tickets_val: tickets_val,
             registration_id: registration_id,
         };
-    
+
         // Limpiar mensajes de error anteriores
         $('.my-alert').addClass('d-none');
-    
+
         // Comprobar y marcar campos obligatorios vacíos
         var hasError = false;
         if (isEmpty(country_val)) { showError('#country_person_id'); hasError = true; }
         if (isEmpty(currency_val)) { showError('#currency_id'); hasError = true; }
         if (isEmpty(type_attendee_val)) { showError('#type_attendee'); hasError = true; }
         if (isEmpty(tickets_val)) { showError('#event_tickets'); hasError = true; }
-    
+
         // Comprobar campos obligatorios si se aloja
         if (required_lodging_val) {
             if (isEmpty(lodging_val)) { showError('#lodging_id'); hasError = true; }
@@ -1518,7 +1518,7 @@ odoo.define('df_website_front.event', function (require) {
             if (isEmpty(number_nights_val)) { showError('#number_nights'); hasError = true; }
             if (isEmpty(entry_date_val)) { showError('#entry_date'); hasError = true; }
         }
-    
+
 
         // Si está desmarcado required logding llamar a la función sin los datos relacionados
         // Si hay errores, no continuar
@@ -1530,15 +1530,15 @@ odoo.define('df_website_front.event', function (require) {
             edit_inscription(data);
         }
     });
-    
+
     function isEmpty(value) {
         return value == null || value === "" || value === undefined || value === 'undefined';
     }
-    
+
     function showError(fieldId) {
         $(fieldId).closest('.mb-4').find('.my-alert').removeClass('d-none');
     }
-    
+
     function edit_inscription(data) {
         $.ajax({
             url: "/evento/update_registration",
@@ -1558,7 +1558,7 @@ odoo.define('df_website_front.event', function (require) {
                 toastr.error("Error al actualizar el registro, falla del servidor.");
             },
         });
-    }   
+    }
 
     $('a.ViewInscription').click(function () {
         var elem_id = $(this).closest('tr').attr('id');
