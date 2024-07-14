@@ -1365,12 +1365,15 @@ odoo.define('df_website_front.event', function (require) {
                 loadOptions('currency_id', data.currency_id_options, data.selected_currency_id);
                 loadOptions('type_attendee', data.type_attendee_options, data.selected_type_attendee);
                 loadOptions('event_tickets', data.event_tickets_options, data.selected_event_tickets);
-                $('#required_lodging').prop('checked', data.required_lodging);
+                $('#required_lodging').prop('checked', data.selected_lodging_id);
                 // Mostrar u ocultar sección y campos relacionados al lodging 
                 if (data.event_required_lodging) { 
                     $('.lodging-section').removeClass('d-none'); 
-                    $('#required_lodging').prop('checked', data.required_lodging); 
-                    enable_disable_lodging(data.required_lodging); 
+                    $('#required_lodging').prop('checked', data.selected_lodging_id); 
+                    if(data.selected_lodging_id){
+                        enable_disable_lodging(true);
+                    } else { enable_disable_lodging(false);}
+
                 } else {
                     $('.lodging-section').addClass('d-none'); 
                 }
@@ -1489,6 +1492,14 @@ odoo.define('df_website_front.event', function (require) {
             companion_val: companion_val,
             registration_id: registration_id,
         };
+
+        var data2 = {
+            country_val: country_val,
+            currency_val: currency_val,
+            type_attendee_val: type_attendee_val,
+            tickets_val: tickets_val,
+            registration_id: registration_id,
+        };
     
         // Limpiar mensajes de error anteriores
         $('.my-alert').addClass('d-none');
@@ -1508,8 +1519,14 @@ odoo.define('df_website_front.event', function (require) {
             if (isEmpty(entry_date_val)) { showError('#entry_date'); hasError = true; }
         }
     
+
+        // Si está desmarcado required logding llamar a la función sin los datos relacionados
         // Si hay errores, no continuar
-        if (!hasError) {
+        if (!hasError && !required_lodging_val) {
+            edit_inscription(data2);
+        }
+        // Si hay errores, no continuar
+        else if (!hasError) {
             edit_inscription(data);
         }
     });

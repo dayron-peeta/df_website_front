@@ -261,7 +261,7 @@ class WebsiteUserController(http.Controller):
             'selected_type_attendee': registration.type_attendees if registration.type_attendees else None,
             'selected_event_tickets': registration.event_ticket_id.id if registration.event_ticket_id else None,
             'event_required_lodging': registration.event_id.required_lodging,
-            'required_lodging': registration.required_lodging,
+            # 'required_lodging': registration.required_lodging,
             'selected_lodging_id': registration.lodging_id.id if registration.lodging_id else None,
             'selected_room_type': registration.room_type_id.id if registration.room_type_id else None,
             'number_nights': registration.number_nights,
