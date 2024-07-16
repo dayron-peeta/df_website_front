@@ -212,7 +212,7 @@ class WebsiteUserController(http.Controller):
         return json.dumps({'success': True, 'message': 10})
 
 
-    #PENDIENTE EDIT_EVENT_REGISTRATION (inscription) //TODO  
+    #PENDIENTE EDIT_EVENT_REGISTRATION (inscription) //TODO probando git 
     @http.route('/evento/get_data_event_registration', type='http', auth='public', csrf=False, methods=['GET'])
     def get_data_event_registrations(self, registration_id=None, **kwargs):
         _logger.info('********************************Registration ID recibido: %s', registration_id)
