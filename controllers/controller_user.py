@@ -261,7 +261,6 @@ class WebsiteUserController(http.Controller):
             'selected_type_attendee': registration.type_attendees if registration.type_attendees else None,
             'selected_event_tickets': registration.event_ticket_id.id if registration.event_ticket_id else None,
             'event_required_lodging': registration.event_id.required_lodging,
-            # 'required_lodging': registration.required_lodging,
             'selected_lodging_id': registration.lodging_id.id if registration.lodging_id else None,
             'selected_room_type': registration.room_type_id.id if registration.room_type_id else None,
             'number_nights': registration.number_nights,
@@ -276,6 +275,26 @@ class WebsiteUserController(http.Controller):
             'state': registration.state,
         }
         return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})    
+
+    @http.route('/evento/get_country_currency', type='json', auth='public', methods=['GET'], csrf=False)
+    def get_country_currency(self, country_id=None):
+        if not country_id:
+            _logger.error('Missing country_id')
+            return {'error': 'Missing country_id'}
+        
+        country = request.env['res.country'].sudo().browse(int(country_id))
+        if not country.exists():
+            _logger.error('Country not found: %s', country_id)
+            return {'error': 'Country not found'}
+
+        currency_options = [{'id': currency.id, 'name': currency.name} for currency in country.currency_ids]
+        
+        data = {
+            'currency_id_options': currency_options,
+        }
+        
+        return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})    
+
 
     @http.route('/evento/update_registration', type='http', auth="public", website=True,
     csrf=False, methods=['POST']) #Ruta de la URL para editar una inscripción

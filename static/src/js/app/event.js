@@ -1425,6 +1425,22 @@ odoo.define('df_website_front.event', function (require) {
         }
     }
 
+    function loadOptions(selectId, options, selectedValue) {
+        var selectElement = $('#' + selectId);
+        selectElement.empty(); // Limpiar el select
+    
+        options.forEach(function(option) {
+            selectElement.append('<option value="' + option.id + '">' + option.name + '</option>');
+        });
+    
+        if (selectElement.hasClass('selectpicker')) {
+            selectElement.selectpicker('refresh');
+            selectElement.selectpicker('val', selectedValue);
+        } else {
+            selectElement.val(selectedValue).change();
+        }
+    }
+
     // Configuración del check ´Required-Lodging´
     $('#required_lodging').on('change', function (ev) {
         ev.preventDefault();
@@ -1459,6 +1475,36 @@ odoo.define('df_website_front.event', function (require) {
         } else {
             eventTicketField.removeAttr('disabled');
         }
+    }
+
+    // actualizar las opciones del selector currency_id en función de la opción seleccionada en el selector country_person_id
+    $('#country_person_id').on('change', function() {
+        var countryId = $(this).val(); // Obtener el ID del país seleccionado
+        if (countryId) {
+            updateCurrencyOptions(countryId); // Llamar a la función para actualizar las opciones de moneda
+            console.log('updating to currency from:', countryId);
+        } else {
+            // Si no hay país seleccionado, limpiar el selector de moneda
+            $('#currency_id').empty().selectpicker('refresh');
+        }
+    });
+
+    function updateCurrencyOptions(countryId) {
+        $.ajax({
+            url: '/evento/get_country_currency',
+            type: 'GET',
+            data: { country_id: countryId },
+            success: function(data) {
+                if (data.success) {
+                    loadOptions('currency_id', data.currency_id_options, 1); //carga las opciones de moneda del país y preselecciona la 1ra opción
+                } else {
+                    console.log('Error al obtener las opciones de moneda:', data.error);
+                }
+            },
+            error: function(error) {
+                console.log('Error en la llamada AJAX:', error);
+            }
+        });
     }
 
     //PENDIENTE //TODO
