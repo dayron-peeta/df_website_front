@@ -1421,22 +1421,6 @@ odoo.define('df_website_front.event', function (require) {
             selectElement.selectpicker('val', selectedValue);
         } else {
             // Forzar cambio si no estás usando selectpicker
-            selectElement.change();
-        }
-    }
-
-    function loadOptions(selectId, options, selectedValue) {
-        var selectElement = $('#' + selectId);
-        selectElement.empty(); // Limpiar el select
-    
-        options.forEach(function(option) {
-            selectElement.append('<option value="' + option.id + '">' + option.name + '</option>');
-        });
-    
-        if (selectElement.hasClass('selectpicker')) {
-            selectElement.selectpicker('refresh');
-            selectElement.selectpicker('val', selectedValue);
-        } else {
             selectElement.val(selectedValue).change();
         }
     }
@@ -1479,9 +1463,15 @@ odoo.define('df_website_front.event', function (require) {
 
     // actualizar las opciones del selector currency_id en función de la opción seleccionada en el selector country_person_id
     $('#country_person_id').on('change', function() {
+        var registration_id = $('#registration_id').val();
         var countryId = $(this).val(); // Obtener el ID del país seleccionado
-        if (countryId) {
-            updateCurrencyOptions(countryId); // Llamar a la función para actualizar las opciones de moneda
+        var data = {
+            registration_id: registration_id,
+            country_id: countryId,
+        };
+
+        if (countryId && registration_id) {
+            updateCurrencyOptions(data); // Llamar a la función para actualizar las opciones de moneda
             console.log('updating to currency from:', countryId);
         } else {
             // Si no hay país seleccionado, limpiar el selector de moneda
@@ -1489,21 +1479,21 @@ odoo.define('df_website_front.event', function (require) {
         }
     });
 
-    function updateCurrencyOptions(countryId) {
+    function updateCurrencyOptions(data) {
         $.ajax({
-            url: '/evento/get_country_currency',
+            url: '/evento/get_currency_by_country',
             type: 'GET',
-            data: { country_id: countryId },
-            success: function(data) {
-                if (data.success) {
-                    loadOptions('currency_id', data.currency_id_options, 1); //carga las opciones de moneda del país y preselecciona la 1ra opción
-                } else {
-                    console.log('Error al obtener las opciones de moneda:', data.error);
-                }
-            },
-            error: function(error) {
-                console.log('Error en la llamada AJAX:', error);
+            data: data, // Convertir el objeto a formato URL-encoded
+            success: function(response) {
+            if (response.success) {
+                loadOptions('currency_id', response.currency_id_options, 1); // Cargar las opciones de moneda del país y preseleccionar la primera opción
+            } else {
+                console.log('Error al obtener las opciones de moneda:', response.error);
             }
+        },
+        error: function(error) {
+            console.log('Error en la llamada AJAX:', error);
+        }
         });
     }
 

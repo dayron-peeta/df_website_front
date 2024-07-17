@@ -261,7 +261,7 @@ odoo.define('df_website_front.user_sign', function (require) {
 
             var formData = new FormData();
             formData.append('country_id', my_select.val());
-
+            //TODO pendiente fijarme por este método
             $.ajax({
                 url: '/evento/' + EVENT_ID + '/get_currency_by_country',
                 data: formData,

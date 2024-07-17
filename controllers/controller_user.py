@@ -212,7 +212,7 @@ class WebsiteUserController(http.Controller):
         return json.dumps({'success': True, 'message': 10})
 
 
-    #PENDIENTE EDIT_EVENT_REGISTRATION (inscription) //TODO probando git 
+    #PENDIENTE EDIT_EVENT_REGISTRATION (inscription) //TODO 
     @http.route('/evento/get_data_event_registration', type='http', auth='public', csrf=False, methods=['GET'])
     def get_data_event_registrations(self, registration_id=None, **kwargs):
         _logger.info('********************************Registration ID recibido: %s', registration_id)
@@ -294,7 +294,28 @@ class WebsiteUserController(http.Controller):
         }
         
         return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})    
-
+    
+    #TODO pendiente 
+    @http.route('/evento/get_currency_by_country', type='json', auth="public", website=True, csrf=False, methods=['GET'])
+    def get_currency_by_country(self, **kwargs):
+        registration_id = int(kwargs.get('registration_id', 0))
+        country_id = int(kwargs.get('country_id', 0))
+        
+        if not registration_id or not country_id:
+            return {'success': False, 'error': 'Missing registration_id or country_id'}
+        
+        registration = request.env['event.registration'].sudo().browse(registration_id)
+        if not registration.exists():
+            return {'success': False, 'error': 'registration not found'}
+        
+        event_id = registration.event_id.id
+        if not event_id:
+            return {'success': False, 'error': 'Event not found'}
+        
+        event = request.env['event.event'].sudo().browse(event_id)
+        currency_id_options = request.env['res.currency'].sudo().get_currency_by_pricelist(event, country_id)
+        
+        return {'success': True, 'currency_id_options': currency_id_options}
 
     @http.route('/evento/update_registration', type='http', auth="public", website=True,
     csrf=False, methods=['POST']) #Ruta de la URL para editar una inscripción
