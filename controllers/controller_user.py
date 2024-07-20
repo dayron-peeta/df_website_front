@@ -276,46 +276,66 @@ class WebsiteUserController(http.Controller):
         }
         return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})    
 
-    @http.route('/evento/get_country_currency', type='json', auth='public', methods=['GET'], csrf=False)
-    def get_country_currency(self, country_id=None):
-        if not country_id:
-            _logger.error('Missing country_id')
-            return {'error': 'Missing country_id'}
+    # @http.route('/evento/get_country_currency', type='json', auth='public', methods=['GET'], csrf=False)
+    # def get_country_currency(self, country_id=None):
+    #     if not country_id:
+    #         _logger.error('Missing country_id')
+    #         return {'error': 'Missing country_id'}
         
-        country = request.env['res.country'].sudo().browse(int(country_id))
-        if not country.exists():
-            _logger.error('Country not found: %s', country_id)
-            return {'error': 'Country not found'}
+    #     country = request.env['res.country'].sudo().browse(int(country_id))
+    #     if not country.exists():
+    #         _logger.error('Country not found: %s', country_id)
+    #         return {'error': 'Country not found'}
 
-        currency_options = [{'id': currency.id, 'name': currency.name} for currency in country.currency_ids]
+    #     currency_options = [{'id': currency.id, 'name': currency.name} for currency in country.currency_ids]
         
-        data = {
-            'currency_id_options': currency_options,
-        }
+    #     data = {
+    #         'currency_id_options': currency_options,
+    #     }
         
-        return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})    
+    #     return request.make_response(json.dumps(data), headers={'Content-Type': 'application/json'})    
     
     #TODO pendiente 
-    @http.route('/evento/get_currency_by_country', type='json', auth="public", website=True, csrf=False, methods=['GET'])
+    @http.route('/evento/get_currency_by_country', type='http', auth="public", csrf=False, methods=['GET'])
     def get_currency_by_country(self, **kwargs):
         registration_id = int(kwargs.get('registration_id', 0))
         country_id = int(kwargs.get('country_id', 0))
         
+        _logger.info('********************************registration_id: %s', registration_id)
+        _logger.info('********************************country_id: %s', country_id)
+        
         if not registration_id or not country_id:
-            return {'success': False, 'error': 'Missing registration_id or country_id'}
+            return request.make_response(json.dumps({'success': False, 'error': 'Missing registration_id or country_id'}), headers={'Content-Type': 'application/json'})
         
         registration = request.env['event.registration'].sudo().browse(registration_id)
+        _logger.info('********************************registration: %s', registration)
+        
         if not registration.exists():
-            return {'success': False, 'error': 'registration not found'}
+            return request.make_response(json.dumps({'success': False, 'error': 'registration not found'}), headers={'Content-Type': 'application/json'})
         
         event_id = registration.event_id.id
+        _logger.info('********************************event_id: %s', event_id)
+        
         if not event_id:
-            return {'success': False, 'error': 'Event not found'}
+            return request.make_response(json.dumps({'success': False, 'error': 'Event not found'}), headers={'Content-Type': 'application/json'})
         
         event = request.env['event.event'].sudo().browse(event_id)
-        currency_id_options = request.env['res.currency'].sudo().get_currency_by_pricelist(event, country_id)
+        _logger.info('********************************event: %s', event)
         
-        return {'success': True, 'currency_id_options': currency_id_options}
+        # Asegurarse de que `get_currency_by_pricelist` devuelva una lista o diccionario válido
+        try:
+            currency_id_options = request.env['res.currency'].sudo().get_currency_by_pricelist(event, country_id)
+            if currency_id_options == [{'id': 70, 'name': 'CUP'}]:
+                currency_id_options = [{'id': 1, 'name': 'CUP'}]
+            if currency_id_options == [{'id': 70, 'name': 'CUP'}, {'id': 2, 'name': 'USD'}]:
+                currency_id_options = [{'id': 1, 'name': 'CUP'}, {'id': 2, 'name': 'USD'}]
+            if currency_id_options == [{'id': 2, 'name': 'USD'}, {'id': 70, 'name': 'CUP'}]:
+                currency_id_options = [{'id': 2, 'name': 'USD'}, {'id': 1, 'name': 'CUP'}]
+            _logger.info('********************************currency_id_options: %s', currency_id_options)
+            return request.make_response(json.dumps({'success': True, 'currency_id_options': currency_id_options}), headers={'Content-Type': 'application/json'})
+        except Exception as e:
+            _logger.error('Error fetching currency options: %s', e)
+            return request.make_response(json.dumps({'success': False, 'error': str(e)}), headers={'Content-Type': 'application/json'})
 
     @http.route('/evento/update_registration', type='http', auth="public", website=True,
     csrf=False, methods=['POST']) #Ruta de la URL para editar una inscripción
