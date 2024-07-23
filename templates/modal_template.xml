@@ -585,6 +585,7 @@
             </div>
         </template>
 
+        <!-- Edit Inscriptions -->
         <!-- Modal Edit Registrations --> <!--
         PENDIENTE //TODO  -->
         <template id="modal_edit_registrations">

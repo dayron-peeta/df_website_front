@@ -1339,6 +1339,7 @@ odoo.define('df_website_front.event', function (require) {
 
     });
 
+    // Edit Inscriptions
     //Levanta modal Edit Inscriptions //TODO
     $("a.EditInscription").on("click", function () {
         var registrationId = parseInt($(this).closest("tr").attr("id"));

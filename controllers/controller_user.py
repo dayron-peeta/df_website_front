@@ -211,7 +211,7 @@ class WebsiteUserController(http.Controller):
             registrations.sudo().write(elem_update)
         return json.dumps({'success': True, 'message': 10})
 
-
+    #Edit Inscriptions
     #PENDIENTE EDIT_EVENT_REGISTRATION (inscription) //TODO 
     @http.route('/evento/get_data_event_registration', type='http', auth='public', csrf=False, methods=['GET'])
     def get_data_event_registrations(self, registration_id=None, **kwargs):
